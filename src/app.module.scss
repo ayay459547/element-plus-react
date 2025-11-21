@@ -1,0 +1,34 @@
+:root {
+  --nav-z-index: 12;
+}
+
+.app {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+  .navbar {
+    top: 0;
+    left: 0;
+    position: relative;
+    z-index: var(--nav-z-index);
+
+    @media screen and (min-width: 960px) {
+      .navbar {
+        position: sticky;
+        width: 100%;
+      }
+    }
+  }
+
+  .page-content {
+    @media screen and (min-width: 960px) {
+      .page-content {
+        padding-top: var(--nav-height);
+      }
+    }
+  }
+
+  .hero-content {
+  }
+}

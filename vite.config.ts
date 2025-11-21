@@ -9,5 +9,11 @@ export default defineConfig({
         plugins: [['babel-plugin-react-compiler']]
       }
     })
-  ]
+  ],
+  server: {
+    port: 4000,
+    host: '0.0.0.0',
+    open: true,
+    cors: false
+  }
 })
