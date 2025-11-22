@@ -36,11 +36,13 @@
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4"
   },
+  "dependencies": {
+    "react-router-dom": "^7.9.6"
+  },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx}": [
-      "prettier --write",
-      "eslint --fix",
-      "git add"
+    "*.{vue,js,ts,jsx,tsx,md,json}": [
+      "eslint --fix --concurrency=auto",
+      "prettier --write --experimental-cli"
     ]
   }
 }

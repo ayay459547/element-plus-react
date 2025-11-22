@@ -1,11 +1,14 @@
-import styles from './app.module.scss'
+import VpNav from '@/components/navbar/VpNav.tsx'
+import '@/styles/app.scss'
+import '@/styles/css-vars.scss'
+import { Outlet } from 'react-router-dom'
 
 function App() {
   return (
-    <div className={styles['app']}>
-      <header className={styles['navbar']}>Navbar</header>
-      <main className={styles['page-content']}>
-        <div className={styles['hero-content']}>Content</div>
+    <div className="app">
+      <VpNav />
+      <main className="page-content">
+        <Outlet />
       </main>
     </div>
   )
