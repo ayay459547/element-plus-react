@@ -9,7 +9,9 @@
     "skipLibCheck": true,
 
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@element-plus/*": ["./packages/*"],
+      "$/*": ["./public/*"]
     },
 
     /* Bundler mode */
