@@ -31,6 +31,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@element-plus': fileURLToPath(new URL('./packages', import.meta.url)),
       $: fileURLToPath(new URL('./public', import.meta.url))
     }
   },

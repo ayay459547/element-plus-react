@@ -9,8 +9,7 @@ import styles from './navbar.module.scss'
 // Components
 // import VPNavbarHamburger from './navbar/vp-hamburger'
 
-// TODO:
-// import VPMenu from './navbar/VPMenu'
+import VPMenu from './VPMenu'
 
 // import VPNavbarSearch from './navbar/vp-search'
 // import VPNavbarSocialLinks from './navbar/vp-social-links'
@@ -46,8 +45,7 @@ const VPNavbar: React.FC<Props> = () => {
         <div className="content">
           {/* <VPNavbarSearch className="search" options={theme.agolia} multilang /> */}
 
-          {/* TODO: */}
-          {/* <VPMenu className="menu" /> */}
+          <VPMenu className="menu" />
 
           {/* <VPNavbarThemeToggler className="theme-toggler" /> */}
 
