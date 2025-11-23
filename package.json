@@ -31,15 +31,18 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.0.0",
     "prettier": "^3.0.0",
+    "sass": "^1.94.2",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4"
   },
+  "dependencies": {
+    "react-router-dom": "^7.9.6"
+  },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx}": [
-      "prettier --write",
-      "eslint --fix",
-      "git add"
+    "*.{vue,js,ts,jsx,tsx,md,json}": [
+      "eslint --fix --concurrency=auto",
+      "prettier --write --experimental-cli"
     ]
   }
 }

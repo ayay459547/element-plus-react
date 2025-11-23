@@ -8,6 +8,12 @@
     "types": ["vite/client"],
     "skipLibCheck": true,
 
+    "paths": {
+      "@/*": ["./src/*"],
+      "@element-plus/*": ["./packages/*"],
+      "$/*": ["./public/*"]
+    },
+
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
