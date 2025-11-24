@@ -5,6 +5,7 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/',
   plugins: [
     react({
       babel: {
@@ -16,7 +17,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'index.ts'),
       name: 'ElementPlusReact',
-      fileName: (format) => `element-plus-react.${format}.js`
+      fileName: (format: string) => `element-plus-react.${format}.js`
     },
     rollupOptions: {
       external: ['react', 'react-dom'],
