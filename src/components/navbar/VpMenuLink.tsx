@@ -19,7 +19,16 @@ export const VpMenuLink: React.FC<VpMenuLinkProps> = ({ item }) => {
   const isNewPage = (item: Link) => item.activeMatch === '/some_fake_path/'
 
   const location = useLocation()
-  const active = item.activeMatch.startsWith(location.pathname)
+
+  let active = false
+  if (typeof location.pathname === 'string' && location.pathname !== '/') {
+    console.log({
+      pathname: location.pathname,
+      activeMatch: item.activeMatch,
+      active: item.activeMatch.startsWith(location.pathname)
+    })
+    active = item.activeMatch.startsWith(location.pathname)
+  }
 
   return (
     <VPLink
