@@ -1,8 +1,6 @@
-import React from 'react'
-// import { useLocalStorage } from 'react-use'
-// import { usePlaygroundPreview } from '../../composables/usePlayground'
-// import { isActive } from '../../utils/isActive'
 import Badge from '@element-plus/components/badge/Badge.tsx'
+import React from 'react'
+import { useLocation } from 'react-router-dom'
 import VPLink from '../common/VpLink'
 import styles from './navbar.module.scss'
 
@@ -16,35 +14,18 @@ interface VpMenuLinkProps {
 
 /** vp-menu-link.vue */
 export const VpMenuLink: React.FC<VpMenuLinkProps> = ({ item }) => {
-  // const location = useLocation()
-  // const [isVisited, setIsVisited] = useLocalStorage<string | boolean>(
-  //   USER_VISITED_NEW_RESOURCE_PAGE,
-  //   false
-  // )
   const isVisited = false
-
-  // const targetLink = usePlaygroundPreview(item)
 
   const isNewPage = (item: Link) => item.activeMatch === '/some_fake_path/'
 
-  // const onNavClick = useCallback(
-  //   (item: Link) => {
-  //     if (isNewPage(item) && !isVisited) {
-  //       setIsVisited(Date.now().toString())
-  //     }
-  //   },
-  //   [isVisited, setIsVisited]
-  // )
-
-  // const active = isActive(location.pathname, item.activeMatch || item.link, !!item.activeMatch)
-  const active = false
+  const location = useLocation()
+  const active = item.activeMatch.startsWith(location.pathname)
 
   return (
     <VPLink
-      className={`${styles['is-menu-link']} ${active ? 'active' : ''}`}
+      className={`${styles['is-menu-link']} ${active ? styles['active'] : ''}`}
       href={item.link}
       noIcon
-      // onClick={() => onNavClick(item)}
     >
       {isNewPage(item) && !isVisited ? (
         <Badge isDot className="badge">

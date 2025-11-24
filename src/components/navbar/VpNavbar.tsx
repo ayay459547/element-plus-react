@@ -6,6 +6,9 @@ import { config } from '@/config'
 import { Link } from 'react-router-dom'
 import styles from './navbar.module.scss'
 
+import { LogoGithub } from '@ricons/ionicons5'
+import { Icon } from '@ricons/utils'
+
 // Components
 // import VPNavbarHamburger from './navbar/vp-hamburger'
 
@@ -46,6 +49,14 @@ const VPNavbar: React.FC<Props> = () => {
           {/* <VPNavbarSearch className="search" options={theme.agolia} multilang /> */}
 
           <VPMenu className="menu" />
+
+          <div className={styles['social-links']}>
+            <a href="https://github.com/ayay459547" target="_blank">
+              <Icon size={'24px'}>
+                <LogoGithub />
+              </Icon>
+            </a>
+          </div>
 
           {/* <VPNavbarThemeToggler className="theme-toggler" /> */}
 
