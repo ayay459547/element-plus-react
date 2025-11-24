@@ -1,0 +1,41 @@
+.el-card {
+  --el-card-border-color: var(--el-border-color-light);
+  --el-card-border-radius: 4px;
+  --el-card-padding: 20px;
+  --el-card-bg-color: var(--el-fill-color-blank);
+
+  border-radius: var(--el-card-border-radius);
+  border: 1px solid var(--el-card-border-color);
+  background-color: var(--el-card-bg-color);
+  overflow: hidden;
+  color: var(--el-text-color-primary);
+  transition: var(--el-transition-duration);
+
+  &.is-always-shadow {
+    box-shadow: var(--el-box-shadow-light);
+  }
+
+  &.is-hover-shadow {
+    &:hover,
+    &:focus {
+      box-shadow: var(--el-box-shadow-light);
+    }
+  }
+
+  &__header {
+    padding: calc(var(--el-card-padding) - 2px) var(--el-card-padding);
+    border-bottom: 1px solid var(--el-card-border-color);
+    box-sizing: border-box;
+  }
+
+  &__body {
+    padding: var(--el-card-padding);
+    box-sizing: border-box;
+  }
+
+  &__footer {
+    padding: calc(var(--el-card-padding) - 2px) var(--el-card-padding);
+    border-top: 1px solid var(--el-card-border-color);
+    box-sizing: border-box;
+  }
+}
