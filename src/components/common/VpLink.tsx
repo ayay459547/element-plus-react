@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 // import { isExternal } from '../../utils/isExternal'
 // import { withBase } from '../../utils/withBase'
 import { ElIcon } from '@element-plus/components/icon/ElIcon.tsx'
@@ -10,7 +11,7 @@ interface LinkItemProps extends React.HTMLAttributes<HTMLElement> {
 
 const VpLink: React.FC<LinkItemProps> = ({ href, noIcon, children, className, ...rest }) => {
   const isLink = Boolean(href)
-  const Tag = isLink ? 'a' : 'span'
+  const Tag = isLink ? Link : 'span'
 
   // const external = isExternal(href)
   const external = false
@@ -20,7 +21,7 @@ const VpLink: React.FC<LinkItemProps> = ({ href, noIcon, children, className, ..
   return (
     <Tag
       className={`link-item ${isLink ? 'link' : ''} ${className ?? ''}`}
-      href={isLink ? withBase(href || '') : undefined}
+      to={withBase(href || '')}
       target={external ? '_blank' : undefined}
       rel={external ? 'noopener noreferrer' : undefined}
       {...rest}

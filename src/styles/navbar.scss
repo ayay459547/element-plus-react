@@ -16,7 +16,8 @@
   top: 0;
 
   @include respond-to('md') {
-    padding: 0 12px 0 32px;
+    // padding: 0 12px 0 32px;
+    padding: 0 12px 0 24px;
   }
 
   @include respond-to('xlg') {
