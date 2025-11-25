@@ -3,6 +3,7 @@ import React from 'react'
 // import { withBase } from '../../utils/withBase' // 需自行實作
 
 import { config } from '@/config'
+import ElTag from '@element-plus/components/tag/ElTag.tsx'
 import { Link } from 'react-router-dom'
 import styles from './navbar.module.scss'
 
@@ -42,9 +43,10 @@ const VPNavbar: React.FC<Props> = () => {
 
           <h2>React</h2>
 
-          <span className="el-tag el-tag--small el-tag--round" title="latest version">
+          <ElTag size="small" round>
+            {/* title="latest version" */}
             {version}
-          </span>
+          </ElTag>
         </div>
 
         <div className="content">

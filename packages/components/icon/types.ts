@@ -11,9 +11,10 @@ export type IconProps = {
    */
   color?: string
 
+  children?: React.ReactNode
+
   className?: string
   style?: CSSProperties
-  children?: React.ReactNode
 } & React.HTMLAttributes<HTMLElement>
 
 export type IconInstance = React.ReactElement<IconProps>
