@@ -9,9 +9,14 @@
   height: var(--header-height);
   gap: 6px;
 
+  .logo {
+    display: flex;
+    align-items: flex-end;
+  }
+
   a {
     height: 28px;
-    width: 128px;
+    width: 158px;
   }
 
   h2 {
