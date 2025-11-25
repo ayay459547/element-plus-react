@@ -33,15 +33,16 @@ const VPNavbar: React.FC<Props> = () => {
       <div className="header-container">
         <div className={styles['logo-container']}>
           <Link to="/">
-            <img
-              className="logo"
-              style={{ width: '128px', height: '28px' }}
-              src={config.themeConfig.logo}
-              alt="Element Plus Logo"
-            />
+            <div className={styles['logo']}>
+              <img
+                className="logo"
+                style={{ width: '128px', height: '28px' }}
+                src={config.themeConfig.logo}
+                alt="Element Plus Logo"
+              />
+              <h2>React</h2>
+            </div>
           </Link>
-
-          <h2>React</h2>
 
           <ElTag size="small" round>
             {/* title="latest version" */}
