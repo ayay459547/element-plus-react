@@ -40,6 +40,8 @@ const VPNavbar: React.FC<Props> = () => {
             />
           </Link>
 
+          <h2>React</h2>
+
           <span className="el-tag el-tag--small el-tag--round" title="latest version">
             {version}
           </span>

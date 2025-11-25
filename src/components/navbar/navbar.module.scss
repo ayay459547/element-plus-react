@@ -7,10 +7,24 @@
   display: flex;
   align-items: center;
   height: var(--header-height);
+  gap: 6px;
 
   a {
     height: 28px;
     width: 128px;
+  }
+
+  h2 {
+    color: #409eff;
+    text-shadow: 0px 0px 12px #d5eaff;
+    font-size: 1rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  span {
+    padding: 0;
+    margin: 0;
   }
 }
 
