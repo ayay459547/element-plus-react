@@ -7,6 +7,7 @@ import ElTag from '@element-plus/components/tag/ElTag.tsx'
 import { Link } from 'react-router-dom'
 import styles from './navbar.module.scss'
 
+import { withBase } from '@/utils'
 import { LogoGithub } from '@ricons/ionicons5'
 import { Icon } from '@ricons/utils'
 
@@ -37,7 +38,7 @@ const VPNavbar: React.FC<Props> = () => {
               <img
                 className="logo"
                 style={{ width: '128px', height: '28px' }}
-                src={config.themeConfig.logo}
+                src={withBase(config.themeConfig.logo)}
                 alt="Element Plus Logo"
               />
               <h2>React</h2>
