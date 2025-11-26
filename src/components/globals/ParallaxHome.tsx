@@ -1,6 +1,7 @@
 import styles from './ParallaxHome.module.scss'
 // import { config } from '@/config'
 import HomeCards from '@/components/home/HomeCards.tsx'
+import { withBase } from '@/utils'
 
 const ParallaxHome = () => {
   return (
@@ -16,7 +17,7 @@ const ParallaxHome = () => {
           <div className={styles['img-wrapper']}>
             <img
               className={styles['img-main']}
-              src="/images/theme-index-blue.png"
+              src={withBase('/images/theme-index-blue.png')}
               alt="Home Page"
             />
           </div>

@@ -47,3 +47,28 @@
 //   // example: https://crowdin.com/project/element-plus/zh-CN
 //   return `https://crowdin.com/project/element-plus/${targetLang}`
 // }
+
+/**
+ * @author Caleb
+ * @description 下載路徑轉換
+ * 1. 路徑依據 BASE_URL
+ * 2. url是 // 取代變成 /
+ *
+ * 如果
+ * 1. VITE_API_SYSTEM_URL(vite.config.ts 中的 base) 是 '' 或 '/', BASE_URL = '/'
+ * 2. filePath = /...
+ * 結果
+ * fetchPath = //... (無法取得檔案)
+ *
+ * @param {String} filePath 檔案路徑
+ */
+export const getPublicFileUrl = (filePath: string): string => {
+  const baseUrl = `${window.location.origin}`
+  const url = `${import.meta.env.BASE_URL}${filePath}`
+  const fetchPath = new URL(url.replace(/\/\//g, '/'), baseUrl).href
+  return fetchPath
+}
+
+export const withBase = (path: string) => {
+  return getPublicFileUrl(path)
+}
