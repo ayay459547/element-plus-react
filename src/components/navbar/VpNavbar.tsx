@@ -57,7 +57,7 @@ const VPNavbar: React.FC<Props> = () => {
           <VPMenu className="menu" />
 
           <div className={styles['social-links']}>
-            <a href="https://github.com/ayay459547" target="_blank">
+            <a href="https://github.com/ayay459547/element-plus-react" target="_blank">
               <Icon size={'24px'}>
                 <LogoGithub />
               </Icon>
