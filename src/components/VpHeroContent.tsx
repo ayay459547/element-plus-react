@@ -23,7 +23,7 @@ const VpHeroContent: React.FC<VpHeroContentProps> = ({ children }) => {
           .
         </p>
         <p className="mt-1">
-          Based on
+          ❤️ Based on
           <a
             href="https://github.com/element-plus"
             target="_blank"
@@ -32,7 +32,7 @@ const VpHeroContent: React.FC<VpHeroContentProps> = ({ children }) => {
           >
             Element Plus
           </a>
-          ❤️.
+          .
         </p>
       </div>
     </>
