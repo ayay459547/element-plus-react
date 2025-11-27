@@ -2,6 +2,7 @@ import VpNav from '@/components/navbar/VpNav.tsx'
 import '@/styles/app.scss'
 import '@/styles/css-vars.scss'
 import { Outlet } from 'react-router-dom'
+import 'uno.css'
 
 function App() {
   return (

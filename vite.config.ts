@@ -1,6 +1,9 @@
 import react from '@vitejs/plugin-react'
 import { fileURLToPath, URL } from 'node:url'
 import { resolve } from 'path'
+
+import { presetAttributify, presetIcons, presetMini } from 'unocss'
+import UnoCSS from 'unocss/vite'
 import { defineConfig, loadEnv } from 'vite'
 
 export default defineConfig(({ command, mode }) => {
@@ -32,7 +35,16 @@ export default defineConfig(({ command, mode }) => {
       }
 
   return {
-    plugins: [react()],
+    plugins: [
+      react(),
+      UnoCSS({
+        presets: [
+          presetMini(), // 核心原子化 preset
+          presetAttributify(), // <div p="4" text="red-500"> 語法
+          presetIcons() // i-xxx 圖標
+        ]
+      })
+    ],
     base: VITE_API_SYSTEM_URL ?? '/',
     build: buildSettings,
     resolve: {
