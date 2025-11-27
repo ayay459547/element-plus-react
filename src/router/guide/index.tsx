@@ -1,5 +1,10 @@
-import DesignGuide from '@/components/globals/DesignGuide.tsx'
+import { Outlet } from 'react-router-dom'
 
 export default function GuidePage() {
-  return <DesignGuide />
+  return (
+    <div className="guide-page">
+      <div>side nav</div>
+      <Outlet />
+    </div>
+  )
 }

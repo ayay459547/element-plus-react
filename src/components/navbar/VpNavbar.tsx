@@ -27,7 +27,7 @@ interface Props {
 }
 
 const VPNavbar: React.FC<Props> = () => {
-  const version = '2.11.8'
+  const version = import.meta.env.VITE_API_ELEMENT_PLUS_VERSION
 
   return (
     <div className="navbar-wrapper">
