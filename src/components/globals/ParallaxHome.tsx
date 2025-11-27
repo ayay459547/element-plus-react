@@ -1,11 +1,12 @@
 import styles from './ParallaxHome.module.scss'
 // import { config } from '@/config'
 import HomeCards from '@/components/home/HomeCards.tsx'
+import VpHeroContent from '@/components/VpHeroContent.tsx'
 import { withBase } from '@/utils'
 
 const ParallaxHome = () => {
   return (
-    <div className="hero-content">
+    <VpHeroContent>
       <div>
         <div className="home-page">
           <div className={styles['banner']}>
@@ -27,7 +28,7 @@ const ParallaxHome = () => {
           <HomeCards />
         </div>
       </div>
-    </div>
+    </VpHeroContent>
   )
 }
 export default ParallaxHome
