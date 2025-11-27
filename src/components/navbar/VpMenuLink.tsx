@@ -22,12 +22,7 @@ export const VpMenuLink: React.FC<VpMenuLinkProps> = ({ item }) => {
 
   let active = false
   if (typeof location.pathname === 'string' && location.pathname !== '/') {
-    console.log({
-      pathname: location.pathname,
-      activeMatch: item.activeMatch,
-      active: item.activeMatch.startsWith(location.pathname)
-    })
-    active = item.activeMatch.startsWith(location.pathname)
+    active = location.pathname.startsWith(item.activeMatch)
   }
 
   return (

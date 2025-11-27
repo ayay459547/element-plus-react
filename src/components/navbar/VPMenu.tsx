@@ -8,26 +8,23 @@ type Props = {
 
 const VPNavbarMenu: React.FC<Props> = ({ className }) => {
   // const navs = useNav()
-
   // if (!navs) return null
 
   const navs = [
     {
       text: 'Guide',
-      link: '/guide', // temp
-      // link: '/guide/design',
-      activeMatch: '/guide/'
+      link: '/guide',
+      activeMatch: '/guide'
     },
     {
       text: 'Component',
-      link: '/component', // temp
-      // link: '/component/overview',
-      activeMatch: '/component/'
+      link: '/component',
+      activeMatch: '/component'
     },
     {
       text: 'Resource',
       link: '/resource',
-      activeMatch: '/resource/'
+      activeMatch: '/resource'
     }
     // {
     //   text: 'Playground',
