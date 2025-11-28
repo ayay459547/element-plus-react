@@ -1,36 +1,14 @@
+import { useNav } from '@/hooks/nav'
 import React from 'react'
-// import { useNav } from '../../hooks/useNav'
-import VPMenuLink from './VpMenuLink'
+import VPMenuLink from './VpMenuLink.tsx'
 
 type Props = {
   className?: string
 }
 
 const VPNavbarMenu: React.FC<Props> = ({ className }) => {
-  // const navs = useNav()
-  // if (!navs) return null
-
-  const navs = [
-    {
-      text: 'Guide',
-      link: '/guide',
-      activeMatch: '/guide'
-    },
-    {
-      text: 'Component',
-      link: '/component',
-      activeMatch: '/component'
-    },
-    {
-      text: 'Resource',
-      link: '/resource',
-      activeMatch: '/resource'
-    }
-    // {
-    //   text: 'Playground',
-    //   link: 'https://element-plus.run'
-    // }
-  ]
+  const navs = useNav()
+  if (!navs) return null
 
   return (
     <nav className={`navbar-menu ${className}`}>

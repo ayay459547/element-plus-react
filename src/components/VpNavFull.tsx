@@ -11,7 +11,7 @@ interface Props {
   onClose?: () => void
 }
 
-const VPNavFull: React.FC<Props> = ({ fullScreen }) => {
+const VpNavFull: React.FC<Props> = ({ fullScreen }) => {
   // const { lock, cleanup } = useLockScreen()
   const fullscreenRef = useRef<HTMLDivElement>(null)
 
@@ -39,4 +39,4 @@ const VPNavFull: React.FC<Props> = ({ fullScreen }) => {
   )
 }
 
-export default VPNavFull
+export default VpNavFull

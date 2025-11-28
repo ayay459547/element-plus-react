@@ -2,10 +2,10 @@ import { useFullScreen } from '@/composables/fullscreen'
 import { useToggleWidgets } from '@/composables/toggle-widgets'
 // import { useSidebar } from '../composables/sidebar'
 import { breakpoints } from '@/components/constant'
-import VpNavFull from '@/components/navbar//VpNavFull.tsx'
-import VpNavbar from '@/components/navbar/VpNavbar.tsx'
+import VpNavbar from '@/components/VpNavbar.tsx'
+import VpNavFull from '@/components/VpNavFull.tsx'
 
-export default function Navbar() {
+const VpNav: React.FC = () => {
   // const { hasSidebar } = useSidebar()
   const hasSidebar = false
   const { toggleFullScreen, isFullScreen } = useFullScreen()
@@ -26,3 +26,5 @@ export default function Navbar() {
     </header>
   )
 }
+
+export default VpNav
