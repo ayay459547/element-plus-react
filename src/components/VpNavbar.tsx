@@ -5,7 +5,7 @@ import React from 'react'
 import { config } from '@/config'
 import ElTag from '@element-plus/components/tag/ElTag.tsx'
 import { Link } from 'react-router-dom'
-import styles from './navbar.module.scss'
+import styles from './navbar/navbar.module.scss'
 
 import { withBase } from '@/utils'
 import { LogoGithub } from '@ricons/ionicons5'
@@ -14,7 +14,7 @@ import { Icon } from '@ricons/utils'
 // Components
 // import VPNavbarHamburger from './navbar/vp-hamburger'
 
-import VPMenu from './VPMenu'
+import VPMenu from './navbar/VPMenu'
 
 // import VPNavbarSearch from './navbar/vp-search'
 // import VPNavbarSocialLinks from './navbar/vp-social-links'
@@ -26,7 +26,7 @@ interface Props {
   onToggle?: () => void
 }
 
-const VPNavbar: React.FC<Props> = () => {
+const VpNavbar: React.FC<Props> = () => {
   const version = import.meta.env.VITE_API_ELEMENT_PLUS_VERSION
 
   return (
@@ -77,4 +77,4 @@ const VPNavbar: React.FC<Props> = () => {
   )
 }
 
-export default VPNavbar
+export default VpNavbar

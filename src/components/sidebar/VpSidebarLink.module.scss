@@ -1,0 +1,29 @@
+.link {
+  padding: 10px 16px;
+  line-height: 1.5;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  display: block;
+
+  &-text {
+    margin: 0;
+    line-height: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-color-light);
+    transition: color 0.5s;
+  }
+
+  &:hover {
+    background-color: var(--link-hover-bg-color);
+
+    .link-text {
+      color: var(--brand-color);
+      transition: color 0.25s;
+    }
+  }
+
+  &.active {
+    background-color: var(--link-active-bg-color);
+  }
+}

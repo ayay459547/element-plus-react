@@ -1,0 +1,44 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: var(--sidebar-width-xs);
+  height: fit-content;
+  background-color: var(--bg-color);
+  padding: 48px 32px;
+  overflow-y: auto;
+  // transform: translate(-100%);
+  transition:
+    background-color var(--el-transition-duration-fast),
+    opacity 0.25s,
+    transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+
+  & > aside {
+    margin-top: 24px;
+    height: calc(100vh - 88px);
+    overflow: auto;
+    // hide scrollbar
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE / Edge */
+  }
+
+  &-groups {
+    padding: 0 2px;
+
+    @media screen and (min-width: 960px) {
+      padding-bottom: 48px;
+    }
+  }
+
+  &-group {
+    box-sizing: border-box;
+
+    &__title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 24px;
+    }
+  }
+}
