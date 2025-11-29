@@ -20,9 +20,9 @@ const VpSidebar: React.FC<VpSidebarProps> = ({ top, bottom }) => {
   const asideRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!asideRef.current) return
-    if (sidebars.length === 0) return // 確保內容有渲染
-    asideRef.current.scrollTo({ top: 0, behavior: 'auto' })
+    if (asideRef.current && sidebars.length > 0) {
+      asideRef.current.scrollTo({ top: 0, behavior: 'auto' })
+    }
   }, [sidebars])
 
   if (!hasSidebar) return null

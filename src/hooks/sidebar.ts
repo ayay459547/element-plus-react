@@ -14,34 +14,34 @@ type NavItem = {
   children: Child[]
 }
 
+const guideSidebars = Object.values(guideSideNav).map((item: NavItem) => {
+  return {
+    ...item,
+    children: item.children.map((child: Child) => {
+      return {
+        ...child,
+        link: `${child.link}`
+      }
+    })
+  }
+})
+
+const componentSidebars = Object.values(componentSideNav).map((item: NavItem) => {
+  return {
+    ...item,
+    children: item.children.map((child: Child) => {
+      return {
+        ...child,
+        link: `/component${child.link}`
+      }
+    })
+  }
+})
+
 const getSidebarConfig = (pathname: string) => {
   if (pathname === '/') return []
-  if (pathname.startsWith('/guide')) {
-    return Object.values(guideSideNav).map((item: NavItem) => {
-      return {
-        ...item,
-        children: item.children.map((child: Child) => {
-          return {
-            ...child,
-            link: `${child.link}`
-          }
-        })
-      }
-    })
-  }
-  if (pathname.startsWith('/component')) {
-    return Object.values(componentSideNav).map((item: NavItem) => {
-      return {
-        ...item,
-        children: item.children.map((child: Child) => {
-          return {
-            ...child,
-            link: `/component${child.link}`
-          }
-        })
-      }
-    })
-  }
+  if (pathname.startsWith('/guide')) return guideSidebars
+  if (pathname.startsWith('/component')) return componentSidebars
   if (pathname.startsWith('/resource')) return []
   return []
 }
