@@ -1,5 +1,5 @@
 // import clsx from 'clsx'
-import '@element-plus/components/base/style/css'
+import '@ayay/element-plus-react/components/base/style/css'
 import type { CSSProperties } from 'react'
 import React from 'react'
 

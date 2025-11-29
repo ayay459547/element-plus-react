@@ -1,5 +1,5 @@
 import { isActive } from '@/utils'
-import Badge from '@element-plus/components/badge/Badge.tsx'
+import Badge from '@ayay/element-plus-react/components/badge/Badge.tsx'
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import VpLink from '../common/VpLink'

@@ -3,7 +3,7 @@ import React from 'react'
 // import { withBase } from '../../utils/withBase' // 需自行實作
 
 import { config } from '@/config'
-import ElTag from '@element-plus/components/tag/ElTag.tsx'
+import ElTag from '@ayay/element-plus-react/components/tag/ElTag.tsx'
 import { Link } from 'react-router-dom'
 import styles from './navbar/navbar.module.scss'
 
