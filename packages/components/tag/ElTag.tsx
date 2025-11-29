@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import React from 'react'
 // import { CSSTransition } from 'react-transition-group'
-import Transition from '@element-plus/components/transition/Transition.tsx'
+import Transition from '@ayay/element-plus-react/components/transition/Transition.tsx'
 import { Close } from '@ricons/ionicons5'
 import { Icon } from '@ricons/utils'
 import styles from './ElTag.module.scss'
