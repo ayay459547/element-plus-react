@@ -48,6 +48,16 @@
 //   return `https://crowdin.com/project/element-plus/${targetLang}`
 // }
 
+export const isActive = (routePath: string, path: string): boolean => {
+  if (typeof routePath !== 'string' || typeof path !== 'string') return false
+  if (location.pathname === '/') return false
+  return routePath.startsWith(path) || path === routePath
+}
+
+export const isExternal = (path: string | undefined): boolean => {
+  return typeof path === 'string' && /^https/.test(path)
+}
+
 /**
  * @author Caleb
  * @description 下載路徑轉換

@@ -1,7 +1,8 @@
+import { isActive } from '@/utils'
 import Badge from '@element-plus/components/badge/Badge.tsx'
 import React from 'react'
 import { useLocation } from 'react-router-dom'
-import VPLink from '../common/VpLink'
+import VpLink from '../common/VpLink'
 import styles from './navbar.module.scss'
 
 import type { Link } from '../types'
@@ -20,13 +21,10 @@ export const VpMenuLink: React.FC<VpMenuLinkProps> = ({ item }) => {
 
   const location = useLocation()
 
-  let active = false
-  if (typeof location.pathname === 'string' && location.pathname !== '/') {
-    active = location.pathname.startsWith(item.activeMatch)
-  }
+  const active = isActive(location.pathname, item.activeMatch)
 
   return (
-    <VPLink
+    <VpLink
       className={`${styles['is-menu-link']} ${active ? styles['active'] : ''}`}
       href={item.link}
       noIcon
@@ -38,7 +36,7 @@ export const VpMenuLink: React.FC<VpMenuLinkProps> = ({ item }) => {
       ) : (
         item.text
       )}
-    </VPLink>
+    </VpLink>
   )
 }
 

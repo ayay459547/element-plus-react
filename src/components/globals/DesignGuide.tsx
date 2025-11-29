@@ -1,4 +1,4 @@
 const DesignGuide = () => {
-  return <div>Design Guide Component</div>
+  return <h1>Design Disciplines</h1>
 }
 export default DesignGuide

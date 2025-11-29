@@ -25,5 +25,11 @@
 
   &.active {
     background-color: var(--link-active-bg-color);
+
+    .link-text {
+      // font-weight: 600;
+      color: var(--brand-color);
+      transition: color 0.25s;
+    }
   }
 }
