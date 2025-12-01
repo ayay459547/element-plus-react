@@ -1,10 +1,10 @@
-import VpApp from '@/components/VpApp.tsx'
+import VPApp from '@/components/VPApp'
 import '@/styles/app.scss'
 import '@/styles/css-vars.scss'
 import 'uno.css'
 
 function App() {
-  return <VpApp />
+  return <VPApp />
 }
 
 export default App

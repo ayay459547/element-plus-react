@@ -21,12 +21,12 @@ import VPMenu from './navbar/VPMenu'
 // import VPNavbarThemeToggler from './navbar/vp-theme-toggler'
 // import VPNavbarTranslation from './navbar/vp-translation'
 
-interface Props {
+interface VPNavbarProps {
   fullScreen: boolean
   onToggle?: () => void
 }
 
-const VpNavbar: React.FC<Props> = () => {
+const VPNavbar: React.FC<VPNavbarProps> = () => {
   const version = import.meta.env.VITE_API_ELEMENT_PLUS_VERSION
 
   return (
@@ -77,4 +77,4 @@ const VpNavbar: React.FC<Props> = () => {
   )
 }
 
-export default VpNavbar
+export default VPNavbar

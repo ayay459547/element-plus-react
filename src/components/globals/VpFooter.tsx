@@ -1,12 +1,12 @@
 import homeLang from '@/crowdin/pages/home.json'
 import clsx from 'clsx'
-import styles from './VpFooter.module.scss'
+import styles from './VPFooter.module.scss'
 
 interface Props {
   isHome?: boolean
 }
 
-const VpFooter: React.FC<Props> = ({ isHome }) => {
+const VPFooter: React.FC<Props> = ({ isHome }) => {
   const githubLink = (link: string) => {
     return `https://github.com//${link}`
   }
@@ -74,4 +74,4 @@ const VpFooter: React.FC<Props> = ({ isHome }) => {
   )
 }
 
-export default VpFooter
+export default VPFooter

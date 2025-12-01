@@ -1,16 +1,16 @@
 import { isActive } from '@/utils'
 import clsx from 'clsx'
 import { Link, useLocation } from 'react-router-dom'
-import styles from './VpSidebarLink.module.scss'
+import styles from './VPSidebarLink.module.scss'
 
-type VpSidebarLinkProps = {
+type VPSidebarLinkProps = {
   item: {
     text: string
     link: string
   }
 }
 
-const VpSidebarLink: React.FC<VpSidebarLinkProps> = ({ item }) => {
+const VPSidebarLink: React.FC<VPSidebarLinkProps> = ({ item }) => {
   const location = useLocation()
 
   const activeLink = isActive(location.pathname, item.link)
@@ -22,4 +22,4 @@ const VpSidebarLink: React.FC<VpSidebarLinkProps> = ({ item }) => {
   )
 }
 
-export default VpSidebarLink
+export default VPSidebarLink

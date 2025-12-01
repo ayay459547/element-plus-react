@@ -1,10 +1,10 @@
-import styles from './VpHeroContent.module.scss'
+import styles from './VPHeroContent.module.scss'
 
-type VpHeroContentProps = {
+type VPHeroContentProps = {
   children?: React.ReactNode
 }
 
-const VpHeroContent: React.FC<VpHeroContentProps> = ({ children }) => {
+const VPHeroContent: React.FC<VPHeroContentProps> = ({ children }) => {
   return (
     <>
       <div className="hero-content">{children}</div>
@@ -39,4 +39,4 @@ const VpHeroContent: React.FC<VpHeroContentProps> = ({ children }) => {
   )
 }
 
-export default VpHeroContent
+export default VPHeroContent

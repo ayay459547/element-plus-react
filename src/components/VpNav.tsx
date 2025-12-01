@@ -2,10 +2,10 @@ import { useFullScreen } from '@/composables/fullscreen'
 import { useToggleWidgets } from '@/composables/toggle-widgets'
 // import { useSidebar } from '../composables/sidebar'
 import { breakpoints } from '@/components/constant'
-import VpNavbar from '@/components/VpNavbar.tsx'
-import VpNavFull from '@/components/VpNavFull.tsx'
+import VPNavbar from '@/components/VPNavbar.tsx'
+import VPNavFull from '@/components/VPNavFull.tsx'
 
-const VpNav: React.FC = () => {
+const VPNav: React.FC = () => {
   // const { hasSidebar } = useSidebar()
   const hasSidebar = false
   const { toggleFullScreen, isFullScreen } = useFullScreen()
@@ -21,10 +21,10 @@ const VpNav: React.FC = () => {
 
   return (
     <header className={`navbar ${hasSidebar ? 'has-sidebar' : ''}`}>
-      <VpNavbar fullScreen={isFullScreen} onToggle={toggleFullScreen} />
-      <VpNavFull fullScreen={isFullScreen} onClose={close} />
+      <VPNavbar fullScreen={isFullScreen} onToggle={toggleFullScreen} />
+      <VPNavFull fullScreen={isFullScreen} onClose={close} />
     </header>
   )
 }
 
-export default VpNav
+export default VPNav

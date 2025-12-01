@@ -1,4 +1,4 @@
-import VPFooter from '@/components/globals/VpFooter.tsx'
+import VPFooter from '@/components/globals/VPFooter'
 import { Outlet } from 'react-router-dom'
 
 export default function ComponentPage() {

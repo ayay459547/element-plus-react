@@ -1,6 +1,6 @@
 import { useNav } from '@/hooks/nav'
 import React from 'react'
-import VPMenuLink from './VpMenuLink.tsx'
+import VPMenuLink from './VPMenuLink.tsx'
 
 type Props = {
   className?: string
