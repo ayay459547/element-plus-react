@@ -1,3 +1,97 @@
-.resource {
-  padding: 32px 128px;
+.page-resource {
+  box-sizing: border-box;
+  padding: 0 40px;
+
+  h1 {
+    color: var(--text-color);
+    margin-bottom: 24px;
+  }
+  p {
+    color: var(--text-color-light);
+    line-height: 24px;
+    margin: 0;
+    &:last-of-type {
+      margin-top: 8px;
+    }
+  }
+}
+
+.resource-content {
+  margin-top: 32px;
+  margin-bottom: 64px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+}
+
+.card {
+  width: 100%;
+  text-align: center;
+  padding: 32px 0;
+
+  img {
+    margin: auto;
+    margin-bottom: 16px;
+    height: 87px;
+  }
+
+  h3 {
+    margin: 10px;
+    font-size: 18px;
+    font-weight: normal;
+  }
+
+  p {
+    font-size: 14px;
+    color: #99a9bf;
+    padding: 0 30px;
+    margin: 0;
+    overflow-wrap: break-word;
+    line-height: 1.8;
+    min-height: 75px;
+    margin-bottom: 16px;
+  }
+}
+
+.resource-btn {
+  --el-button-text-color: var(--el-color-white);
+  --el-button-bg-color: var(--el-color-primary);
+  --el-button-border-color: var(--el-color-primary);
+  --el-button-outline-color: var(--el-color-primary-light-5);
+  --el-button-active-color: var(--el-color-primary-dark-2);
+  --el-button-hover-text-color: var(--el-color-white);
+  --el-button-hover-link-text-color: var(--el-color-primary-light-5);
+  --el-button-hover-bg-color: var(--el-color-primary-light-3);
+  --el-button-hover-border-color: var(--el-color-primary-light-3);
+  --el-button-active-bg-color: var(--el-color-primary-dark-2);
+  --el-button-active-border-color: var(--el-color-primary-dark-2);
+  --el-button-disabled-text-color: var(--el-color-white);
+  --el-button-disabled-bg-color: var(--el-color-primary-light-5);
+  --el-button-disabled-border-color: var(--el-color-primary-light-5);
+
+  padding: 8px 15px;
+  font-size: var(--el-font-size-base);
+  border-radius: var(--el-border-radius-base);
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  height: 32px;
+  white-space: nowrap;
+  cursor: pointer;
+  color: var(--el-button-text-color);
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  transition: 0.1s;
+  font-weight: var(--el-button-font-weight);
+  -webkit-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: var(--el-button-bg-color);
+  border: var(--el-border);
+  border-color: var(--el-button-border-color);
 }

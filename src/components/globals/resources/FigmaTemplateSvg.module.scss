@@ -1,0 +1,40 @@
+.st0 {
+  fill: #f2f8fe;
+}
+.st1 {
+  fill: #1abcfe;
+}
+.st2 {
+  fill: #0acf83;
+}
+.st3 {
+  fill: #ff7262;
+}
+.st4 {
+  fill: #f24e1e;
+}
+.st5 {
+  fill: #a259ff;
+}
+.st6 {
+  fill: #20a0ff;
+}
+.st7 {
+  fill: #ffffff;
+}
+.st8 {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: #deecf9;
+}
+
+.dark {
+  .st0 {
+    fill: #272829;
+  }
+  .st8 {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    fill: #373f48;
+  }
+}
