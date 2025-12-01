@@ -49,8 +49,10 @@
 // }
 
 export const isActive = (routePath: string, path: string): boolean => {
-  if (typeof routePath !== 'string' || typeof path !== 'string') return false
-  if (location.pathname === '/') return false
+  if (typeof routePath !== 'string' || typeof path !== 'string' || routePath === '/') return false
+
+  const isChildren = /^\/.*\//.test(path)
+  if (isChildren) return path === routePath
   return routePath.startsWith(path) || path === routePath
 }
 
