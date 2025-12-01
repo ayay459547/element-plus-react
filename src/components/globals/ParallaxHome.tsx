@@ -1,8 +1,8 @@
 import styles from './ParallaxHome.module.scss'
 // import { config } from '@/config'
-import HomeFooter from '@/components/globals/VPFooter'
+import HomeFooter from '@/components/globals/VPFooter.tsx'
 import HomeCards from '@/components/home/HomeCards.tsx'
-import VPHeroContent from '@/components/VPHeroContent'
+import VPHeroContent from '@/components/VPHeroContent.tsx'
 import { withBase } from '@/utils'
 
 const ParallaxHome = () => {

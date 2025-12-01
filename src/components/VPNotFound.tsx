@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-import VPHeroContent from '@/components/VPHeroContent'
+import VPHeroContent from '@/components/VPHeroContent.tsx'
 import localeData from '@/crowdin/pages/not-found.json'
 import { CloseCircle } from '@ricons/ionicons5'
 import { Icon } from '@ricons/utils'

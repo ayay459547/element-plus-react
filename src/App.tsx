@@ -1,4 +1,4 @@
-import VPApp from '@/components/VPApp'
+import VPApp from '@/components/VPApp.tsx'
 import '@/styles/app.scss'
 import '@/styles/css-vars.scss'
 import 'uno.css'

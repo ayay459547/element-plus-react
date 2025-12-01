@@ -2,8 +2,8 @@ import { useFullScreen } from '@/composables/fullscreen'
 import { useToggleWidgets } from '@/composables/toggle-widgets'
 // import { useSidebar } from '../composables/sidebar'
 import { breakpoints } from '@/components/constant'
-import VPNavbar from '@/components/VPNavbar'
-import VPNavFull from '@/components/VPNavFull'
+import VPNavbar from '@/components/VPNavbar.tsx'
+import VPNavFull from '@/components/VPNavFull.tsx'
 
 const VPNav: React.FC = () => {
   // const { hasSidebar } = useSidebar()

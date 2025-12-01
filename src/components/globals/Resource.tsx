@@ -1,4 +1,4 @@
-import VPHeroContent from '@/components/VPHeroContent'
+import VPHeroContent from '@/components/VPHeroContent.tsx'
 import styles from './Resource.module.scss'
 
 const Resource = () => {
