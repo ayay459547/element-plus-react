@@ -1,5 +1,6 @@
 import styles from './ParallaxHome.module.scss'
 // import { config } from '@/config'
+import HomeFooter from '@/components/globals/VpFooter.tsx'
 import HomeCards from '@/components/home/HomeCards.tsx'
 import VpHeroContent from '@/components/VpHeroContent.tsx'
 import { withBase } from '@/utils'
@@ -28,6 +29,7 @@ const ParallaxHome = () => {
           <HomeCards />
         </div>
       </div>
+      <HomeFooter isHome={true} />
     </VpHeroContent>
   )
 }
