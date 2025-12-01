@@ -1,5 +1,5 @@
-import VPNav from '@/components/VPNav.tsx'
-import VPSidebar from '@/components/VPSidebar.tsx'
+import VPNav from '@/components/VPNav'
+import VPSidebar from '@/components/VPSidebar'
 import { useSidebar } from '@/hooks/sidebar'
 import clsx from 'clsx'
 import { Outlet } from 'react-router-dom'

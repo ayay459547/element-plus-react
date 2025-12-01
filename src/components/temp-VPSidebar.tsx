@@ -1,4 +1,4 @@
-import VPSidebarLink from '@/components/sidebar/VPSidebarLink.tsx'
+import VPSidebarLink from '@/components/sidebar/VPSidebarLink'
 import { useSidebar } from '@/hooks/sidebar'
 import { useEffect, useRef } from 'react'
 import styles from './VPSidebar.module.scss'
