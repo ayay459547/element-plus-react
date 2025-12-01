@@ -6,12 +6,12 @@ import React, { useRef } from 'react'
 // import VPFullScreenThemeToggler from './full-screen/vp-theme-toggler'
 // import VPFullScreenTranslation from './full-screen/vp-translation'
 
-interface Props {
+interface VPNavFullProps {
   fullScreen: boolean
   onClose?: () => void
 }
 
-const VpNavFull: React.FC<Props> = ({ fullScreen }) => {
+const VPNavFull: React.FC<VPNavFullProps> = ({ fullScreen }) => {
   // const { lock, cleanup } = useLockScreen()
   const fullscreenRef = useRef<HTMLDivElement>(null)
 
@@ -39,4 +39,4 @@ const VpNavFull: React.FC<Props> = ({ fullScreen }) => {
   )
 }
 
-export default VpNavFull
+export default VPNavFull

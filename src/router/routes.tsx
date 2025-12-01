@@ -11,7 +11,7 @@ import { componentRoutes } from './component/component-routes.tsx'
 
 import ResourcePage from './resource'
 
-import VpNotFound from '@/components/VpNotFound.tsx'
+import VPNotFound from '@/components/VPNotFound.tsx'
 
 export const router = createBrowserRouter(
   [
@@ -34,11 +34,11 @@ export const router = createBrowserRouter(
         // { path: 'playground', element: <div>Playground</div> }
 
         // catch-all for any unmatched nested path -> go home
-        { path: '*', element: <VpNotFound /> }
+        { path: '*', element: <VPNotFound /> }
       ]
     },
     // optionally catch top-level unmatched paths too
-    { path: '*', element: <VpNotFound /> }
+    { path: '*', element: <VPNotFound /> }
     // { path: '*', element: <Navigate to="/" replace /> }
   ],
   {

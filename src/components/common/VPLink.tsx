@@ -3,12 +3,12 @@ import { ElIcon } from '@ayay/element-plus-react/components/icon/ElIcon.tsx'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-interface LinkItemProps extends React.HTMLAttributes<HTMLElement> {
+interface VPLinkProps extends React.HTMLAttributes<HTMLElement> {
   href?: string
   noIcon?: boolean
 }
 
-const VpLink: React.FC<LinkItemProps> = ({ href, noIcon, children, className, ...rest }) => {
+const VPLink: React.FC<VPLinkProps> = ({ href, noIcon, children, className, ...rest }) => {
   const isLink = Boolean(href)
   const Tag = isLink ? Link : 'span'
 
@@ -33,4 +33,4 @@ const VpLink: React.FC<LinkItemProps> = ({ href, noIcon, children, className, ..
   )
 }
 
-export default VpLink
+export default VPLink

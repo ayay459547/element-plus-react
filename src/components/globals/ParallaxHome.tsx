@@ -1,13 +1,13 @@
 import styles from './ParallaxHome.module.scss'
 // import { config } from '@/config'
-import HomeFooter from '@/components/globals/VpFooter.tsx'
+import HomeFooter from '@/components/globals/VPFooter.tsx'
 import HomeCards from '@/components/home/HomeCards.tsx'
-import VpHeroContent from '@/components/VpHeroContent.tsx'
+import VPHeroContent from '@/components/VPHeroContent.tsx'
 import { withBase } from '@/utils'
 
 const ParallaxHome = () => {
   return (
-    <VpHeroContent>
+    <VPHeroContent>
       <div>
         <div className="home-page">
           <div className={styles['banner']}>
@@ -30,7 +30,7 @@ const ParallaxHome = () => {
         </div>
       </div>
       <HomeFooter isHome={true} />
-    </VpHeroContent>
+    </VPHeroContent>
   )
 }
 export default ParallaxHome

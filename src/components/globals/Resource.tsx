@@ -1,13 +1,13 @@
-import VpHeroContent from '@/components/VpHeroContent.tsx'
+import VPHeroContent from '@/components/VPHeroContent.tsx'
 import styles from './Resource.module.scss'
 
 const Resource = () => {
   return (
-    <VpHeroContent>
+    <VPHeroContent>
       <div className={styles['resource']}>
         <h1>Resource Component</h1>
       </div>
-    </VpHeroContent>
+    </VPHeroContent>
   )
 }
 

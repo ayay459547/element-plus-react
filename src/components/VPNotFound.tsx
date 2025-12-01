@@ -1,13 +1,13 @@
 import { useNavigate } from 'react-router-dom'
 
-import VpHeroContent from '@/components/VpHeroContent.tsx'
+import VPHeroContent from '@/components/VPHeroContent.tsx'
 import localeData from '@/crowdin/pages/not-found.json'
 import { CloseCircle } from '@ricons/ionicons5'
 import { Icon } from '@ricons/utils'
 
-import styles from './VpNotFound.module.scss'
+import styles from './VPNotFound.module.scss'
 
-const VpNotFound: React.FC = () => {
+const VPNotFound: React.FC = () => {
   const navigate = useNavigate()
 
   const goHome = () => {
@@ -17,7 +17,7 @@ const VpNotFound: React.FC = () => {
   const locale = localeData
 
   return (
-    <VpHeroContent>
+    <VPHeroContent>
       <div className={styles['not-found']}>
         <div className={styles['error-icon']}>
           <Icon size={'64px'}>
@@ -30,8 +30,8 @@ const VpNotFound: React.FC = () => {
           {locale['button-title']}
         </button>
       </div>
-    </VpHeroContent>
+    </VPHeroContent>
   )
 }
 
-export default VpNotFound
+export default VPNotFound

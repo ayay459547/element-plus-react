@@ -1,9 +1,9 @@
-import VpSidebarLink from '@/components/sidebar/VpSidebarLink.tsx'
+import VPSidebarLink from '@/components/sidebar/VPSidebarLink.tsx'
 import { useSidebar } from '@/hooks/sidebar'
 import { useEffect, useRef } from 'react'
-import styles from './VpSidebar.module.scss'
+import styles from './VPSidebar.module.scss'
 
-type VpSidebarProps = {
+type VPSidebarProps = {
   // open?: boolean
   // onClose?: () => void
 
@@ -15,7 +15,7 @@ type VpSidebarProps = {
   // style?: CSSProperties
 } & React.HTMLAttributes<HTMLElement>
 
-const VpSidebar: React.FC<VpSidebarProps> = ({ top, bottom }) => {
+const VPSidebar: React.FC<VPSidebarProps> = ({ top, bottom }) => {
   const { sidebars, hasSidebar } = useSidebar()
   const asideRef = useRef<HTMLDivElement>(null)
 
@@ -36,7 +36,7 @@ const VpSidebar: React.FC<VpSidebarProps> = ({ top, bottom }) => {
             <section key={key} className={styles['sidebar-group']}>
               <p className={styles['sidebar-group__title']}>{item.text}</p>
               {item.children.map((child, childKey) => (
-                <VpSidebarLink key={childKey} item={child} />
+                <VPSidebarLink key={childKey} item={child} />
               ))}
             </section>
           ))}
@@ -47,4 +47,4 @@ const VpSidebar: React.FC<VpSidebarProps> = ({ top, bottom }) => {
   )
 }
 
-export default VpSidebar
+export default VPSidebar
