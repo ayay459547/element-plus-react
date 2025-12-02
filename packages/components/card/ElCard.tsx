@@ -1,19 +1,7 @@
 import clsx from 'clsx'
-import type { CSSProperties, ReactNode } from 'react'
 import React from 'react'
 import styles from './ElCard.module.scss'
-
-export interface ElCardProps {
-  header?: ReactNode
-  footer?: ReactNode
-  shadow?: 'always' | 'hover' | 'never'
-  bodyClass?: string
-  headerClass?: string
-  footerClass?: string
-  bodyStyle?: CSSProperties
-  children?: ReactNode
-  className?: string
-}
+import type { ElCardProps } from './types'
 
 export const ElCard: React.FC<ElCardProps> = ({
   header,

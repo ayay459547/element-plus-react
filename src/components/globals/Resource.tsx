@@ -1,5 +1,6 @@
 import VPHeroContent from '@/components/VPHeroContent.tsx'
 import resourceLang from '@/crowdin/pages/resource.json'
+import ElButton from '@ayay/element-plus-react/components/button/ElButton.tsx'
 import ElCard from '@ayay/element-plus-react/components/card/ElCard.tsx'
 import styles from './Resource.module.scss'
 
@@ -92,8 +93,7 @@ const Resource = () => {
                 <h3>{card.title}</h3>
                 <p>{card.intro}</p>
                 <a target="_blank" href={card.url} onClick={() => onClickHandler(card.title)}>
-                  {/* <el-button type="primary">{ resourceLang.download }</el-button> */}
-                  <button className={styles['resource-btn']}>{resourceLang.download}</button>
+                  <ElButton type="primary">{resourceLang.download}</ElButton>
                 </a>
               </ElCard>
             )

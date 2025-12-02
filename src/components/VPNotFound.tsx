@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 
 import VPHeroContent from '@/components/VPHeroContent.tsx'
 import localeData from '@/crowdin/pages/not-found.json'
+import ElButton from '@ayay/element-plus-react/components/button/ElButton.tsx'
 import { CloseCircle } from '@ricons/ionicons5'
 import { Icon } from '@ricons/utils'
 
@@ -26,9 +27,9 @@ const VPNotFound: React.FC = () => {
         </div>
         <p className={styles['title']}>{locale['title']}</p>
         <p className={styles['desc']}>{locale['desc']}</p>
-        <button className={styles['el-button']} onClick={goHome}>
+        <ElButton style={{ marginTop: '1.5rem' }} onClick={goHome}>
           {locale['button-title']}
-        </button>
+        </ElButton>
       </div>
     </VPHeroContent>
   )
