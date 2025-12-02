@@ -2,11 +2,11 @@ import { useNav } from '@/hooks/nav'
 import React from 'react'
 import VPMenuLink from './VPMenuLink.tsx'
 
-type Props = {
+type VPNavbarMenuProps = {
   className?: string
 }
 
-const VPNavbarMenu: React.FC<Props> = ({ className }) => {
+const VPNavbarMenu: React.FC<VPNavbarMenuProps> = ({ className }) => {
   const navs = useNav()
   if (!navs) return null
 
