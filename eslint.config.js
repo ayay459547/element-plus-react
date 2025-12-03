@@ -135,8 +135,11 @@ export default defineConfig([
        * 註解加空白
        * v: // ...註解
        * x: //...註解
+       *
+       * v: ///
        */
-      'spaced-comment': ['warn', 'always', { block: { balanced: true } }]
+      'spaced-comment': ['warn', 'always', { block: { balanced: true } }],
+      "spaced-comment": ["error", "always", { "markers": ["/"] }]
     }
   }
 ])
