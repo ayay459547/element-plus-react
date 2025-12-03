@@ -1,4 +1,5 @@
-import { Loader } from '@ricons/tabler'
+// import { Loader } from '@ricons/tabler'
+import Loading from '@element-plus/icons-svg/loading.svg?react'
 import clsx from 'clsx'
 import styles from './ElButton.module.scss'
 import type { ButtonProps } from './types'
@@ -13,7 +14,8 @@ const ElButton: React.FC<ButtonProps> = ({
   round = false,
   circle = false,
   loading = false,
-  loadingIcon = <Loader />,
+  // loadingIcon = <Loader />,
+  loadingIcon = <Loading />,
   disabled = false,
   icon,
   autofocus = false,
