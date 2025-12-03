@@ -3,13 +3,13 @@ import { createBrowserRouter } from 'react-router-dom'
 import App from '@/App.tsx'
 import ParallaxHome from '@/components/globals/ParallaxHome.tsx'
 
-import GuidePage from './guide'
+import GuidePage from '@/pages/guide'
 import { guideRoutes } from './guide/guide-routes.tsx'
 
-import ComponentPage from './component'
+import ComponentPage from '@/pages/component'
 import { componentRoutes } from './component/component-routes.tsx'
 
-import ResourcePage from './resource'
+import ResourcePage from '@/pages/resource'
 
 import VPNotFound from '@/components/VPNotFound.tsx'
 
