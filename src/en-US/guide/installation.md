@@ -94,10 +94,7 @@ You can also use other CDN providers.
 ```html
 <head>
   <!-- Import style -->
-  <link
-    rel="stylesheet"
-    href="//cdn.jsdelivr.net/npm/element-plus/dist/index.css"
-  />
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/element-plus/dist/index.css" />
   <!-- Import Vue 3 -->
   <script src="//cdn.jsdelivr.net/npm/vue@3"></script>
   <!-- Import component library -->
