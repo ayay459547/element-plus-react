@@ -1,7 +1,9 @@
 import type { RouteObject } from 'react-router-dom'
 
+import AvatarPage from '@/pages/component/data/AvatarPage.tsx'
+
 export const dataRoutes: RouteObject[] = [
-  { path: 'avatar', element: <h1>Avatar</h1> },
+  { path: 'avatar', element: <AvatarPage /> },
   { path: 'badge', element: <h1>Badge</h1> },
   { path: 'calendar', element: <h1>Calendar</h1> },
   { path: 'card', element: <h1>Card</h1> },

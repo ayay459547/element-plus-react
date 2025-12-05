@@ -1,7 +1,9 @@
 import type { RouteObject } from 'react-router-dom'
 
+import AlertPage from '@/pages/component/feedback/AlertPage.tsx'
+
 export const feedbackRoutes: RouteObject[] = [
-  { path: 'alert', element: <h1>Alert</h1> },
+  { path: 'alert', element: <AlertPage /> },
   { path: 'dialog', element: <h1>Dialog</h1> },
   { path: 'drawer', element: <h1>Drawer</h1> },
   { path: 'loading', element: <h1>Loading</h1> },
