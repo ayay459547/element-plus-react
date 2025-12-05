@@ -6,6 +6,9 @@ import { dataRoutes } from './data-routes.tsx'
 import { feedbackRoutes } from './feedback-routes.tsx'
 import { formRoutes } from './form-routes.tsx'
 import { navigationRoutes } from './navigation-routes.tsx'
+import { othersRoutes } from './others-routes.tsx'
+
+import ConfigProviderPage from '@/pages/component/ConfigProviderPage.tsx'
 
 export const componentRoutes: RouteObject[] = [
   // //component → /component/overview
@@ -18,7 +21,7 @@ export const componentRoutes: RouteObject[] = [
   ...basicRoutes,
 
   // Configuration
-  { path: 'config-provider', element: <h1>Config Provider</h1> },
+  { path: 'config-provider', element: <ConfigProviderPage /> },
 
   // Form
   ...formRoutes,
@@ -33,6 +36,5 @@ export const componentRoutes: RouteObject[] = [
   ...feedbackRoutes,
 
   // Others
-  { path: 'divider', element: <h1>Divider</h1> },
-  { path: 'watermark', element: <h1>Watermark</h1> }
+  ...othersRoutes
 ]
