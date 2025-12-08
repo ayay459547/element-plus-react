@@ -130,7 +130,7 @@ export default defineConfig([
        * v: (x) => x
        * x: x => x
        */
-      'arrow-parens': ['warn', 'as-needed'],
+      'arrow-parens': ['off', 'as-needed'],
       /**
        * 註解加空白
        * v: // ...註解
@@ -139,7 +139,7 @@ export default defineConfig([
        * v: ///
        */
       'spaced-comment': ['warn', 'always', { block: { balanced: true } }],
-      "spaced-comment": ["error", "always", { "markers": ["/"] }]
+      'spaced-comment': ['error', 'always', { markers: ['/'] }]
     }
   }
 ])

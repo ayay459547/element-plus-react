@@ -8,6 +8,7 @@ import { formRoutes } from './form-routes.tsx'
 import { navigationRoutes } from './navigation-routes.tsx'
 import { othersRoutes } from './others-routes.tsx'
 
+import Overview from '@/components/globals/Overview.tsx'
 import ConfigProviderPage from '@/pages/component/ConfigProviderPage.tsx'
 
 export const componentRoutes: RouteObject[] = [
@@ -15,7 +16,7 @@ export const componentRoutes: RouteObject[] = [
   { index: true, element: <Navigate to="/component/overview" replace /> },
 
   // Overview
-  { path: 'overview', element: <h1>Overview</h1> },
+  { path: 'overview', element: <Overview /> },
 
   // Basic
   ...basicRoutes,
