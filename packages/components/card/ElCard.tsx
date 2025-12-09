@@ -24,19 +24,26 @@ export const ElCard: React.FC<ElCardProps> = ({
     <div
       {...props}
       className={clsx(
+        'el-card',
         styles['el-card'],
         styles[isAlwaysShadow ? 'is-always-shadow' : ''],
         styles[isHoverShadow ? 'is-hover-shadow' : ''],
         className
       )}
     >
-      {header && <div className={clsx(styles['el-card__header'], headerClass)}>{header}</div>}
+      {header && (
+        <div className={clsx('el-card__header', styles['el-card__header'], headerClass)}>
+          {header}
+        </div>
+      )}
 
-      <div className={`${styles['el-card__body']} ${bodyClass || ''}`} style={bodyStyle}>
+      <div className={clsx('el-card__body', styles['el-card__body'], bodyClass)} style={bodyStyle}>
         {children}
       </div>
 
-      {footer && <div className={clsx(styles['el-card__footer'], footerClass)}>{footer}</div>}
+      {footer && (
+        <div className={clsx('card__footer', styles['el-card__footer'], footerClass)}>{footer}</div>
+      )}
     </div>
   )
 }

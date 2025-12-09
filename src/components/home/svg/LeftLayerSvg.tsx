@@ -10,10 +10,10 @@ const LeftLayerSvg = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_11237_126796)">
+      <g clipPath="url(#clip0_11237_126796)">
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M5.66289 1.92664C3.21061 1.92664 1.22266 3.9146 1.22266 6.36687V155.114C1.22266 157.567 3.21061 159.555 5.66289 159.555H173.559L186.602 172.32L199.09 159.555H256.536C258.988 159.555 260.976 157.567 260.976 155.114V6.36688C260.976 3.9146 258.988 1.92664 256.536 1.92664H5.66289Z"
           fill="var(--ll-c-0)"
         />

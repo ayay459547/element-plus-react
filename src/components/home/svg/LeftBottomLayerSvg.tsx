@@ -25,14 +25,14 @@ const LeftBottomLayerSvg = () => {
         fill="var(--lbl-c-1)"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M128.722 203.39C171.943 203.39 206.981 168.352 206.981 125.131C206.981 81.9099 171.943 46.8721 128.722 46.8721C85.5007 46.8721 50.4629 81.9099 50.4629 125.131C50.4629 168.352 85.5007 203.39 128.722 203.39ZM128.722 177.304C157.536 177.304 180.894 153.945 180.894 125.131C180.894 96.3171 157.536 72.9585 128.722 72.9585C99.9077 72.9585 76.5492 96.3171 76.5492 125.131C76.5492 153.945 99.9077 177.304 128.722 177.304Z"
         fill="#3F85ED"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M50.4629 125.131H76.5492C76.5492 96.3171 99.9077 72.9585 128.722 72.9585V46.8721C85.5007 46.8721 50.4629 81.9099 50.4629 125.131Z"
         fill="var(--lbl-c-2)"
       />
@@ -52,9 +52,9 @@ const LeftBottomLayerSvg = () => {
           width="461.785"
           height="251.984"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"

@@ -44,14 +44,14 @@ const ComponentSvg = () => {
       <rect x="45" y="62" width="50" height="4" fill="var(--component-c-4)" />
       <rect x="61" y="75" width="20" height="6" rx="3" fill="#20A0FF" />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M87 42C85.8954 42 85 42.8954 85 44V69C85 70.1046 85.8954 71 87 71H96.6154L98 75.5H100.5L99.15 71H132C133.105 71 134 70.1046 134 69V44C134 42.8954 133.105 42 132 42H87Z"
         fill="var(--component-c-5)"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M89 42C87.8954 42 87 42.8954 87 44V69C87 70.1046 87.8954 71 89 71H98.6154L100 75.5L104.154 71H134C135.105 71 136 70.1046 136 69V44C136 42.8954 135.105 42 134 42H89Z"
         fill="var(--component-c-6)"
       />

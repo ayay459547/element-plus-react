@@ -85,44 +85,44 @@ const ScreenSvg = () => {
       <path
         d="M1015.7 672.14V444.023"
         stroke="var(--screen-c-4)"
-        stroke-width="8.88047"
-        stroke-linecap="round"
+        strokeWidth="8.88047"
+        strokeLinecap="round"
       />
       <path
         d="M817.559 672.14V444.023"
         stroke="var(--screen-c-4)"
-        stroke-width="8.88047"
-        stroke-linecap="round"
+        strokeWidth="8.88047"
+        strokeLinecap="round"
       />
       <path
         d="M619.413 672.14V444.023"
         stroke="var(--screen-c-4)"
-        stroke-width="8.88047"
-        stroke-linecap="round"
+        strokeWidth="8.88047"
+        strokeLinecap="round"
       />
       <path
         d="M421.268 672.14V444.023"
         stroke="var(--screen-c-4)"
-        stroke-width="8.88047"
-        stroke-linecap="round"
+        strokeWidth="8.88047"
+        strokeLinecap="round"
       />
       <path
         d="M354.386 544.206C369.65 570.57 382.138 592.494 419.047 591.384C461.229 590.115 469.25 538.656 519.23 538.656C579.173 538.656 628.571 613.585 708.495 602.484C805.903 588.955 804.515 362.434 846.975 362.434C896.928 362.434 846.975 555.307 949.933 575.01C997.09 584.035 1069.26 554.844 1089.24 538.656"
         stroke="var(--screen-c-4)"
-        stroke-width="8.88047"
-        stroke-linecap="round"
+        strokeWidth="8.88047"
+        strokeLinecap="round"
       />
       <path
         d="M358.271 504.799C390.186 524.503 408.224 525.058 426.54 522.005C454.569 517.333 488.148 465.114 528.666 459.564C579.451 452.607 605.26 490.258 663.538 480.655C718.399 471.616 760.113 367.707 843.09 380.472C920.794 392.427 913.58 530.608 954.374 540.043C977.13 545.307 989.063 516.732 1021.53 521.45C1047.51 525.224 1075.28 560.764 1085.91 578.063"
         stroke="#75ADFF"
-        stroke-width="8.88047"
-        stroke-linecap="round"
+        strokeWidth="8.88047"
+        strokeLinecap="round"
       />
       <path
         d="M421 533C426.523 533 431 528.523 431 523C431 517.477 426.523 513 421 513C415.477 513 411 517.477 411 523C411 528.523 415.477 533 421 533Z"
         fill="#E4EFFF"
         stroke="#75ADFF"
-        stroke-width="4.99526"
+        strokeWidth="4.99526"
       />
     </svg>
   )

@@ -64,7 +64,7 @@ export default function FigmaUiKitSvg() {
         <path
           d="M88.877 81.8568C89.5221 81.4758 89.4421 80.5184 88.7428 80.2496L78.2037 76.1991C77.4795 75.9208 76.768 76.6322 77.0464 77.3564L81.0968 87.8956C81.3656 88.5949 82.323 88.6748 82.704 88.0297L82.3185 87.802L82.704 88.0297L84.9962 84.149L88.877 81.8568Z"
           stroke="white"
-          stroke-width="0.895641"
+          strokeWidth="0.895641"
         />
       </g>
       <rect x="51" y="20" width="16" height="3" rx="1.5" fill={isDark ? '#5E5877' : '#E0D8FF'} />
@@ -97,9 +97,9 @@ export default function FigmaUiKitSvg() {
           width="23.9771"
           height="23.9771"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
