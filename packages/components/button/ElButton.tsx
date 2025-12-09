@@ -28,12 +28,13 @@ const ElButton: React.FC<ButtonProps> = ({
   className,
   style = {},
   onClick,
-  ...rest
+  ...props
 }) => {
   const Tag = tag || 'button'
 
   return (
     <Tag
+      {...props}
       type={nativeType}
       onClick={onClick}
       className={clsx(
@@ -45,7 +46,6 @@ const ElButton: React.FC<ButtonProps> = ({
         className
       )}
       style={{ ...style }}
-      {...rest}
     >
       {children}
     </Tag>

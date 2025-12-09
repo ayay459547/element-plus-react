@@ -1,7 +1,8 @@
-// import clsx from 'clsx'
 import '@ayay/element-plus-react/components/base/style/css'
+import clsx from 'clsx'
 import type { CSSProperties } from 'react'
 import React from 'react'
+import styles from './ElIcon.module.scss'
 
 import type { IconProps } from './types'
 export type { IconProps }
@@ -11,21 +12,14 @@ const addUnit = (value?: number | string): string | undefined => {
   return typeof value === 'number' ? `${value}px` : value
 }
 
-const useNamespace = (block: string) => {
-  const b = () => `el-${block}`
-  return { b }
-}
-
 export const ElIcon: React.FC<IconProps> = ({
   size,
   color,
   style,
   className,
   children,
-  ...attrs
+  ...props
 }) => {
-  const ns = useNamespace('icon')
-
   const fontSize = addUnit(size)
 
   const mergedStyle: CSSProperties = {
@@ -35,7 +29,7 @@ export const ElIcon: React.FC<IconProps> = ({
   }
 
   return (
-    <i className={`${ns.b()} ${className ?? ''}`} style={mergedStyle} {...attrs}>
+    <i {...props} className={clsx(styles['el-icon'], className)} style={mergedStyle}>
       {children}
     </i>
   )

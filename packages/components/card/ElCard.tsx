@@ -12,7 +12,8 @@ export const ElCard: React.FC<ElCardProps> = ({
   footerClass,
   bodyStyle,
   children,
-  className
+  className,
+  ...props
 }) => {
   const shadowValue = shadow || 'always'
 
@@ -21,6 +22,7 @@ export const ElCard: React.FC<ElCardProps> = ({
 
   return (
     <div
+      {...props}
       className={clsx(
         styles['el-card'],
         styles[isAlwaysShadow ? 'is-always-shadow' : ''],
