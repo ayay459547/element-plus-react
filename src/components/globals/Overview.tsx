@@ -1,7 +1,12 @@
+import overviewIcons from '@/components/overview-icons'
 import { useSidebar } from '@/hooks/sidebar'
+import ElCard from '@ayay/element-plus-react/components/card/ElCard.tsx'
+import ElIcon from '@ayay/element-plus-react/components/icon/ElIcon.tsx'
 import ElInput from '@ayay/element-plus-react/components/input/ElInput.tsx'
+import ElTag from '@ayay/element-plus-react/components/tag/ElTag.tsx'
 import Search from '@element-plus/icons-svg/search.svg?react'
 import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './Overview.module.scss'
 
 const Overview: React.FC = () => {
@@ -24,6 +29,11 @@ const Overview: React.FC = () => {
 
   console.log('filteredSidebars =>', filteredSidebars)
 
+  const getIcon = (link: string) => {
+    const name = link.split('/').pop()
+    return name ? overviewIcons[name] : null
+  }
+
   return (
     <div className={styles['overview-container']}>
       <h1>Overview</h1>
@@ -35,9 +45,46 @@ const Overview: React.FC = () => {
           value={query}
           size="large"
           placeholder="Search Components"
-          prefix={<Search style={{ width: '1rem', height: '1rem' }} />}
+          prefix={
+            <ElIcon>
+              <Search />
+            </ElIcon>
+          }
+          className={styles['el-input']}
           onChange={(e) => setQuery(e.target.value)}
         />
+      </div>
+      <div className={styles['main-content']}>
+        {filteredSidebars.map((group) => {
+          return (
+            <div key={group.text} className={styles['component-group']}>
+              <p className={styles['component-title']}>
+                {group.text}
+                <ElTag effect="dark" round size="small">
+                  {group.children.length}
+                </ElTag>
+              </p>
+              <div className={styles['card-content']}>
+                {group.children.map((item) => {
+                  const IconComponent = getIcon(`${item.link}`)
+
+                  return (
+                    <Link to={`${item.link}`} key={item.link}>
+                      <ElCard
+                        className={styles['el-card']}
+                        headerClass={styles['el-card__header']}
+                        bodyClass={styles['el-card__body']}
+                        header={<span>{item.text}</span>}
+                      >
+                        {IconComponent && <IconComponent />}
+                      </ElCard>
+                    </Link>
+                  )
+                })}
+              </div>
+            </div>
+          )
+        })}
       </div>
     </div>
   )

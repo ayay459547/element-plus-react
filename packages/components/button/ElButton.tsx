@@ -1,4 +1,5 @@
 // import { Loader } from '@ricons/tabler'
+import ElIcon from '@ayay/element-plus-react/components/icon/ElIcon.tsx'
 import Loading from '@element-plus/icons-svg/loading.svg?react'
 import clsx from 'clsx'
 import styles from './ElButton.module.scss'
@@ -14,8 +15,16 @@ const ElButton: React.FC<ButtonProps> = ({
   round = false,
   circle = false,
   loading = false,
-  // loadingIcon = <Loader />,
-  loadingIcon = <Loading />,
+  // loadingIcon = (
+  //   <ElIcon>
+  //     <Loader />
+  //   </ElIcon>
+  // ),
+  loadingIcon = (
+    <ElIcon>
+      <Loading />
+    </ElIcon>
+  ),
   disabled = false,
   icon,
   autofocus = false,

@@ -1,5 +1,6 @@
 .overview-container {
   position: relative;
+  padding: 32px;
 
   .search-content {
     position: sticky;
@@ -37,7 +38,7 @@
           }
         }
 
-        :deep(.el-card) {
+        .el-card {
           width: 100%;
           cursor: pointer;
           transition: none;
