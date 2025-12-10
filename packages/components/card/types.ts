@@ -12,4 +12,4 @@ export interface ElCardProps {
   className?: string
 }
 
-export type CardInstance = React.ReactElement<ElCardProps>
+export type ElCardInstance = React.ReactElement<ElCardProps>

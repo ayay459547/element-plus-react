@@ -6,9 +6,9 @@ import remarkGfm from 'remark-gfm'
 import styles from './VPDocContent.module.scss'
 
 interface VPDocContentProps {
-  markdown: string
-
   children?: React.ReactNode
+
+  markdown?: string
 }
 
 const elementPlusLightTheme = {
@@ -56,26 +56,34 @@ const VPDocContent: React.FC<VPDocContentProps> = ({ children, markdown }) => {
       <div className={styles['doc-content-container']}>
         <div className={styles['doc-content']}>
           {children}
-          <ReactMarkdown
-            rehypePlugins={[rehypeRaw]}
-            remarkPlugins={[remarkGfm]}
-            components={{
-              code({ className, children, ...props }) {
-                const match = /language-(\w+)/.exec(className || '')
-                return match ? (
-                  <SyntaxHighlighter language={match[1]} style={elementPlusLightTheme} PreTag="div">
-                    {String(children).replace(/\n$/, '')}
-                  </SyntaxHighlighter>
-                ) : (
-                  <code className={className} {...props}>
-                    {children}
-                  </code>
-                )
-              }
-            }}
-          >
-            {markdown}
-          </ReactMarkdown>
+
+          {/* .md */}
+          {markdown && (
+            <ReactMarkdown
+              rehypePlugins={[rehypeRaw]}
+              remarkPlugins={[remarkGfm]}
+              components={{
+                code({ className, children, ...props }) {
+                  const match = /language-(\w+)/.exec(className || '')
+                  return match ? (
+                    <SyntaxHighlighter
+                      language={match[1]}
+                      style={elementPlusLightTheme}
+                      PreTag="div"
+                    >
+                      {String(children).replace(/\n$/, '')}
+                    </SyntaxHighlighter>
+                  ) : (
+                    <code className={className} {...props}>
+                      {children}
+                    </code>
+                  )
+                }
+              }}
+            >
+              {markdown}
+            </ReactMarkdown>
+          )}
         </div>
       </div>
     </div>

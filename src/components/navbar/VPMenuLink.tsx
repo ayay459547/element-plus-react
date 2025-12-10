@@ -1,5 +1,5 @@
 import { isActive } from '@/utils'
-import Badge from '@ayay/element-plus-react/components/badge/Badge.tsx'
+import ElBadge from '@ayay/element-plus-react/components/badge/ElBadge.tsx'
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import VPLink from '../common/VPLink.tsx'
@@ -30,9 +30,9 @@ export const VPMenuLink: React.FC<VPMenuLinkProps> = ({ item }) => {
       noIcon
     >
       {isNewPage(item) && !isVisited ? (
-        <Badge isDot className="badge">
+        <ElBadge isDot className="badge">
           {item.text}
-        </Badge>
+        </ElBadge>
       ) : (
         item.text
       )}

@@ -1,0 +1,12 @@
+.el-anchor {
+  --el-anchor-bg-color: var(--el-bg-color);
+  --el-anchor-padding-indent: 14px;
+  --el-anchor-line-height: 22px;
+  --el-anchor-font-size: 12px;
+  --el-anchor-color: var(--el-text-color-secondary);
+  --el-anchor-active-color: var(--el-color-primary);
+  --el-anchor-hover-color: var(--el-text-color-regular);
+  --el-anchor-marker-bg-color: var(--el-color-primary);
+  position: relative;
+  background-color: var(--el-anchor-bg-color);
+}

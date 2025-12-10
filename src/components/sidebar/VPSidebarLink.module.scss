@@ -12,6 +12,10 @@
     font-weight: 500;
     color: var(--text-color-light);
     transition: color 0.5s;
+
+    & + * {
+      margin-left: 0.5rem;
+    }
   }
 
   &:hover {

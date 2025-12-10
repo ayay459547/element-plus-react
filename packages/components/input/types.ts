@@ -64,4 +64,4 @@ export interface ElInputProps {
   onChange?: ChangeEventHandler<HTMLInputElement>
 }
 
-export type InputInstance = React.ReactElement<ElInputProps>
+export type ElInputInstance = React.ReactElement<ElInputProps>

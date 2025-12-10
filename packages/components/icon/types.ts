@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
 
-export type IconProps = {
+export type ElIconProps = {
   /**
    * @description SVG icon size, size x size
    */
@@ -17,4 +17,4 @@ export type IconProps = {
   style?: CSSProperties
 } & React.HTMLAttributes<HTMLElement>
 
-export type IconInstance = React.ReactElement<IconProps>
+export type ElIconInstance = React.ReactElement<ElIconProps>

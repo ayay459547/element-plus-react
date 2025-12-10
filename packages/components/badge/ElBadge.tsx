@@ -1,10 +1,10 @@
 import clsx from 'clsx'
 import React from 'react'
 import { isNumber } from '../../utils/types'
-import styles from './Badge.module.scss'
-import type { BadgeProps } from './types'
+import styles from './ElBadge.module.scss'
+import type { ElBadgeProps } from './types'
 
-export const Badge: React.FC<BadgeProps> = ({
+export const ElBadge: React.FC<ElBadgeProps> = ({
   value = '',
   max = 99,
   isDot = false,
@@ -28,4 +28,4 @@ export const Badge: React.FC<BadgeProps> = ({
     </span>
   )
 }
-export default Badge
+export default ElBadge

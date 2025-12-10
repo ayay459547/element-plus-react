@@ -4,15 +4,14 @@ import type { CSSProperties } from 'react'
 import React from 'react'
 import styles from './ElIcon.module.scss'
 
-import type { IconProps } from './types'
-export type { IconProps }
+import type { ElIconProps } from './types'
 
 const addUnit = (value?: number | string): string | undefined => {
   if (value === null) return undefined
   return typeof value === 'number' ? `${value}px` : value
 }
 
-export const ElIcon: React.FC<IconProps> = ({
+export const ElIcon: React.FC<ElIconProps> = ({
   size,
   color,
   style,

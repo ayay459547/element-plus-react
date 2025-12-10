@@ -3,21 +3,17 @@ import { useLocation } from 'react-router-dom'
 
 import componentSideNav from '@/crowdin/pages/component.json'
 import guideSideNav from '@/crowdin/pages/guide.json'
-
-type Child = {
-  link: string
-  text: string
-}
+import type { Link } from '@/types'
 
 type NavItem = {
   text: string
-  children: Child[]
+  children: Link[]
 }
 
 const guideSidebars = Object.values(guideSideNav).map((item: NavItem) => {
   return {
     ...item,
-    children: item.children.map((child: Child) => {
+    children: item.children.map((child: Link) => {
       return {
         ...child,
         link: `${child.link}`
@@ -29,7 +25,7 @@ const guideSidebars = Object.values(guideSideNav).map((item: NavItem) => {
 const componentSidebars = Object.values(componentSideNav).map((item: NavItem) => {
   return {
     ...item,
-    children: item.children.map((child: Child) => {
+    children: item.children.map((child: Link) => {
       return {
         ...child,
         link: `/component${child.link}`

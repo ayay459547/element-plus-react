@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
 
-export type TagProps = {
+export type ElTagProps = {
   /**
    * type of Tag
    */
@@ -57,4 +57,4 @@ export type TagProps = {
   style?: CSSProperties
 }
 
-export type TagInstance = React.ReactElement<TagProps>
+export type ElTagInstance = React.ReactElement<ElTagProps>
