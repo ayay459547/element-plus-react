@@ -4,7 +4,7 @@ type AsProp<T extends React.ElementType> = {
   tag?: T
 } & Omit<React.ComponentPropsWithoutRef<T>, 'type'>
 
-export type ButtonProps<T extends React.ElementType = 'button'> = {
+export type ElButtonProps<T extends React.ElementType = 'button'> = {
   /**
    * @description button size
    */
@@ -107,4 +107,6 @@ export type ButtonProps<T extends React.ElementType = 'button'> = {
   onClick?: React.MouseEventHandler<any>
 } & AsProp<T>
 
-export type ButtonInstance<T extends React.ElementType = 'button'> = ReactElement<ButtonProps<T>>
+export type ElButtonInstance<T extends React.ElementType = 'button'> = ReactElement<
+  ElButtonProps<T>
+>

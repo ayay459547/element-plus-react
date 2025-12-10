@@ -5,9 +5,9 @@ import Transition from '@ayay/element-plus-react/components/transition/Transitio
 import { Close } from '@ricons/ionicons5'
 import { Icon } from '@ricons/utils'
 import styles from './ElTag.module.scss'
-import type { TagProps } from './types'
+import type { ElTagProps } from './types'
 
-export const ElTag: React.FC<TagProps> = ({
+export const ElTag: React.FC<ElTagProps> = ({
   type = 'primary',
   effect = 'light',
   size,

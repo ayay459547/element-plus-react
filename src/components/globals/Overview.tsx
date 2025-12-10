@@ -1,4 +1,5 @@
 import overviewIcons from '@/components/overview-icons'
+import VPDocContent from '@/components/VPDocContent.tsx'
 import { useSidebar } from '@/hooks/sidebar'
 import ElCard from '@ayay/element-plus-react/components/card/ElCard.tsx'
 import ElIcon from '@ayay/element-plus-react/components/icon/ElIcon.tsx'
@@ -27,66 +28,76 @@ const Overview: React.FC = () => {
       .filter((group) => group.children.length)
   }, [sidebars, query])
 
-  console.log('filteredSidebars =>', filteredSidebars)
-
   const getIcon = (link: string) => {
     const name = link.split('/').pop()
     return name ? overviewIcons[name] : null
   }
 
   return (
-    <div className={styles['overview-container']}>
-      <h1>Overview</h1>
+    <VPDocContent>
+      <div className={styles['overview-container']}>
+        <h1>Overview</h1>
 
-      <p>Overview of all components.</p>
+        <p>Overview of all components.</p>
 
-      <div className={styles['search-content']}>
-        <ElInput
-          value={query}
-          size="large"
-          placeholder="Search Components"
-          prefix={
-            <ElIcon>
-              <Search />
-            </ElIcon>
-          }
-          className={styles['el-input']}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-      </div>
-      <div className={styles['main-content']}>
-        {filteredSidebars.map((group) => {
-          return (
-            <div key={group.text} className={styles['component-group']}>
-              <p className={styles['component-title']}>
-                {group.text}
-                <ElTag effect="dark" round size="small">
-                  {group.children.length}
-                </ElTag>
-              </p>
-              <div className={styles['card-content']}>
-                {group.children.map((item) => {
-                  const IconComponent = getIcon(`${item.link}`)
+        <div className={styles['search-content']}>
+          <ElInput
+            value={query}
+            size="large"
+            placeholder="Search Components"
+            prefix={
+              <ElIcon>
+                <Search />
+              </ElIcon>
+            }
+            className={styles['el-input']}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </div>
+        <div className={styles['main-content']}>
+          {filteredSidebars.map((group) => {
+            return (
+              <div key={group.text} className={styles['component-group']}>
+                <p className={styles['component-title']}>
+                  {group.text}
+                  <ElTag effect="dark" round size="small">
+                    {group.children.length}
+                  </ElTag>
+                </p>
+                <div className={styles['card-content']}>
+                  {group.children.map((item) => {
+                    const IconComponent = getIcon(`${item.link}`)
 
-                  return (
-                    <Link to={`${item.link}`} key={item.link}>
-                      <ElCard
-                        className={styles['el-card']}
-                        headerClass={styles['el-card__header']}
-                        bodyClass={styles['el-card__body']}
-                        header={<span>{item.text}</span>}
-                      >
-                        {IconComponent && <IconComponent />}
-                      </ElCard>
-                    </Link>
-                  )
-                })}
+                    return (
+                      <Link to={`${item.link}`} key={item.link}>
+                        <ElCard
+                          className={styles['el-card']}
+                          headerClass={styles['el-card__header']}
+                          bodyClass={styles['el-card__body']}
+                          shadow="hover"
+                          header={
+                            <>
+                              <span>{item.text}</span>
+                              {item?.promotion && (
+                                <ElTag effect="plain" round className={styles['vp-tag']}>
+                                  {item?.promotion}
+                                </ElTag>
+                              )}
+                            </>
+                          }
+                        >
+                          {IconComponent && <IconComponent />}
+                        </ElCard>
+                      </Link>
+                    )
+                  })}
+                </div>
               </div>
-            </div>
-          )
-        })}
+            )
+          })}
+        </div>
       </div>
-    </div>
+    </VPDocContent>
   )
 }
 

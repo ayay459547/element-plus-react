@@ -40,7 +40,7 @@ import { CSSProperties, ReactNode } from 'react'
 export type ScrollbarDirection = 'top' | 'bottom' | 'left' | 'right'
 
 // Scrollbar props
-export interface ScrollbarProps {
+export interface ElScrollbarProps {
   /** trigger distance(px) */
   distance?: number
   /** height of scrollbar */
@@ -83,7 +83,7 @@ export interface ScrollbarProps {
 }
 
 // Scrollbar instance exposed methods (like Vue's defineExpose)
-export interface ScrollbarInstance {
+export interface ElScrollbarInstance {
   handleScroll: (wrap: HTMLDivElement) => void
   update: () => void
   // 其他可選的方法

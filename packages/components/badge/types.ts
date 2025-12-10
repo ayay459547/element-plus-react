@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react'
 
-export type BadgeProps = {
+export type ElBadgeProps = {
   /**
    * @description display value.
    */
@@ -9,7 +9,7 @@ export type BadgeProps = {
   /**
    * @description maximum value, shows {max}+ when exceeded. Only works if value is a number.
    */
-  max: number
+  max?: number
 
   /**
    * @description if a little dot is displayed.
@@ -24,4 +24,4 @@ export type BadgeProps = {
   style?: CSSProperties
 }
 
-export type IconInstance = React.ReactElement<BadgeProps>
+export type ElBadgeInstance = React.ReactElement<ElBadgeProps>
