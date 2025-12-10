@@ -52,6 +52,15 @@
     align-items: center;
   }
 
+  &.is-disabled,
+  &.is-disabled:hover {
+    color: var(--el-button-disabled-text-color);
+    cursor: not-allowed;
+    background-image: none;
+    background-color: var(--el-button-disabled-bg-color);
+    border-color: var(--el-button-disabled-border-color);
+  }
+
   &.is-plain {
     --el-button-hover-text-color: var(--el-color-primary);
     --el-button-hover-bg-color: var(--el-fill-color-blank);
@@ -67,6 +76,36 @@
     width: 32px;
     border-radius: 50%;
     padding: 8px;
+  }
+
+  &.is-link {
+    border-color: transparent;
+    color: var(--el-button-text-color);
+    background: transparent;
+    padding: 2px;
+    height: auto;
+
+    &:hover {
+      color: var(--el-button-hover-link-text-color);
+    }
+
+    &.is-disabled {
+      color: var(--el-button-disabled-text-color);
+      background-color: transparent !important;
+      border-color: transparent !important;
+    }
+
+    &:not(.is-disabled):hover {
+      border-color: transparent;
+      background-color: transparent;
+    }
+  }
+
+  &:hover {
+    color: var(--el-button-hover-text-color);
+    border-color: var(--el-button-hover-border-color);
+    background-color: var(--el-button-hover-bg-color);
+    outline: none;
   }
 
   &--primary {
@@ -95,6 +134,15 @@
       --el-button-hover-bg-color: var(--el-color-primary);
       --el-button-hover-border-color: var(--el-color-primary);
       --el-button-active-text-color: var(--el-color-white);
+
+      &.is-disabled,
+      &.is-disabled:hover,
+      &.is-disabled:focus,
+      &.is-disabled:active {
+        color: var(--el-color-primary-light-5);
+        background-color: var(--el-color-primary-light-9);
+        border-color: var(--el-color-primary-light-8);
+      }
     }
   }
 
@@ -124,6 +172,15 @@
       --el-button-hover-bg-color: var(--el-color-success);
       --el-button-hover-border-color: var(--el-color-success);
       --el-button-active-text-color: var(--el-color-white);
+
+      &.is-disabled,
+      &.is-disabled:hover,
+      &.is-disabled:focus,
+      &.is-disabled:active {
+        color: var(--el-color-success-light-5);
+        background-color: var(--el-color-success-light-9);
+        border-color: var(--el-color-success-light-8);
+      }
     }
   }
 
@@ -153,6 +210,15 @@
       --el-button-hover-bg-color: var(--el-color-info);
       --el-button-hover-border-color: var(--el-color-info);
       --el-button-active-text-color: var(--el-color-white);
+
+      &.is-disabled,
+      &.is-disabled:hover,
+      &.is-disabled:focus,
+      &.is-disabled:active {
+        color: var(--el-color-info-light-5);
+        background-color: var(--el-color-info-light-9);
+        border-color: var(--el-color-info-light-8);
+      }
     }
   }
 
@@ -182,6 +248,15 @@
       --el-button-hover-bg-color: var(--el-color-warning);
       --el-button-hover-border-color: var(--el-color-warning);
       --el-button-active-text-color: var(--el-color-white);
+
+      &.is-disabled,
+      &.is-disabled:hover,
+      &.is-disabled:focus,
+      &.is-disabled:active {
+        color: var(--el-color-warning-light-5);
+        background-color: var(--el-color-warning-light-9);
+        border-color: var(--el-color-warning-light-8);
+      }
     }
   }
 
@@ -211,6 +286,15 @@
       --el-button-hover-bg-color: var(--el-color-danger);
       --el-button-hover-border-color: var(--el-color-danger);
       --el-button-active-text-color: var(--el-color-white);
+
+      &.is-disabled,
+      &.is-disabled:hover,
+      &.is-disabled:focus,
+      &.is-disabled:active {
+        color: var(--el-color-danger-light-5);
+        background-color: var(--el-color-danger-light-9);
+        border-color: var(--el-color-danger-light-8);
+      }
     }
   }
 }
