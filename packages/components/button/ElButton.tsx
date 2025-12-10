@@ -44,19 +44,25 @@ const ElButton: React.FC<ElButtonProps> = ({
   return (
     <Tag
       {...props}
+      disabled={disabled}
+      aria-disabled={disabled}
       type={nativeType}
       onClick={onClick}
       className={clsx(
+        'el-button',
         styles['el-button'],
         typeof type === 'string' && type.length > 0 && styles[`el-button--${type}`],
+        disabled ? styles['is-disabled'] : '',
         plain ? styles['is-plain'] : '',
+        link ? styles['is-link'] : '',
         round ? styles['is-round'] : '',
         circle ? styles['is-circle'] : '',
         className
       )}
       style={{ ...style }}
     >
-      {children}
+      {icon && <ElIcon>{icon}</ElIcon>}
+      {children && <span>{children}</span>}
     </Tag>
   )
 }

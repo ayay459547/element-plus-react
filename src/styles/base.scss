@@ -55,6 +55,8 @@ h6 {
   h4,
   h5,
   h6 {
+    color: var(--el-text-color-regular);
+
     display: flex;
     align-items: center;
     position: relative;
