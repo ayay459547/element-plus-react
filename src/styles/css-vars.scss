@@ -23,8 +23,7 @@
 
   --font-family: var(--el-font-family);
   --font-family-mono:
-    'JetBrains Mono', source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    'JetBrains Mono', source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 
   // info
   --success-color: var(--el-color-success);
@@ -90,4 +89,22 @@
   --code-tooltip-color: var(--brand-color);
   --purple-color: #9065db;
   --purple-color-light: #6222c2;
+}
+
+:root {
+  --categories-c-bg: #f9fafc;
+  --categories-c-page: #e5e9f2;
+  --categories-c-overlay: white;
+  --categories-c-text: #99a9bf;
+  --categories-c-icon: #e5e9f2;
+  --categories-c-line: #e5e9f2;
+}
+
+.dark {
+  --categories-c-bg: #1d1e1f;
+  --categories-c-page: #0a0a0a;
+  --categories-c-overlay: #141414;
+  --categories-c-text: #53637a;
+  --categories-c-icon: #2f333d;
+  --categories-c-line: #242529;
 }
