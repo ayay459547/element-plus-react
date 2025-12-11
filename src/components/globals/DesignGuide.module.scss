@@ -1,0 +1,51 @@
+.el-row {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+}
+.el-col {
+  padding: 0 7px;
+}
+.el-col-24 {
+  display: block;
+  max-width: 100%;
+  flex: 0 0 100%;
+}
+@media only screen and (min-width: 768px) {
+  .el-col-sm-6 {
+    display: block;
+    max-width: 25%;
+    flex: 0 0 25%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .el-col-xs-12 {
+    display: block;
+    max-width: 50%;
+    flex: 0 0 50%;
+  }
+}
+
+.card {
+  height: 204px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: var(--el-fill-color-lighter);
+
+  img {
+    margin: 1rem;
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .el-col {
+    padding-bottom: 8px;
+  }
+}
