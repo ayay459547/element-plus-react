@@ -1,10 +1,6 @@
-import type { CSSProperties, ElementType, ReactElement, ReactNode } from 'react'
+import type { CSSProperties, ReactElement, ReactNode } from 'react'
 
-type AsProp<T extends React.ElementType> = {
-  tag?: T
-} & Omit<React.ComponentPropsWithoutRef<T>, 'type'>
-
-export type ElButtonProps<T extends React.ElementType = 'button'> = {
+export type ElButtonBaseProps = {
   /**
    * @description button size
    */
@@ -54,7 +50,12 @@ export type ElButtonProps<T extends React.ElementType = 'button'> = {
   /**
    * @description customize loading icon component
    */
-  loadingIcon?: string | ReactNode
+  loadingIcon?: ReactNode
+
+  /**
+   * @description customize loading icon component
+   */
+  loadingSlot?: ReactNode
 
   /**
    * @description disable the button
@@ -94,7 +95,7 @@ export type ElButtonProps<T extends React.ElementType = 'button'> = {
   /**
    * @description custom element tag
    */
-  tag?: string | ElementType
+  // tag?: ElementType
 
   /**
    * @description customize default content
@@ -105,8 +106,44 @@ export type ElButtonProps<T extends React.ElementType = 'button'> = {
   style?: CSSProperties
 
   onClick?: React.MouseEventHandler<any>
-} & AsProp<T>
+}
+
+// T = tag 元素，例如 'button' | 'a'
+export type ElButtonProps<T extends React.ElementType = 'button'> = ElButtonBaseProps &
+  Omit<React.ComponentPropsWithoutRef<T>, keyof ElButtonBaseProps> & {
+    /**
+     * @description custom element tag
+     */
+    tag?: T
+  }
 
 export type ElButtonInstance<T extends React.ElementType = 'button'> = ReactElement<
   ElButtonProps<T>
 >
+
+export interface ElButtonGroupProps {
+  /**
+   * @description control the size of buttons in this button-group
+   */
+  size?: ElButtonProps['size']
+
+  /**
+   * @description control the type of buttons in this button-group
+   */
+  type?: ElButtonProps['type']
+
+  /**
+   * @description display direction
+   */
+  direction?: 'horizontal' | 'vertical'
+
+  /**
+   * @description customize button group content
+   */
+  children?: ReactNode
+
+  style?: CSSProperties
+  className?: string
+}
+
+export type ElButtonGroupInstance = React.ReactElement<ElButtonGroupProps>

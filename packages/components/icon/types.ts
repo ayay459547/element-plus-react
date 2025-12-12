@@ -11,6 +11,11 @@ export type ElIconProps = {
    */
   color?: string
 
+  /**
+   * @description button loading
+   */
+  loading?: boolean
+
   children?: React.ReactNode
 
   className?: string

@@ -1,0 +1,28 @@
+import ElButton from '@ayay/element-plus-react/components/button/ElButton.tsx'
+import ElIcon from '@ayay/element-plus-react/components/icon/ElIcon.tsx'
+import Delete from '@element-plus/icons-svg/delete.svg?react'
+import Edit from '@element-plus/icons-svg/edit.svg?react'
+import Search from '@element-plus/icons-svg/search.svg?react'
+import Share from '@element-plus/icons-svg/share.svg?react'
+import Upload from '@element-plus/icons-svg/upload.svg?react'
+
+const ButtonIcon: React.FC = () => {
+  return (
+    <div>
+      <ElButton type="primary" icon={<Edit />} />
+      <ElButton type="primary" icon={<Share />} />
+      <ElButton type="primary" icon={<Delete />} />
+      <ElButton type="primary" icon={<Search />}>
+        Search
+      </ElButton>
+      <ElButton type="primary">
+        Upload
+        <ElIcon className="el-icon--right">
+          <Upload />
+        </ElIcon>
+      </ElButton>
+    </div>
+  )
+}
+
+export default ButtonIcon
