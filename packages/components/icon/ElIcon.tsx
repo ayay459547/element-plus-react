@@ -14,6 +14,7 @@ const addUnit = (value?: number | string): string | undefined => {
 export const ElIcon: React.FC<ElIconProps> = ({
   size,
   color,
+  loading = false,
   style,
   className,
   children,
@@ -28,7 +29,11 @@ export const ElIcon: React.FC<ElIconProps> = ({
   }
 
   return (
-    <i {...props} className={clsx(styles['el-icon'], className)} style={mergedStyle}>
+    <i
+      {...props}
+      className={clsx(styles['el-icon'], loading ? styles['is-loading'] : '', className)}
+      style={mergedStyle}
+    >
       {children}
     </i>
   )

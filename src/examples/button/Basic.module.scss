@@ -8,15 +8,10 @@
   &-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
     align-items: center;
 
     & > * {
       margin: 0;
     }
   }
-}
-
-.el-button + .el-button {
-  margin-left: 12px;
 }
