@@ -4,7 +4,7 @@ import styles from './ElButton.module.scss'
 import type { ElButtonGroupProps, ElButtonProps } from './types'
 
 function isElButton(element: any): element is React.ReactElement<ElButtonProps> {
-  return element?.props !== undefined
+  return element?.type !== undefined
 }
 
 const ElButtonGroup: React.FC<ElButtonGroupProps> = ({
