@@ -16,7 +16,7 @@ import ButtonText from '@/examples/button/Text.tsx'
 const ButtonPage: React.FC = () => {
   return (
     <VPDocContent>
-      <h1>Button</h1>
+      <h1 id="button">Button</h1>
       <p>Commonly used button.</p>
 
       <h2 id="basic-usage">Basic usage</h2>

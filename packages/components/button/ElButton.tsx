@@ -6,35 +6,40 @@ import type { ReactNode } from 'react'
 import styles from './ElButton.module.scss'
 import type { ElButtonProps } from './types'
 
-const ElButton = <T extends React.ElementType = 'button'>(props: ElButtonProps<T>) => {
-  const {
-    size,
-    type,
-    plain = false,
-    text = false,
-    bg = false,
-    link = false,
-    round = false,
-    circle = false,
-    loading = false,
-    // loadingIcon = <Loader />,
-    loadingIcon,
-    loadingSlot,
-    disabled = false,
-    icon,
-    autofocus = false,
-    nativeType = 'button',
-    autoInsertSpace = false,
-    // color,
-    dark = false,
-    tag,
-    children,
-    className,
-    style = {},
-    onClick,
-    ...rest
-  } = props
+const insertSpaceIfTwoChinese = (text: string): string => {
+  if (/^[\u4e00-\u9fa5]{2}$/.test(text)) {
+    return text[0] + ' ' + text[1]
+  }
+  return text
+}
 
+const ElButton = <T extends React.ElementType = 'button'>({
+  size,
+  type,
+  plain = false,
+  text = false,
+  bg = false,
+  link = false,
+  round = false,
+  circle = false,
+  loading = false,
+  // loadingIcon = <Loader />,
+  loadingIcon,
+  loadingSlot,
+  disabled = false,
+  icon,
+  autoFocus = false,
+  nativeType = 'button',
+  autoInsertSpace = false,
+  // color,
+  dark = false,
+  tag,
+  children,
+  className,
+  style = {},
+  onClick,
+  ...rest
+}: ElButtonProps<T>) => {
   const Tag = tag || 'button'
 
   const isDisabled = disabled || loading
@@ -53,12 +58,16 @@ const ElButton = <T extends React.ElementType = 'button'>(props: ElButtonProps<T
     showLoading = <ElIcon loading>{loadingIcon}</ElIcon>
   }
 
+  let displayText = children
+  if (autoInsertSpace && typeof children === 'string') {
+    displayText = insertSpaceIfTwoChinese(children)
+  }
+
   return (
     <Tag
       {...rest}
-      autofocus={autofocus}
-      autoInsertSpace={autoInsertSpace}
-      dark={dark}
+      autoFocus={autoFocus}
+      dark={`${dark}`}
       disabled={isDisabled}
       aria-disabled={isDisabled}
       type={nativeType}
@@ -82,7 +91,7 @@ const ElButton = <T extends React.ElementType = 'button'>(props: ElButtonProps<T
       style={{ ...style }}
     >
       {loading ? showLoading : icon && <ElIcon>{icon}</ElIcon>}
-      {children && <span>{children}</span>}
+      {children && <span>{displayText}</span>}
     </Tag>
   )
 }

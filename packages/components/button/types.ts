@@ -68,9 +68,9 @@ export type ElButtonBaseProps = {
   icon?: string | ReactNode
 
   /**
-   * @description same as native button's autofocus
+   * @description same as native button's autoFocus
    */
-  autofocus?: boolean
+  autoFocus?: boolean
 
   /**
    * @description same as native button's type
