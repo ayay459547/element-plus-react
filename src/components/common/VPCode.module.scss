@@ -1,0 +1,39 @@
+@use '@/styles/code.scss';
+
+.vp-adaptive-theme {
+  position: relative;
+  margin: 16px 0;
+  // background-color: var(--vp-code-block-bg);
+  overflow-x: auto;
+  transition: background-color 0.5s;
+  padding: 4px;
+
+  .copy {
+    direction: ltr;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 3;
+    border: 1px solid var(--vp-code-copy-code-border-color);
+    border-radius: 4px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--vp-code-copy-code-bg);
+    opacity: 0;
+    cursor: pointer;
+    background-image: var(--vp-icon-copy);
+    background-position: 50%;
+    background-size: 20px;
+    background-repeat: no-repeat;
+    transition:
+      border-color 0.25s,
+      background-color 0.25s,
+      opacity 0.25s;
+  }
+
+  &:hover {
+    .copy {
+      opacity: 1;
+    }
+  }
+}

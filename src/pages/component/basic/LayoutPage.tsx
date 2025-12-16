@@ -1,6 +1,7 @@
 import VPDocContent from '@/components/VPDocContent.tsx'
 // import markdown from '@/en-US/component/layout.md?raw'
 import VPDemo from '@/components/VPDemo.tsx'
+import VPCode from '@/components/common/VPCode.tsx'
 
 import Alignment from '@/examples/layout/Alignment.tsx'
 import BasicLayout from '@/examples/layout/BasicLayout.tsx'
@@ -81,6 +82,51 @@ const LayoutPage: React.FC = () => {
       <VPDemo>
         <ResponsiveLayout />
       </VPDemo>
+
+      <h2 id="utility-classes-for-hiding-elements">Utility classes for hiding elements</h2>
+      <p>
+        Additionally, Element Plus provides a series of classes for hiding elements under certain
+        conditions. These classes can be added to any DOM elements or custom components. You need to
+        import the following CSS file to use these classes:
+      </p>
+      <VPCode language="js" code="import 'element-plus/theme-chalk/display.css'"></VPCode>
+
+      <p>The classes are:</p>
+      <ul>
+        <li>
+          <code>hidden-xs-only</code> - hide when on extra small viewports only
+        </li>
+        <li>
+          <code>hidden-sm-only</code> - hide when on small viewports only
+        </li>
+        <li>
+          <code>hidden-sm-and-down</code> - hide when on small viewports and down
+        </li>
+        <li>
+          <code>hidden-sm-and-up</code> - hide when on small viewports and up
+        </li>
+        <li>
+          <code>hidden-md-only</code> - hide when on medium viewports only
+        </li>
+        <li>
+          <code>hidden-md-and-down</code> - hide when on medium viewports and down
+        </li>
+        <li>
+          <code>hidden-md-and-up</code> - hide when on medium viewports and up
+        </li>
+        <li>
+          <code>hidden-lg-only</code> - hide when on large viewports only
+        </li>
+        <li>
+          <code>hidden-lg-and-down</code> - hide when on large viewports and down
+        </li>
+        <li>
+          <code>hidden-lg-and-up</code> - hide when on large viewports and up
+        </li>
+        <li>
+          <code>hidden-xl-only</code> - hide when on extra large viewports only
+        </li>
+      </ul>
     </VPDocContent>
   )
 }

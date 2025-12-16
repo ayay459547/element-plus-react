@@ -5,18 +5,18 @@ import styles from './BasicLayout.module.scss'
 
 const ResponsiveLayout: React.FC = () => {
   return (
-    <ElRow gutter={20} className={styles['el-row']}>
-      <ElCol span={6}>
+    <ElRow gutter={10} className={styles['el-row']}>
+      <ElCol xs={8} sm={6} md={4} lg={3} xl={1}>
         <div className={clsx(styles['grid-content'], styles['ep-bg-purple'])} />
       </ElCol>
-      <ElCol span={6}>
+      <ElCol xs={4} sm={6} md={8} lg={9} xl={11}>
+        <div className={clsx(styles['grid-content'], styles['ep-bg-purple-light'])} />
+      </ElCol>
+      <ElCol xs={4} sm={6} md={8} lg={9} xl={11}>
         <div className={clsx(styles['grid-content'], styles['ep-bg-purple'])} />
       </ElCol>
-      <ElCol span={6}>
-        <div className={clsx(styles['grid-content'], styles['ep-bg-purple'])} />
-      </ElCol>
-      <ElCol span={6}>
-        <div className={clsx(styles['grid-content'], styles['ep-bg-purple'])} />
+      <ElCol xs={8} sm={6} md={4} lg={3} xl={1}>
+        <div className={clsx(styles['grid-content'], styles['ep-bg-purple-light'])} />
       </ElCol>
     </ElRow>
   )
