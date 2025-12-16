@@ -20,10 +20,12 @@ export const ElTag: React.FC<ElTagProps> = ({
   onClose,
   children,
   className = '',
-  style
+  style,
+  ...props
 }) => {
   const content = (
     <span
+      {...props}
       className={clsx(
         styles['el-tag'],
         styles[`el-tag--${type}`],
@@ -37,11 +39,11 @@ export const ElTag: React.FC<ElTagProps> = ({
       style={{ backgroundColor: color, ...style }}
       onClick={(e) => onClick?.(e)}
     >
-      <span className="el-tag__content">{children}</span>
+      <span className={styles['el-tag__content']}>{children}</span>
 
       {closable && (
         <span
-          className="el-tag__close"
+          className={styles['el-tag__close']}
           onClick={(e) => {
             e.stopPropagation()
             onClose?.(e)

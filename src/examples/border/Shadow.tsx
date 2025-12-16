@@ -29,23 +29,30 @@ const BorderShadow: React.FC = () => {
           <div
             key={i}
             className="flex flex-col justify-center items-center"
-            {...{ m: 'auto', w: '46' }}
+            style={{
+              width: '11.5rem',
+              margin: 'auto'
+            }}
           >
             <div
               className="inline-flex"
               style={{
+                width: '7.5rem',
+                height: '7.5rem',
+                margin: '0.5rem',
                 boxShadow: `var(${getCssVarName(shadow.type)})`
               }}
-              {...{
-                h: '30',
-                w: '30',
-                m: '2'
-              }}
             />
-            <span className="demo-shadow-text" {...{ p: 'y-4', text: 'sm' }}>
+            <span
+              className="demo-shadow-text text-sm"
+              style={{
+                paddingTop: '1rem',
+                paddingBottom: '1rem'
+              }}
+            >
               {shadow.name}
             </span>
-            <code {...{ text: 'xs' }}>{getCssVarName(shadow.type)}</code>
+            <code className="text-xs">{getCssVarName(shadow.type)}</code>
           </div>
         )
       })}

@@ -13,6 +13,7 @@ export const ElCard: React.FC<ElCardProps> = ({
   bodyStyle,
   children,
   className,
+  style,
   ...props
 }) => {
   const shadowValue = shadow || 'always'
@@ -30,6 +31,7 @@ export const ElCard: React.FC<ElCardProps> = ({
         styles[isHoverShadow ? 'is-hover-shadow' : ''],
         className
       )}
+      style={{ ...style }}
     >
       {header && (
         <div className={clsx('el-card__header', styles['el-card__header'], headerClass)}>

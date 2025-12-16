@@ -15,9 +15,9 @@ export const ElIcon: React.FC<ElIconProps> = ({
   size,
   color,
   loading = false,
+  children,
   style,
   className,
-  children,
   ...props
 }) => {
   const fontSize = addUnit(size)

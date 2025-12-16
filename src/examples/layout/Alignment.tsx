@@ -20,6 +20,7 @@ const Alignment: React.FC = () => {
         return (
           <ElRow
             gutter={20}
+            key={justifyItem ?? 'justifyItem'}
             justify={justifyItem}
             className={clsx(styles['el-row'], styles['row-bg'])}
           >

@@ -11,6 +11,7 @@ export const ElBadge: React.FC<ElBadgeProps> = ({
   content,
   children,
   className,
+  style,
   ...props
 }) => {
   const show_content: string = (() => {
@@ -22,7 +23,11 @@ export const ElBadge: React.FC<ElBadgeProps> = ({
   })()
 
   return (
-    <span {...props} className={clsx(styles['el-badge'], isDot ? styles['is-dot'] : '', className)}>
+    <span
+      {...props}
+      className={clsx(styles['el-badge'], isDot ? styles['is-dot'] : '', className)}
+      style={{ ...style }}
+    >
       {children}
       <sup className={clsx(styles['el-badge__content'])}>{content ? content : show_content}</sup>
     </span>

@@ -84,3 +84,32 @@ export const getPublicFileUrl = (filePath: string): string => {
 export const withBase = (path: string) => {
   return getPublicFileUrl(path)
 }
+
+/**
+ * @author Caleb
+ * @description 複製文字
+ * @param text 文字
+ */
+export const copyText = async (text: string): Promise<string> => {
+  try {
+    if (navigator.clipboard) {
+      await navigator.clipboard.writeText(text)
+    } else {
+      const input = document.createElement('input')
+      document.body.appendChild(input)
+      input.setAttribute('value', text)
+      input.select()
+
+      if (document.execCommand('copy')) {
+        document.execCommand('copy')
+      }
+      document.body.removeChild(input)
+    }
+
+    return text
+  } catch (e) {
+    console.trace(e)
+
+    return text
+  }
+}

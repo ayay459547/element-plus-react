@@ -10,6 +10,7 @@ export interface ElCardProps {
   bodyStyle?: CSSProperties
   children?: ReactNode
   className?: string
+  style?: CSSProperties
 }
 
 export type ElCardInstance = React.ReactElement<ElCardProps>
