@@ -27,6 +27,7 @@ export const ElTag: React.FC<ElTagProps> = ({
     <span
       {...props}
       className={clsx(
+        'el-tag',
         styles['el-tag'],
         styles[`el-tag--${type}`],
         effect && styles[`el-tag--${effect}`],

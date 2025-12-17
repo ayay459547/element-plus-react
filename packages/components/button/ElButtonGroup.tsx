@@ -15,16 +15,14 @@ const ElButtonGroup: React.FC<ElButtonGroupProps> = ({
   style,
   className
 }) => {
-  const isHorizontal = direction === 'horizontal'
-  const isVertical = direction === 'vertical'
+  const hasDirection = ['horizontal', 'vertical'].includes(direction)
 
   return (
     <div
       className={clsx(
         'el-button-group',
         styles['el-button-group'],
-        isHorizontal ? styles['el-button-group--horizontal'] : '',
-        isVertical ? styles['el-button-group--vertical'] : '',
+        hasDirection ? styles[`el-button-group--${direction}`] : '',
         className
       )}
       style={{ ...style }}

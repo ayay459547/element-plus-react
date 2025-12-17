@@ -58,6 +58,7 @@ const ElInput: React.FC<ElInputProps> = ({
   return (
     <div
       className={clsx(
+        'el-input',
         styles['el-input'],
         disabled ? styles['disabled'] : '',
         size ? styles[`el-input--${size}`] : '',
@@ -66,18 +67,30 @@ const ElInput: React.FC<ElInputProps> = ({
       style={{ ...style }}
     >
       {/* prepend slot */}
-      {prepend && <div className={styles['el-input-group__prepend']}>{prepend}</div>}
-      <div className={clsx(styles['el-input__wrapper'], isFocus ? styles['is-focus'] : '')}>
+      {prepend && (
+        <div className={clsx('el-input-group__prepend', styles['el-input-group__prepend'])}>
+          {prepend}
+        </div>
+      )}
+      <div
+        className={clsx(
+          'el-input__wrapper',
+          styles['el-input__wrapper'],
+          isFocus ? styles['is-focus'] : ''
+        )}
+      >
         {/* prepend slot */}
         {prefix && (
-          <span className={styles['el-input__prefix']}>
-            <span className={styles['el-input__prefix-inner']}>{prefix}</span>
+          <span className={clsx('el-input__prefix', styles['el-input__prefix'])}>
+            <span className={clsx('el-input__prefix-inner', styles['el-input__prefix-inner'])}>
+              {prefix}
+            </span>
           </span>
         )}
 
         <input
           {...props}
-          className={styles['el-input__inner']}
+          className={clsx('el-input__inner', styles['el-input__inner'])}
           type={type}
           value={inputValue}
           maxLength={typeof maxlength === 'string' ? parseInt(maxlength) : maxlength}
@@ -92,13 +105,19 @@ const ElInput: React.FC<ElInputProps> = ({
 
         {/* suffix slot */}
         {suffix && (
-          <span className={styles['el-input__suffix']}>
-            <span className={styles['el-input__suffix-inner']}>{suffix}</span>
+          <span className={clsx('el-input__suffix', styles['el-input__suffix'])}>
+            <span className={clsx('el-input__suffix-inner', styles['el-input__suffix-inner'])}>
+              {suffix}
+            </span>
           </span>
         )}
       </div>
       {/* append slot */}
-      {append && <div className={styles['el-input-group__append']}>{append}</div>}
+      {append && (
+        <div className={clsx('el-input-group__append', styles['el-input-group__append'])}>
+          {append}
+        </div>
+      )}
     </div>
   )
 }

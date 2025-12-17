@@ -31,7 +31,7 @@ export const ElIcon: React.FC<ElIconProps> = ({
   return (
     <i
       {...props}
-      className={clsx(styles['el-icon'], loading ? styles['is-loading'] : '', className)}
+      className={clsx('el-icon', styles['el-icon'], loading ? styles['is-loading'] : '', className)}
       style={mergedStyle}
     >
       {children}
