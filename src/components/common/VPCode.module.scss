@@ -31,9 +31,26 @@
       opacity 0.25s;
   }
 
+  .lang {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    z-index: 2;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--vp-code-lang-color);
+    transition:
+      color 0.4s,
+      opacity 0.4s;
+  }
+
   &:hover {
     .copy {
       opacity: 1;
+    }
+
+    .lang {
+      opacity: 0;
     }
   }
 }
