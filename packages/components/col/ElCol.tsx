@@ -55,12 +55,13 @@ const ElCol = <T extends React.ElementType = 'div'>({
     <Tag
       {...props}
       className={clsx(
+        'el-col',
         styles['el-col'],
-        gutter ? 'is-guttered' : '',
+        gutter ? styles['is-guttered'] : '',
         typeof span === 'number' ? styles[`el-col-${span}`] : '',
-        typeof span === 'number' ? styles[`el-col-offset-${offset}`] : '',
-        typeof span === 'number' ? styles[`el-col-push-${push}`] : '',
-        typeof span === 'number' ? styles[`el-col-pull-${pull}`] : '',
+        typeof offset === 'number' ? styles[`el-col-offset-${offset}`] : '',
+        typeof push === 'number' ? styles[`el-col-push-${push}`] : '',
+        typeof pull === 'number' ? styles[`el-col-pull-${pull}`] : '',
         ...classes,
         className
       )}

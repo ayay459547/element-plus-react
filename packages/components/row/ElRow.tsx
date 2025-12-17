@@ -36,6 +36,7 @@ const ElRow = <T extends React.ElementType = 'div'>({
       <Tag
         {...props}
         className={clsx(
+          'el-row',
           styles['el-row'],
           align ? styles[`is-align-${align}`] : '',
           justify !== 'start' ? styles[`is-justify-${justify}`] : '',
