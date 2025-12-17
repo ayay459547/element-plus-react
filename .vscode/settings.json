@@ -57,5 +57,13 @@
   },
   "[xml]": {
     "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+
+  // =============================
+  // svg
+  // =============================
+  "svg.preview.enabled": false,
+  "workbench.editorAssociations": {
+    "*.svg": "default"
   }
 }
