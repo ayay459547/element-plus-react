@@ -1,5 +1,5 @@
 import ElButton from '@ayay/element-plus-react/components/button/ElButton.tsx'
-import Search from '@element-plus/icons-svg/search.svg?react'
+import Search from '@ayay/element-plus-react/icons-svg/search.svg?react'
 
 const ButtonSize: React.FC = () => {
   return (

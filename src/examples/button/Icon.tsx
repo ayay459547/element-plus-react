@@ -1,10 +1,10 @@
 import ElButton from '@ayay/element-plus-react/components/button/ElButton.tsx'
 import ElIcon from '@ayay/element-plus-react/components/icon/ElIcon.tsx'
-import Delete from '@element-plus/icons-svg/delete.svg?react'
-import Edit from '@element-plus/icons-svg/edit.svg?react'
-import Search from '@element-plus/icons-svg/search.svg?react'
-import Share from '@element-plus/icons-svg/share.svg?react'
-import Upload from '@element-plus/icons-svg/upload.svg?react'
+import Delete from '@ayay/element-plus-react/icons-svg/delete.svg?react'
+import Edit from '@ayay/element-plus-react/icons-svg/edit.svg?react'
+import Search from '@ayay/element-plus-react/icons-svg/search.svg?react'
+import Share from '@ayay/element-plus-react/icons-svg/share.svg?react'
+import Upload from '@ayay/element-plus-react/icons-svg/upload.svg?react'
 
 const ButtonIcon: React.FC = () => {
   return (
