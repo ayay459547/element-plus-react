@@ -52,6 +52,7 @@ const VPCode: React.FC<VPCodeProps> = ({ language, code }) => {
   return (
     <div className={clsx(styles['vp-adaptive-theme'], styles[`language-${language}`])}>
       <button title="Copy Code" className={styles['copy']} onClick={() => copyText(code)}></button>
+      <span className={styles['lang']}>{language}</span>
 
       {/* .md */}
       <SyntaxHighlighter language={language} style={elementPlusLightTheme} PreTag="div">
