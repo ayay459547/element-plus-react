@@ -4,8 +4,7 @@ import VPHeroContent from '@/components/VPHeroContent.tsx'
 import localeData from '@/crowdin/pages/not-found.json'
 import ElButton from '@ayay/element-plus-react/components/button/ElButton.tsx'
 
-import { CloseCircle } from '@ricons/ionicons5'
-import { Icon } from '@ricons/utils'
+import { IoCloseCircle } from 'react-icons/io5'
 
 import styles from './VPNotFound.module.scss'
 
@@ -22,9 +21,7 @@ const VPNotFound: React.FC = () => {
     <VPHeroContent>
       <div className={styles['not-found']}>
         <div className={styles['error-icon']}>
-          <Icon size={'64px'}>
-            <CloseCircle />
-          </Icon>
+          <IoCloseCircle />
         </div>
         <p className={styles['title']}>{locale['title']}</p>
         <p className={styles['desc']}>{locale['desc']}</p>

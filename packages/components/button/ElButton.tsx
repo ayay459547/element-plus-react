@@ -1,4 +1,3 @@
-// import { Loader } from '@ricons/tabler'
 import ElIcon from '@ayay/element-plus-react/components/icon/ElIcon.tsx'
 import Loading from '@ayay/element-plus-react/icons-svg/loading.svg?react'
 import clsx from 'clsx'

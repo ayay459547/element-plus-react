@@ -8,8 +8,7 @@ import { Link } from 'react-router-dom'
 import styles from './navbar/navbar.module.scss'
 
 import { withBase } from '@/utils'
-import { LogoGithub } from '@ricons/ionicons5'
-import { Icon } from '@ricons/utils'
+import { IoLogoGithub } from 'react-icons/io5'
 
 // Components
 // import VPNavbarHamburger from './navbar/vp-hamburger'
@@ -58,9 +57,7 @@ const VPNavbar: React.FC<VPNavbarProps> = () => {
 
           <div className={styles['social-links']}>
             <a href="https://github.com/ayay459547/element-plus-react" target="_blank">
-              <Icon size={'24px'}>
-                <LogoGithub />
-              </Icon>
+              <IoLogoGithub />
             </a>
           </div>
 
