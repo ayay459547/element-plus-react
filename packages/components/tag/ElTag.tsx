@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import React from 'react'
 // import { CSSTransition } from 'react-transition-group'
+import ElIcon from '@ayay/element-plus-react/components/icon/ElIcon.tsx'
 import Transition from '@ayay/element-plus-react/components/transition/Transition.tsx'
 
 import { IoClose } from 'react-icons/io5'
@@ -50,7 +51,9 @@ export const ElTag: React.FC<ElTagProps> = ({
             onClose?.(e)
           }}
         >
-          <IoClose />
+          <ElIcon>
+            <IoClose />
+          </ElIcon>
         </span>
       )}
     </span>

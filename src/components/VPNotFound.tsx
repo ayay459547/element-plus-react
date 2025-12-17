@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import VPHeroContent from '@/components/VPHeroContent.tsx'
 import localeData from '@/crowdin/pages/not-found.json'
 import ElButton from '@ayay/element-plus-react/components/button/ElButton.tsx'
+import ElIcon from '@ayay/element-plus-react/components/icon/ElIcon.tsx'
 
 import { IoCloseCircle } from 'react-icons/io5'
 
@@ -21,7 +22,9 @@ const VPNotFound: React.FC = () => {
     <VPHeroContent>
       <div className={styles['not-found']}>
         <div className={styles['error-icon']}>
-          <IoCloseCircle />
+          <ElIcon size={64}>
+            <IoCloseCircle />
+          </ElIcon>
         </div>
         <p className={styles['title']}>{locale['title']}</p>
         <p className={styles['desc']}>{locale['desc']}</p>
