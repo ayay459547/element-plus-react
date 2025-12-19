@@ -1,7 +1,7 @@
 import ElIcon from '@ayay/element-plus-react/components/icon/ElIcon.tsx'
 import Loading from '@ayay/element-plus-react/icons-svg/loading.svg?react'
 import clsx from 'clsx'
-import type { ReactNode } from 'react'
+import type { ElementType, ReactNode } from 'react'
 import styles from './ElButton.module.scss'
 import type { ElButtonProps } from './types'
 
@@ -12,7 +12,7 @@ const insertSpaceIfTwoChinese = (text: string): string => {
   return text
 }
 
-const ElButton = <T extends React.ElementType = 'button'>({
+const ElButton = <T extends ElementType = 'button'>({
   size,
   type,
   plain = false,
@@ -22,7 +22,6 @@ const ElButton = <T extends React.ElementType = 'button'>({
   round = false,
   circle = false,
   loading = false,
-  // loadingIcon = <Loader />,
   loadingIcon,
   loadingSlot,
   disabled = false,
