@@ -1,11 +1,1 @@
-.el-badge {
-  --el-badge-bg-color: var(--el-color-danger);
-  --el-badge-radius: 10px;
-  --el-badge-font-size: 12px;
-  --el-badge-padding: 6px;
-  --el-badge-size: 18px;
-  position: relative;
-  vertical-align: middle;
-  display: inline-block;
-  width: fit-content;
-}
+@use '@ayay/element-plus-react/theme-chalk/src/badge.scss';
