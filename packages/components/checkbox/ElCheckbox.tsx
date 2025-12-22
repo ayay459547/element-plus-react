@@ -9,37 +9,78 @@ const ElCheckbox: React.FC<ElCheckboxProps> = ({
   label,
   trueValue,
   falseValue,
+  disabled = false,
+  border = false,
+  size,
+  name,
   checked = false,
+  indeterminate = false,
+  tabindex,
+  id,
+  ariaControls,
+  ariaLabel,
   children,
   className,
-  style
+  style,
+  onChange
 }) => {
+  const isLarge = size === 'large'
+  const isSmall = size === 'small'
+
   let showLabel: ReactNode | string | null = null
   if (children) {
     showLabel = children
   } else if (label) {
     showLabel = `${label}`
   }
-
   const [checkboxValue, setCheckboxValue] = useState(value)
 
-  // const init = useCallback(() => {
-  //   const true_value = trueValue ?? checked
-  //   const false_value = falseValue ?? checked
-  //   setCheckboxValue(checked ? true_value : false_value)
-  // }, [])
+  const onChangeHandler: ElCheckboxProps['onChange'] = (e) => {
+    const true_value = trueValue ?? true
+    const false_value = falseValue ?? false
+    const newValue = e.target.checked ? true_value : false_value
+    setCheckboxValue(newValue)
 
-  // useEffect(() => {
-  //   init()
-  // }, [init])
+    onChange?.(e)
+  }
 
   return (
-    <label className={clsx('el-checkbox', styles['el-checkbox'], className)} style={{ ...style }}>
-      <span className={clsx('el-checkbox__input', styles['el-checkbox__input'])}>
+    <label
+      className={clsx(
+        'el-checkbox',
+        styles['el-checkbox'],
+        isLarge ? styles['el-checkbox--large'] : '',
+        isSmall ? styles['el-checkbox--small'] : '',
+        checked ? styles['is-checked'] : '',
+        disabled ? styles['is-disabled'] : '',
+        border ? styles['is-bordered'] : '',
+        className
+      )}
+      style={{ ...style }}
+    >
+      <span
+        className={clsx(
+          'el-checkbox__input',
+          styles['el-checkbox__input'],
+          disabled ? styles['is-disabled'] : '',
+          checked ? styles['is-checked'] : '',
+          indeterminate ? styles['is-indeterminate'] : ''
+        )}
+      >
         <input
           className={clsx('el-checkbox__original', styles['el-checkbox__original'])}
           type="checkbox"
-          value={`${checkboxValue ?? ''}`}
+          disabled={disabled}
+          name={name}
+          checked={checked}
+          value={String(checkboxValue ?? '')}
+          onChange={onChangeHandler}
+          {...{
+            tabindex,
+            id,
+            ariaControls,
+            ariaLabel
+          }}
         />
         <span className={clsx('el-checkbox__inner', styles['el-checkbox__inner'])}></span>
       </span>

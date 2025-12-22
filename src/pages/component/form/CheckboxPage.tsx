@@ -1,6 +1,10 @@
 import VPCode from '@/components/common/VPCode.tsx'
 import VPDocContent from '@/components/VPDocContent.tsx'
 // import markdown from '@/en-US/component/checkbox.md?raw'
+import VPDemo from '@/components/VPDemo.tsx'
+
+import CheckboxBasic from '@/examples/checkbox/Basic.tsx'
+import CheckboxDisabled from '@/examples/checkbox/Disabled.tsx'
 
 const CheckboxPage: React.FC = () => {
   return (
@@ -46,6 +50,18 @@ const CheckboxPage: React.FC = () => {
         when selected. Content inside the <code>el-checkbox</code> tag will become the description
         following the button of the checkbox.
       </p>
+      <VPDemo>
+        <CheckboxBasic />
+      </VPDemo>
+
+      <h2 id="disabled-state">Disabled State</h2>
+      <p>Disabled state for checkbox.</p>
+      <p>
+        Set the <code>disabled</code> attribute.
+      </p>
+      <VPDemo>
+        <CheckboxDisabled />
+      </VPDemo>
     </VPDocContent>
   )
 }
