@@ -5,6 +5,8 @@ import VPDemo from '@/components/VPDemo.tsx'
 
 import CheckboxBasic from '@/examples/checkbox/Basic.tsx'
 import CheckboxDisabled from '@/examples/checkbox/Disabled.tsx'
+import CheckboxGrouping from '@/examples/checkbox/Grouping.tsx'
+import CheckboxOptions from '@/examples/checkbox/Options.tsx'
 
 const CheckboxPage: React.FC = () => {
   return (
@@ -61,6 +63,36 @@ const CheckboxPage: React.FC = () => {
       </p>
       <VPDemo>
         <CheckboxDisabled />
+      </VPDemo>
+
+      <h2 id="checkbox-group">Checkbox group</h2>
+      <p>
+        It is used for multiple checkboxes which are bound in one group, and indicates whether one
+        option is selected by checking if it is checked.
+      </p>
+      <p>
+        <code>checkbox-group</code> element can manage multiple checkboxes in one group by using{' '}
+        <code>v-model</code> which is bound as an <code>Array</code>. Inside the{' '}
+        <code>el-checkbox</code> element, <code>value</code> is the value of the checkbox. If no
+        content is nested in that tag, <code>label</code> will be rendered as the description
+        following the button of the checkbox. <code>value</code> also corresponds with the element
+        values in the array. It is selected if the specified value exists in the array, and vice
+        versa.
+      </p>
+      <VPDemo>
+        <CheckboxGrouping />
+      </VPDemo>
+
+      <h2 id="options-attribute">
+        Options attribute
+        <span className="vp-tag ml-1">2.11.2</span>
+      </h2>
+      <p>
+        Shortcut from basic <code>el-checkbox-group</code> usage. You can customize the alias of the{' '}
+        <code>options</code> through the <code>props</code> attribute.
+      </p>
+      <VPDemo>
+        <CheckboxOptions />
       </VPDemo>
     </VPDocContent>
   )

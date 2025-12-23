@@ -1,7 +1,7 @@
 import ElIcon from '@ayay/element-plus-react/components/icon/ElIcon.tsx'
 import clsx from 'clsx'
 import type { ReactNode } from 'react'
-import { TbBrandGithub, TbCode, TbCopy, TbFlask } from 'react-icons/tb'
+import { TbBrandGithub, TbCode } from 'react-icons/tb'
 import styles from './VPDemo.module.scss'
 
 type VPDemoProps = {
@@ -20,13 +20,7 @@ const VPDemo: React.FC<VPDemoProps> = ({ className, children }) => {
 
       <div className={styles['op-btns']}>
         <ElIcon className={styles['op-btn']}>
-          <TbFlask />
-        </ElIcon>
-        <ElIcon className={styles['op-btn']}>
           <TbBrandGithub />
-        </ElIcon>
-        <ElIcon className={styles['op-btn']}>
-          <TbCopy />
         </ElIcon>
         <ElIcon className={styles['op-btn']}>
           <TbCode />
