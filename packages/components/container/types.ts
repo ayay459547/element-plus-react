@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react'
 
-interface Common {
+interface CommonProps {
   /**
    * @description customize default content
    */
@@ -10,7 +10,7 @@ interface Common {
   style?: CSSProperties
 }
 
-export interface ElContainerProps extends Common {
+export interface ElContainerProps extends CommonProps {
   /**
    * @description layout direction for child elements
    * vertical when nested with el-header or el-footer
@@ -21,7 +21,7 @@ export interface ElContainerProps extends Common {
 
 export type ElContainerInstance = React.ReactElement<ElContainerProps>
 
-export interface ElHeaderProps extends Common {
+export interface ElHeaderProps extends CommonProps {
   /**
    * @description height of the header
    */
@@ -30,11 +30,11 @@ export interface ElHeaderProps extends Common {
 
 export type ElHeaderInstance = React.ReactElement<ElHeaderProps>
 
-export interface ElMainProps extends Common {}
+export interface ElMainProps extends CommonProps {}
 
 export type ElMainInstance = React.ReactElement<ElMainProps>
 
-export interface ElFooterProps extends Common {
+export interface ElFooterProps extends CommonProps {
   /**
    * @description height of the footer
    */
@@ -43,7 +43,7 @@ export interface ElFooterProps extends Common {
 
 export type ElFooterInstance = React.ReactElement<ElFooterProps>
 
-export interface ElAsideProps extends Common {
+export interface ElAsideProps extends CommonProps {
   /**
    * @description width of the aside
    */

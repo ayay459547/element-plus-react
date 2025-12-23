@@ -2,8 +2,7 @@ import clsx from 'clsx'
 import type { ReactNode } from 'react'
 import { useState } from 'react'
 import styles from './ElCheckbox.module.scss'
-import type { ElCheckboxGroupProps, ElCheckboxProps } from './types'
-import { useCheckboxGroup } from './useCheckboxGroup'
+import type { ElCheckboxProps } from './types'
 
 const ElCheckbox: React.FC<ElCheckboxProps> = ({
   value,
@@ -16,23 +15,15 @@ const ElCheckbox: React.FC<ElCheckboxProps> = ({
   name,
   checked = false,
   indeterminate = false,
-  tabIndex,
+  tabindex,
   id,
   ariaControls,
   ariaLabel,
   children,
   className,
   style,
-  onChange,
-  ...rest
+  onChange
 }) => {
-  const { groupValue, changeEvent } = useCheckboxGroup()
-
-  const isChecked = (() => {
-    if (value === null || value === undefined) return checked
-    return Array.isArray(groupValue) ? groupValue.includes(value) : checked
-  })()
-
   const isLarge = size === 'large'
   const isSmall = size === 'small'
 
@@ -45,27 +36,10 @@ const ElCheckbox: React.FC<ElCheckboxProps> = ({
   const [checkboxValue, setCheckboxValue] = useState(value)
 
   const onChangeHandler: ElCheckboxProps['onChange'] = (e) => {
-    const _isChecked = e.target.checked
-
-    const newValue = _isChecked ? (trueValue ?? value) : falseValue
+    const true_value = trueValue ?? true
+    const false_value = falseValue ?? false
+    const newValue = e.target.checked ? true_value : false_value
     setCheckboxValue(newValue)
-
-    if (Array.isArray(groupValue)) {
-      let newGroupValue: ElCheckboxGroupProps['value'] = []
-      newGroupValue = [...groupValue]
-
-      const valueIndex = newGroupValue.findIndex((_value) => {
-        return _value === value
-      })
-
-      if (_isChecked && valueIndex === -1 && value) {
-        newGroupValue.push(value)
-      } else if (!_isChecked && valueIndex !== -1) {
-        newGroupValue.splice(valueIndex, 1)
-      }
-
-      changeEvent?.(newGroupValue)
-    }
 
     onChange?.(e)
   }
@@ -77,7 +51,7 @@ const ElCheckbox: React.FC<ElCheckboxProps> = ({
         styles['el-checkbox'],
         isLarge ? styles['el-checkbox--large'] : '',
         isSmall ? styles['el-checkbox--small'] : '',
-        isChecked ? styles['is-checked'] : '',
+        checked ? styles['is-checked'] : '',
         disabled ? styles['is-disabled'] : '',
         border ? styles['is-bordered'] : '',
         className
@@ -89,25 +63,24 @@ const ElCheckbox: React.FC<ElCheckboxProps> = ({
           'el-checkbox__input',
           styles['el-checkbox__input'],
           disabled ? styles['is-disabled'] : '',
-          isChecked ? styles['is-checked'] : '',
+          checked ? styles['is-checked'] : '',
           indeterminate ? styles['is-indeterminate'] : ''
         )}
       >
         <input
-          {...{
-            ...rest,
-            'tab-index': tabIndex,
-            id,
-            'aria-controls': ariaControls,
-            'aria-label': ariaLabel
-          }}
           className={clsx('el-checkbox__original', styles['el-checkbox__original'])}
           type="checkbox"
           disabled={disabled}
           name={name}
-          checked={isChecked}
+          checked={checked}
           value={String(checkboxValue ?? '')}
           onChange={onChangeHandler}
+          {...{
+            tabindex,
+            id,
+            ariaControls,
+            ariaLabel
+          }}
         />
         <span className={clsx('el-checkbox__inner', styles['el-checkbox__inner'])}></span>
       </span>
