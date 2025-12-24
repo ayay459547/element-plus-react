@@ -26,15 +26,24 @@ const ElCheckbox: React.FC<ElCheckboxProps> = ({
   onChange,
   ...rest
 }) => {
-  const { groupValue, changeEvent } = useCheckboxGroup()
+  const { groupValue, size: groupSize, min, max, changeEvent } = useCheckboxGroup()
 
   const isChecked = (() => {
     if (value === null || value === undefined) return checked
-    return Array.isArray(groupValue) ? groupValue.includes(value) : checked
+    if (Array.isArray(groupValue)) return groupValue.includes(value)
+    return checked
   })()
 
-  const isLarge = size === 'large'
-  const isSmall = size === 'small'
+  const isDisabled = (() => {
+    if (value === null || value === undefined) return disabled
+    if (groupValue?.length === (min ?? -1)) return groupValue?.includes(value)
+    if (groupValue?.length === (max ?? -1)) return !groupValue?.includes(value)
+    return disabled
+  })()
+
+  const showSize = size || groupSize
+  const isLarge = showSize === 'large'
+  const isSmall = showSize === 'small'
 
   let showLabel: ReactNode | string | null = null
   if (children) {
@@ -78,7 +87,7 @@ const ElCheckbox: React.FC<ElCheckboxProps> = ({
         isLarge ? styles['el-checkbox--large'] : '',
         isSmall ? styles['el-checkbox--small'] : '',
         isChecked ? styles['is-checked'] : '',
-        disabled ? styles['is-disabled'] : '',
+        isDisabled ? styles['is-disabled'] : '',
         border ? styles['is-bordered'] : '',
         className
       )}
@@ -88,8 +97,8 @@ const ElCheckbox: React.FC<ElCheckboxProps> = ({
         className={clsx(
           'el-checkbox__input',
           styles['el-checkbox__input'],
-          disabled ? styles['is-disabled'] : '',
           isChecked ? styles['is-checked'] : '',
+          isDisabled ? styles['is-disabled'] : '',
           indeterminate ? styles['is-indeterminate'] : ''
         )}
       >
@@ -103,7 +112,7 @@ const ElCheckbox: React.FC<ElCheckboxProps> = ({
           }}
           className={clsx('el-checkbox__original', styles['el-checkbox__original'])}
           type="checkbox"
-          disabled={disabled}
+          disabled={isDisabled}
           name={name}
           checked={isChecked}
           value={String(checkboxValue ?? '')}
