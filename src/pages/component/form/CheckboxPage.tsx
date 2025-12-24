@@ -4,9 +4,13 @@ import VPDocContent from '@/components/VPDocContent.tsx'
 import VPDemo from '@/components/VPDemo.tsx'
 
 import CheckboxBasic from '@/examples/checkbox/Basic.tsx'
+import CheckboxButtonStyle from '@/examples/checkbox/ButtonStyle.tsx'
 import CheckboxDisabled from '@/examples/checkbox/Disabled.tsx'
 import CheckboxGrouping from '@/examples/checkbox/Grouping.tsx'
+import CheckboxIntermediate from '@/examples/checkbox/Intermediate.tsx'
+import CheckboxLimitation from '@/examples/checkbox/Limitation.tsx'
 import CheckboxOptions from '@/examples/checkbox/Options.tsx'
+import CheckboxWithBorder from '@/examples/checkbox/WithBorder.tsx'
 
 const CheckboxPage: React.FC = () => {
   return (
@@ -93,6 +97,41 @@ const CheckboxPage: React.FC = () => {
       </p>
       <VPDemo>
         <CheckboxOptions />
+      </VPDemo>
+
+      <h2 id="indeterminate">Indeterminate</h2>
+      <p>
+        The <code>indeterminate</code> property can help you to achieve a 'check all' effect.
+      </p>
+      <VPDemo>
+        <CheckboxIntermediate />
+      </VPDemo>
+
+      <h2 id="minimum-maximum-items-checked">Minimum / Maximum items checked</h2>
+      <p>
+        The <code>min</code> and <code>max</code> properties can help you to limit the number of
+        checked items.
+      </p>
+      <VPDemo>
+        <CheckboxLimitation />
+      </VPDemo>
+
+      <h2 id="button-style">Button style</h2>
+      <p>Checkbox with button styles.</p>
+      <p>
+        You just need to change <code>el-checkbox</code> element into{' '}
+        <code>el-checkbox-button</code> element. We also provide <code>size</code> attribute.
+      </p>
+      <VPDemo>
+        <CheckboxButtonStyle />
+      </VPDemo>
+
+      <h2 id="with-borders">With borders</h2>
+      <p>
+        The <code>border</code> attribute adds a border to Checkboxes.
+      </p>
+      <VPDemo>
+        <CheckboxWithBorder />
       </VPDemo>
     </VPDocContent>
   )
