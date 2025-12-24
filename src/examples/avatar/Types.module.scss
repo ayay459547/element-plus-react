@@ -1,0 +1,12 @@
+.demo-type {
+  display: flex;
+
+  & > div {
+    flex: 1;
+    text-align: center;
+
+    &:not(:last-child) {
+      border-right: 1px solid var(--el-border-color);
+    }
+  }
+}
