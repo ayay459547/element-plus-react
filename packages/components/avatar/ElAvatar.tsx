@@ -1,6 +1,6 @@
 import ElIcon from '@ayay/element-plus-react/components/icon/ElIcon.tsx'
 import clsx from 'clsx'
-import type { CSSProperties } from 'react'
+import type { CSSProperties, DOMAttributes } from 'react'
 import { useState } from 'react'
 import styles from './ElAvatar.module.scss'
 import type { ElAvatarProps } from './types'
@@ -16,6 +16,7 @@ const ElAvatar: React.FC<ElAvatarProps> = ({
   children,
   className,
   style,
+  onLoad,
   onError,
   ...props
 }) => {
@@ -30,7 +31,12 @@ const ElAvatar: React.FC<ElAvatarProps> = ({
 
   const [hasLoadError, setHasLoadError] = useState(false)
 
-  const handleError = (e: Event) => {
+  const handleLoad: DOMAttributes<HTMLImageElement>['onLoad'] = (e) => {
+    setHasLoadError(false)
+    onLoad?.(e)
+  }
+
+  const handleError: DOMAttributes<HTMLImageElement>['onError'] = (e) => {
     setHasLoadError(true)
     onError?.(e)
   }
@@ -41,8 +47,17 @@ const ElAvatar: React.FC<ElAvatarProps> = ({
   }
 
   let showSlot = children
-  if (src || (srcSet && !hasLoadError)) {
-    showSlot = <img src={src} alt={alt} src-set={srcSet} style={fitStyle} on-error={handleError} />
+  if ((src || srcSet) && !hasLoadError) {
+    showSlot = (
+      <img
+        src={src}
+        alt={alt}
+        srcSet={srcSet}
+        style={fitStyle}
+        onLoad={handleLoad}
+        onError={handleError}
+      />
+    )
   } else if (icon) {
     showSlot = <ElIcon>{icon}</ElIcon>
   }

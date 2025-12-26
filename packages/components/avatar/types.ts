@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from 'react'
+import type { CSSProperties, DOMAttributes, ReactNode } from 'react'
 
 export type ElAvatarProps = {
   /**
@@ -34,14 +34,15 @@ export type ElAvatarProps = {
   /**
    * @description set how the image fit its container for an image avatar.
    */
-  fit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'
+  fit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down' | CSSProperties['objectFit']
 
   children?: ReactNode
 
   className?: string
   style?: CSSProperties
 
-  onError?: (e: Event) => void
+  onLoad?: DOMAttributes<HTMLImageElement>['onLoad']
+  onError?: DOMAttributes<HTMLImageElement>['onError']
 }
 
 export type ElAvatarInstance = React.ReactElement<ElAvatarProps>
