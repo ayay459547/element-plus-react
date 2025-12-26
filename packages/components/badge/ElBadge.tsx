@@ -1,5 +1,6 @@
+import { addUnit } from '@ayay/element-plus-react/utils/dom/style'
 import clsx from 'clsx'
-import React from 'react'
+import type { CSSProperties } from 'react'
 import { isNumber } from '../../utils/types'
 import styles from './ElBadge.module.scss'
 import type { ElBadgeProps } from './types'
@@ -8,6 +9,13 @@ export const ElBadge: React.FC<ElBadgeProps> = ({
   value = '',
   max = 99,
   isDot = false,
+  hidden = false,
+  type = 'danger',
+  showZero = true,
+  color,
+  offset,
+  badgeStyle,
+  badgeClass,
   content,
   children,
   className,
@@ -22,6 +30,17 @@ export const ElBadge: React.FC<ElBadgeProps> = ({
     return `${value ?? ''}`
   })()
 
+  const bindStyle: CSSProperties = {
+    ...(badgeStyle ?? {})
+  }
+  if (color) {
+    bindStyle.backgroundColor = `${color}`
+  }
+  if (Array.isArray(offset) && typeof offset[0] === 'number' && typeof offset[1] === 'number') {
+    bindStyle.marginRight = addUnit(-offset[0])
+    bindStyle.marginTop = addUnit(offset[1])
+  }
+
   return (
     <span
       {...props}
@@ -29,9 +48,22 @@ export const ElBadge: React.FC<ElBadgeProps> = ({
       style={{ ...style }}
     >
       {children}
-      <sup className={clsx('el-badge__content', styles['el-badge__content'])}>
-        {content ? content : show_content}
-      </sup>
+      {!hidden && (
+        <sup
+          className={clsx(
+            'el-badge__content',
+            styles['el-badge__content'],
+            styles['is-fixed'],
+            isDot ? styles['is-dot'] : '',
+            styles[`el-badge__content--${type}`],
+            !showZero && `${value}` === `${0}` ? styles['is-hide-zero'] : '',
+            badgeClass
+          )}
+          style={{ ...bindStyle }}
+        >
+          {content ? content : show_content}
+        </sup>
+      )}
     </span>
   )
 }
