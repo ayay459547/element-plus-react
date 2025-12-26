@@ -34,12 +34,12 @@ export interface ElCardProps {
   /**
    * @description content of the Card header
    */
-  header?: ReactNode
+  header?: ReactNode | string
 
   /**
    * @description content of the Card footer
    */
-  footer?: ReactNode
+  footer?: ReactNode | string
 
   className?: string
   style?: CSSProperties
