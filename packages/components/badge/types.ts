@@ -16,8 +16,49 @@ export type ElBadgeProps = {
    */
   isDot?: boolean
 
+  /**
+   * @description	hidden badge.
+   */
+  hidden?: boolean
+
+  /**
+   * @description	badge type.
+   */
+  type?: 'primary' | 'success' | 'warning' | 'danger' | 'info'
+
+  /**
+   * @description Whether to show badge when value is zero.
+   */
+  showZero?: boolean
+
+  /**
+   * @description background color of the dot
+   */
+  color?: string
+
+  /**
+   * @description offset of badge
+   */
+  offset?: [number, number]
+
+  /**
+   * @description custom style of badge
+   */
+  badgeStyle?: CSSProperties
+
+  /**
+   * @description custom class of badge
+   */
+  badgeClass?: string
+
+  /**
+   * @description customize badge content
+   */
   content?: ReactNode
 
+  /**
+   * @description customize default content
+   */
   children?: ReactNode
 
   className?: string

@@ -1,8 +1,8 @@
-export declare const toCapitalize: (str: string) => string
+export const toCapitalize = (str: string) => str
 
-export declare const camelize: (str: string) => string
+export const camelize = (str: string) => str
 
-export declare const hyphenate: (str: string) => string
+export const hyphenate = (str: string) => str
 
 export const kebabCase = hyphenate
 
