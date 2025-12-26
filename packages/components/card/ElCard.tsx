@@ -4,33 +4,22 @@ import styles from './ElCard.module.scss'
 import type { ElCardProps } from './types'
 
 export const ElCard: React.FC<ElCardProps> = ({
+  bodyStyle,
+  headerClass,
+  bodyClass,
+  footerClass,
+  shadow = 'always',
+  children,
   header,
   footer,
-  shadow,
-  bodyClass,
-  headerClass,
-  footerClass,
-  bodyStyle,
-  children,
   className,
   style,
   ...props
 }) => {
-  const shadowValue = shadow || 'always'
-
-  const isAlwaysShadow = shadowValue === 'always'
-  const isHoverShadow = shadowValue === 'hover'
-
   return (
     <div
       {...props}
-      className={clsx(
-        'el-card',
-        styles['el-card'],
-        styles[isAlwaysShadow ? 'is-always-shadow' : ''],
-        styles[isHoverShadow ? 'is-hover-shadow' : ''],
-        className
-      )}
+      className={clsx('el-card', styles['el-card'], styles[`is-${shadow}-shadow`], className)}
       style={{ ...style }}
     >
       {header && (
