@@ -1,24 +1,29 @@
 const ImgEmpty: React.FC = () => {
   return (
-    <svg viewBox="0 0 79 86" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      viewBox="0 0 79 86"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    >
       <defs>
         <linearGradient
-          id="linearGradient-1-el-id-1024-375"
+          id="linearGradient-1-el-id-1024-19"
           x1="38.8503086%"
           y1="0%"
           x2="61.1496914%"
           y2="100%"
         >
-          <stop stopColor="var(--el-empty-fill-color-1)" offset="0%"></stop>
-          <stop stopColor="var(--el-empty-fill-color-4)" offset="100%"></stop>
+          <stop stop-color="var(--el-empty-fill-color-1)" offset="0%"></stop>
+          <stop stop-color="var(--el-empty-fill-color-4)" offset="100%"></stop>
         </linearGradient>
-        <linearGradient id="linearGradient-2-el-id-1024-375" x1="0%" y1="9.5%" x2="100%" y2="90.5%">
-          <stop stopColor="var(--el-empty-fill-color-1)" offset="0%"></stop>
-          <stop stopColor="var(--el-empty-fill-color-6)" offset="100%"></stop>
+        <linearGradient id="linearGradient-2-el-id-1024-19" x1="0%" y1="9.5%" x2="100%" y2="90.5%">
+          <stop stop-color="var(--el-empty-fill-color-1)" offset="0%"></stop>
+          <stop stop-color="var(--el-empty-fill-color-6)" offset="100%"></stop>
         </linearGradient>
-        <rect id="path-3-el-id-1024-375" x="0" y="0" width="17" height="36"></rect>
+        <rect id="path-3-el-id-1024-19" x="0" y="0" width="17" height="36"></rect>
       </defs>
-      <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g transform="translate(-1268.000000, -535.000000)">
           <g transform="translate(1268.000000, 535.000000)">
             <path
@@ -41,7 +46,7 @@ const ImgEmpty: React.FC = () => {
                 points="-3.69149156e-15 7 38 7 38 43 -3.69149156e-15 43"
               ></polygon>
               <rect
-                fill="url(#linearGradient-1-el-id-1024-375)"
+                fill="url(#linearGradient-1-el-id-1024-19)"
                 transform="translate(46.500000, 25.000000) scale(-1, 1) translate(-46.500000, -25.000000) "
                 x="38"
                 y="7"
@@ -55,7 +60,7 @@ const ImgEmpty: React.FC = () => {
               ></polygon>
             </g>
             <rect
-              fill="url(#linearGradient-2-el-id-1024-375)"
+              fill="url(#linearGradient-2-el-id-1024-19)"
               x="13"
               y="45"
               width="40"
@@ -65,10 +70,11 @@ const ImgEmpty: React.FC = () => {
               <use
                 fill="var(--el-empty-fill-color-8)"
                 transform="translate(8.500000, 18.000000) scale(-1, 1) translate(-8.500000, -18.000000) "
+                xlinkHref="#path-3-el-id-1024-19"
               ></use>
               <polygon
                 fill="var(--el-empty-fill-color-9)"
-                mask="url(#mask-4-el-id-1024-375)"
+                mask="url(#mask-4-el-id-1024-19)"
                 transform="translate(12.000000, 9.000000) scale(-1, 1) translate(-12.000000, -9.000000) "
                 points="7 0 24 0 20 18 7 16.5"
               ></polygon>

@@ -1,4 +1,5 @@
 import { useRow } from '@ayay/element-plus-react/components/row/useRow'
+import { addUnit } from '@ayay/element-plus-react/utils/dom/style'
 import { isNumber, isObject } from '@ayay/element-plus-react/utils/types'
 import clsx from 'clsx'
 import type { CSSProperties } from 'react'
@@ -26,11 +27,11 @@ const ElCol = <T extends React.ElementType = 'div'>({
 
   const { gutter } = useRow()
 
-  let gutterX = ''
+  let gutterX: ReturnType<typeof addUnit> = ''
   const colStyles: CSSProperties = {}
 
   if (gutter) {
-    gutterX = `${gutter / 2}px`
+    gutterX = addUnit(gutter / 2)
     colStyles.paddingRight = `${gutterX}`
     colStyles.paddingLeft = `${gutterX}`
   }

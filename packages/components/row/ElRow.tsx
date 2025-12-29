@@ -1,4 +1,5 @@
 import type { ElColProps } from '@ayay/element-plus-react/components/col/types'
+import { addUnit } from '@ayay/element-plus-react/utils/dom/style'
 import clsx from 'clsx'
 import type { CSSProperties } from 'react'
 import { Children, cloneElement, isValidElement } from 'react'
@@ -22,11 +23,11 @@ const ElRow = <T extends React.ElementType = 'div'>({
 }: ElRowProps<T>) => {
   const Tag = tag || 'div'
 
-  let gutterX = ''
+  let gutterX: ReturnType<typeof addUnit> = ''
   const rowStyles: CSSProperties = {}
 
   if (gutter) {
-    gutterX = `${gutter / 2}px`
+    gutterX = addUnit(gutter / 2)
     rowStyles.marginRight = `-${gutterX}`
     rowStyles.marginLeft = `-${gutterX}`
   }
