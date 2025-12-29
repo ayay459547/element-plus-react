@@ -1,166 +1,88 @@
-import type { JSX } from 'react'
+import type { ComponentType } from 'react'
+import { lazy } from 'react'
 
-import OvAffix from './OVAffix.tsx'
-import OvAlert from './OVAlert.tsx'
-import OvAnchor from './OVAnchor.tsx'
-import OvAvatar from './OVAvatar.tsx'
-import OvBacktop from './OVBacktop.tsx'
-import OvBadge from './OVBadge.tsx'
-import OvBorder from './OVBorder.tsx'
-import OvBreadcrumb from './OVBreadcrumb.tsx'
-import OvButton from './OVButton.tsx'
-import OvCalendar from './OVCalendar.tsx'
-import OvCard from './OVCard.tsx'
-import OvCarousel from './OVCarousel.tsx'
-import OvCascader from './OVCascader.tsx'
-import OvCheckbox from './OVCheckbox.tsx'
-import OvCollapse from './OVCollapse.tsx'
-import OvColor from './OVColor.tsx'
-import OvColorPicker from './OVColorPicker.tsx'
-import OvColorPickerPanel from './OVColorPickerPanel.tsx'
-import OvConfigProvider from './OVConfigProvider.tsx'
-import OvContainer from './OVContainer.tsx'
-import OvDatePicker from './OVDatePicker.tsx'
-import OvDatePickerPanel from './OVDatePickerPanel.tsx'
-import OvDatetimePicker from './OVDatetimePicker.tsx'
-import OvDescriptions from './OVDescriptions.tsx'
-import OvDialog from './OVDialog.tsx'
-import OvDivider from './OVDivider.tsx'
-import OvDrawer from './OVDrawer.tsx'
-import OvDropdown from './OVDropdown.tsx'
-import OvEmpty from './OVEmpty.tsx'
-import OvForm from './OVForm.tsx'
-import OvIcon from './OVIcon.tsx'
-import OvImage from './OVImage.tsx'
-import OvInfiniteScroll from './OVInfiniteScroll.tsx'
-import OvInput from './OVInput.tsx'
-import OvInputNumber from './OVInputNumber.tsx'
-import OvInputTag from './OVInputTag.tsx'
-import OvLayout from './OVLayout.tsx'
-import OvLink from './OVLink.tsx'
-import OvLoading from './OVLoading.tsx'
-import OvMention from './OVMention.tsx'
-import OvMenu from './OVMenu.tsx'
-import OvMessage from './OVMessage.tsx'
-import OvMessageBox from './OVMessageBox.tsx'
-import OvNotification from './OVNotification.tsx'
-import OvPageHeader from './OVPageHeader.tsx'
-import OvPagination from './OVPagination.tsx'
-import OvPopconfirm from './OVPopconfirm.tsx'
-import OvPopover from './OVPopover.tsx'
-import OvProgress from './OVProgress.tsx'
-import OvRadio from './OVRadio.tsx'
-import OvRate from './OVRate.tsx'
-import OvResult from './OVResult.tsx'
-import OvScrollbar from './OVScrollbar.tsx'
-import OvSegmented from './OVSegmented.tsx'
-import OvSelect from './OVSelect.tsx'
-import OvSelectV2 from './OVSelectV2.tsx'
-import OvSkeleton from './OVSkeleton.tsx'
-import OvSlider from './OVSlider.tsx'
-import OvSpace from './OVSpace.tsx'
-import OvSplitter from './OVSplitter.tsx'
-import OvStatistic from './OVStatistic.tsx'
-import OvSteps from './OVSteps.tsx'
-import OvSwitch from './OVSwitch.tsx'
-import OvTable from './OVTable.tsx'
-import OvTabs from './OVTabs.tsx'
-import OvTag from './OVTag.tsx'
-import OvText from './OVText.tsx'
-import OvTimeline from './OVTimeline.tsx'
-import OvTimePicker from './OVTimePicker.tsx'
-import OvTimeSelect from './OVTimeSelect.tsx'
-import OvTooltip from './OVTooltip.tsx'
-import OvTour from './OVTour.tsx'
-import OvTransfer from './OVTransfer.tsx'
-import OvTree from './OVTree.tsx'
-import OvTreeSelect from './OVTreeSelect.tsx'
-import OvTypography from './OVTypography.tsx'
-import OvUpload from './OVUpload.tsx'
-import OvWatermark from './OVWatermark.tsx'
-
-const overviewIcons: Record<string, () => JSX.Element> = {
-  button: OvButton,
-  border: OvBorder,
-  color: OvColor,
-  container: OvContainer,
-  icon: OvIcon,
-  layout: OvLayout,
-  link: OvLink,
-  text: OvText,
-  scrollbar: OvScrollbar,
-  space: OvSpace,
-  typography: OvTypography,
-  'config-provider': OvConfigProvider,
-  autocomplete: OvInput,
-  cascader: OvCascader,
-  checkbox: OvCheckbox,
-  'color-picker-panel': OvColorPickerPanel,
-  'color-picker': OvColorPicker,
-  'date-picker': OvDatePicker,
-  'date-picker-panel': OvDatePickerPanel,
-  'datetime-picker': OvDatetimePicker,
-  form: OvForm,
-  input: OvInput,
-  'input-number': OvInputNumber,
-  'input-tag': OvInputTag,
-  radio: OvRadio,
-  rate: OvRate,
-  select: OvSelect,
-  'select-v2': OvSelectV2,
-  slider: OvSlider,
-  switch: OvSwitch,
-  'time-picker': OvTimePicker,
-  'time-select': OvTimeSelect,
-  transfer: OvTransfer,
-  upload: OvUpload,
-  avatar: OvAvatar,
-  badge: OvBadge,
-  calendar: OvCalendar,
-  card: OvCard,
-  carousel: OvCarousel,
-  collapse: OvCollapse,
-  descriptions: OvDescriptions,
-  empty: OvEmpty,
-  image: OvImage,
-  'infinite-scroll': OvInfiniteScroll,
-  pagination: OvPagination,
-  progress: OvProgress,
-  result: OvResult,
-  skeleton: OvSkeleton,
-  table: OvTable,
-  'table-v2': OvTable,
-  tag: OvTag,
-  timeline: OvTimeline,
-  tour: OvTour,
-  tree: OvTree,
-  'tree-select': OvTreeSelect,
-  'tree-v2': OvTree,
-  statistic: OvStatistic,
-  segmented: OvSegmented,
-  affix: OvAffix,
-  anchor: OvAnchor,
-  backtop: OvBacktop,
-  breadcrumb: OvBreadcrumb,
-  dropdown: OvDropdown,
-  menu: OvMenu,
-  'page-header': OvPageHeader,
-  steps: OvSteps,
-  splitter: OvSplitter,
-  tabs: OvTabs,
-  alert: OvAlert,
-  dialog: OvDialog,
-  drawer: OvDrawer,
-  loading: OvLoading,
-  message: OvMessage,
-  'message-box': OvMessageBox,
-  notification: OvNotification,
-  popconfirm: OvPopconfirm,
-  popover: OvPopover,
-  tooltip: OvTooltip,
-  divider: OvDivider,
-  watermark: OvWatermark,
-  mention: OvMention
+const overviewIcons: Record<string, ComponentType> = {
+  button: lazy(() => import('./OVButton.tsx')),
+  border: lazy(() => import('./OVBorder.tsx')),
+  color: lazy(() => import('./OVColor.tsx')),
+  container: lazy(() => import('./OVContainer.tsx')),
+  icon: lazy(() => import('./OVIcon.tsx')),
+  layout: lazy(() => import('./OVLayout.tsx')),
+  link: lazy(() => import('./OVLink.tsx')),
+  text: lazy(() => import('./OVText.tsx')),
+  scrollbar: lazy(() => import('./OVScrollbar.tsx')),
+  space: lazy(() => import('./OVSpace.tsx')),
+  typography: lazy(() => import('./OVTypography.tsx')),
+  'config-provider': lazy(() => import('./OVConfigProvider.tsx')),
+  autocomplete: lazy(() => import('./OVInput.tsx')),
+  cascader: lazy(() => import('./OVCascader.tsx')),
+  checkbox: lazy(() => import('./OVCheckbox.tsx')),
+  'color-picker-panel': lazy(() => import('./OVColorPickerPanel.tsx')),
+  'color-picker': lazy(() => import('./OVColorPicker.tsx')),
+  'date-picker': lazy(() => import('./OVDatePicker.tsx')),
+  'date-picker-panel': lazy(() => import('./OVDatePickerPanel.tsx')),
+  'datetime-picker': lazy(() => import('./OVDatetimePicker.tsx')),
+  form: lazy(() => import('./OVForm.tsx')),
+  input: lazy(() => import('./OVInput.tsx')),
+  'input-number': lazy(() => import('./OVInputNumber.tsx')),
+  'input-tag': lazy(() => import('./OVInputTag.tsx')),
+  radio: lazy(() => import('./OVRadio.tsx')),
+  rate: lazy(() => import('./OVRate.tsx')),
+  select: lazy(() => import('./OVSelect.tsx')),
+  'select-v2': lazy(() => import('./OVSelectV2.tsx')),
+  slider: lazy(() => import('./OVSlider.tsx')),
+  switch: lazy(() => import('./OVSwitch.tsx')),
+  'time-picker': lazy(() => import('./OVTimePicker.tsx')),
+  'time-select': lazy(() => import('./OVTimeSelect.tsx')),
+  transfer: lazy(() => import('./OVTransfer.tsx')),
+  upload: lazy(() => import('./OVUpload.tsx')),
+  avatar: lazy(() => import('./OVAvatar.tsx')),
+  badge: lazy(() => import('./OVBadge.tsx')),
+  calendar: lazy(() => import('./OVCalendar.tsx')),
+  card: lazy(() => import('./OVCard.tsx')),
+  carousel: lazy(() => import('./OVCarousel.tsx')),
+  collapse: lazy(() => import('./OVCollapse.tsx')),
+  descriptions: lazy(() => import('./OVDescriptions.tsx')),
+  empty: lazy(() => import('./OVEmpty.tsx')),
+  image: lazy(() => import('./OVImage.tsx')),
+  'infinite-scroll': lazy(() => import('./OVInfiniteScroll.tsx')),
+  pagination: lazy(() => import('./OVPagination.tsx')),
+  progress: lazy(() => import('./OVProgress.tsx')),
+  result: lazy(() => import('./OVResult.tsx')),
+  skeleton: lazy(() => import('./OVSkeleton.tsx')),
+  table: lazy(() => import('./OVTable.tsx')),
+  'table-v2': lazy(() => import('./OVTable.tsx')),
+  tag: lazy(() => import('./OVTag.tsx')),
+  timeline: lazy(() => import('./OVTimeline.tsx')),
+  tour: lazy(() => import('./OVTour.tsx')),
+  tree: lazy(() => import('./OVTree.tsx')),
+  'tree-select': lazy(() => import('./OVTreeSelect.tsx')),
+  'tree-v2': lazy(() => import('./OVTree.tsx')),
+  statistic: lazy(() => import('./OVStatistic.tsx')),
+  segmented: lazy(() => import('./OVSegmented.tsx')),
+  affix: lazy(() => import('./OVAffix.tsx')),
+  anchor: lazy(() => import('./OVAnchor.tsx')),
+  backtop: lazy(() => import('./OVBacktop.tsx')),
+  breadcrumb: lazy(() => import('./OVBreadcrumb.tsx')),
+  dropdown: lazy(() => import('./OVDropdown.tsx')),
+  menu: lazy(() => import('./OVMenu.tsx')),
+  'page-header': lazy(() => import('./OVPageHeader.tsx')),
+  steps: lazy(() => import('./OVSteps.tsx')),
+  splitter: lazy(() => import('./OVSplitter.tsx')),
+  tabs: lazy(() => import('./OVTabs.tsx')),
+  alert: lazy(() => import('./OVAlert.tsx')),
+  dialog: lazy(() => import('./OVDialog.tsx')),
+  drawer: lazy(() => import('./OVDrawer.tsx')),
+  loading: lazy(() => import('./OVLoading.tsx')),
+  message: lazy(() => import('./OVMessage.tsx')),
+  'message-box': lazy(() => import('./OVMessageBox.tsx')),
+  notification: lazy(() => import('./OVNotification.tsx')),
+  popconfirm: lazy(() => import('./OVPopconfirm.tsx')),
+  popover: lazy(() => import('./OVPopover.tsx')),
+  tooltip: lazy(() => import('./OVTooltip.tsx')),
+  divider: lazy(() => import('./OVDivider.tsx')),
+  watermark: lazy(() => import('./OVWatermark.tsx')),
+  mention: lazy(() => import('./OVMention.tsx'))
 }
 
 export default overviewIcons

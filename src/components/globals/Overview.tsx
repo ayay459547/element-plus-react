@@ -6,7 +6,7 @@ import ElIcon from '@ayay/element-plus-react/components/icon/ElIcon.tsx'
 import ElInput from '@ayay/element-plus-react/components/input/ElInput.tsx'
 import ElTag from '@ayay/element-plus-react/components/tag/ElTag.tsx'
 import Search from '@ayay/element-plus-react/icons-svg/search.svg?react'
-import { useMemo, useState } from 'react'
+import { Suspense, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './Overview.module.scss'
 
@@ -86,7 +86,11 @@ const Overview: React.FC = () => {
                             </>
                           }
                         >
-                          {IconComponent && <IconComponent />}
+                          {IconComponent && (
+                            <Suspense fallback={<div>...</div>}>
+                              <IconComponent />
+                            </Suspense>
+                          )}
                         </ElCard>
                       </Link>
                     )
