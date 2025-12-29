@@ -1,4 +1,5 @@
 import ElIcon from '@ayay/element-plus-react/components/icon/ElIcon.tsx'
+import { addUnit } from '@ayay/element-plus-react/utils/dom/style'
 import clsx from 'clsx'
 import type { CSSProperties, DOMAttributes } from 'react'
 import { useState } from 'react'
@@ -22,12 +23,11 @@ const ElAvatar: React.FC<ElAvatarProps> = ({
 }) => {
   const isLarge = size === 'large'
   const isSmall = size === 'small'
-  const sizeStyle =
-    typeof size === 'number'
-      ? {
-          '--el-avatar-size': `${size}px`
-        }
-      : {}
+
+  const sizeStyle: CSSProperties & { '--el-avatar-size'?: ReturnType<typeof addUnit> } = {}
+  if (size) {
+    sizeStyle['--el-avatar-size'] = addUnit(size)
+  }
 
   const [hasLoadError, setHasLoadError] = useState(false)
 

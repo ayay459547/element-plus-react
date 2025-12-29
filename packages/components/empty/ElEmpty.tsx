@@ -20,8 +20,8 @@ const ElEmpty: React.FC<ElEmptyProps> = ({
   }
 
   let showDescription: ReactNode = description || 'No Data'
-  if (typeof description === 'string') {
-    showDescription = <p>{description}</p>
+  if (typeof showDescription === 'string') {
+    showDescription = <p>{showDescription}</p>
   }
 
   return (
@@ -31,7 +31,8 @@ const ElEmpty: React.FC<ElEmptyProps> = ({
       style={{ ...style }}
     >
       <div className={clsx('el-empty__image', styles['el-empty__image'])} style={{ ...imageStyle }}>
-        {image || <ImgEmpty />}
+        {typeof image === 'string' && <img src={image} onDragStart={() => false} />}
+        {typeof image !== 'string' && (image || <ImgEmpty />)}
       </div>
       <div className={clsx('el-empty__description', styles['el-empty__description'])}>
         {showDescription}
