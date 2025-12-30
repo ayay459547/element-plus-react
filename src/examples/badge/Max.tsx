@@ -1,5 +1,5 @@
-import ElBadge from '@ayay/element-plus-react/components/badge/ElBadge.tsx'
-import ElButton from '@ayay/element-plus-react/components/button/ElButton.tsx'
+import ElBadge from 'ayay-element-plus-react/components/badge/ElBadge.tsx'
+import ElButton from 'ayay-element-plus-react/components/button/ElButton.tsx'
 import styles from './Max.module.scss'
 
 const BadgeMax: React.FC = () => {

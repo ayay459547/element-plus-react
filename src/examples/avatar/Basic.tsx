@@ -1,7 +1,7 @@
-import ElAvatar from '@ayay/element-plus-react/components/avatar/ElAvatar.tsx'
-import type { ElAvatarProps } from '@ayay/element-plus-react/components/avatar/types'
-import ElCol from '@ayay/element-plus-react/components/col/ElCol.tsx'
-import ElRow from '@ayay/element-plus-react/components/row/ElRow.tsx'
+import ElAvatar from 'ayay-element-plus-react/components/avatar/ElAvatar.tsx'
+import type { ElAvatarProps } from 'ayay-element-plus-react/components/avatar/types'
+import ElCol from 'ayay-element-plus-react/components/col/ElCol.tsx'
+import ElRow from 'ayay-element-plus-react/components/row/ElRow.tsx'
 import clsx from 'clsx'
 import styles from './Basic.module.scss'
 

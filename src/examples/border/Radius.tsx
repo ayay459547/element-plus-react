@@ -1,8 +1,8 @@
 import { useCssVar } from '@/hooks/useCssVar'
 import styles from './Border.module.scss'
 
-import ElCol from '@ayay/element-plus-react/components/col/ElCol.tsx'
-import ElRow from '@ayay/element-plus-react/components/row/ElRow.tsx'
+import ElCol from 'ayay-element-plus-react/components/col/ElCol.tsx'
+import ElRow from 'ayay-element-plus-react/components/row/ElRow.tsx'
 
 const RadiusItem: React.FC<{
   type: string

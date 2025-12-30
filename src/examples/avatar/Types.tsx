@@ -1,4 +1,4 @@
-import ElAvatar from '@ayay/element-plus-react/components/avatar/ElAvatar.tsx'
+import ElAvatar from 'ayay-element-plus-react/components/avatar/ElAvatar.tsx'
 import { FaUser } from 'react-icons/fa'
 import styles from './Types.module.scss'
 

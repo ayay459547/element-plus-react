@@ -1,4 +1,4 @@
-import ElCard from '@ayay/element-plus-react/components/card/ElCard.tsx'
+import ElCard from 'ayay-element-plus-react/components/card/ElCard.tsx'
 
 const CardSimple: React.FC = () => {
   return (

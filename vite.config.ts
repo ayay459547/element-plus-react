@@ -64,7 +64,7 @@ export default defineConfig(({ command, mode }) => {
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
-        '@ayay/element-plus-react': fileURLToPath(new URL('./packages', import.meta.url)),
+        'ayay-element-plus-react': fileURLToPath(new URL('./packages', import.meta.url)),
         $: fileURLToPath(new URL('./public', import.meta.url))
       }
     },

@@ -1,7 +1,7 @@
-import ElAside from '@ayay/element-plus-react/components/container/ElAside.tsx'
-import ElContainer from '@ayay/element-plus-react/components/container/ElContainer.tsx'
-import ElHeader from '@ayay/element-plus-react/components/container/ElHeader.tsx'
-import ElMain from '@ayay/element-plus-react/components/container/ElMain.tsx'
+import ElAside from 'ayay-element-plus-react/components/container/ElAside.tsx'
+import ElContainer from 'ayay-element-plus-react/components/container/ElContainer.tsx'
+import ElHeader from 'ayay-element-plus-react/components/container/ElHeader.tsx'
+import ElMain from 'ayay-element-plus-react/components/container/ElMain.tsx'
 
 import styles from './common-layout.module.scss'
 

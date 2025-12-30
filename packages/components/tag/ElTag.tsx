@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 import React from 'react'
 // import { CSSTransition } from 'react-transition-group'
-import ElIcon from '@ayay/element-plus-react/components/icon/ElIcon.tsx'
-import Transition from '@ayay/element-plus-react/components/transition/Transition.tsx'
+import ElIcon from 'ayay-element-plus-react/components/icon/ElIcon.tsx'
+import Transition from 'ayay-element-plus-react/components/transition/Transition.tsx'
 
 import { IoClose } from 'react-icons/io5'
 import styles from './ElTag.module.scss'

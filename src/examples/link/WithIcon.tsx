@@ -1,7 +1,7 @@
-import ElIcon from '@ayay/element-plus-react/components/icon/ElIcon.tsx'
-import ElLink from '@ayay/element-plus-react/components/link/ElLink.tsx'
-import Edit from '@ayay/element-plus-react/icons-svg/edit.svg?react'
-import IconView from '@ayay/element-plus-react/icons-svg/view.svg?react'
+import ElIcon from 'ayay-element-plus-react/components/icon/ElIcon.tsx'
+import ElLink from 'ayay-element-plus-react/components/link/ElLink.tsx'
+import Edit from 'ayay-element-plus-react/icons-svg/edit.svg?react'
+import IconView from 'ayay-element-plus-react/icons-svg/view.svg?react'
 import styles from './Basic.module.scss'
 
 const LinkWithIcon: React.FC = () => {

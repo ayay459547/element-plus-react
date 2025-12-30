@@ -1,6 +1,6 @@
-import ElBadge from '@ayay/element-plus-react/components/badge/ElBadge.tsx'
-import ElButton from '@ayay/element-plus-react/components/button/ElButton.tsx'
-import ElIcon from '@ayay/element-plus-react/components/icon/ElIcon.tsx'
+import ElBadge from 'ayay-element-plus-react/components/badge/ElBadge.tsx'
+import ElButton from 'ayay-element-plus-react/components/button/ElButton.tsx'
+import ElIcon from 'ayay-element-plus-react/components/icon/ElIcon.tsx'
 import { CiMail } from 'react-icons/ci'
 import styles from './Customize.module.scss'
 

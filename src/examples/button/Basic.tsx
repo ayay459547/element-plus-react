@@ -1,10 +1,10 @@
-import ElButton from '@ayay/element-plus-react/components/button/ElButton.tsx'
-import Check from '@ayay/element-plus-react/icons-svg/check.svg?react'
-import Delete from '@ayay/element-plus-react/icons-svg/delete.svg?react'
-import Edit from '@ayay/element-plus-react/icons-svg/edit.svg?react'
-import Message from '@ayay/element-plus-react/icons-svg/message.svg?react'
-import Search from '@ayay/element-plus-react/icons-svg/search.svg?react'
-import Star from '@ayay/element-plus-react/icons-svg/star.svg?react'
+import ElButton from 'ayay-element-plus-react/components/button/ElButton.tsx'
+import Check from 'ayay-element-plus-react/icons-svg/check.svg?react'
+import Delete from 'ayay-element-plus-react/icons-svg/delete.svg?react'
+import Edit from 'ayay-element-plus-react/icons-svg/edit.svg?react'
+import Message from 'ayay-element-plus-react/icons-svg/message.svg?react'
+import Search from 'ayay-element-plus-react/icons-svg/search.svg?react'
+import Star from 'ayay-element-plus-react/icons-svg/star.svg?react'
 import styles from './Basic.module.scss'
 
 const ButtonBasic: React.FC = () => {
