@@ -1,8 +1,14 @@
 {
   "name": "ayay-element-plus-react",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": false,
   "type": "module",
+  "homepage": "https://ayay459547.github.io/element-plus-react/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ayay459547/element-plus-react.git"
+  },
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "tsc-build": "tsc -b && vite build",

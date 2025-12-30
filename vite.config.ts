@@ -12,11 +12,14 @@ import svgr from 'vite-plugin-svgr'
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
   const { VITE_API_BUILD_VERSION, VITE_API_VERSION, VITE_API_SYSTEM_URL, VITE_API_BUILD_TYPE } = env
+
   console.table({
     VITE_API_BUILD_VERSION,
     VITE_API_VERSION,
     VITE_API_SYSTEM_URL,
-    VITE_API_BUILD_TYPE
+    VITE_API_BUILD_TYPE,
+    command,
+    mode
   })
 
   const isBuildLib = command === 'build' && VITE_API_BUILD_TYPE === 'library'
