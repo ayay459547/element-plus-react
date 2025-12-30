@@ -19,7 +19,7 @@ export const ElCard: React.FC<ElCardProps> = ({
     <div
       {...props}
       className={clsx('el-card', styles['el-card'], styles[`is-${shadow}-shadow`], className)}
-      style={{ ...style }}
+      style={style}
     >
       {header && (
         <div className={clsx('el-card__header', styles['el-card__header'], headerClass)}>

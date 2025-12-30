@@ -86,7 +86,7 @@ const ElButton = <T extends ElementType = 'button'>({
         loading ? styles['is-loading'] : '',
         className
       )}
-      style={{ ...style }}
+      style={style}
     >
       {loading ? showLoading : icon && <ElIcon>{icon}</ElIcon>}
       {children && <span>{displayText}</span>}

@@ -25,7 +25,7 @@ const ElButtonGroup: React.FC<ElButtonGroupProps> = ({
         hasDirection ? styles[`el-button-group--${direction}`] : '',
         className
       )}
-      style={{ ...style }}
+      style={style}
     >
       {Children.map(children, (child) => {
         if (!isValidElement(child)) return child

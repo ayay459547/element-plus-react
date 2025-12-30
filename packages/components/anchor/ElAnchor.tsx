@@ -4,11 +4,7 @@ import type { ElAnchorProps } from './types'
 
 const ElAnchor: React.FC<ElAnchorProps> = ({ children, className, style, ...props }) => {
   return (
-    <div
-      {...props}
-      className={clsx('el-anchor', styles['el-anchor'], className)}
-      style={{ ...style }}
-    >
+    <div {...props} className={clsx('el-anchor', styles['el-anchor'], className)} style={style}>
       {children}
     </div>
   )

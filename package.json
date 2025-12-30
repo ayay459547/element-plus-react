@@ -1,7 +1,7 @@
 {
   "name": "@ayay/element-plus-react",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,12 +12,18 @@
     "type-check": "tsc --noEmit",
     "build": "vite build",
     "deploy": "npm run build && gh-pages -d dist-demo",
-    "gh-pages": "gh-pages -d dist-demo"
+    "gh-pages": "gh-pages -d dist-demo",
+    "lib-pack": "npm pack",
+    "lib-publish": "npm publish",
+    "lib-publish-public": "npm publish --access public"
   },
   "peerDependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",

@@ -1,3 +1,5 @@
+import ElFooter from '@ayay/element-plus-react/components/container/ElFooter.tsx'
+import ElHeader from '@ayay/element-plus-react/components/container/ElHeader.tsx'
 import clsx from 'clsx'
 import { Children, isValidElement } from 'react'
 import styles from './ElContainer.module.scss'
@@ -14,12 +16,7 @@ const ElContainer: React.FC<ElContainerProps> = ({ direction, children, classNam
       if (!isValidElement(child)) return false
 
       const type = child.type as any
-      return (
-        type?.displayName === 'ElHeader' ||
-        type?.name === 'ElHeader' ||
-        type?.displayName === 'ElFooter' ||
-        type?.name === 'ElFooter'
-      )
+      return type === ElHeader || type === ElFooter
     })
   })()
 
@@ -31,7 +28,7 @@ const ElContainer: React.FC<ElContainerProps> = ({ direction, children, classNam
         isVertical ? styles['is-vertical'] : '',
         className
       )}
-      style={{ ...style }}
+      style={style}
     >
       {children}
     </div>
