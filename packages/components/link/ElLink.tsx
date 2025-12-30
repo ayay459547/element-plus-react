@@ -31,7 +31,7 @@ const ElLink: React.FC<ElLinkProps> = ({
         isHoverUnderline ? styles['is-hover-underline'] : '',
         className
       )}
-      style={{ ...style }}
+      style={style}
     >
       {icon && <ElIcon>{icon}</ElIcon>}
       <span className={clsx('el-link__inner', styles['el-link__inner'])}>{children}</span>

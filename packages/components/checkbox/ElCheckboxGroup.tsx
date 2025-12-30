@@ -83,7 +83,7 @@ const ElCheckboxGroup = <T extends ElementType = 'div'>({
         role="group"
         aria-label={ariaLabel || 'checkbox-group'}
         className={clsx('el-checkbox-group', styles['el-checkbox-group'], className)}
-        style={{ ...style }}
+        style={style}
       >
         {showSlot}
       </Tag>

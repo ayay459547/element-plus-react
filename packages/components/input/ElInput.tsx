@@ -64,7 +64,7 @@ const ElInput: React.FC<ElInputProps> = ({
         size ? styles[`el-input--${size}`] : '',
         className
       )}
-      style={{ ...style }}
+      style={style}
     >
       {/* prepend slot */}
       {prepend && (

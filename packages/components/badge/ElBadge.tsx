@@ -45,7 +45,7 @@ export const ElBadge: React.FC<ElBadgeProps> = ({
     <span
       {...props}
       className={clsx('el-badge', styles['el-badge'], isDot ? styles['is-dot'] : '', className)}
-      style={{ ...style }}
+      style={style}
     >
       {children}
       {!hidden && (

@@ -4,6 +4,7 @@ import { resolve } from 'path'
 
 import { presetAttributify, presetIcons, presetMini } from 'unocss'
 import UnoCSS from 'unocss/vite'
+import type { BuildEnvironmentOptions } from 'vite'
 import { defineConfig, loadEnv } from 'vite'
 import svgr from 'vite-plugin-svgr'
 // import { VitePWA } from 'vite-plugin-pwa'
@@ -20,21 +21,24 @@ export default defineConfig(({ command, mode }) => {
 
   const isBuildLib = command === 'build' && VITE_API_BUILD_TYPE === 'library'
 
-  const buildSettings = isBuildLib
-    ? {
-        lib: {
-          entry: resolve(__dirname, 'packages/index.ts'),
-          name: 'ElementPlusReact',
-          fileName: 'index'
-        },
-        rollupOptions: {
-          external: ['react', 'react-dom']
-        }
+  const libBuildSettings: BuildEnvironmentOptions = {
+    lib: {
+      entry: resolve(__dirname, 'packages/index.ts'),
+      name: 'ElementPlusReact',
+      fileName: 'index',
+      formats: ['es']
+    },
+    outDir: 'dist',
+    rollupOptions: {
+      external: ['react', 'react-dom'],
+      output: {
+        preserveModules: true, // 保留 packages 結構
+        preserveModulesRoot: 'packages',
+        entryFileNames: '[name].js'
       }
-    : {
-        outDir: 'dist-demo',
-        emptyOutDir: true
-      }
+    },
+    emptyOutDir: true
+  }
 
   return {
     plugins: [
@@ -49,8 +53,14 @@ export default defineConfig(({ command, mode }) => {
         ]
       })
     ],
-    base: VITE_API_SYSTEM_URL ?? '/',
-    build: buildSettings,
+    base: isBuildLib ? './' : (VITE_API_SYSTEM_URL ?? '/'),
+    publicDir: isBuildLib ? false : 'public', // lib 不要使用 public 目錄
+    build: isBuildLib
+      ? libBuildSettings
+      : {
+          outDir: 'dist-demo',
+          emptyOutDir: true
+        },
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),

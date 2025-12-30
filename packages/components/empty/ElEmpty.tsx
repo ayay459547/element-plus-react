@@ -25,11 +25,7 @@ const ElEmpty: React.FC<ElEmptyProps> = ({
   }
 
   return (
-    <div
-      {...props}
-      className={clsx('el-empty', styles['el-empty'], className)}
-      style={{ ...style }}
-    >
+    <div {...props} className={clsx('el-empty', styles['el-empty'], className)} style={style}>
       <div className={clsx('el-empty__image', styles['el-empty__image'])} style={{ ...imageStyle }}>
         {typeof image === 'string' && <img src={image} onDragStart={() => false} />}
         {typeof image !== 'string' && (image || <ImgEmpty />)}

@@ -91,7 +91,7 @@ const ElCheckbox: React.FC<ElCheckboxProps> = ({
         border ? styles['is-bordered'] : '',
         className
       )}
-      style={{ ...style }}
+      style={style}
     >
       <span
         className={clsx(
