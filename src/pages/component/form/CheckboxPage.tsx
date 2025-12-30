@@ -4,13 +4,28 @@ import VPDocContent from '@/components/VPDocContent.tsx'
 import VPDemo from '@/components/VPDemo.tsx'
 
 import CheckboxBasic from '@/examples/checkbox/Basic.tsx'
+import CheckboxBasic_code from '@/examples/checkbox/Basic.tsx?raw'
+
 import CheckboxButtonStyle from '@/examples/checkbox/ButtonStyle.tsx'
+import CheckboxButtonStyle_code from '@/examples/checkbox/ButtonStyle.tsx?raw'
+
 import CheckboxDisabled from '@/examples/checkbox/Disabled.tsx'
+import CheckboxDisabled_code from '@/examples/checkbox/Disabled.tsx?raw'
+
 import CheckboxGrouping from '@/examples/checkbox/Grouping.tsx'
+import CheckboxGrouping_code from '@/examples/checkbox/Grouping.tsx?raw'
+
 import CheckboxIntermediate from '@/examples/checkbox/Intermediate.tsx'
+import CheckboxIntermediate_code from '@/examples/checkbox/Intermediate.tsx?raw'
+
 import CheckboxLimitation from '@/examples/checkbox/Limitation.tsx'
+import CheckboxLimitation_code from '@/examples/checkbox/Limitation.tsx?raw'
+
 import CheckboxOptions from '@/examples/checkbox/Options.tsx'
+import CheckboxOptions_code from '@/examples/checkbox/Options.tsx?raw'
+
 import CheckboxWithBorder from '@/examples/checkbox/WithBorder.tsx'
+import CheckboxWithBorder_code from '@/examples/checkbox/WithBorder.tsx?raw'
 
 const CheckboxPage: React.FC = () => {
   return (
@@ -56,7 +71,17 @@ const CheckboxPage: React.FC = () => {
         when selected. Content inside the <code>el-checkbox</code> tag will become the description
         following the button of the checkbox.
       </p>
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/checkbox/Basic.tsx"
+        code={
+          <VPCode
+            language={['Basic.tsx']}
+            code={{
+              'Basic.tsx': CheckboxBasic_code
+            }}
+          />
+        }
+      >
         <CheckboxBasic />
       </VPDemo>
 
@@ -65,7 +90,17 @@ const CheckboxPage: React.FC = () => {
       <p>
         Set the <code>disabled</code> attribute.
       </p>
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/checkbox/Disabled.tsx"
+        code={
+          <VPCode
+            language={['Disabled.tsx']}
+            code={{
+              'Disabled.tsx': CheckboxDisabled_code
+            }}
+          />
+        }
+      >
         <CheckboxDisabled />
       </VPDemo>
 
@@ -83,7 +118,17 @@ const CheckboxPage: React.FC = () => {
         values in the array. It is selected if the specified value exists in the array, and vice
         versa.
       </p>
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/checkbox/Grouping.tsx"
+        code={
+          <VPCode
+            language={['Grouping.tsx']}
+            code={{
+              'Grouping.tsx': CheckboxGrouping_code
+            }}
+          />
+        }
+      >
         <CheckboxGrouping />
       </VPDemo>
 
@@ -95,7 +140,17 @@ const CheckboxPage: React.FC = () => {
         Shortcut from basic <code>el-checkbox-group</code> usage. You can customize the alias of the{' '}
         <code>options</code> through the <code>props</code> attribute.
       </p>
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/checkbox/Options.tsx"
+        code={
+          <VPCode
+            language={['Options.tsx']}
+            code={{
+              'Options.tsx': CheckboxOptions_code
+            }}
+          />
+        }
+      >
         <CheckboxOptions />
       </VPDemo>
 
@@ -103,7 +158,17 @@ const CheckboxPage: React.FC = () => {
       <p>
         The <code>indeterminate</code> property can help you to achieve a 'check all' effect.
       </p>
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/checkbox/Intermediate.tsx"
+        code={
+          <VPCode
+            language={['Intermediate.tsx']}
+            code={{
+              'Intermediate.tsx': CheckboxIntermediate_code
+            }}
+          />
+        }
+      >
         <CheckboxIntermediate />
       </VPDemo>
 
@@ -112,7 +177,17 @@ const CheckboxPage: React.FC = () => {
         The <code>min</code> and <code>max</code> properties can help you to limit the number of
         checked items.
       </p>
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/checkbox/Limitation.tsx"
+        code={
+          <VPCode
+            language={['Limitation.tsx']}
+            code={{
+              'Limitation.tsx': CheckboxLimitation_code
+            }}
+          />
+        }
+      >
         <CheckboxLimitation />
       </VPDemo>
 
@@ -122,7 +197,17 @@ const CheckboxPage: React.FC = () => {
         You just need to change <code>el-checkbox</code> element into{' '}
         <code>el-checkbox-button</code> element. We also provide <code>size</code> attribute.
       </p>
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/checkbox/ButtonStyle.tsx"
+        code={
+          <VPCode
+            language={['ButtonStyle.tsx']}
+            code={{
+              'ButtonStyle.tsx': CheckboxButtonStyle_code
+            }}
+          />
+        }
+      >
         <CheckboxButtonStyle />
       </VPDemo>
 
@@ -130,7 +215,17 @@ const CheckboxPage: React.FC = () => {
       <p>
         The <code>border</code> attribute adds a border to Checkboxes.
       </p>
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/checkbox/WithBorder.tsx"
+        code={
+          <VPCode
+            language={['WithBorder.tsx']}
+            code={{
+              'WithBorder.tsx': CheckboxWithBorder_code
+            }}
+          />
+        }
+      >
         <CheckboxWithBorder />
       </VPDemo>
     </VPDocContent>

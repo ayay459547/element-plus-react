@@ -1,14 +1,30 @@
 import VPDemo from '@/components/VPDemo.tsx'
 import VPDocContent from '@/components/VPDocContent.tsx'
 // import markdown from '@/en-US/component/container.md?raw'
+import VPCode from '@/components/common/VPCode'
+
+import CommonLayout_styles from '@/examples/container/common-layout.module.scss?raw'
 
 import LayoutAHM from '@/examples/container/LayoutAHM.tsx'
+import LayoutAHM_code from '@/examples/container/LayoutAHM.tsx?raw'
+
 import LayoutAHMF from '@/examples/container/LayoutAHMF.tsx'
+import LayoutAHMF_code from '@/examples/container/LayoutAHMF.tsx?raw'
+
 import LayoutAM from '@/examples/container/LayoutAM.tsx'
+import LayoutAM_code from '@/examples/container/LayoutAM.tsx?raw'
+
 import LayoutHAM from '@/examples/container/LayoutHAM.tsx'
+import LayoutHAM_code from '@/examples/container/LayoutHAM.tsx?raw'
+
 import LayoutHAMF from '@/examples/container/LayoutHAMF.tsx'
+import LayoutHAMF_code from '@/examples/container/LayoutHAMF.tsx?raw'
+
 import LayoutHM from '@/examples/container/LayoutHM.tsx'
+import LayoutHM_code from '@/examples/container/LayoutHM.tsx?raw'
+
 import LayoutHMF from '@/examples/container/LayoutHMF.tsx'
+import LayoutHMF_code from '@/examples/container/LayoutHMF.tsx?raw'
 
 const ContainerPage: React.FC = () => {
   return (
@@ -43,31 +59,108 @@ const ContainerPage: React.FC = () => {
       </div>
 
       <h2 id="common-layouts">Common layouts</h2>
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/container/LayoutHM.tsx"
+        code={
+          <VPCode
+            language={['LayoutHM.tsx', 'common-layout.module.scss']}
+            code={{
+              'LayoutHM.tsx': LayoutHM_code,
+              'common-layout.module.scss': CommonLayout_styles
+            }}
+          />
+        }
+      >
         <LayoutHM />
       </VPDemo>
       <br />
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/container/LayoutHMF.tsx"
+        code={
+          <VPCode
+            language={['LayoutHMF.tsx', 'common-layout.module.scss']}
+            code={{
+              'LayoutHMF.tsx': LayoutHMF_code,
+              'common-layout.module.scss': CommonLayout_styles
+            }}
+          />
+        }
+      >
         <LayoutHMF />
       </VPDemo>
       <br />
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/container/LayoutAM.tsx"
+        code={
+          <VPCode
+            language={['LayoutAM.tsx', 'common-layout.module.scss']}
+            code={{
+              'LayoutAM.tsx': LayoutAM_code,
+              'common-layout.module.scss': CommonLayout_styles
+            }}
+          />
+        }
+      >
         <LayoutAM />
       </VPDemo>
       <br />
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/container/LayoutHAM.tsx"
+        code={
+          <VPCode
+            language={['LayoutHAM.tsx', 'common-layout.module.scss']}
+            code={{
+              'LayoutHAM.tsx': LayoutHAM_code,
+              'common-layout.module.scss': CommonLayout_styles
+            }}
+          />
+        }
+      >
         <LayoutHAM />
       </VPDemo>
       <br />
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/container/LayoutHAMF.tsx"
+        code={
+          <VPCode
+            language={['LayoutHAMF.tsx', 'common-layout.module.scss']}
+            code={{
+              'LayoutHAMF.tsx': LayoutHAMF_code,
+              'common-layout.module.scss': CommonLayout_styles
+            }}
+          />
+        }
+      >
         <LayoutHAMF />
       </VPDemo>
       <br />
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/container/LayoutAHM.tsx"
+        code={
+          <VPCode
+            language={['LayoutAHM.tsx', 'common-layout.module.scss']}
+            code={{
+              'LayoutAHM.tsx': LayoutAHM_code,
+              'common-layout.module.scss': CommonLayout_styles
+            }}
+          />
+        }
+      >
         <LayoutAHM />
       </VPDemo>
       <br />
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/container/LayoutAHMF.tsx"
+        code={
+          <VPCode
+            language={['LayoutAHMF.tsx', 'common-layout.module.scss']}
+            code={{
+              'LayoutAHMF.tsx': LayoutAHMF_code,
+              'common-layout.module.scss': CommonLayout_styles
+            }}
+          />
+        }
+      >
         <LayoutAHMF />
       </VPDemo>
     </VPDocContent>

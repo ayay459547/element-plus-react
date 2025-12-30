@@ -25,7 +25,7 @@ const ElAvatar: React.FC<ElAvatarProps> = ({
   const isSmall = size === 'small'
 
   const sizeStyle: CSSProperties & { '--el-avatar-size'?: ReturnType<typeof addUnit> } = {}
-  if (size) {
+  if (typeof size === 'number') {
     sizeStyle['--el-avatar-size'] = addUnit(size)
   }
 

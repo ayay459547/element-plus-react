@@ -3,10 +3,18 @@ import VPDocContent from '@/components/VPDocContent.tsx'
 import VPDemo from '@/components/VPDemo.tsx'
 import VPCode from '@/components/common/VPCode.tsx'
 
+import LinkBasic_styles from '@/examples/link/Basic.module.scss?raw'
 import LinkBasic from '@/examples/link/Basic.tsx'
+import LinkBasic_code from '@/examples/link/Basic.tsx?raw'
+
 import LinkDisabled from '@/examples/link/Disabled.tsx'
+import LinkDisabled_code from '@/examples/link/Disabled.tsx?raw'
+
 import LinkUnderline from '@/examples/link/Underline.tsx'
+import LinkUnderline_code from '@/examples/link/Underline.tsx?raw'
+
 import LinkWithIcon from '@/examples/link/WithIcon.tsx'
+import LinkWithIcon_code from '@/examples/link/WithIcon.tsx?raw'
 
 const LinkPage: React.FC = () => {
   return (
@@ -24,13 +32,35 @@ const LinkPage: React.FC = () => {
 
       <h2 id="basic">Basic</h2>
       <p>Basic text link</p>
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/link/Basic.tsx"
+        code={
+          <VPCode
+            language={['Basic.tsx', 'Basic.module.scss']}
+            code={{
+              'Basic.tsx': LinkBasic_code,
+              'Basic.module.scss': LinkBasic_styles
+            }}
+          />
+        }
+      >
         <LinkBasic />
       </VPDemo>
 
       <h2 id="disabled">Disabled</h2>
       <p>Disabled state of link</p>
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/link/Disabled.tsx"
+        code={
+          <VPCode
+            language={['Disabled.tsx', 'Basic.module.scss']}
+            code={{
+              'Disabled.tsx': LinkDisabled_code,
+              'Basic.module.scss': LinkBasic_styles
+            }}
+          />
+        }
+      >
         <LinkDisabled />
       </VPDemo>
 
@@ -58,13 +88,24 @@ const LinkPage: React.FC = () => {
         code={`
 <template>
   <!-- works before 2.9.9, use 'hover' after, removed in 3.0.0 -->
-  <el-link underline>link</el-link>
+  <ElLink underline>link</ElLink>
   <!-- works before 2.9.9, use 'never' after, removed in 3.0.0 -->
-  <el-link :underline="false">link</el-link>
+  <ElLink :underline="false">link</ElLink>
 </template>
         `}
       />
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/link/Underline.tsx"
+        code={
+          <VPCode
+            language={['Underline.tsx', 'Basic.module.scss']}
+            code={{
+              'Underline.tsx': LinkUnderline_code,
+              'Basic.module.scss': LinkBasic_styles
+            }}
+          />
+        }
+      >
         <LinkUnderline />
       </VPDemo>
 
@@ -81,7 +122,18 @@ const LinkPage: React.FC = () => {
           </a>
         </p>
       </div>
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/link/WithIcon.tsx"
+        code={
+          <VPCode
+            language={['WithIcon.tsx', 'Basic.module.scss']}
+            code={{
+              'WithIcon.tsx': LinkWithIcon_code,
+              'Basic.module.scss': LinkBasic_styles
+            }}
+          />
+        }
+      >
         <LinkWithIcon />
       </VPDemo>
     </VPDocContent>
