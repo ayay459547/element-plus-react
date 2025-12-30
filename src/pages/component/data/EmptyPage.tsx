@@ -1,11 +1,19 @@
 import VPDocContent from '@/components/VPDocContent.tsx'
 // import markdown from '@/en-US/component/empty.md?raw'
 import VPDemo from '@/components/VPDemo.tsx'
+import VPCode from '@/components/common/VPCode.tsx'
 
 import EmptyBasicUsage from '@/examples/empty/BasicUsage.tsx'
+import EmptyBasicUsage_code from '@/examples/empty/BasicUsage.tsx?raw'
+
 import EmptyBottomContent from '@/examples/empty/BottomContent.tsx'
+import EmptyBottomContent_code from '@/examples/empty/BottomContent.tsx?raw'
+
 import EmptyCustomImage from '@/examples/empty/CustomImage.tsx'
+import EmptyCustomImage_code from '@/examples/empty/CustomImage.tsx?raw'
+
 import EmptyImageSize from '@/examples/empty/ImageSize.tsx'
+import EmptyImageSize_code from '@/examples/empty/ImageSize.tsx?raw'
 
 const EmptyPage: React.FC = () => {
   return (
@@ -14,7 +22,10 @@ const EmptyPage: React.FC = () => {
       <p>Placeholder hints for empty states.</p>
 
       <h2 id="basic-usage">Basic usage</h2>
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/empty/BasicUsage.tsx"
+        code={<VPCode language="tsx" code={EmptyBasicUsage_code} />}
+      >
         <EmptyBasicUsage />
       </VPDemo>
 
@@ -22,7 +33,10 @@ const EmptyPage: React.FC = () => {
       <p>
         Use <code>image</code> prop to set image URL.
       </p>
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/empty/CustomImage.tsx"
+        code={<VPCode language="tsx" code={EmptyCustomImage_code} />}
+      >
         <EmptyCustomImage />
       </VPDemo>
 
@@ -30,13 +44,19 @@ const EmptyPage: React.FC = () => {
       <p>
         Use <code>image-size</code> prop to control image size.
       </p>
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/empty/ImageSize.tsx"
+        code={<VPCode language="tsx" code={EmptyImageSize_code} />}
+      >
         <EmptyImageSize />
       </VPDemo>
 
       <h2 id="bottom-content">Bottom content</h2>
       <p>Use the default slot to insert content at the bottom.</p>
-      <VPDemo>
+      <VPDemo
+        link="/src/examples/empty/BottomContent.tsx"
+        code={<VPCode language="tsx" code={EmptyBottomContent_code} />}
+      >
         <EmptyBottomContent />
       </VPDemo>
 

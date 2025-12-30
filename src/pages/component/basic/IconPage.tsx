@@ -11,6 +11,23 @@ const IconPage: React.FC = () => {
     <VPDocContent>
       <h1 id="react-Icons">React Icons</h1>
       <p>
+        <a
+          href="https://react-icons.github.io/react-icons/"
+          className="vp-link"
+          target="_blank"
+          rel="noreferrer"
+        >
+          React Icons
+          <svg viewBox="0 0 24 24" width="1.2em" height="1.2em" className="link-icon">
+            <path
+              fill="currentColor"
+              d="M10 6v2H5v11h11v-5h2v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1zm11-3v8h-2V6.413l-7.793 7.794l-1.414-1.414L17.585 5H13V3z"
+            ></path>
+          </svg>
+        </a>{' '}
+        provides a set of common icons.
+      </p>
+      <p>
         Include popular icons in your React projects easily with react-icons, which utilizes ES6
         imports that allows you to include only the icons that your project is using.
       </p>
@@ -27,7 +44,7 @@ const IconPage: React.FC = () => {
       ></VPCode>
 
       <h2 id="simple-usage">Simple Usage</h2>
-      <VPDemo code={<VPCode language="tsx" code={IconSimpleUsage_code}></VPCode>}>
+      <VPDemo code={<VPCode language="tsx" code={IconSimpleUsage_code} />}>
         <IconSimpleUsage />
       </VPDemo>
     </VPDocContent>
