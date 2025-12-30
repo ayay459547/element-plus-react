@@ -1,4 +1,4 @@
-import ElCheckbox from '@ayay/element-plus-react/components/checkbox/ElCheckbox.tsx'
+import ElCheckbox from 'ayay-element-plus-react/components/checkbox/ElCheckbox.tsx'
 import { useState } from 'react'
 
 const CheckboxDisabled: React.FC = () => {

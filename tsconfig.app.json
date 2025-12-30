@@ -10,7 +10,7 @@
 
     "paths": {
       "@/*": ["./src/*"],
-      "@ayay/element-plus-react/*": ["./packages/*"],
+      "ayay-element-plus-react/*": ["./packages/*"],
       "$/*": ["./public/*"]
     },
 

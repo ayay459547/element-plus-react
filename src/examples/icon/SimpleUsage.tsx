@@ -1,4 +1,4 @@
-import ElIcon from '@ayay/element-plus-react/components/icon/ElIcon.tsx'
+import ElIcon from 'ayay-element-plus-react/components/icon/ElIcon.tsx'
 import { FiEdit } from 'react-icons/fi'
 
 const IconSimpleUsage: React.FC = () => {

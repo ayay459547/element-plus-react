@@ -4,7 +4,7 @@ import { RouterProvider } from 'react-router-dom'
 
 import { router } from '@/router/routes.tsx'
 
-console.groupCollapsed('@ayay/element-plus-react')
+console.groupCollapsed('ayay-element-plus-react')
 console.table(import.meta.env)
 console.groupEnd()
 

@@ -1,4 +1,4 @@
-import ElIcon from '@ayay/element-plus-react/components/icon/ElIcon.tsx'
+import ElIcon from 'ayay-element-plus-react/components/icon/ElIcon.tsx'
 import clsx from 'clsx'
 import type { ReactNode } from 'react'
 import { useState } from 'react'

@@ -1,5 +1,5 @@
-import type { ElColProps } from '@ayay/element-plus-react/components/col/types'
-import { addUnit } from '@ayay/element-plus-react/utils/dom/style'
+import type { ElColProps } from 'ayay-element-plus-react/components/col/types'
+import { addUnit } from 'ayay-element-plus-react/utils/dom/style'
 import clsx from 'clsx'
 import type { CSSProperties } from 'react'
 import { Children, cloneElement, isValidElement } from 'react'

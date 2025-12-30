@@ -1,7 +1,7 @@
-import ElButton from '@ayay/element-plus-react/components/button/ElButton.tsx'
+import ElButton from 'ayay-element-plus-react/components/button/ElButton.tsx'
 import styles from './Loading.module.scss'
 
-import Eleme from '@ayay/element-plus-react/icons-svg/eleme.svg?react'
+import Eleme from 'ayay-element-plus-react/icons-svg/eleme.svg?react'
 
 const ButtonLoading: React.FC = () => {
   return (

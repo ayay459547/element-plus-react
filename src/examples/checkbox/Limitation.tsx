@@ -1,6 +1,6 @@
-import ElCheckbox from '@ayay/element-plus-react/components/checkbox/ElCheckbox.tsx'
-import ElCheckboxGroup from '@ayay/element-plus-react/components/checkbox/ElCheckboxGroup.tsx'
-import type { ElCheckboxGroupBaseProps } from '@ayay/element-plus-react/components/checkbox/types'
+import ElCheckbox from 'ayay-element-plus-react/components/checkbox/ElCheckbox.tsx'
+import ElCheckboxGroup from 'ayay-element-plus-react/components/checkbox/ElCheckboxGroup.tsx'
+import type { ElCheckboxGroupBaseProps } from 'ayay-element-plus-react/components/checkbox/types'
 import { useState } from 'react'
 
 const CheckboxLimitation: React.FC = () => {

@@ -1,4 +1,4 @@
-import ElAvatar from '@ayay/element-plus-react/components/avatar/ElAvatar.tsx'
+import ElAvatar from 'ayay-element-plus-react/components/avatar/ElAvatar.tsx'
 
 const AvatarFallback: React.FC = () => {
   const errorHandler = () => true

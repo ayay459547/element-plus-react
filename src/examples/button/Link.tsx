@@ -1,4 +1,4 @@
-import ElButton from '@ayay/element-plus-react/components/button/ElButton.tsx'
+import ElButton from 'ayay-element-plus-react/components/button/ElButton.tsx'
 import styles from './Basic.module.scss'
 
 const ButtonLink: React.FC = () => {

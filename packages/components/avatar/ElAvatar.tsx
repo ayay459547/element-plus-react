@@ -1,5 +1,5 @@
-import ElIcon from '@ayay/element-plus-react/components/icon/ElIcon.tsx'
-import { addUnit } from '@ayay/element-plus-react/utils/dom/style'
+import ElIcon from 'ayay-element-plus-react/components/icon/ElIcon.tsx'
+import { addUnit } from 'ayay-element-plus-react/utils/dom/style'
 import clsx from 'clsx'
 import type { CSSProperties, DOMAttributes } from 'react'
 import { useState } from 'react'

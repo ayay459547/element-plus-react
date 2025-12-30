@@ -1,6 +1,6 @@
 import type { Link as ItemLink } from '@/types'
 import { isActive } from '@/utils'
-import ElTag from '@ayay/element-plus-react/components/tag/ElTag.tsx'
+import ElTag from 'ayay-element-plus-react/components/tag/ElTag.tsx'
 import clsx from 'clsx'
 import { Link, useLocation } from 'react-router-dom'
 import styles from './VPSidebarLink.module.scss'

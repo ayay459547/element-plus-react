@@ -1,7 +1,7 @@
 import VPHeroContent from '@/components/VPHeroContent.tsx'
 import resourceLang from '@/crowdin/pages/resource.json'
-import ElButton from '@ayay/element-plus-react/components/button/ElButton.tsx'
-import ElCard from '@ayay/element-plus-react/components/card/ElCard.tsx'
+import ElButton from 'ayay-element-plus-react/components/button/ElButton.tsx'
+import ElCard from 'ayay-element-plus-react/components/card/ElCard.tsx'
 import styles from './Resource.module.scss'
 
 import AxureComponentsSvg from './resources/AxureComponentsSvg.tsx'
