@@ -18,9 +18,9 @@
     "type-check": "tsc --noEmit",
     "build": "vite build",
     "gh-pages": "gh-pages -d dist-demo",
-    "deploy": "sh deploy.sh",
+    "deploy": "node ./scripts/deploy.js",
     "lib-build": "vite build --mode library",
-    "publish": "sh publish.sh"
+    "publish": "node ./scripts/publish.js"
   },
   "peerDependencies": {
     "react": "^19.2.0"
