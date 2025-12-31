@@ -1,4 +1,4 @@
-import ElEmpty from 'ayay-element-plus-react/components/empty/ElEmpty.tsx'
+import ElEmpty from '@ayay459547/element-plus-react/components/empty/ElEmpty.tsx'
 
 const EmptyBasicUsage: React.FC = () => {
   return <ElEmpty description="description" />

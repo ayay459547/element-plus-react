@@ -1,4 +1,4 @@
-import ElIcon from 'ayay-element-plus-react/components/icon/ElIcon.tsx'
+import ElIcon from '@ayay459547/element-plus-react/components/icon/ElIcon.tsx'
 import clsx from 'clsx'
 import styles from './ElLink.module.scss'
 import type { ElLinkProps } from './types'

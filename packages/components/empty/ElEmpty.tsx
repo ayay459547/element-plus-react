@@ -1,4 +1,4 @@
-import { addUnit } from 'ayay-element-plus-react/utils/dom/style'
+import { addUnit } from '@ayay459547/element-plus-react/utils/dom/style'
 import clsx from 'clsx'
 import type { CSSProperties, ReactNode } from 'react'
 import styles from './ElEmpty.module.scss'

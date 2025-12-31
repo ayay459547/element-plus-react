@@ -1,4 +1,4 @@
-import ElCard from 'ayay-element-plus-react/components/card/ElCard.tsx'
+import ElCard from '@ayay459547/element-plus-react/components/card/ElCard.tsx'
 
 const CardShadow: React.FC = () => {
   return (

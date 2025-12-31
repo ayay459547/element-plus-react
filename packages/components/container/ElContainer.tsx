@@ -1,5 +1,5 @@
-import ElFooter from 'ayay-element-plus-react/components/container/ElFooter.tsx'
-import ElHeader from 'ayay-element-plus-react/components/container/ElHeader.tsx'
+import ElFooter from '@ayay459547/element-plus-react/components/container/ElFooter.tsx'
+import ElHeader from '@ayay459547/element-plus-react/components/container/ElHeader.tsx'
 import clsx from 'clsx'
 import { Children, isValidElement } from 'react'
 import styles from './ElContainer.module.scss'

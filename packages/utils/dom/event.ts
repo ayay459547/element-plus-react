@@ -1,4 +1,4 @@
-import { EVENT_CODE } from 'ayay-element-plus-react/constants'
+import { EVENT_CODE } from '@ayay459547/element-plus-react/constants'
 import { isAndroid } from '../browser'
 
 export const composeEventHandlers = <E>(

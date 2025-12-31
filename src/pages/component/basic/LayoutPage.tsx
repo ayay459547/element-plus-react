@@ -169,7 +169,7 @@ const LayoutPage: React.FC = () => {
       </p>
       <VPCode
         language="js"
-        code="import 'ayay-element-plus-react/theme-chalk/display.css'"
+        code="import '@ayay459547/element-plus-react/theme-chalk/display.css'"
       ></VPCode>
 
       <p>The classes are:</p>

@@ -1,5 +1,5 @@
-import ElBadge from 'ayay-element-plus-react/components/badge/ElBadge.tsx'
-import ElButton from 'ayay-element-plus-react/components/button/ElButton.tsx'
+import ElBadge from '@ayay459547/element-plus-react/components/badge/ElBadge.tsx'
+import ElButton from '@ayay459547/element-plus-react/components/button/ElButton.tsx'
 import styles from './Basic.module.scss'
 
 const BadgeOffset: React.FC = () => {

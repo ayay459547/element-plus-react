@@ -1,9 +1,9 @@
-import ElCheckbox from 'ayay-element-plus-react/components/checkbox/ElCheckbox.tsx'
-import ElCheckboxGroup from 'ayay-element-plus-react/components/checkbox/ElCheckboxGroup.tsx'
+import ElCheckbox from '@ayay459547/element-plus-react/components/checkbox/ElCheckbox.tsx'
+import ElCheckboxGroup from '@ayay459547/element-plus-react/components/checkbox/ElCheckboxGroup.tsx'
 import type {
   ElCheckboxGroupBaseProps,
   ElCheckboxProps
-} from 'ayay-element-plus-react/components/checkbox/types'
+} from '@ayay459547/element-plus-react/components/checkbox/types'
 import { useState } from 'react'
 
 const CheckboxIntermediate: React.FC = () => {

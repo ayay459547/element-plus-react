@@ -1,5 +1,5 @@
-import ElBadge from 'ayay-element-plus-react/components/badge/ElBadge.tsx'
-import ElButton from 'ayay-element-plus-react/components/button/ElButton.tsx'
+import ElBadge from '@ayay459547/element-plus-react/components/badge/ElBadge.tsx'
+import ElButton from '@ayay459547/element-plus-react/components/button/ElButton.tsx'
 import { IoMdShare } from 'react-icons/io'
 import styles from './Max.module.scss'
 

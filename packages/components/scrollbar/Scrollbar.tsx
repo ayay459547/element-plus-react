@@ -1,4 +1,4 @@
-import { addUnit } from 'ayay-element-plus-react/utils/dom/style'
+import { addUnit } from '@ayay459547/element-plus-react/utils/dom/style'
 import type { CSSProperties, JSX, ReactNode, Ref } from 'react'
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import { Bar } from './Bar'

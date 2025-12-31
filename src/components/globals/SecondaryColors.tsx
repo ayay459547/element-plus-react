@@ -1,5 +1,5 @@
-import ElCol from 'ayay-element-plus-react/components/col/ElCol.tsx'
-import ElRow from 'ayay-element-plus-react/components/row/ElRow.tsx'
+import ElCol from '@ayay459547/element-plus-react/components/col/ElCol.tsx'
+import ElRow from '@ayay459547/element-plus-react/components/row/ElRow.tsx'
 import clsx from 'clsx'
 import styles from './MainColor.module.scss'
 

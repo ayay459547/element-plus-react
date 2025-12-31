@@ -1,4 +1,4 @@
-import ElAvatar from 'ayay-element-plus-react/components/avatar/ElAvatar.tsx'
+import ElAvatar from '@ayay459547/element-plus-react/components/avatar/ElAvatar.tsx'
 import type { CSSProperties } from 'react'
 import styles from './Fit.module.scss'
 

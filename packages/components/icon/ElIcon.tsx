@@ -1,5 +1,5 @@
-import 'ayay-element-plus-react/components/base/style/css'
-import { addUnit } from 'ayay-element-plus-react/utils/dom/style'
+import '@ayay459547/element-plus-react/components/base/style/css'
+import { addUnit } from '@ayay459547/element-plus-react/utils/dom/style'
 import clsx from 'clsx'
 import type { CSSProperties } from 'react'
 import React from 'react'

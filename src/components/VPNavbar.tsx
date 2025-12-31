@@ -3,8 +3,8 @@ import React from 'react'
 // import { withBase } from '../../utils/withBase' // 需自行實作
 
 import { config } from '@/config'
-import ElIcon from 'ayay-element-plus-react/components/icon/ElIcon.tsx'
-import ElTag from 'ayay-element-plus-react/components/tag/ElTag.tsx'
+import ElIcon from '@ayay459547/element-plus-react/components/icon/ElIcon.tsx'
+import ElTag from '@ayay459547/element-plus-react/components/tag/ElTag.tsx'
 import { Link } from 'react-router-dom'
 import styles from './navbar/navbar.module.scss'
 

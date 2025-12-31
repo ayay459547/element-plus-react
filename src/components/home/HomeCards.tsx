@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import ElCard from 'ayay-element-plus-react/components/card/ElCard.tsx'
+import ElCard from '@ayay459547/element-plus-react/components/card/ElCard.tsx'
 
 import ComponentSvg from './svg/ComponentSvg'
 import GuideSvg from './svg/GuideSvg'

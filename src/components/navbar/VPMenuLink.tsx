@@ -1,5 +1,5 @@
 import { isActive } from '@/utils'
-import ElBadge from 'ayay-element-plus-react/components/badge/ElBadge.tsx'
+import ElBadge from '@ayay459547/element-plus-react/components/badge/ElBadge.tsx'
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import VPLink from '../common/VPLink.tsx'

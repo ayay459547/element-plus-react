@@ -1,4 +1,4 @@
-# ayay-element-plus-react
+# @ayay459547/element-plus-react
 
 Use Element Plus as a reference for creating a React UI framework.
 

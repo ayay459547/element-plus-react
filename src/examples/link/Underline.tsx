@@ -1,4 +1,4 @@
-import ElLink from 'ayay-element-plus-react/components/link/ElLink.tsx'
+import ElLink from '@ayay459547/element-plus-react/components/link/ElLink.tsx'
 import styles from './Basic.module.scss'
 
 const LinkUnderline: React.FC = () => {

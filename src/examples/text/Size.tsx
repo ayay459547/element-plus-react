@@ -1,4 +1,4 @@
-import ElText from 'ayay-element-plus-react/components/text/ElText.tsx'
+import ElText from '@ayay459547/element-plus-react/components/text/ElText.tsx'
 import styles from './TextBasic.module.scss'
 
 const TextSize: React.FC = () => {

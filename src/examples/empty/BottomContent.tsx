@@ -1,5 +1,5 @@
-import ElButton from 'ayay-element-plus-react/components/button/ElButton.tsx'
-import ElEmpty from 'ayay-element-plus-react/components/empty/ElEmpty.tsx'
+import ElButton from '@ayay459547/element-plus-react/components/button/ElButton.tsx'
+import ElEmpty from '@ayay459547/element-plus-react/components/empty/ElEmpty.tsx'
 
 const EmptyBottomContent: React.FC = () => {
   return (

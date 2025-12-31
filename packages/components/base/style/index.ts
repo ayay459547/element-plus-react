@@ -1,1 +1,1 @@
-import 'ayay-element-plus-react/theme-chalk/src/base.scss'
+import '@ayay459547/element-plus-react/theme-chalk/src/base.scss'

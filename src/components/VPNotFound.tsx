@@ -2,8 +2,8 @@ import { useNavigate } from 'react-router-dom'
 
 import VPHeroContent from '@/components/VPHeroContent.tsx'
 import localeData from '@/crowdin/pages/not-found.json'
-import ElButton from 'ayay-element-plus-react/components/button/ElButton.tsx'
-import ElIcon from 'ayay-element-plus-react/components/icon/ElIcon.tsx'
+import ElButton from '@ayay459547/element-plus-react/components/button/ElButton.tsx'
+import ElIcon from '@ayay459547/element-plus-react/components/icon/ElIcon.tsx'
 
 import { IoCloseCircle } from 'react-icons/io5'
 

@@ -2,7 +2,7 @@ import VPDocContent from '@/components/VPDocContent.tsx'
 // import markdown from '@/en-US/component/button.md?raw'
 import VPDemo from '@/components/VPDemo.tsx'
 import VPCode from '@/components/common/VPCode'
-import ElTag from 'ayay-element-plus-react/components/tag/ElTag.tsx'
+import ElTag from '@ayay459547/element-plus-react/components/tag/ElTag.tsx'
 
 import ButtonBasic_styles from '@/examples/button/Basic.module.scss?raw'
 import ButtonBasic from '@/examples/button/Basic.tsx'

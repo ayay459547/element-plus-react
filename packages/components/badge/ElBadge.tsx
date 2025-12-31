@@ -1,4 +1,4 @@
-import { addUnit } from 'ayay-element-plus-react/utils/dom/style'
+import { addUnit } from '@ayay459547/element-plus-react/utils/dom/style'
 import clsx from 'clsx'
 import type { CSSProperties } from 'react'
 import { isNumber } from '../../utils/types'
