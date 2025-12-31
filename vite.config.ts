@@ -35,11 +35,13 @@ export default defineConfig(({ command, mode }) => {
     outDir: 'dist',
     rollupOptions: {
       external: ['react', 'react-dom'],
-      output: {
-        preserveModules: true, // 保留 packages 結構
-        preserveModulesRoot: 'packages',
-        entryFileNames: '[name].js'
-      }
+      output: isBuildLib
+        ? {
+            preserveModules: true, // 保留 packages 結構
+            preserveModulesRoot: 'packages',
+            entryFileNames: '[name].js'
+          }
+        : {}
     },
     emptyOutDir: true
   }
