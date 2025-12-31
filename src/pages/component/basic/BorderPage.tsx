@@ -1,7 +1,7 @@
 import VPDocContent from '@/components/VPDocContent.tsx'
 // import markdown from '@/en-US/component/border.md?raw'
 import VPDemo from '@/components/VPDemo.tsx'
-import VPCode from '@/components/common/VPCode'
+import VPCode from '@/components/common/VPCode.tsx'
 
 import BorderStyle_styles from '@/examples/border/Border.module.scss?raw'
 import BorderStyle from '@/examples/border/Border.tsx'

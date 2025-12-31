@@ -1,7 +1,7 @@
 import VPDemo from '@/components/VPDemo.tsx'
 import VPDocContent from '@/components/VPDocContent.tsx'
 // import markdown from '@/en-US/component/container.md?raw'
-import VPCode from '@/components/common/VPCode'
+import VPCode from '@/components/common/VPCode.tsx'
 
 import CommonLayout_styles from '@/examples/container/common-layout.module.scss?raw'
 

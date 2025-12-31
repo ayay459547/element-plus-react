@@ -76,6 +76,11 @@ export default defineConfig(({ command, mode }) => {
         $: fileURLToPath(new URL('./public', import.meta.url))
       }
     },
+    css: {
+      preprocessorOptions: {
+        scss: { api: 'modern-compiler' }
+      }
+    },
     server: {
       port: 4000,
       host: '0.0.0.0',

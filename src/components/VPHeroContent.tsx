@@ -1,4 +1,4 @@
-import styles from './VPHeroContent.module.scss'
+import '@/styles/content/hero-content.scss'
 
 type VPHeroContentProps = {
   children?: React.ReactNode
@@ -8,7 +8,7 @@ const VPHeroContent: React.FC<VPHeroContentProps> = ({ children }) => {
   return (
     <>
       <div className="hero-content">{children}</div>
-      <hr className={styles['el-divider']} />
+      <hr style={{ border: '1px solid var(--el-border-color-light)' }} />
       <div className="text-center mb-4 mt-4 text-sm text-gray-500">
         <p className="mb-1">
           Open-source UI component library for React

@@ -3,8 +3,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 // import rehypeReact from 'rehype-react'
-import clsx from 'clsx'
-import styles from './VPDocContent.module.scss'
+import '@/styles/content/doc-content.scss'
 
 interface VPDocContentProps {
   children?: React.ReactNode
@@ -53,9 +52,9 @@ const elementPlusLightTheme = {
 
 const VPDocContent: React.FC<VPDocContentProps> = ({ children, markdown }) => {
   return (
-    <div className={clsx('doc-content-wrapper', styles['doc-content-wrapper'])}>
-      <div className={clsx('doc-content-container', styles['doc-content-container'])}>
-        <div className={clsx('doc-content', styles['doc-content'])}>
+    <div className="doc-content-wrapper">
+      <div className="doc-content-container">
+        <div className="doc-content">
           {children}
 
           {/* .md */}

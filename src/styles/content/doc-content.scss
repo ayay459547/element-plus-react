@@ -9,6 +9,35 @@
   .doc-content-container {
     .doc-content {
       width: 100%;
+
+      .vp-table {
+        width: 100%;
+        overflow-y: hidden;
+        overflow-x: auto;
+        margin-bottom: 45px;
+
+        & > table {
+          border-collapse: collapse;
+          width: 100%;
+          background-color: var(--bg-color);
+          font-size: 14px;
+          line-height: 1.5em;
+
+          tbody tr td:first-child {
+            font-family: var(--font-family-mono);
+          }
+
+          th,
+          td {
+            text-align: left;
+            max-width: 250px;
+            // border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.6em 1em;
+            white-space: pre-wrap;
+          }
+        }
+      }
     }
 
     @include respond-to('xxl') {
