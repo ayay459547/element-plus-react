@@ -21,6 +21,7 @@
     "page-deploy": "npm run build && gh-pages -d dist-demo",
     "deploy": "node ./scripts/deploy.js",
     "lib-build": "vite build --mode library",
+    "local-build": "vite build --mode localhost",
     "publish": "node ./scripts/publish.js"
   },
   "peerDependencies": {

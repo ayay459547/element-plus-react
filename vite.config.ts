@@ -34,14 +34,12 @@ export default defineConfig(({ command, mode }) => {
     },
     outDir: 'dist',
     rollupOptions: {
-      external: ['react', 'react-dom'],
-      output: isBuildLib
-        ? {
-            preserveModules: true, // 保留 packages 結構
-            preserveModulesRoot: 'packages',
-            entryFileNames: '[name].js'
-          }
-        : {}
+      external: ['react'],
+      output: {
+        preserveModules: true, // 保留 packages 結構
+        preserveModulesRoot: 'packages',
+        entryFileNames: '[name].js'
+      }
     },
     emptyOutDir: true
   }
@@ -63,7 +61,7 @@ export default defineConfig(({ command, mode }) => {
         copyDtsFiles: true
       })
     ],
-    base: isBuildLib ? './' : (VITE_API_SYSTEM_URL ?? '/'),
+    base: VITE_API_SYSTEM_URL,
     publicDir: isBuildLib ? false : 'public', // lib 不要使用 public 目錄
     build: isBuildLib
       ? libBuildSettings
