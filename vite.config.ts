@@ -56,7 +56,10 @@ export default defineConfig(({ command, mode }) => {
           presetIcons() // i-xxx 圖標
         ]
       }),
-      dts()
+      dts({
+        insertTypesEntry: true,
+        copyDtsFiles: true
+      })
     ],
     base: isBuildLib ? './' : (VITE_API_SYSTEM_URL ?? '/'),
     publicDir: isBuildLib ? false : 'public', // lib 不要使用 public 目錄
