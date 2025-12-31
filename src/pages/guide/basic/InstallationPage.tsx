@@ -137,8 +137,10 @@ const InstallationPage: React.FC = () => {
         code={`<head>
   <!-- Import style -->
   <link rel="stylesheet" href="//unpkg.com/@ayay459547/element-plus-react/dist/index.css" />
-  <!-- Import Vue 3 -->
-  <script src="//unpkg.com/vue@3"></script>
+
+  <!-- Import React -->
+  <script crossorigin src="//unpkg.com/react@18/umd/react.production.min.js"></script>
+
   <!-- Import component library -->
   <script src="//unpkg.com/@ayay459547/element-plus-react"></script>
 </head>`}
@@ -152,8 +154,10 @@ const InstallationPage: React.FC = () => {
     rel="stylesheet"
     href="//cdn.jsdelivr.net/npm/@ayay459547/element-plus-react/dist/index.css"
   />
-  <!-- Import Vue 3 -->
-  <script src="//cdn.jsdelivr.net/npm/vue@3"></script>
+
+  <!-- Import React -->
+  <script src="//cdn.jsdelivr.net/npm/react@18/umd/react.production.min.js"></script>
+
   <!-- Import component library -->
   <script src="//cdn.jsdelivr.net/npm/@ayay459547/element-plus-react"></script>
 </head>`}
@@ -177,10 +181,10 @@ const InstallationPage: React.FC = () => {
         <VPCode
           language={'html'}
           code={`<!-- examples -->
-<el-table>
-  <el-table-column></el-table-column>
-  <el-table-column></el-table-column>
-</el-table>`}
+<ElTable>
+  <ElTableColumn></ElTableColumn>
+  <ElTableColumn></ElTableColumn>
+</ElTable>`}
         ></VPCode>
       </div>
     </VPDocContent>
