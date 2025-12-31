@@ -6,6 +6,7 @@ import { presetAttributify, presetIcons, presetMini } from 'unocss'
 import UnoCSS from 'unocss/vite'
 import type { BuildEnvironmentOptions } from 'vite'
 import { defineConfig, loadEnv } from 'vite'
+import dts from 'vite-plugin-dts'
 import svgr from 'vite-plugin-svgr'
 // import { VitePWA } from 'vite-plugin-pwa'
 
@@ -54,7 +55,8 @@ export default defineConfig(({ command, mode }) => {
           presetAttributify(), // <div p="4" text="red-500"> 語法
           presetIcons() // i-xxx 圖標
         ]
-      })
+      }),
+      dts()
     ],
     base: isBuildLib ? './' : (VITE_API_SYSTEM_URL ?? '/'),
     publicDir: isBuildLib ? false : 'public', // lib 不要使用 public 目錄
