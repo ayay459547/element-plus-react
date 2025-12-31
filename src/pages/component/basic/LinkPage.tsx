@@ -85,14 +85,12 @@ const LinkPage: React.FC = () => {
       </div>
       <VPCode
         language="vue"
-        code={`
-<template>
+        code={`<template>
   <!-- works before 2.9.9, use 'hover' after, removed in 3.0.0 -->
   <ElLink underline>link</ElLink>
   <!-- works before 2.9.9, use 'never' after, removed in 3.0.0 -->
   <ElLink :underline="false">link</ElLink>
-</template>
-        `}
+</template>`}
       />
       <VPDemo
         link="/src/examples/link/Underline.tsx"

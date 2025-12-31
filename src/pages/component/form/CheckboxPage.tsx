@@ -51,16 +51,14 @@ const CheckboxPage: React.FC = () => {
       </div>
       <VPCode
         language="vue"
-        code={`
-<template>
+        code={`<template>
   <el-checkbox-group v-model="checkList">
     <!-- works when >=2.6.0, recommended ✔️ value not work when <2.6.0 ❌ -->
     <el-checkbox label="Option 1" value="Value 1" />
     <!-- works when <2.6.0, deprecated act as value when >=3.0.0 -->
     <el-checkbox label="Option 2 & Value 2" />
   </el-checkbox-group>
-</template>
-        `}
+</template>`}
       />
 
       <h2 id="basic-usage">Basic usage</h2>

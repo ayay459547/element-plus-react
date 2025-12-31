@@ -1,7 +1,7 @@
 import VPDocContent from '@/components/VPDocContent.tsx'
 // import markdown from '@/en-US/component/card.md?raw'
 import VPDemo from '@/components/VPDemo.tsx'
-import VPCode from '@/components/common/VPCode'
+import VPCode from '@/components/common/VPCode.tsx'
 
 import CardBasic from '@/examples/card/Basic.tsx'
 import CardBasic_code from '@/examples/card/Basic.tsx?raw'
