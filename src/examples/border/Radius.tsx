@@ -16,7 +16,7 @@ const RadiusItem: React.FC<{
       <div className={styles['value']}>
         <code>
           border-radius:
-          {radius.type ? value : '"0px"'}
+          {radius.type ? value : '0px'}
         </code>
       </div>
       <div
