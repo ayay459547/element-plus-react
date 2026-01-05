@@ -1,1 +1,2 @@
-export const isDark = false
+// <html class="dark">
+export const isDark = document.documentElement.classList.contains('dark')
