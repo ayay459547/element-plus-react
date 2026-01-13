@@ -1,7 +1,12 @@
 import ElTeleport from '@ayay459547/element-plus-react/components/teleport/ElTeleport.tsx'
+import type { ReactNode } from 'react'
 
-const ElTooltipContent: React.FC = () => {
-  return <ElTeleport></ElTeleport>
+type ElTooltipContentProps = {
+  children?: ReactNode
+}
+
+const ElTooltipContent: React.FC<ElTooltipContentProps> = ({ children }) => {
+  return <ElTeleport>{children}</ElTeleport>
 }
 
 export default ElTooltipContent
