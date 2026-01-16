@@ -1,12 +1,11 @@
 // import ElPopper from '@ayay459547/element-plus-react/components/popper/ElPopper.tsx'
-// import ElTooltipContent from './ElTooltipContent.tsx'
+import ElTooltipContent from './ElTooltipContent.tsx'
 // import ElTooltipTrigger from './ElTooltipTrigger.tsx'
 // import ElPopperArrow from '@ayay459547/element-plus-react/components/popper/ElPopperArrow.tsx'
 import type { ElTooltipProps } from './types'
 
 import { useFloating, useHover, useInteractions } from '@floating-ui/react'
 import { useState } from 'react'
-import { createPortal } from 'react-dom'
 // import { usePopper } from 'react-popper'
 
 const ElTooltip: React.FC<ElTooltipProps> = ({ children, content }) => {
@@ -32,8 +31,8 @@ const ElTooltip: React.FC<ElTooltipProps> = ({ children, content }) => {
         {children}
       </span>
 
-      {isOpen &&
-        createPortal(
+      {isOpen && (
+        <ElTooltipContent>
           <div
             ref={(element) => refs.setFloating(element)}
             style={{
@@ -47,9 +46,9 @@ const ElTooltip: React.FC<ElTooltipProps> = ({ children, content }) => {
             {...getFloatingProps()}
           >
             {content}
-          </div>,
-          document.body
-        )}
+          </div>
+        </ElTooltipContent>
+      )}
     </>
   )
 
