@@ -25,7 +25,6 @@ export type ElPopperArrowProps = {
 
 export type ElPopperContentProps = {
   children?: ReactNode
-  teleportTo?: HTMLElement
 }
 
 export type ElPopperTriggerProps = {

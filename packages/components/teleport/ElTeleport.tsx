@@ -4,19 +4,19 @@ import { useMemo } from 'react'
 import { createPortal } from 'react-dom'
 
 const ElTeleport: React.FC<ElTeleportProps> = ({
-  to = document.body,
+  appendTo = document.body,
   disabled = false,
   children
 }) => {
   const container = useMemo(() => {
     if (disabled) return null
 
-    if (typeof to === 'string') {
-      return document.querySelector(to)
+    if (typeof appendTo === 'string') {
+      return document.querySelector(appendTo)
     }
 
-    return to ?? null
-  }, [to, disabled])
+    return appendTo ?? null
+  }, [appendTo, disabled])
 
   if (!container) {
     return <>{children}</>

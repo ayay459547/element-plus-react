@@ -1,19 +1,23 @@
 // import ElFocusTrap from '@ayay459547/element-plus-react/components/focus-trap/ElFocusTrap.tsx'
-import { createPortal } from 'react-dom'
+import clsx from 'clsx'
+import styles from './ElPopper.module.scss'
 import type { ElPopperContentProps } from './types'
 import { usePopperContext } from './usePopper'
 
-const ElPopperContent: React.FC<ElPopperContentProps> = ({
-  children,
-  teleportTo = document.body
-}) => {
-  const { setPopperEl } = usePopperContext()
+const ElPopperContent: React.FC<ElPopperContentProps> = ({ children }) => {
+  const { isOpen, floatingStyles, setFloating, getFloatingProps } = usePopperContext()
 
-  return createPortal(
-    <div ref={setPopperEl} className="el-popper">
+  // if (!isOpen) return null
+
+  return (
+    <div
+      ref={(element) => setFloating(element)}
+      style={{ ...floatingStyles }}
+      className={clsx('el-popper', styles['el-popper'])}
+      {...getFloatingProps()}
+    >
       {children}
-    </div>,
-    teleportTo
+    </div>
   )
 
   // return (

@@ -7,12 +7,14 @@ export type ElTeleportProps = {
    * 也可以直接是 HTMLElement
    * @default "body"
    */
-  to?: string | HTMLElement
+  appendTo?: string | HTMLElement
+
   /**
    * 是否禁用傳送
    * 如果為 true，內容會渲染在目前的位置（原地渲染）
    * @default false
    */
   disabled?: boolean
+
   children: ReactNode
 }
