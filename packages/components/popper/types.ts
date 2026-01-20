@@ -1,3 +1,4 @@
+import type { ElTeleportProps } from '@ayay459547/element-plus-react/components/teleport/types'
 import type { ReactElement, ReactNode } from 'react'
 
 export type Placement =
@@ -15,8 +16,12 @@ export type Placement =
   | 'right-end'
 
 export type PopperProps = {
-  children?: ReactNode
+  appendTo?: ElTeleportProps['appendTo']
+  effect?: 'dark' | 'light'
+  offset?: number
   placement?: Placement
+
+  children?: ReactNode
 }
 
 export type ElPopperArrowProps = {

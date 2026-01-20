@@ -7,14 +7,17 @@ import type { ElTooltipProps } from './types'
 const ElTooltip: React.FC<ElTooltipProps> = ({
   appendTo = document.body,
   effect = 'dark',
+  content,
+  // rawContent = false,
+  placement = 'bottom',
   showArrow = true,
-  children,
-  content
+  offset = 12,
+  children
 }) => {
   return (
-    <ElPopper>
+    <ElPopper appendTo={appendTo} effect={effect} offset={offset} placement={placement}>
       <ElTooltipTrigger>{children}</ElTooltipTrigger>
-      <ElTooltipContent appendTo={appendTo}>
+      <ElTooltipContent>
         {showArrow && <ElPopperArrow />}
         {content}
       </ElTooltipContent>

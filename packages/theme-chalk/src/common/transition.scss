@@ -120,6 +120,20 @@
 }
 
 .#{$namespace}-opacity-transition {
-  transition: opacity getCssVar('transition-duration')
-    cubic-bezier(0.55, 0, 0.1, 1);
+  transition: opacity getCssVar('transition-duration') cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.#{$namespace}-fade-in-linear-enter {
+  opacity: 0;
+}
+.#{$namespace}-fade-in-linear-enter-active {
+  opacity: 1;
+  transition: getCssVar('transition-fade', 'linear');
+}
+.#{$namespace}-fade-in-linear-exit {
+  opacity: 1;
+}
+.#{$namespace}-fade-in-linear-exit-active {
+  opacity: 0;
+  transition: getCssVar('transition-fade', 'linear');
 }
