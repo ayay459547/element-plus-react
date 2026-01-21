@@ -1,5 +1,5 @@
 import type { ElTeleportProps } from '@ayay459547/element-plus-react/components/teleport/types'
-import type { ReactElement, ReactNode } from 'react'
+import type { CSSProperties, ReactElement, ReactNode } from 'react'
 
 export type Placement =
   | 'top'
@@ -17,9 +17,21 @@ export type Placement =
 
 export type PopperProps = {
   appendTo?: ElTeleportProps['appendTo']
-  effect?: 'dark' | 'light'
-  offset?: number
+  effect?: 'dark' | 'light' | string
+  content?: ReactNode | string
+  rawContent?: boolean
   placement?: Placement
+  fallbackPlacements?: Array<Placement>
+  visible?: boolean
+  onVisible?: (visible: boolean) => void
+  disabled?: boolean
+  offset?: number
+  transition?: string
+  showArrow?: boolean
+  popperClass?: string
+  popperStyle?: CSSProperties
+  enterable?: boolean
+  teleported?: boolean
 
   children?: ReactNode
 }
@@ -29,7 +41,7 @@ export type ElPopperArrowProps = {
 }
 
 export type ElPopperContentProps = {
-  children?: ReactNode
+  children?: ReactNode | string
 }
 
 export type ElPopperTriggerProps = {

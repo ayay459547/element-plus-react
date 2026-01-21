@@ -1,5 +1,6 @@
 import type {
   FloatingArrowProps,
+  MiddlewareData,
   NarrowedElement,
   ReferenceType,
   UseInteractionsReturn
@@ -9,7 +10,7 @@ import { createContext, useContext } from 'react'
 import { POPPER_CONTENT_INJECTION_KEY, POPPER_INJECTION_KEY } from './constants'
 import type { PopperProps } from './types'
 
-export type PopperContextType = {
+export interface PopperContextType extends PopperProps {
   POPPER_INJECTION_KEY: typeof POPPER_INJECTION_KEY
   POPPER_CONTENT_INJECTION_KEY: typeof POPPER_CONTENT_INJECTION_KEY
 
@@ -21,12 +22,9 @@ export type PopperContextType = {
   getReferenceProps: UseInteractionsReturn['getReferenceProps']
   getFloatingProps: UseInteractionsReturn['getFloatingProps']
 
-  setArrowElement: Dispatch<SetStateAction<SVGSVGElement | null>>
+  setArrowElement: Dispatch<SetStateAction<Element | null>>
   context: FloatingArrowProps['context'] | null
-
-  // props
-  appendTo?: PopperProps['appendTo']
-  effect?: PopperProps['effect']
+  middlewareData: MiddlewareData
 }
 
 export const PopperContext = createContext<PopperContextType>({
@@ -47,6 +45,7 @@ export const PopperContext = createContext<PopperContextType>({
 
   setArrowElement: () => {},
   context: null,
+  middlewareData: {},
 
   effect: 'dark'
 })

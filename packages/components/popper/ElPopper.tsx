@@ -1,11 +1,4 @@
-import {
-  arrow,
-  autoPlacement,
-  offset,
-  useFloating,
-  useHover,
-  useInteractions
-} from '@floating-ui/react'
+import { arrow, flip, offset, useFloating, useHover, useInteractions } from '@floating-ui/react'
 import { useState } from 'react'
 // import { usePopper } from 'react-popper'
 import { POPPER_CONTENT_INJECTION_KEY, POPPER_INJECTION_KEY } from './constants'
@@ -14,26 +7,46 @@ import type { PopperProps } from './types'
 import type { PopperContextType } from './usePopper'
 import { PopperContext } from './usePopper'
 
-const ElPopper: React.FC<PopperProps> = ({
-  appendTo = document.body,
-  effect = 'dark',
-  offset: popperOffset = 12,
-  placement = 'bottom',
-  children
-}) => {
+const ElPopper: React.FC<PopperProps> = (props) => {
+  const {
+    appendTo = document.body,
+    effect = 'dark',
+    content,
+    rawContent = false,
+    placement = 'bottom',
+    fallbackPlacements,
+    visible,
+    onVisible,
+    disabled = false,
+    offset: popperOffset = 12,
+    transition,
+    showArrow = true,
+    popperClass,
+    popperStyle,
+    enterable = true,
+    teleported = true,
+    children
+  } = props
+
   const [isOpen, setIsOpen] = useState(false)
 
-  const [arrowElement, setArrowElement] = useState<SVGSVGElement | null>(null)
+  const [arrowElement, setArrowElement] = useState<Element | null>(null)
 
-  const { refs, floatingStyles, context } = useFloating({
+  const { refs, floatingStyles, context, middlewareData } = useFloating({
     open: isOpen,
-    onOpenChange: setIsOpen,
+    placement,
+    onOpenChange: (isOpen) => {
+      setIsOpen(disabled ? false : isOpen)
+      if (typeof onVisible === 'function') {
+        onVisible(isOpen)
+      }
+      // console.log(event) // e.g. MouseEvent
+      // console.log(reason) // e.g. 'hover'
+    },
     middleware: [
       offset(popperOffset),
-      autoPlacement({
-        // alignment: 'end',
-        allowedPlacements: [placement],
-        autoAlignment: true
+      flip({
+        fallbackPlacements
       }),
       arrow({
         element: arrowElement
@@ -47,7 +60,7 @@ const ElPopper: React.FC<PopperProps> = ({
     POPPER_INJECTION_KEY,
     POPPER_CONTENT_INJECTION_KEY,
 
-    isOpen,
+    isOpen: disabled ? false : (visible ?? isOpen),
     domReference: refs.domReference,
     setReference: refs.setReference,
     setFloating: refs.setFloating,
@@ -57,10 +70,21 @@ const ElPopper: React.FC<PopperProps> = ({
 
     setArrowElement,
     context,
+    middlewareData,
 
     // props
     appendTo,
-    effect
+    effect,
+    content,
+    rawContent,
+    placement,
+    fallbackPlacements,
+    transition,
+    showArrow,
+    popperClass,
+    popperStyle,
+    enterable,
+    teleported
   }
 
   return <PopperContext.Provider value={value}>{children}</PopperContext.Provider>

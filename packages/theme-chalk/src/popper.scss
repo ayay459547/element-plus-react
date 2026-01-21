@@ -69,7 +69,7 @@
     'top': 'bottom',
     'bottom': 'top',
     'left': 'right',
-    'right': 'left',
+    'right': 'left'
   );
 
   @each $placement, $opposite in $placements {
@@ -94,8 +94,7 @@
   }
 
   @each $placement,
-    $adjacency
-      in ('top': 'left', 'bottom': 'right', 'left': 'bottom', 'right': 'top')
+    $adjacency in ('top': 'left', 'bottom': 'right', 'left': 'bottom', 'right': 'top')
   {
     &[data-popper-placement^='#{$placement}'] > {
       #{$arrow-selector}::before {

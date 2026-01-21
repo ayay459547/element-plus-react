@@ -1,4 +1,5 @@
 // import ElFocusTrap from '@ayay459547/element-plus-react/components/focus-trap/ElFocusTrap.tsx'
+import ElPopperArrow from '@ayay459547/element-plus-react/components/popper/ElPopperArrow.tsx'
 import ElTeleport from '@ayay459547/element-plus-react/components/teleport/ElTeleport.tsx'
 import { useFloating, useHover } from '@floating-ui/react'
 import clsx from 'clsx'
@@ -9,8 +10,24 @@ import type { ElPopperContentProps } from './types'
 import { usePopperContext } from './usePopper'
 
 const ElPopperContent: React.FC<ElPopperContentProps> = ({ children }) => {
-  const { isOpen, floatingStyles, setFloating, getFloatingProps, appendTo, effect } =
-    usePopperContext()
+  const {
+    isOpen,
+    floatingStyles,
+    setFloating,
+    getFloatingProps,
+    middlewareData,
+
+    // props
+    appendTo,
+    effect,
+    placement,
+    transition,
+    showArrow,
+    popperClass,
+    popperStyle,
+    enterable,
+    teleported
+  } = usePopperContext()
 
   const contentRef = useRef<HTMLElement>(null)
 
@@ -21,14 +38,12 @@ const ElPopperContent: React.FC<ElPopperContentProps> = ({ children }) => {
   })
   useHover(context)
 
-  const isDark = effect === 'dark'
-
   return (
-    <ElTeleport appendTo={appendTo}>
+    <ElTeleport appendTo={teleported ? appendTo : null}>
       <CSSTransition
-        in={isOpen || isHover} // 控制進場/出場
-        timeout={200} // 動畫時間 (毫秒)
-        classNames={clsx('el-fade-in-linear')} // 對應 CSS class
+        in={isOpen || (enterable && isHover)} // 控制進場/出場
+        timeout={500} // 動畫時間 (毫秒)
+        classNames={clsx(transition ?? 'el-fade-in-linear')} // 對應 CSS class
         unmountOnExit // 隱藏時從 DOM 移除 (符合 Tooltip 行為)
         nodeRef={contentRef} // 綁定 ref
         appear // 初次渲染如果為 true 也執行動畫
@@ -39,15 +54,19 @@ const ElPopperContent: React.FC<ElPopperContentProps> = ({ children }) => {
             refs.setReference(element)
             contentRef.current = element
           }}
-          style={{ ...floatingStyles }}
+          style={{ ...floatingStyles, ...popperStyle }}
           className={clsx(
+            popperClass,
             'el-popper',
             styles['el-popper'],
-            isDark ? styles['is-dark'] : styles['is-light']
+            `is-${effect}`,
+            styles[`is-${effect}`]
           )}
           {...getFloatingProps()}
+          data-popper-placement={middlewareData.offset?.placement ?? placement}
         >
           {children}
+          {showArrow && <ElPopperArrow />}
         </div>
       </CSSTransition>
     </ElTeleport>

@@ -7,7 +7,7 @@ export type ElTeleportProps = {
    * 也可以直接是 HTMLElement
    * @default "body"
    */
-  appendTo?: string | HTMLElement
+  appendTo?: string | HTMLElement | null
 
   /**
    * 是否禁用傳送
