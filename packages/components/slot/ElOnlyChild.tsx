@@ -1,55 +1,45 @@
-import type { ReactElement, ReactNode } from 'react'
+// components/slot/ElOnlyChild.tsx
+import type { RefObject } from 'react'
 import { Children, cloneElement, forwardRef, isValidElement } from 'react'
 
-function canAcceptRef(element: ReactElement) {
-  const type = element.type
-
-  // DOM element
-  if (typeof type === 'string') return true
-
-  // class component
-  if (typeof type === 'function' && type.prototype?.isReactComponent) {
-    return true
-  }
-
-  // forwardRef component
-  if (
-    typeof type === 'object' &&
-    (type as any)?.$$typeof?.toString() === 'Symbol(react.forward_ref)'
-  ) {
-    return true
-  }
-
-  return false
+interface ElOnlyChildProps {
+  children: React.ReactNode
+  [key: string]: any // 允許傳入 onClick, onMouseEnter, style 等
 }
 
-type OnlyChildProps = {
-  children?: ReactNode
+function composeRefs<T>(...refs: (React.Ref<T> | undefined)[]) {
+  return (node: T) => {
+    refs.forEach((ref) => {
+      if (!ref) return
+      if (typeof ref === 'function') {
+        ref(node)
+      } else {
+        ;(ref as RefObject<T | null>).current = node
+      }
+    })
+  }
 }
 
-const ElOnlyChild = forwardRef<HTMLElement, OnlyChildProps>(({ children }, forwardedRef) => {
-  const valid = Children.toArray(children).filter(Boolean)
-  if (valid.length === 0) return null
+const ElOnlyChild = forwardRef<HTMLElement, ElOnlyChildProps>((props, ref) => {
+  const { children, ...restProps } = props
+  if (children === null || children === undefined) return null
 
-  const child = valid[0]
-
-  if (typeof child === 'string' || typeof child === 'number') {
-    return <span ref={forwardedRef}>{child}</span>
+  if (Children.count(children) !== 1) {
+    console.error('[ElOnlyChild] requires exactly one valid React element as a child.')
+    return null
   }
 
-  if (!isValidElement(child)) return null
-
-  const element = child as ReactElement<any>
-
-  if (!canAcceptRef(element)) {
-    return element
+  const child = Children.only(children)
+  if (!isValidElement(child)) {
+    return null
   }
 
-  return cloneElement(element)
-
-  // return cloneElement(element, {
-  //   ref: forwardedRef
-  // })
+  return cloneElement(child, {
+    ...restProps,
+    ref: composeRefs((child as any).ref, ref)
+  })
 })
+
+ElOnlyChild.displayName = 'ElOnlyChild'
 
 export default ElOnlyChild

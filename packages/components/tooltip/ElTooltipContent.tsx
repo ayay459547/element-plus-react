@@ -1,4 +1,4 @@
-import ElTeleport from '@ayay459547/element-plus-react/components/teleport/ElTeleport.tsx'
+import ElPopperContent from '@ayay459547/element-plus-react/components/popper/ElPopperContent.tsx'
 import type { ReactNode } from 'react'
 
 type ElTooltipContentProps = {
@@ -6,7 +6,7 @@ type ElTooltipContentProps = {
 }
 
 const ElTooltipContent: React.FC<ElTooltipContentProps> = ({ children }) => {
-  return <ElTeleport>{children}</ElTeleport>
+  return <ElPopperContent>{children}</ElPopperContent>
 }
 
 export default ElTooltipContent
