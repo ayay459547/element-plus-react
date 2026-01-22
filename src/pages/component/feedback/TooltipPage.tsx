@@ -20,6 +20,9 @@ import TooltipAdvancedUsage_code from '@/examples/tooltip/AdvancedUsage.tsx?raw'
 import TooltipHTMLContent from '@/examples/tooltip/HTMLContent.tsx'
 import TooltipHTMLContent_code from '@/examples/tooltip/HTMLContent.tsx?raw'
 
+import TooltipVirtualTrigger from '@/examples/tooltip/VirtualTrigger.tsx'
+import TooltipVirtualTrigger_code from '@/examples/tooltip/VirtualTrigger.tsx?raw'
+
 const TooltipPage: React.FC = () => {
   return (
     <VPDocContent>
@@ -193,6 +196,31 @@ const TooltipPage: React.FC = () => {
       </VPDemo>
 
       <h2 id="virtual-triggering">Virtual triggering</h2>
+      <p>
+        Sometimes we want to render the tooltip on some other trigger element, we can separate the
+        trigger and the content.
+      </p>
+      <div className="tip custom-block">
+        <p className="custom-block-title">TIP</p>
+        <p>
+          Virtual triggering tooltip is controlled component, so that you will have to control the
+          visibility of the tooltip your own when this happens, <strong>YOU WILL NOT</strong> be
+          able to close the tooltip by clicking somewhere else.
+        </p>
+      </div>
+      <VPDemo
+        link="/src/examples/tooltip/VirtualTrigger.tsx"
+        code={
+          <VPCode
+            language={['VirtualTrigger.tsx']}
+            code={{
+              'VirtualTrigger.tsx': TooltipVirtualTrigger_code
+            }}
+          />
+        }
+      >
+        <TooltipVirtualTrigger />
+      </VPDemo>
     </VPDocContent>
   )
 }

@@ -40,8 +40,6 @@ const ElPopper: React.FC<PopperProps> = (props) => {
       if (typeof onVisible === 'function') {
         onVisible(isOpen)
       }
-      // console.log(event) // e.g. MouseEvent
-      // console.log(reason) // e.g. 'hover'
     },
     middleware: [
       offset(popperOffset),

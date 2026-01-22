@@ -22,20 +22,18 @@ function composeRefs<T>(...refs: (React.Ref<T> | undefined)[]) {
 
 const ElOnlyChild = forwardRef<HTMLElement, ElOnlyChildProps>((props, ref) => {
   const { children, ...restProps } = props
+  if (children === null || children === undefined) return null
 
-  // 1️⃣ 必須只有一個 child
   if (Children.count(children) !== 1) {
     console.error('[ElOnlyChild] requires exactly one valid React element as a child.')
     return null
   }
 
-  // 2️⃣ 必須是 ReactElement
   const child = Children.only(children)
   if (!isValidElement(child)) {
     return null
   }
 
-  // 3️⃣ 合併 ref（child 原本的 ref + 外部 ref）
   return cloneElement(child, {
     ...restProps,
     ref: composeRefs((child as any).ref, ref)
