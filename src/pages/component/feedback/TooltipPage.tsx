@@ -23,6 +23,13 @@ import TooltipHTMLContent_code from '@/examples/tooltip/HTMLContent.tsx?raw'
 import TooltipVirtualTrigger from '@/examples/tooltip/VirtualTrigger.tsx'
 import TooltipVirtualTrigger_code from '@/examples/tooltip/VirtualTrigger.tsx?raw'
 
+import TooltipSingleton_styles from '@/examples/tooltip/Singleton.scss?raw'
+import TooltipSingleton from '@/examples/tooltip/Singleton.tsx'
+import TooltipSingleton_code from '@/examples/tooltip/Singleton.tsx?raw'
+
+import TooltipControlled from '@/examples/tooltip/Controlled.tsx'
+import TooltipControlled_code from '@/examples/tooltip/Controlled.tsx?raw'
+
 const TooltipPage: React.FC = () => {
   return (
     <VPDocContent>
@@ -220,6 +227,51 @@ const TooltipPage: React.FC = () => {
         }
       >
         <TooltipVirtualTrigger />
+      </VPDemo>
+
+      <h2 id="singleton">Singleton</h2>
+      <p>
+        Tooltip can also be singleton, which means you can have multiple trigger with only one
+        tooltip instance, this function is implemented based on <code>Virtual triggering</code>
+      </p>
+      <div className="tip custom-block">
+        <p className="custom-block-title">TIP</p>
+        <p>
+          Known issue: when using singleton, the popup will be bouncing out from unexpected places
+        </p>
+      </div>
+      <VPDemo
+        link="/src/examples/tooltip/Singleton.tsx"
+        code={
+          <VPCode
+            language={['Singleton.tsx', 'Singleton.scss']}
+            code={{
+              'Singleton.tsx': TooltipSingleton_code,
+              'Singleton.scss': TooltipSingleton_styles
+            }}
+          />
+        }
+      >
+        <TooltipSingleton />
+      </VPDemo>
+
+      <h2 id="controlled">Controlled</h2>
+      <p>
+        Tooltip can be controlled by the parent component, by using <code>:visible</code> you can
+        implement two way binding.
+      </p>
+      <VPDemo
+        link="/src/examples/tooltip/Controlled.tsx"
+        code={
+          <VPCode
+            language={['Controlled.tsx']}
+            code={{
+              'Controlled.tsx': TooltipControlled_code
+            }}
+          />
+        }
+      >
+        <TooltipControlled />
       </VPDemo>
     </VPDocContent>
   )

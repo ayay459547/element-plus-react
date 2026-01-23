@@ -21,6 +21,9 @@ const ElTooltip: React.FC<ElTooltipProps> = ({
   popperStyle,
   enterable = true,
   teleported = true,
+  trigger = 'hover',
+  virtualTriggering = false,
+  virtualRef,
   children
 }) => {
   const isInnerHTML = rawContent && typeof content === 'string'
@@ -42,6 +45,9 @@ const ElTooltip: React.FC<ElTooltipProps> = ({
       popperStyle={popperStyle}
       enterable={enterable}
       teleported={teleported}
+      trigger={trigger}
+      virtualTriggering={virtualTriggering}
+      virtualRef={virtualRef}
     >
       <ElTooltipTrigger>{children}</ElTooltipTrigger>
       <ElTooltipContent>
