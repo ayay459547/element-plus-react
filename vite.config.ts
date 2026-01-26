@@ -4,13 +4,13 @@ import { resolve } from 'path'
 
 import { presetAttributify, presetIcons, presetMini } from 'unocss'
 import UnoCSS from 'unocss/vite'
-import type { BuildEnvironmentOptions } from 'vite'
+import type { BuildOptions, ConfigEnv, UserConfig } from 'vite'
 import { defineConfig, loadEnv } from 'vite'
 import dts from 'vite-plugin-dts'
 import svgr from 'vite-plugin-svgr'
 // import { VitePWA } from 'vite-plugin-pwa'
 
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, process.cwd(), '')
   const { VITE_API_BUILD_VERSION, VITE_API_VERSION, VITE_API_SYSTEM_URL, VITE_API_BUILD_TYPE } = env
 
@@ -25,7 +25,7 @@ export default defineConfig(({ command, mode }) => {
 
   const isBuildLib = command === 'build' && VITE_API_BUILD_TYPE === 'library'
 
-  const libBuildSettings: BuildEnvironmentOptions = {
+  const libBuildSettings: BuildOptions = {
     lib: {
       entry: resolve(__dirname, 'packages/index.ts'),
       name: 'ElementPlusReact',
@@ -78,7 +78,12 @@ export default defineConfig(({ command, mode }) => {
     },
     css: {
       preprocessorOptions: {
-        scss: { api: 'modern-compiler' }
+        scss: {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-expect-error
+          api: 'modern-compiler',
+          quietDeps: true
+        }
       }
     },
     server: {
@@ -86,6 +91,8 @@ export default defineConfig(({ command, mode }) => {
       host: '0.0.0.0',
       open: true,
       cors: false,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       historyApiFallback: true
     }
   }
