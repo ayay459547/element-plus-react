@@ -19,7 +19,7 @@ const ControllabilitySvg: React.FC = () => {
         <clipPath id="SVGID_00000103965616648291865560000002216192073450902938_">
           <use style={{ overflow: 'visible' }} />
         </clipPath>
-        <g style={{ clipPath: 'url(#SVGID_00000103965616648291865560000002216192073450902938_);' }}>
+        <g style={{ clipPath: 'url(#SVGID_00000103965616648291865560000002216192073450902938_)' }}>
           <path
             className={styles['st2']}
             d="M57.3,23.2L57.3,23.2c0.5,0,1,0.4,1,1v36c0,0.5-0.4,1-1,1l0,0c-0.5,0-1-0.4-1-1v-36
