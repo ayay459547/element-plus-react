@@ -23,6 +23,21 @@ import TooltipHTMLContent_code from '@/examples/tooltip/HTMLContent.tsx?raw'
 import TooltipVirtualTrigger from '@/examples/tooltip/VirtualTrigger.tsx'
 import TooltipVirtualTrigger_code from '@/examples/tooltip/VirtualTrigger.tsx?raw'
 
+import TooltipSingleton_styles from '@/examples/tooltip/Singleton.scss?raw'
+import TooltipSingleton from '@/examples/tooltip/Singleton.tsx'
+import TooltipSingleton_code from '@/examples/tooltip/Singleton.tsx?raw'
+
+import TooltipControlled from '@/examples/tooltip/Controlled.tsx'
+import TooltipControlled_code from '@/examples/tooltip/Controlled.tsx?raw'
+
+import TooltipAnimations_styles from '@/examples/tooltip/Animations.scss?raw'
+import TooltipAnimations from '@/examples/tooltip/Animations.tsx'
+import TooltipAnimations_code from '@/examples/tooltip/Animations.tsx?raw'
+
+import TooltipAppendTo_styles from '@/examples/tooltip/AppendTo.scss?raw'
+import TooltipAppendTo from '@/examples/tooltip/AppendTo.tsx'
+import TooltipAppendTo_code from '@/examples/tooltip/AppendTo.tsx?raw'
+
 const TooltipPage: React.FC = () => {
   return (
     <VPDocContent>
@@ -220,6 +235,113 @@ const TooltipPage: React.FC = () => {
         }
       >
         <TooltipVirtualTrigger />
+      </VPDemo>
+
+      <h2 id="singleton">Singleton</h2>
+      <p>
+        Tooltip can also be singleton, which means you can have multiple trigger with only one
+        tooltip instance, this function is implemented based on <code>Virtual triggering</code>
+      </p>
+      <div className="tip custom-block">
+        <p className="custom-block-title">TIP</p>
+        <p>
+          Known issue: when using singleton, the popup will be bouncing out from unexpected places
+        </p>
+      </div>
+      <VPDemo
+        link="/src/examples/tooltip/Singleton.tsx"
+        code={
+          <VPCode
+            language={['Singleton.tsx', 'Singleton.scss']}
+            code={{
+              'Singleton.tsx': TooltipSingleton_code,
+              'Singleton.scss': TooltipSingleton_styles
+            }}
+          />
+        }
+      >
+        <TooltipSingleton />
+      </VPDemo>
+
+      <h2 id="controlled">Controlled</h2>
+      <p>
+        Tooltip can be controlled by the parent component, by using <code>:visible</code> you can
+        implement two way binding.
+      </p>
+      <VPDemo
+        link="/src/examples/tooltip/Controlled.tsx"
+        code={
+          <VPCode
+            language={['Controlled.tsx']}
+            code={{
+              'Controlled.tsx': TooltipControlled_code
+            }}
+          />
+        }
+      >
+        <TooltipControlled />
+      </VPDemo>
+
+      <h2 id="animations">Animations</h2>
+      <p>
+        Tooltip can be customized animated, you can set the desired animation use{' '}
+        <code>transition</code>.
+      </p>
+      <div className="tip custom-block">
+        <p className="custom-block-title">TIP</p>
+        <p>
+          Transition Classes, more information can be found at{' '}
+          <a
+            href="https://reactcommunity.org/react-transition-group/css-transition"
+            className="vp-link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            React Transition Group (CSSTransition)
+            <svg viewBox="0 0 24 24" width="1.2em" height="1.2em" className="link-icon">
+              <path
+                fill="currentColor"
+                d="M10 6v2H5v11h11v-5h2v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1zm11-3v8h-2V6.413l-7.793 7.794l-1.414-1.414L17.585 5H13V3z"
+              ></path>
+            </svg>
+          </a>
+          .
+        </p>
+      </div>
+      <VPDemo
+        link="/src/examples/tooltip/Animations.tsx"
+        code={
+          <VPCode
+            language={['Animations.tsx', 'Animations.scss']}
+            code={{
+              'Animations.tsx': TooltipAnimations_code,
+              'Animations.scss': TooltipAnimations_styles
+            }}
+          />
+        }
+      >
+        <TooltipAnimations />
+      </VPDemo>
+
+      <h2 id="use-the-append-to">
+        Use the <code>append-to</code>{' '}
+      </h2>
+      <p>
+        You must wait for the DOM to be mounted before using <code>targetElement</code>.
+      </p>
+      <VPDemo
+        link="/src/examples/tooltip/AppendTo.tsx"
+        code={
+          <VPCode
+            language={['AppendTo.tsx', 'AppendTo.scss']}
+            code={{
+              'AppendTo.tsx': TooltipAppendTo_code,
+              'AppendTo.scss': TooltipAppendTo_styles
+            }}
+          />
+        }
+      >
+        <TooltipAppendTo />
       </VPDemo>
     </VPDocContent>
   )

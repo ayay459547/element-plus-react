@@ -79,6 +79,21 @@ export type ElTooltipProps = {
   teleported?: PopperProps['teleported']
 
   /**
+   * @description How should the tooltip be triggered (to show), not valid in controlled mode
+   */
+  trigger?: PopperProps['trigger']
+
+  /**
+   * @description Indicates whether virtual triggering is enabled
+   */
+  virtualTriggering?: PopperProps['virtualTriggering']
+
+  /**
+   * @description Indicates the reference element to which the tooltip is attached
+   */
+  virtualRef?: PopperProps['virtualRef']
+
+  /**
    * @description Tooltip triggering & reference element, only a single root element is accepted
    */
   children?: ReactNode

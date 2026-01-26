@@ -21,6 +21,7 @@ const ElPopperContent: React.FC<ElPopperContentProps> = ({ children }) => {
     appendTo,
     effect,
     placement,
+    disabled,
     transition,
     showArrow,
     popperClass,
@@ -38,15 +39,19 @@ const ElPopperContent: React.FC<ElPopperContentProps> = ({ children }) => {
   })
   useHover(context)
 
+  const isVisible = disabled ? false : isOpen || (enterable && isHover)
+
   return (
     <ElTeleport appendTo={teleported ? appendTo : null}>
       <CSSTransition
-        in={isOpen || (enterable && isHover)} // 控制進場/出場
+        in={isVisible} // 控制進場/出場
         timeout={500} // 動畫時間 (毫秒)
         classNames={clsx(transition ?? 'el-fade-in-linear')} // 對應 CSS class
         unmountOnExit // 隱藏時從 DOM 移除 (符合 Tooltip 行為)
         nodeRef={contentRef} // 綁定 ref
         appear // 初次渲染如果為 true 也執行動畫
+        enter
+        exit
       >
         <div
           ref={(element) => {

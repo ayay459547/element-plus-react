@@ -1,4 +1,5 @@
 import type { ElTeleportProps } from '@ayay459547/element-plus-react/components/teleport/types'
+import type { ReferenceType } from '@floating-ui/react'
 import type { CSSProperties, ReactElement, ReactNode } from 'react'
 
 export type Placement =
@@ -14,6 +15,8 @@ export type Placement =
   | 'right'
   | 'right-start'
   | 'right-end'
+
+export type Trigger = 'hover' | 'click' | 'focus' | 'contextmenu'
 
 export type PopperProps = {
   appendTo?: ElTeleportProps['appendTo']
@@ -32,6 +35,9 @@ export type PopperProps = {
   popperStyle?: CSSProperties
   enterable?: boolean
   teleported?: boolean
+  trigger?: Trigger | Array<Trigger>
+  virtualTriggering?: boolean
+  virtualRef?: ReferenceType | HTMLElement | null
 
   children?: ReactNode
 }
