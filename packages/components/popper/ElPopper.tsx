@@ -58,11 +58,11 @@ const ElPopper: React.FC<PopperProps> = (props) => {
       console.log('onOpenChange => ', { isOpen, disabled, event, reason })
 
       // 滑鼠右鍵 (待開發)
-      // const isRight = event && 'button' in event && event.button === 2
-      // if (contextmenuEnabled && reason === 'reference-press' && isRight) {
-      //   console.log('滑鼠右鍵')
-      //   return
-      // }
+      const isRight = event && 'button' in event && event.button === 2
+      if (contextmenuEnabled && reason === 'reference-press' && isRight) {
+        console.log('滑鼠右鍵')
+        return
+      }
 
       const isVisible = disabled ? false : isOpen
       setIsOpen(isVisible)
@@ -88,11 +88,12 @@ const ElPopper: React.FC<PopperProps> = (props) => {
     enabled: clickEnabled
   })
   const focus = useFocus(context, {
-    enabled: focusEnabled
+    enabled: focusEnabled,
+    visibleOnly: true
   })
 
   const dismiss = useDismiss(context, {
-    referencePress: clickEnabled,
+    referencePress: !clickEnabled,
     referencePressEvent: 'mousedown',
     outsidePress: true,
     outsidePressEvent: 'mousedown'

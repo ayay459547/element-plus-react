@@ -50,6 +50,8 @@ const ElPopperContent: React.FC<ElPopperContentProps> = ({ children }) => {
         unmountOnExit // 隱藏時從 DOM 移除 (符合 Tooltip 行為)
         nodeRef={contentRef} // 綁定 ref
         appear // 初次渲染如果為 true 也執行動畫
+        enter
+        exit
       >
         <div
           ref={(element) => {
