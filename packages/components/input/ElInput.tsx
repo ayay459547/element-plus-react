@@ -62,9 +62,7 @@ const ElInput = forwardRef<HTMLInputElement, ElInputProps>(
     // const inputDisabled = useFormDisabled()
     const inputDisabled = disabled
 
-    const [nativeInputValue, setNativeInputValue] = useState(
-      formatter ? formatter(inputValue) : inputValue
-    )
+    const nativeInputValue = formatter ? formatter(inputValue) : inputValue
 
     const showClear =
       clearable && !inputDisabled && !readonly && !!inputValue && (isFocused || hovering)
@@ -134,11 +132,6 @@ const ElInput = forwardRef<HTMLInputElement, ElInputProps>(
       setInputValue(value)
       if (typeof onChange === 'function') {
         onChange(e)
-      }
-
-      if (formatter) {
-        value = formatter(value)
-        setNativeInputValue(value)
       }
     }
 
