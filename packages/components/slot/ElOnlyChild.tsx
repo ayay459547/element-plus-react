@@ -1,23 +1,10 @@
 // components/slot/ElOnlyChild.tsx
-import type { RefObject } from 'react'
+import { composeRefs } from '@ayay459547/element-plus-react/utils/refs'
 import { Children, cloneElement, forwardRef, isValidElement } from 'react'
 
 interface ElOnlyChildProps {
   children: React.ReactNode
   [key: string]: any // 允許傳入 onClick, onMouseEnter, style 等
-}
-
-function composeRefs<T>(...refs: (React.Ref<T> | undefined)[]) {
-  return (node: T) => {
-    refs.forEach((ref) => {
-      if (!ref) return
-      if (typeof ref === 'function') {
-        ref(node)
-      } else {
-        ;(ref as RefObject<T | null>).current = node
-      }
-    })
-  }
 }
 
 const ElOnlyChild = forwardRef<HTMLElement, ElOnlyChildProps>((props, ref) => {
@@ -36,6 +23,8 @@ const ElOnlyChild = forwardRef<HTMLElement, ElOnlyChildProps>((props, ref) => {
 
   return cloneElement(child, {
     ...restProps,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     ref: composeRefs((child as any).ref, ref)
   })
 })
