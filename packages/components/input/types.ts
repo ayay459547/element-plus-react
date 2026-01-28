@@ -1,4 +1,10 @@
-import type { ChangeEventHandler, CSSProperties, FocusEventHandler, ReactNode } from 'react'
+import type {
+  ChangeEventHandler,
+  CSSProperties,
+  FocusEventHandler,
+  InputEventHandler,
+  ReactNode
+} from 'react'
 
 export interface ElInputProps {
   /**
@@ -14,7 +20,7 @@ export interface ElInputProps {
   /**
    *@description v-model modifiers, reference Vue modifiers
    */
-  modelModifier?: {
+  modelModifiers?: {
     lazy?: boolean
     number?: boolean
     trim?: boolean
@@ -118,8 +124,7 @@ export interface ElInputProps {
 
   onFocus?: FocusEventHandler<HTMLInputElement>
   onBlur?: FocusEventHandler<HTMLInputElement>
-  // onInput?: FormEventHandler<HTMLInputElement>
-  onInput?: ChangeEventHandler<HTMLInputElement>
+  onInput?: InputEventHandler<HTMLInputElement>
   onChange?: ChangeEventHandler<HTMLInputElement>
 }
 

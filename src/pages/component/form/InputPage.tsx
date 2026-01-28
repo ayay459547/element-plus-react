@@ -18,6 +18,12 @@ import InputClearIcon_code from '@/examples/input/ClearIcon.tsx?raw'
 import InputFormatter from '@/examples/input/Formatter.tsx'
 import InputFormatter_code from '@/examples/input/Formatter.tsx?raw'
 
+import InputPassword from '@/examples/input/Password.tsx'
+import InputPassword_code from '@/examples/input/Password.tsx?raw'
+
+import InputWithIcon from '@/examples/input/WithIcon.tsx'
+import InputWithIcon_code from '@/examples/input/WithIcon.tsx?raw'
+
 const InputPage: React.FC = () => {
   return (
     <VPDocContent>
@@ -119,6 +125,40 @@ const InputPage: React.FC = () => {
       <p>
         Make a toggle-able password Input with the <code>show-password</code> attribute.
       </p>
+      <VPDemo
+        link="/src/examples/input/Password.tsx"
+        code={
+          <VPCode
+            language={['Password.tsx']}
+            code={{
+              'Password.tsx': InputPassword_code
+            }}
+          />
+        }
+      >
+        <InputPassword />
+      </VPDemo>
+
+      <h2 id="input-with-icon">Input with icon</h2>
+      <p>Add an icon to indicate input type.</p>
+      <p>
+        To add icons in Input, you can simply use <code>prefix-icon</code> and{' '}
+        <code>suffix-icon</code> attributes. Also, the <code>prefix</code> and <code>suffix</code>{' '}
+        named slots works as well.
+      </p>
+      <VPDemo
+        link="/src/examples/input/WithIcon.tsx"
+        code={
+          <VPCode
+            language={['WithIcon.tsx']}
+            code={{
+              'WithIcon.tsx': InputWithIcon_code
+            }}
+          />
+        }
+      >
+        <InputWithIcon />
+      </VPDemo>
     </VPDocContent>
   )
 }

@@ -1,12 +1,15 @@
 import ElIcon from '@ayay459547/element-plus-react/components/icon/ElIcon.tsx'
 // import { useFocusController } from '@ayay459547/element-plus-react/hooks/useFocusController'
 import CircleClose from '@ayay459547/element-plus-react/icons-svg/circle-close.svg?react'
+import IconHide from '@ayay459547/element-plus-react/icons-svg/hide.svg?react'
+import IconView from '@ayay459547/element-plus-react/icons-svg/view.svg?react'
 import { mergeRefs } from '@ayay459547/element-plus-react/utils/refs'
 import clsx from 'clsx'
-import type { ChangeEvent } from 'react'
+import type { ChangeEvent, InputEvent } from 'react'
 import { forwardRef, useEffect, useId, useRef, useState } from 'react'
 import styles from './ElInput.module.scss'
 import type { ElInputProps } from './types'
+import { looseToNumber } from './utils'
 
 const COMPONENT_NAME = 'ElInput'
 
@@ -15,7 +18,7 @@ const ElInput = forwardRef<HTMLInputElement, ElInputProps>(
     {
       type = 'text',
       value,
-      // modelModifier,
+      modelModifiers,
       maxlength,
       minlength,
       showWordLimit = false,
@@ -30,7 +33,7 @@ const ElInput = forwardRef<HTMLInputElement, ElInputProps>(
       size,
       readonly = false,
       prefix,
-      // prefixIcon,
+      prefixIcon,
       suffix,
       suffixIcon,
       prepend,
@@ -52,12 +55,8 @@ const ElInput = forwardRef<HTMLInputElement, ElInputProps>(
     )
 
     const [hovering, setHovering] = useState(false)
-    const handleMouseEnter = () => {
-      setHovering(true)
-    }
-    const handleMouseLeave = () => {
-      setHovering(false)
-    }
+    const handleMouseEnter = () => setHovering(true)
+    const handleMouseLeave = () => setHovering(false)
 
     // const inputDisabled = useFormDisabled()
     const inputDisabled = disabled
@@ -69,7 +68,7 @@ const ElInput = forwardRef<HTMLInputElement, ElInputProps>(
 
     const showPwdVisible = showPassword && !inputDisabled && !!inputValue
 
-    const isWordLimitVisible = () =>
+    const isWordLimitVisible =
       showWordLimit &&
       !!maxlength &&
       (type === 'text' || type === 'textarea') &&
@@ -100,20 +99,27 @@ const ElInput = forwardRef<HTMLInputElement, ElInputProps>(
     //   }
     // )
 
+    const [passwordVisible, setPasswordVisible] = useState(false)
+    const handlePasswordVisible = () => setPasswordVisible((prev) => !prev)
+
+    const focus = () => inputRef.current?.focus()
+
+    // const blur = () => inputRef.current?.blur()
+
     const formatValue = (value: string) => {
-      // const { trim, number } = modelModifiers
-      // if (trim) {
-      //   value = value.trim()
-      // }
-      // if (number) {
-      //   value = `${looseToNumber(value)}`
-      // }
+      const { trim, number } = modelModifiers ?? {}
+      if (trim) {
+        value = value.trim()
+      }
+      if (number) {
+        value = `${looseToNumber(value)}`
+      }
       if (formatter && parser) {
         value = parser(value)
       }
       return value
     }
-    // const hasModelModifiers = !!Object.keys(modelModifiers).length
+    // const hasModelModifiers = !!Object.keys(modelModifiers ?? {}).length
 
     const handleInput: ElInputProps['onInput'] = (e) => {
       if (typeof onInput === 'function') {
@@ -148,13 +154,13 @@ const ElInput = forwardRef<HTMLInputElement, ElInputProps>(
 
         handleInput?.({
           target
-        } as ChangeEvent<HTMLInputElement>)
+        } as unknown as InputEvent<HTMLInputElement>)
 
         handleChange?.({
           target
         } as ChangeEvent<HTMLInputElement>)
 
-        inputRef.current?.focus()
+        focus()
       }
     }
 
@@ -191,10 +197,15 @@ const ElInput = forwardRef<HTMLInputElement, ElInputProps>(
           )}
         >
           {/* prepend slot */}
-          {prefix && (
+          {(prefix || prefixIcon) && (
             <span className={clsx('el-input__prefix', styles['el-input__prefix'])}>
               <span className={clsx('el-input__prefix-inner', styles['el-input__prefix-inner'])}>
                 {prefix}
+                {prefixIcon && (
+                  <ElIcon className={clsx('el-input__icon', styles['el-input__icon'])}>
+                    {prefixIcon}
+                  </ElIcon>
+                )}
               </span>
             </span>
           )}
@@ -204,7 +215,7 @@ const ElInput = forwardRef<HTMLInputElement, ElInputProps>(
             id={useId()}
             {...props}
             className={clsx('el-input__inner', styles['el-input__inner'])}
-            type={type}
+            type={showPassword ? (passwordVisible ? 'text' : 'password') : type}
             input-value={inputValue}
             value={nativeInputValue}
             maxLength={typeof maxlength === 'string' ? parseInt(maxlength) : maxlength}
@@ -239,6 +250,20 @@ const ElInput = forwardRef<HTMLInputElement, ElInputProps>(
                     onClick={clear}
                   >
                     {clearIcon}
+                  </ElIcon>
+                )}
+
+                {showPwdVisible && (
+                  <ElIcon
+                    className={clsx(
+                      'el-input__icon',
+                      styles['el-input__icon'],
+                      'el-input__password',
+                      styles['el-input__password']
+                    )}
+                    onClick={handlePasswordVisible}
+                  >
+                    {passwordVisible ? <IconView /> : <IconHide />}
                   </ElIcon>
                 )}
               </span>
