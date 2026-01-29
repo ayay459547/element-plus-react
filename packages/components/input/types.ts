@@ -110,6 +110,12 @@ export interface ElInputProps {
    * @description suffix icon component
    */
   suffixIcon?: ReactNode | string
+
+  /**
+   * @description number of rows of textarea, only works when type is 'textarea'
+   */
+  rows?: number
+
   /**
    * @description content to prepend before Input, only works when type is not 'textarea'
    */
@@ -122,10 +128,10 @@ export interface ElInputProps {
   className?: string
   style?: CSSProperties
 
-  onFocus?: FocusEventHandler<HTMLInputElement>
-  onBlur?: FocusEventHandler<HTMLInputElement>
-  onInput?: InputEventHandler<HTMLInputElement>
-  onChange?: ChangeEventHandler<HTMLInputElement>
+  onFocus?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  onBlur?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  onInput?: InputEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  onChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
 }
 
 export type ElInputInstance = React.ReactElement<ElInputProps>

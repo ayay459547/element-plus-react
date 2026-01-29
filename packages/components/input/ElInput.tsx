@@ -13,7 +13,7 @@ import { looseToNumber } from './utils'
 
 const COMPONENT_NAME = 'ElInput'
 
-const ElInput = forwardRef<HTMLInputElement, ElInputProps>(
+const ElInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, ElInputProps>(
   (
     {
       type = 'text',
@@ -22,7 +22,7 @@ const ElInput = forwardRef<HTMLInputElement, ElInputProps>(
       maxlength,
       minlength,
       showWordLimit = false,
-      // wordLimitPosition = 'inside',
+      wordLimitPosition = 'inside',
       placeholder,
       clearable = false,
       clearIcon = <CircleClose />,
@@ -36,6 +36,7 @@ const ElInput = forwardRef<HTMLInputElement, ElInputProps>(
       prefixIcon,
       suffix,
       suffixIcon,
+      rows = 2,
       prepend,
       append,
       className,
@@ -48,6 +49,8 @@ const ElInput = forwardRef<HTMLInputElement, ElInputProps>(
     },
     ref
   ) => {
+    const inputId = useId()
+
     const [isFocused, setIsFocused] = useState(false)
 
     const [inputValue, setInputValue] = useState(
@@ -76,6 +79,8 @@ const ElInput = forwardRef<HTMLInputElement, ElInputProps>(
       !readonly &&
       !showPassword
 
+    const textLength = typeof inputValue === 'string' ? inputValue.length : 0
+
     const handleFocus: ElInputProps['onFocus'] = (e) => {
       setIsFocused(true)
       if (typeof onFocus === 'function') {
@@ -98,6 +103,7 @@ const ElInput = forwardRef<HTMLInputElement, ElInputProps>(
     //     afterBlur: (e) => handleBlur(e)
     //   }
     // )
+    const textareaRef = useRef<HTMLTextAreaElement | null>(null)
 
     const [passwordVisible, setPasswordVisible] = useState(false)
     const handlePasswordVisible = () => setPasswordVisible((prev) => !prev)
@@ -183,98 +189,141 @@ const ElInput = forwardRef<HTMLInputElement, ElInputProps>(
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        {/* prepend slot */}
-        {prepend && (
-          <div className={clsx('el-input-group__prepend', styles['el-input-group__prepend'])}>
-            {prepend}
-          </div>
+        {/* input */}
+        {type !== 'textarea' && (
+          <>
+            {/* prepend slot */}
+            {prepend && (
+              <div className={clsx('el-input-group__prepend', styles['el-input-group__prepend'])}>
+                {prepend}
+              </div>
+            )}
+            <div
+              className={clsx(
+                'el-input__wrapper',
+                styles['el-input__wrapper'],
+                isFocused ? styles['is-focus'] : ''
+              )}
+            >
+              {/* prepend slot */}
+              {(prefix || prefixIcon) && (
+                <span className={clsx('el-input__prefix', styles['el-input__prefix'])}>
+                  <span
+                    className={clsx('el-input__prefix-inner', styles['el-input__prefix-inner'])}
+                  >
+                    {prefix}
+                    {prefixIcon && (
+                      <ElIcon className={clsx('el-input__icon', styles['el-input__icon'])}>
+                        {prefixIcon}
+                      </ElIcon>
+                    )}
+                  </span>
+                </span>
+              )}
+
+              <input
+                ref={mergeRefs(ref, inputRef)}
+                id={inputId}
+                {...props}
+                className={clsx('el-input__inner', styles['el-input__inner'])}
+                type={showPassword ? (passwordVisible ? 'text' : 'password') : type}
+                input-value={inputValue}
+                value={nativeInputValue}
+                maxLength={typeof maxlength === 'string' ? parseInt(maxlength) : maxlength}
+                minLength={typeof minlength === 'string' ? parseInt(minlength) : minlength}
+                placeholder={placeholder}
+                disabled={inputDisabled}
+                onFocus={(e) => handleFocus(e)}
+                onBlur={(e) => handleBlur(e)}
+                onInput={(e) => handleInput(e)}
+                onChange={(e) => handleChange(e)}
+              />
+
+              {/* suffix slot */}
+              {suffixVisible && (
+                <span className={clsx('el-input__suffix', styles['el-input__suffix'])}>
+                  <span
+                    className={clsx('el-input__suffix-inner', styles['el-input__suffix-inner'])}
+                  >
+                    {(!showClear || !showPwdVisible || !isWordLimitVisible) && suffix}
+                    {(!showClear || !showPwdVisible || !isWordLimitVisible) && suffixIcon && (
+                      <ElIcon className={clsx('el-input__icon', styles['el-input__icon'])}>
+                        {suffixIcon}
+                      </ElIcon>
+                    )}
+
+                    {showClear && (
+                      <ElIcon
+                        className={clsx(
+                          'el-input__icon',
+                          styles['el-input__icon'],
+                          'el-input__clear',
+                          styles['el-input__clear']
+                        )}
+                        onClick={clear}
+                      >
+                        {clearIcon}
+                      </ElIcon>
+                    )}
+
+                    {showPwdVisible && (
+                      <ElIcon
+                        className={clsx(
+                          'el-input__icon',
+                          styles['el-input__icon'],
+                          'el-input__password',
+                          styles['el-input__password']
+                        )}
+                        onClick={handlePasswordVisible}
+                      >
+                        {passwordVisible ? <IconView /> : <IconHide />}
+                      </ElIcon>
+                    )}
+                  </span>
+                </span>
+              )}
+            </div>
+            {/* append slot */}
+            {append && (
+              <div className={clsx('el-input-group__append', styles['el-input-group__append'])}>
+                {append}
+              </div>
+            )}
+          </>
         )}
-        <div
-          className={clsx(
-            'el-input__wrapper',
-            styles['el-input__wrapper'],
-            isFocused ? styles['is-focus'] : ''
-          )}
-        >
-          {/* prepend slot */}
-          {(prefix || prefixIcon) && (
-            <span className={clsx('el-input__prefix', styles['el-input__prefix'])}>
-              <span className={clsx('el-input__prefix-inner', styles['el-input__prefix-inner'])}>
-                {prefix}
-                {prefixIcon && (
-                  <ElIcon className={clsx('el-input__icon', styles['el-input__icon'])}>
-                    {prefixIcon}
-                  </ElIcon>
+        {/* textarea  */}
+        {type === 'textarea' && (
+          <>
+            <textarea
+              ref={mergeRefs(ref, textareaRef)}
+              id={inputId}
+              {...props}
+              className={clsx('el-textarea__inner', styles['el-textarea__inner'])}
+              rows={rows}
+              input-value={inputValue}
+              value={nativeInputValue}
+              maxLength={typeof maxlength === 'string' ? parseInt(maxlength) : maxlength}
+              minLength={typeof minlength === 'string' ? parseInt(minlength) : minlength}
+              placeholder={placeholder}
+              disabled={inputDisabled}
+              onFocus={(e) => handleFocus(e)}
+              onBlur={(e) => handleBlur(e)}
+              onInput={(e) => handleInput(e)}
+              onChange={(e) => handleChange(e)}
+            />
+            {isWordLimitVisible && (
+              <span
+                // style={countStyle}
+                className={clsx(
+                  'el-input__count',
+                  styles['el-input__wrapper'],
+                  wordLimitPosition === 'outside' ? styles['is-outside'] : ''
                 )}
+              >
+                {textLength} / {maxlength}
               </span>
-            </span>
-          )}
-
-          <input
-            ref={mergeRefs(ref, inputRef)}
-            id={useId()}
-            {...props}
-            className={clsx('el-input__inner', styles['el-input__inner'])}
-            type={showPassword ? (passwordVisible ? 'text' : 'password') : type}
-            input-value={inputValue}
-            value={nativeInputValue}
-            maxLength={typeof maxlength === 'string' ? parseInt(maxlength) : maxlength}
-            minLength={typeof minlength === 'string' ? parseInt(minlength) : minlength}
-            placeholder={placeholder}
-            disabled={inputDisabled}
-            onFocus={(e) => handleFocus(e)}
-            onBlur={(e) => handleBlur(e)}
-            onInput={(e) => handleInput(e as any)}
-            onChange={(e) => handleChange(e)}
-          />
-
-          {/* suffix slot */}
-          {suffixVisible && (
-            <span className={clsx('el-input__suffix', styles['el-input__suffix'])}>
-              <span className={clsx('el-input__suffix-inner', styles['el-input__suffix-inner'])}>
-                {(!showClear || !showPwdVisible || !isWordLimitVisible) && suffix}
-                {(!showClear || !showPwdVisible || !isWordLimitVisible) && suffixIcon && (
-                  <ElIcon className={clsx('el-input__icon', styles['el-input__icon'])}>
-                    {suffixIcon}
-                  </ElIcon>
-                )}
-
-                {showClear && (
-                  <ElIcon
-                    className={clsx(
-                      'el-input__icon',
-                      styles['el-input__icon'],
-                      'el-input__clear',
-                      styles['el-input__clear']
-                    )}
-                    onClick={clear}
-                  >
-                    {clearIcon}
-                  </ElIcon>
-                )}
-
-                {showPwdVisible && (
-                  <ElIcon
-                    className={clsx(
-                      'el-input__icon',
-                      styles['el-input__icon'],
-                      'el-input__password',
-                      styles['el-input__password']
-                    )}
-                    onClick={handlePasswordVisible}
-                  >
-                    {passwordVisible ? <IconView /> : <IconHide />}
-                  </ElIcon>
-                )}
-              </span>
-            </span>
-          )}
-        </div>
-        {/* append slot */}
-        {append && (
-          <div className={clsx('el-input-group__append', styles['el-input-group__append'])}>
-            {append}
-          </div>
+            )}
+          </>
         )}
       </div>
     )

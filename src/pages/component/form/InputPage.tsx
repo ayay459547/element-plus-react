@@ -21,8 +21,12 @@ import InputFormatter_code from '@/examples/input/Formatter.tsx?raw'
 import InputPassword from '@/examples/input/Password.tsx'
 import InputPassword_code from '@/examples/input/Password.tsx?raw'
 
+import InputWithIcon_styles from '@/examples/input/WithIcon.scss?raw'
 import InputWithIcon from '@/examples/input/WithIcon.tsx'
 import InputWithIcon_code from '@/examples/input/WithIcon.tsx?raw'
+
+import InputTextarea from '@/examples/input/Textarea.tsx'
+import InputTextarea_code from '@/examples/input/Textarea.tsx?raw'
 
 const InputPage: React.FC = () => {
   return (
@@ -150,14 +154,37 @@ const InputPage: React.FC = () => {
         link="/src/examples/input/WithIcon.tsx"
         code={
           <VPCode
-            language={['WithIcon.tsx']}
+            language={['WithIcon.tsx', 'WithIcon.scss']}
             code={{
-              'WithIcon.tsx': InputWithIcon_code
+              'WithIcon.tsx': InputWithIcon_code,
+              'WithIcon.scss': InputWithIcon_styles
             }}
           />
         }
       >
         <InputWithIcon />
+      </VPDemo>
+
+      <h2 id="textarea">Textarea</h2>
+      <p>
+        Resizable for entering multiple lines of text information. Add attribute{' '}
+        <code>type="textarea"</code> to change <code>input</code> into native <code>textarea</code>.
+      </p>
+      <p>
+        Control the height by setting the <code>rows</code> prop.
+      </p>
+      <VPDemo
+        link="/src/examples/input/Textarea.tsx"
+        code={
+          <VPCode
+            language={['Textarea.tsx']}
+            code={{
+              'Textarea.tsx': InputTextarea_code
+            }}
+          />
+        }
+      >
+        <InputTextarea />
       </VPDemo>
     </VPDocContent>
   )
