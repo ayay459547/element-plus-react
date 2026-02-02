@@ -9,6 +9,7 @@ import type { ChangeEvent, InputEvent } from 'react'
 import { forwardRef, useEffect, useId, useRef, useState } from 'react'
 import styles from './ElInput.module.scss'
 import type { ElInputProps } from './types'
+import { useTextareaAutosize } from './useTextareaAutosize'
 import { looseToNumber } from './utils'
 
 const COMPONENT_NAME = 'ElInput'
@@ -37,6 +38,7 @@ const ElInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, ElInputProps>
       suffix,
       suffixIcon,
       rows = 2,
+      autosize = false,
       prepend,
       append,
       className,
@@ -53,9 +55,7 @@ const ElInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, ElInputProps>
 
     const [isFocused, setIsFocused] = useState(false)
 
-    const [inputValue, setInputValue] = useState(
-      value === undefined || value === null ? '' : String(value)
-    )
+    const inputValue = value === undefined || value === null ? '' : String(value)
 
     const [hovering, setHovering] = useState(false)
     const handleMouseEnter = () => setHovering(true)
@@ -105,6 +105,8 @@ const ElInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, ElInputProps>
     // )
     const textareaRef = useRef<HTMLTextAreaElement | null>(null)
 
+    useTextareaAutosize(textareaRef, inputValue, autosize)
+
     const [passwordVisible, setPasswordVisible] = useState(false)
     const handlePasswordVisible = () => setPasswordVisible((prev) => !prev)
 
@@ -141,7 +143,6 @@ const ElInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, ElInputProps>
         e.target.value = value
       }
 
-      setInputValue(value)
       if (typeof onChange === 'function') {
         onChange(e)
       }
@@ -152,8 +153,6 @@ const ElInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, ElInputProps>
     // (!!validateState && needStatusIcon)
 
     const clear = () => {
-      setInputValue('')
-
       if (inputRef && inputRef.current) {
         inputRef.current.value = ''
         const target = inputRef.current
@@ -183,6 +182,8 @@ const ElInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, ElInputProps>
           styles['el-input'],
           inputDisabled ? styles['is-disabled'] : '',
           size ? styles[`el-input--${size}`] : '',
+          prepend ? styles['el-input-group--prepend'] : '',
+          append ? styles['el-input-group--append'] : '',
           className
         )}
         style={style}
@@ -299,7 +300,7 @@ const ElInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, ElInputProps>
               id={inputId}
               {...props}
               className={clsx('el-textarea__inner', styles['el-textarea__inner'])}
-              rows={rows}
+              rows={autosize ? 1 : rows}
               input-value={inputValue}
               value={nativeInputValue}
               maxLength={typeof maxlength === 'string' ? parseInt(maxlength) : maxlength}

@@ -25,8 +25,18 @@ import InputWithIcon_styles from '@/examples/input/WithIcon.scss?raw'
 import InputWithIcon from '@/examples/input/WithIcon.tsx'
 import InputWithIcon_code from '@/examples/input/WithIcon.tsx?raw'
 
-import InputTextarea from '@/examples/input/Textarea.tsx'
-import InputTextarea_code from '@/examples/input/Textarea.tsx?raw'
+import Textarea from '@/examples/input/Textarea.tsx'
+import Textarea_code from '@/examples/input/Textarea.tsx?raw'
+
+import AutoSizingTextarea from '@/examples/input/AutoSizingTextarea.tsx'
+import AutoSizingTextarea_code from '@/examples/input/AutoSizingTextarea.tsx?raw'
+
+import MixedInput_styles from '@/examples/input/MixedInput.scss?raw'
+import MixedInput from '@/examples/input/MixedInput.tsx'
+import MixedInput_code from '@/examples/input/MixedInput.tsx?raw'
+
+import VariousSize from '@/examples/input/VariousSize.tsx'
+import VariousSize_code from '@/examples/input/VariousSize.tsx?raw'
 
 const InputPage: React.FC = () => {
   return (
@@ -179,12 +189,97 @@ const InputPage: React.FC = () => {
           <VPCode
             language={['Textarea.tsx']}
             code={{
-              'Textarea.tsx': InputTextarea_code
+              'Textarea.tsx': Textarea_code
             }}
           />
         }
       >
-        <InputTextarea />
+        <Textarea />
+      </VPDemo>
+
+      <h2 id="autosize-textarea">Autosize Textarea</h2>
+      <p>
+        Setting the <code>autosize</code> prop for a textarea type of Input makes the height to
+        automatically adjust based on the content. An options object can be provided to{' '}
+        <code>autosize</code> to specify the minimum and maximum number of lines the textarea can
+        automatically adjust.
+      </p>
+      <VPDemo
+        link="/src/examples/input/AutoSizingTextarea.tsx"
+        code={
+          <VPCode
+            language={['AutoSizingTextarea.tsx']}
+            code={{
+              'AutoSizingTextarea.tsx': AutoSizingTextarea_code
+            }}
+          />
+        }
+      >
+        <AutoSizingTextarea />
+      </VPDemo>
+
+      <h2 id="mixed-input">Mixed input</h2>
+      <p>Prepend or append an element, generally a label or a button.</p>
+      <p>
+        Use <code>slot</code> to distribute elements that prepend or append to Input.
+      </p>
+      <VPDemo
+        link="/src/examples/input/MixedInput.tsx"
+        code={
+          <VPCode
+            language={['MixedInput.tsx', 'MixedInput.scss']}
+            code={{
+              'MixedInput.tsx': MixedInput_code,
+              'MixedInput.scss': MixedInput_styles
+            }}
+          />
+        }
+      >
+        <MixedInput />
+      </VPDemo>
+
+      <h2 id="sizes">Sizes</h2>
+      <p>
+        Add <code>size</code> attribute to change the size of Input. In addition to the default
+        size, there are two other options: <code>large</code>, <code>small</code>.
+      </p>
+      <VPDemo
+        link="/src/examples/input/VariousSize.tsx"
+        code={
+          <VPCode
+            language={['VariousSize.tsx']}
+            code={{
+              'VariousSize.tsx': VariousSize_code
+            }}
+          />
+        }
+      >
+        <VariousSize />
+      </VPDemo>
+
+      <h2 id="limit-length">Limit length</h2>
+      <p>
+        <code>maxlength</code> and <code>minlength</code> attributes of input, they declare a limit
+        on the number of characters a user can input. The "number of characters" is measured using
+        JavaScript string length.Setting the <code>maxlength</code> prop for a text or textarea type
+        of Input can limit the length of input value, allows you to show word count by setting{' '}
+        <code>show-word-limit</code> to <code>true</code> at the same time. In{' '}
+        <span className="vp-tag ml-1 ">2.11.5</span>, You can set <code>word-limit-position</code>{' '}
+        to <code>outside</code> to display the word count outside the input.
+      </p>
+      <VPDemo
+        link="/src/examples/input/MixedInput.tsx"
+        code={
+          <VPCode
+            language={['MixedInput.tsx', 'MixedInput.scss']}
+            code={{
+              'MixedInput.tsx': MixedInput_code,
+              'MixedInput.scss': MixedInput_styles
+            }}
+          />
+        }
+      >
+        <MixedInput />
       </VPDemo>
     </VPDocContent>
   )

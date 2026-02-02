@@ -117,6 +117,16 @@ export interface ElInputProps {
   rows?: number
 
   /**
+   * @description whether textarea has an adaptive height, only works when type is 'textarea'. Can accept an object, e.g. { minRows: 2, maxRows: 6 }
+   */
+  autosize?:
+    | boolean
+    | {
+        minRows?: number
+        maxRows?: number
+      }
+
+  /**
    * @description content to prepend before Input, only works when type is not 'textarea'
    */
   prepend?: ReactNode
