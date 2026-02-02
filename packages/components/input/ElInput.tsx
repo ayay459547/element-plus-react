@@ -178,8 +178,9 @@ const ElInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, ElInputProps>
     return (
       <div
         className={clsx(
-          'el-input',
-          styles['el-input'],
+          type !== 'textarea'
+            ? `el-input ${styles['el-input']}`
+            : `el-textarea ${styles['el-textarea']}`,
           inputDisabled ? styles['is-disabled'] : '',
           size ? styles[`el-input--${size}`] : '',
           prepend ? styles['el-input-group--prepend'] : '',
@@ -280,6 +281,22 @@ const ElInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, ElInputProps>
                         {passwordVisible ? <IconView /> : <IconHide />}
                       </ElIcon>
                     )}
+
+                    {isWordLimitVisible && (
+                      <span
+                        className={clsx(
+                          'el-input__count',
+                          styles['el-input__count'],
+                          wordLimitPosition === 'outside' ? styles['is-outside'] : ''
+                        )}
+                      >
+                        <span
+                          className={clsx('el-input__count-inner', styles['el-input__count-inner'])}
+                        >
+                          {textLength} / {maxlength}
+                        </span>
+                      </span>
+                    )}
                   </span>
                 </span>
               )}
@@ -317,7 +334,7 @@ const ElInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, ElInputProps>
                 // style={countStyle}
                 className={clsx(
                   'el-input__count',
-                  styles['el-input__wrapper'],
+                  styles['el-input__count'],
                   wordLimitPosition === 'outside' ? styles['is-outside'] : ''
                 )}
               >

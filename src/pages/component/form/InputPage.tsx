@@ -38,6 +38,9 @@ import MixedInput_code from '@/examples/input/MixedInput.tsx?raw'
 import VariousSize from '@/examples/input/VariousSize.tsx'
 import VariousSize_code from '@/examples/input/VariousSize.tsx?raw'
 
+import LengthLimiting from '@/examples/input/LengthLimiting.tsx'
+import LengthLimiting_code from '@/examples/input/LengthLimiting.tsx?raw'
+
 const InputPage: React.FC = () => {
   return (
     <VPDocContent>
@@ -268,18 +271,17 @@ const InputPage: React.FC = () => {
         to <code>outside</code> to display the word count outside the input.
       </p>
       <VPDemo
-        link="/src/examples/input/MixedInput.tsx"
+        link="/src/examples/input/LengthLimiting.tsx"
         code={
           <VPCode
-            language={['MixedInput.tsx', 'MixedInput.scss']}
+            language={['LengthLimiting.tsx']}
             code={{
-              'MixedInput.tsx': MixedInput_code,
-              'MixedInput.scss': MixedInput_styles
+              'LengthLimiting.tsx': LengthLimiting_code
             }}
           />
         }
       >
-        <MixedInput />
+        <LengthLimiting />
       </VPDemo>
     </VPDocContent>
   )
