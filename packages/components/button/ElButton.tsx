@@ -13,6 +13,8 @@ const insertSpaceIfTwoChinese = (text: string): string => {
   return text
 }
 
+const COMPONENT_NAME = 'ElButton'
+
 const ElButton = forwardRef<HTMLElement, ElButtonProps<any>>(
   (
     {
@@ -101,6 +103,6 @@ const ElButton = forwardRef<HTMLElement, ElButtonProps<any>>(
   }
 )
 
-ElButton.displayName = 'ElButton'
+ElButton.displayName = COMPONENT_NAME
 
 export default ElButton
