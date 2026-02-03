@@ -1,6 +1,6 @@
 import overviewIcons from '@/components/overview-icons'
 import VPDocContent from '@/components/VPDocContent.tsx'
-import { useSidebar } from '@/hooks/sidebar'
+import { useSidebar } from '@/hooks/useSidebar'
 import ElCard from '@ayay459547/element-plus-react/components/card/ElCard.tsx'
 import ElIcon from '@ayay459547/element-plus-react/components/icon/ElIcon.tsx'
 import ElInput from '@ayay459547/element-plus-react/components/input/ElInput.tsx'

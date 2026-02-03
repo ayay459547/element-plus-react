@@ -1,7 +1,7 @@
 import VPSidebarLink from '@/components/sidebar/VPSidebarLink.tsx'
-import { useSidebar } from '@/hooks/sidebar'
+import { useSidebar } from '@/hooks/useSidebar'
 import { useEffect, useRef } from 'react'
-import styles from './VPSidebar.module.scss'
+import './VPSidebar.scss'
 
 type VPSidebarProps = {
   // open?: boolean
@@ -28,13 +28,13 @@ const VPSidebar: React.FC<VPSidebarProps> = ({ top, bottom }) => {
   if (!hasSidebar) return null
 
   return (
-    <div className={styles['sidebar']}>
+    <div className="sidebar">
       <aside ref={asideRef}>
         {top}
-        <div className={styles['sidebar-groups']}>
+        <div className="sidebar-groups">
           {sidebars.map((item, key) => (
-            <section key={key} className={styles['sidebar-group']}>
-              <p className={styles['sidebar-group__title']}>{item.text}</p>
+            <section key={key} className="sidebar-group">
+              <p className="sidebar-group__title">{item.text}</p>
               {item.children.map((child, childKey) => (
                 <VPSidebarLink key={childKey} item={child} />
               ))}
