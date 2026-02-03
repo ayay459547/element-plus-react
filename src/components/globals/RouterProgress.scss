@@ -1,0 +1,10 @@
+#nprogress .bar {
+  background: #409eff; /* ElPrimary */
+  height: 2px;
+}
+
+#nprogress .peg {
+  box-shadow:
+    0 0 10px #409eff,
+    0 0 5px #409eff;
+}
