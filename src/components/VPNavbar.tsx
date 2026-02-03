@@ -6,15 +6,14 @@ import { config } from '@/config'
 import ElIcon from '@ayay459547/element-plus-react/components/icon/ElIcon.tsx'
 import ElTag from '@ayay459547/element-plus-react/components/tag/ElTag.tsx'
 import { Link } from 'react-router-dom'
-import styles from './navbar/navbar.module.scss'
 
 import { withBase } from '@/utils'
 import { IoLogoGithub } from 'react-icons/io5'
 
 // Components
-// import VPNavbarHamburger from './navbar/vp-hamburger'
+import VPNavbarHamburger from './navbar/VPNavbarHamburger.tsx'
 
-import VPMenu from './navbar/VPMenu'
+import VPMenu from './navbar/VPMenu.tsx'
 
 // import VPNavbarSearch from './navbar/vp-search'
 // import VPNavbarSocialLinks from './navbar/vp-social-links'
@@ -23,18 +22,18 @@ import VPMenu from './navbar/VPMenu'
 
 interface VPNavbarProps {
   fullScreen: boolean
-  onToggle?: () => void
+  onToggle: () => void
 }
 
-const VPNavbar: React.FC<VPNavbarProps> = () => {
+const VPNavbar: React.FC<VPNavbarProps> = ({ fullScreen, onToggle }) => {
   const version = import.meta.env.VITE_API_ELEMENT_PLUS_VERSION
 
   return (
     <div className="navbar-wrapper">
       <div className="header-container">
-        <div className={styles['logo-container']}>
+        <div className="logo-container">
           <Link to="/">
-            <div className={styles['logo']}>
+            <div className="logo">
               <img
                 className="logo"
                 style={{ width: '128px', height: '28px' }}
@@ -56,7 +55,7 @@ const VPNavbar: React.FC<VPNavbarProps> = () => {
 
           <VPMenu className="menu" />
 
-          <div className={styles['social-links']}>
+          <div className="social-links">
             <a href="https://github.com/ayay459547/element-plus-react" target="_blank">
               <ElIcon size={24}>
                 <IoLogoGithub />
@@ -70,7 +69,7 @@ const VPNavbar: React.FC<VPNavbarProps> = () => {
 
           {/* <VPNavbarSocialLinks className="social-links" /> */}
 
-          {/* <VPNavbarHamburger active={fullScreen} className="hamburger" onClick={onToggle} /> */}
+          <VPNavbarHamburger active={fullScreen} className="hamburger" onClick={onToggle} />
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { useSidebar } from '@/hooks/sidebar'
+import { useSidebar } from '@/hooks/useSidebar'
 import clsx from 'clsx'
 import { Outlet } from 'react-router-dom'
 

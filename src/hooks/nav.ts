@@ -23,5 +23,8 @@ export const useNav = () => {
   //   // }
   // ]
 
-  return navs
+  // 過濾 Playground
+  return navs.filter((nav) => {
+    return nav.text !== 'Playground'
+  })
 }

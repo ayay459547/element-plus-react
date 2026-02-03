@@ -3,7 +3,7 @@ import ElBadge from '@ayay459547/element-plus-react/components/badge/ElBadge.tsx
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import VPLink from '../common/VPLink.tsx'
-import styles from './navbar.module.scss'
+import './navbar.scss'
 
 import type { Link } from '../types.ts'
 
@@ -24,11 +24,7 @@ export const VPMenuLink: React.FC<VPMenuLinkProps> = ({ item }) => {
   const active = isActive(location.pathname, item.activeMatch)
 
   return (
-    <VPLink
-      className={`${styles['is-menu-link']} ${active ? styles['active'] : ''}`}
-      href={item.link}
-      noIcon
-    >
+    <VPLink className={`is-menu-link ${active ? 'active' : ''}`} href={item.link} noIcon>
       {isNewPage(item) && !isVisited ? (
         <ElBadge isDot className="badge">
           {item.text}
