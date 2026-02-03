@@ -14,16 +14,16 @@ const ImgEmpty: React.FC = () => {
           x2="61.1496914%"
           y2="100%"
         >
-          <stop stop-color="var(--el-empty-fill-color-1)" offset="0%"></stop>
-          <stop stop-color="var(--el-empty-fill-color-4)" offset="100%"></stop>
+          <stop stopColor="var(--el-empty-fill-color-1)" offset="0%"></stop>
+          <stop stopColor="var(--el-empty-fill-color-4)" offset="100%"></stop>
         </linearGradient>
         <linearGradient id="linearGradient-2-el-id-1024-19" x1="0%" y1="9.5%" x2="100%" y2="90.5%">
-          <stop stop-color="var(--el-empty-fill-color-1)" offset="0%"></stop>
-          <stop stop-color="var(--el-empty-fill-color-6)" offset="100%"></stop>
+          <stop stopColor="var(--el-empty-fill-color-1)" offset="0%"></stop>
+          <stop stopColor="var(--el-empty-fill-color-6)" offset="100%"></stop>
         </linearGradient>
         <rect id="path-3-el-id-1024-19" x="0" y="0" width="17" height="36"></rect>
       </defs>
-      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g transform="translate(-1268.000000, -535.000000)">
           <g transform="translate(1268.000000, 535.000000)">
             <path
