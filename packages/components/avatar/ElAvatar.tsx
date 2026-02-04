@@ -2,82 +2,92 @@ import ElIcon from '@ayay459547/element-plus-react/components/icon/ElIcon.tsx'
 import { addUnit } from '@ayay459547/element-plus-react/utils/dom/style'
 import clsx from 'clsx'
 import type { CSSProperties, DOMAttributes } from 'react'
-import { useState } from 'react'
+import { forwardRef, useState } from 'react'
 import styles from './ElAvatar.module.scss'
 import type { ElAvatarProps } from './types'
 
-const ElAvatar: React.FC<ElAvatarProps> = ({
-  icon,
-  size = 'default',
-  shape = 'circle',
-  src,
-  srcSet,
-  alt,
-  fit,
-  children,
-  className,
-  style,
-  onLoad,
-  onError,
-  ...props
-}) => {
-  const isLarge = size === 'large'
-  const isSmall = size === 'small'
+const COMPONENT_NAME = 'ElAvatar'
 
-  const sizeStyle: CSSProperties & { '--el-avatar-size'?: ReturnType<typeof addUnit> } = {}
-  if (typeof size === 'number') {
-    sizeStyle['--el-avatar-size'] = addUnit(size)
-  }
+const ElAvatar = forwardRef<HTMLDivElement, ElAvatarProps>(
+  (
+    {
+      icon,
+      size = 'default',
+      shape = 'circle',
+      src,
+      srcSet,
+      alt,
+      fit,
+      children,
+      className,
+      style,
+      onLoad,
+      onError,
+      ...props
+    },
+    ref
+  ) => {
+    const isLarge = size === 'large'
+    const isSmall = size === 'small'
 
-  const [hasLoadError, setHasLoadError] = useState(false)
+    const sizeStyle: CSSProperties & { '--el-avatar-size'?: ReturnType<typeof addUnit> } = {}
+    if (typeof size === 'number') {
+      sizeStyle['--el-avatar-size'] = addUnit(size)
+    }
 
-  const handleLoad: DOMAttributes<HTMLImageElement>['onLoad'] = (e) => {
-    setHasLoadError(false)
-    onLoad?.(e)
-  }
+    const [hasLoadError, setHasLoadError] = useState(false)
 
-  const handleError: DOMAttributes<HTMLImageElement>['onError'] = (e) => {
-    setHasLoadError(true)
-    onError?.(e)
-  }
+    const handleLoad: DOMAttributes<HTMLImageElement>['onLoad'] = (e) => {
+      setHasLoadError(false)
+      onLoad?.(e)
+    }
 
-  const fitStyle: CSSProperties = {}
-  if (fit) {
-    fitStyle.objectFit = fit
-  }
+    const handleError: DOMAttributes<HTMLImageElement>['onError'] = (e) => {
+      setHasLoadError(true)
+      onError?.(e)
+    }
 
-  let showSlot = children
-  if ((src || srcSet) && !hasLoadError) {
-    showSlot = (
-      <img
-        src={src}
-        alt={alt}
-        srcSet={srcSet}
-        style={fitStyle}
-        onLoad={handleLoad}
-        onError={handleError}
-      />
+    const fitStyle: CSSProperties = {}
+    if (fit) {
+      fitStyle.objectFit = fit
+    }
+
+    let showSlot = children
+    if ((src || srcSet) && !hasLoadError) {
+      showSlot = (
+        <img
+          src={src}
+          alt={alt}
+          srcSet={srcSet}
+          style={fitStyle}
+          onLoad={handleLoad}
+          onError={handleError}
+        />
+      )
+    } else if (icon) {
+      showSlot = <ElIcon>{icon}</ElIcon>
+    }
+
+    return (
+      <div
+        {...props}
+        ref={ref}
+        className={clsx(
+          'el-avatar',
+          styles['el-avatar'],
+          isLarge ? styles['el-avatar--large'] : '',
+          isSmall ? styles['el-avatar--small'] : '',
+          styles[`el-avatar--${shape}`],
+          className
+        )}
+        style={{ ...style, ...sizeStyle }}
+      >
+        {showSlot}
+      </div>
     )
-  } else if (icon) {
-    showSlot = <ElIcon>{icon}</ElIcon>
   }
+)
 
-  return (
-    <div
-      {...props}
-      className={clsx(
-        'el-avatar',
-        styles['el-avatar'],
-        isLarge ? styles['el-avatar--large'] : '',
-        isSmall ? styles['el-avatar--small'] : '',
-        styles[`el-avatar--${shape}`],
-        className
-      )}
-      style={{ ...style, ...sizeStyle }}
-    >
-      {showSlot}
-    </div>
-  )
-}
+ElAvatar.displayName = COMPONENT_NAME
 
 export default ElAvatar
