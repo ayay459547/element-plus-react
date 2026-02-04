@@ -1,10 +1,13 @@
 import clsx from 'clsx'
-import type { ElementType, ReactNode } from 'react'
+import type { ReactNode } from 'react'
+import { forwardRef } from 'react'
 import styles from './ElCheckbox.module.scss'
 import ElCheckbox from './ElCheckbox.tsx'
 import ElCheckboxButton from './ElCheckboxButton.tsx'
 import type { CheckboxOptionProps, ElCheckboxGroupProps } from './types'
 import { CheckboxGroupContext } from './useCheckboxGroup'
+
+const COMPONENT_NAME = 'ElCheckboxGroup'
 
 const checkboxDefaultProps: Required<CheckboxOptionProps> = {
   label: 'label',
@@ -12,83 +15,91 @@ const checkboxDefaultProps: Required<CheckboxOptionProps> = {
   disabled: 'disabled'
 }
 
-const ElCheckboxGroup = <T extends ElementType = 'div'>({
-  value,
-  size,
-  disabled = false,
-  min,
-  max,
-  ariaLabel,
-  textColor = '#ffffff',
-  fill = '#409eff',
-  validateEvent,
-  options,
-  props,
-  type = 'checkbox',
-  tag,
-  children,
-  className,
-  style,
-  onChange,
-  ...rest
-}: ElCheckboxGroupProps<T>) => {
-  const Tag = tag || 'div'
+const ElCheckboxGroup = forwardRef<HTMLElement, ElCheckboxGroupProps<any>>(
+  (
+    {
+      value,
+      size,
+      disabled = false,
+      min,
+      max,
+      ariaLabel,
+      textColor = '#ffffff',
+      fill = '#409eff',
+      validateEvent,
+      options,
+      props,
+      type = 'checkbox',
+      tag,
+      children,
+      className,
+      style,
+      onChange,
+      ...rest
+    },
+    ref
+  ) => {
+    const Tag = tag || 'div'
 
-  const aliasProps = {
-    ...checkboxDefaultProps,
-    ...props
-  }
-
-  const getOptionProps = (option: Record<string, any>) => {
-    const { label, value, disabled } = aliasProps
-    return {
-      label: option[label],
-      value: option[value],
-      disabled: option[disabled]
+    const aliasProps = {
+      ...checkboxDefaultProps,
+      ...props
     }
-  }
 
-  const OptionComponent = type === 'button' ? ElCheckboxButton : ElCheckbox
+    const getOptionProps = (option: Record<string, any>) => {
+      const { label, value, disabled } = aliasProps
+      return {
+        label: option[label],
+        value: option[value],
+        disabled: option[disabled]
+      }
+    }
 
-  let showSlot: ReactNode | null = null
-  if (children) {
-    showSlot = children
-  } else if (Array.isArray(options)) {
-    showSlot = options.map((option) => {
-      const optionProps = getOptionProps(option)
-      return <OptionComponent key={optionProps.value} {...optionProps} />
-    })
-  }
+    const OptionComponent = type === 'button' ? ElCheckboxButton : ElCheckbox
 
-  const changeEvent = async (newValue: ElCheckboxGroupProps['value']) => {
-    onChange?.(newValue)
-  }
+    let showSlot: ReactNode | null = null
+    if (children) {
+      showSlot = children
+    } else if (Array.isArray(options)) {
+      showSlot = options.map((option) => {
+        const optionProps = getOptionProps(option)
+        return <OptionComponent key={optionProps.value} {...optionProps} />
+      })
+    }
 
-  return (
-    <CheckboxGroupContext.Provider
-      value={{
-        groupValue: value,
-        size,
-        min,
-        max,
-        validateEvent,
-        disabled,
-        textColor,
-        fill,
-        changeEvent
-      }}
-    >
-      <Tag
-        {...rest}
-        role="group"
-        aria-label={ariaLabel || 'checkbox-group'}
-        className={clsx('el-checkbox-group', styles['el-checkbox-group'], className)}
-        style={style}
+    const changeEvent = async (newValue: ElCheckboxGroupProps['value']) => {
+      onChange?.(newValue)
+    }
+
+    return (
+      <CheckboxGroupContext.Provider
+        value={{
+          groupValue: value,
+          size,
+          min,
+          max,
+          validateEvent,
+          disabled,
+          textColor,
+          fill,
+          changeEvent
+        }}
       >
-        {showSlot}
-      </Tag>
-    </CheckboxGroupContext.Provider>
-  )
-}
+        <Tag
+          {...rest}
+          ref={ref}
+          role="group"
+          aria-label={ariaLabel || 'checkbox-group'}
+          className={clsx('el-checkbox-group', styles['el-checkbox-group'], className)}
+          style={style}
+        >
+          {showSlot}
+        </Tag>
+      </CheckboxGroupContext.Provider>
+    )
+  }
+)
+
+ElCheckboxGroup.displayName = COMPONENT_NAME
 
 export default ElCheckboxGroup

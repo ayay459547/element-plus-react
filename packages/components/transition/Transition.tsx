@@ -62,7 +62,7 @@ export const Transition: React.FC<TransitionProps> = ({
     }, duration)
   }
 
-  // 🧠 進/退切換
+  // 進/退切換
   useEffect(() => {
     if (inProp) {
       enter()

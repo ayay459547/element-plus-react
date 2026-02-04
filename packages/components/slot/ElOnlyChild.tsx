@@ -7,6 +7,8 @@ interface ElOnlyChildProps {
   [key: string]: any // 允許傳入 onClick, onMouseEnter, style 等
 }
 
+const COMPONENT_NAME = 'ElOnlyChild'
+
 const ElOnlyChild = forwardRef<HTMLElement, ElOnlyChildProps>((props, ref) => {
   const { children, ...restProps } = props
   if (children === null || children === undefined) return null
@@ -29,6 +31,6 @@ const ElOnlyChild = forwardRef<HTMLElement, ElOnlyChildProps>((props, ref) => {
   })
 })
 
-ElOnlyChild.displayName = 'ElOnlyChild'
+ElOnlyChild.displayName = COMPONENT_NAME
 
 export default ElOnlyChild

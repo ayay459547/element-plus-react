@@ -69,8 +69,8 @@ const ElButton = forwardRef<HTMLElement, ElButtonProps<any>>(
 
     return (
       <Tag
-        ref={ref} // 將 ref 綁定到真實的 DOM 節點上
         {...rest}
+        ref={ref} // 將 ref 綁定到真實的 DOM 節點上
         autoFocus={autoFocus}
         // dark={`${dark}`} // 移除：這會導致 React 警告 "Received `false` for a non-boolean attribute `dark`"
         disabled={isDisabled}

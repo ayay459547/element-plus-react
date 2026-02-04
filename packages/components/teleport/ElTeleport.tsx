@@ -1,7 +1,8 @@
-import type { ElTeleportProps } from './types'
-
 import { useMemo } from 'react'
 import { createPortal } from 'react-dom'
+import type { ElTeleportProps } from './types'
+
+const COMPONENT_NAME = 'ElTeleport'
 
 const ElTeleport: React.FC<ElTeleportProps> = ({
   appendTo = document.body,
@@ -24,5 +25,7 @@ const ElTeleport: React.FC<ElTeleportProps> = ({
 
   return createPortal(children, container)
 }
+
+ElTeleport.displayName = COMPONENT_NAME
 
 export default ElTeleport
