@@ -7,7 +7,7 @@ execSync('npm i', { stdio: 'inherit' })
 execSync('npm run lib-build', { stdio: 'inherit' })
 
 // 產生 tarball 包
-execSync('npm run pack', { stdio: 'inherit' })
+execSync('npm pack', { stdio: 'inherit' })
 
 // 發佈到 NPM
 execSync('npm publish --access public --no-git-checks', { stdio: 'inherit' })
