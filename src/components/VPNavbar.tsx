@@ -26,7 +26,8 @@ interface VPNavbarProps {
 }
 
 const VPNavbar: React.FC<VPNavbarProps> = ({ fullScreen, onToggle }) => {
-  const version = import.meta.env.VITE_API_ELEMENT_PLUS_VERSION
+  // const version = import.meta.env.VITE_API_ELEMENT_PLUS_VERSION
+  const version = import.meta.env.VITE_API_VERSION
 
   return (
     <div className="navbar-wrapper">
