@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import type { ReactNode } from 'react'
 import { forwardRef, useState } from 'react'
-import styles from './ElCheckbox.module.scss'
+import './ElCheckbox.scss'
 import type { ElCheckboxGroupProps, ElCheckboxProps } from './types'
 import { useCheckboxGroup } from './useCheckboxGroup'
 
@@ -89,12 +89,11 @@ const ElCheckbox: React.FC<ElCheckboxProps> = forwardRef<HTMLInputElement, ElChe
       <label
         className={clsx(
           'el-checkbox',
-          styles['el-checkbox'],
-          isLarge ? styles['el-checkbox--large'] : '',
-          isSmall ? styles['el-checkbox--small'] : '',
-          isChecked ? styles['is-checked'] : '',
-          isDisabled ? styles['is-disabled'] : '',
-          border ? styles['is-bordered'] : '',
+          isLarge ? 'el-checkbox--large' : '',
+          isSmall ? 'el-checkbox--small' : '',
+          isChecked ? 'is-checked' : '',
+          isDisabled ? 'is-disabled' : '',
+          border ? 'is-bordered' : '',
           className
         )}
         style={style}
@@ -102,10 +101,9 @@ const ElCheckbox: React.FC<ElCheckboxProps> = forwardRef<HTMLInputElement, ElChe
         <span
           className={clsx(
             'el-checkbox__input',
-            styles['el-checkbox__input'],
-            isChecked ? styles['is-checked'] : '',
-            isDisabled ? styles['is-disabled'] : '',
-            indeterminate ? styles['is-indeterminate'] : ''
+            isChecked ? 'is-checked' : '',
+            isDisabled ? 'is-disabled' : '',
+            indeterminate ? 'is-indeterminate' : ''
           )}
         >
           <input
@@ -117,7 +115,7 @@ const ElCheckbox: React.FC<ElCheckboxProps> = forwardRef<HTMLInputElement, ElChe
               'aria-label': ariaLabel
             }}
             ref={ref}
-            className={clsx('el-checkbox__original', styles['el-checkbox__original'])}
+            className={clsx('el-checkbox__original')}
             type="checkbox"
             disabled={isDisabled}
             name={name}
@@ -125,13 +123,9 @@ const ElCheckbox: React.FC<ElCheckboxProps> = forwardRef<HTMLInputElement, ElChe
             value={String(checkboxValue ?? '')}
             onChange={onChangeHandler}
           />
-          <span className={clsx('el-checkbox__inner', styles['el-checkbox__inner'])}></span>
+          <span className={clsx('el-checkbox__inner')}></span>
         </span>
-        {showLabel && (
-          <span className={clsx('el-checkbox__label', styles['el-checkbox__label'])}>
-            {showLabel}
-          </span>
-        )}
+        {showLabel && <span className={clsx('el-checkbox__label')}>{showLabel}</span>}
       </label>
     )
   }

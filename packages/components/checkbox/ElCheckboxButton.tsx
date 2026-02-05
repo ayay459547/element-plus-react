@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import type { ReactNode } from 'react'
 import { forwardRef, useState } from 'react'
-import styles from './ElCheckbox.module.scss'
+import './ElCheckbox.scss'
 import type { ElCheckboxGroupProps, ElCheckboxProps } from './types'
 import { useCheckboxGroup } from './useCheckboxGroup'
 
@@ -97,12 +97,11 @@ const ElCheckboxButton: React.FC<ElCheckboxProps> = forwardRef<HTMLInputElement,
       <label
         className={clsx(
           'el-checkbox-button',
-          styles['el-checkbox-button'],
-          isLarge ? styles['el-checkbox-button--large'] : '',
-          isSmall ? styles['el-checkbox-button--small'] : '',
-          isChecked ? styles['is-checked'] : '',
-          isDisabled ? styles['is-disabled'] : '',
-          border ? styles['is-bordered'] : '',
+          isLarge ? 'el-checkbox-button--large' : '',
+          isSmall ? 'el-checkbox-button--small' : '',
+          isChecked ? 'is-checked' : '',
+          isDisabled ? 'is-disabled' : '',
+          border ? 'is-bordered' : '',
           className
         )}
         style={style}
@@ -110,10 +109,9 @@ const ElCheckboxButton: React.FC<ElCheckboxProps> = forwardRef<HTMLInputElement,
         <span
           className={clsx(
             'el-checkbox-button__input',
-            styles['el-checkbox-button__input'],
-            isChecked ? styles['is-checked'] : '',
-            isDisabled ? styles['is-disabled'] : '',
-            indeterminate ? styles['is-indeterminate'] : ''
+            isChecked ? 'is-checked' : '',
+            isDisabled ? 'is-disabled' : '',
+            indeterminate ? 'is-indeterminate' : ''
           )}
         >
           <input
@@ -125,7 +123,7 @@ const ElCheckboxButton: React.FC<ElCheckboxProps> = forwardRef<HTMLInputElement,
               'aria-controls': ariaControls,
               'aria-label': ariaLabel
             }}
-            className={clsx('el-checkbox-button__original', styles['el-checkbox-button__original'])}
+            className={clsx('el-checkbox-button__original')}
             type="checkbox"
             disabled={isDisabled}
             name={name}
@@ -133,13 +131,7 @@ const ElCheckboxButton: React.FC<ElCheckboxProps> = forwardRef<HTMLInputElement,
             value={String(checkboxValue ?? '')}
             onChange={onChangeHandler}
           />
-          {showLabel && (
-            <span
-              className={clsx('el-checkbox-button__inner', styles['el-checkbox-button__inner'])}
-            >
-              {showLabel}
-            </span>
-          )}
+          {showLabel && <span className={clsx('el-checkbox-button__inner')}>{showLabel}</span>}
         </span>
       </label>
     )

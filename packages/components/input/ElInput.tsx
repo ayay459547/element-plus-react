@@ -7,7 +7,7 @@ import { mergeRefs } from '@ayay459547/element-plus-react/utils/refs'
 import clsx from 'clsx'
 import type { ChangeEvent, InputEvent } from 'react'
 import { forwardRef, useEffect, useId, useRef, useState } from 'react'
-import styles from './ElInput.module.scss'
+import './ElInput.scss'
 import type { ElInputProps } from './types'
 import { useTextareaAutosize } from './useTextareaAutosize'
 import { looseToNumber } from './utils'
@@ -181,13 +181,11 @@ const ElInput: React.FC<ElInputProps> = forwardRef<
     return (
       <div
         className={clsx(
-          type !== 'textarea'
-            ? `el-input ${styles['el-input']}`
-            : `el-textarea ${styles['el-textarea']}`,
-          inputDisabled ? styles['is-disabled'] : '',
-          size ? styles[`el-input--${size}`] : '',
-          prepend ? styles['el-input-group--prepend'] : '',
-          append ? styles['el-input-group--append'] : '',
+          type !== 'textarea' ? 'el-input' : 'el-textarea',
+          inputDisabled ? 'is-disabled' : '',
+          size ? `el-input--${size}` : '',
+          prepend ? 'el-input-group--prepend' : '',
+          append ? 'el-input-group--append' : '',
           className
         )}
         style={style}
@@ -198,30 +196,14 @@ const ElInput: React.FC<ElInputProps> = forwardRef<
         {type !== 'textarea' && (
           <>
             {/* prepend slot */}
-            {prepend && (
-              <div className={clsx('el-input-group__prepend', styles['el-input-group__prepend'])}>
-                {prepend}
-              </div>
-            )}
-            <div
-              className={clsx(
-                'el-input__wrapper',
-                styles['el-input__wrapper'],
-                isFocused ? styles['is-focus'] : ''
-              )}
-            >
+            {prepend && <div className={clsx('el-input-group__prepend')}>{prepend}</div>}
+            <div className={clsx('el-input__wrapper', isFocused ? 'is-focus' : '')}>
               {/* prepend slot */}
               {(prefix || prefixIcon) && (
-                <span className={clsx('el-input__prefix', styles['el-input__prefix'])}>
-                  <span
-                    className={clsx('el-input__prefix-inner', styles['el-input__prefix-inner'])}
-                  >
+                <span className={clsx('el-input__prefix')}>
+                  <span className={clsx('el-input__prefix-inner')}>
                     {prefix}
-                    {prefixIcon && (
-                      <ElIcon className={clsx('el-input__icon', styles['el-input__icon'])}>
-                        {prefixIcon}
-                      </ElIcon>
-                    )}
+                    {prefixIcon && <ElIcon className={clsx('el-input__icon')}>{prefixIcon}</ElIcon>}
                   </span>
                 </span>
               )}
@@ -230,7 +212,7 @@ const ElInput: React.FC<ElInputProps> = forwardRef<
                 ref={mergeRefs(ref, inputRef)}
                 id={inputId}
                 {...props}
-                className={clsx('el-input__inner', styles['el-input__inner'])}
+                className={clsx('el-input__inner')}
                 type={showPassword ? (passwordVisible ? 'text' : 'password') : type}
                 input-value={inputValue}
                 value={nativeInputValue}
@@ -246,39 +228,22 @@ const ElInput: React.FC<ElInputProps> = forwardRef<
 
               {/* suffix slot */}
               {suffixVisible && (
-                <span className={clsx('el-input__suffix', styles['el-input__suffix'])}>
-                  <span
-                    className={clsx('el-input__suffix-inner', styles['el-input__suffix-inner'])}
-                  >
+                <span className={clsx('el-input__suffix')}>
+                  <span className={clsx('el-input__suffix-inner')}>
                     {(!showClear || !showPwdVisible || !isWordLimitVisible) && suffix}
                     {(!showClear || !showPwdVisible || !isWordLimitVisible) && suffixIcon && (
-                      <ElIcon className={clsx('el-input__icon', styles['el-input__icon'])}>
-                        {suffixIcon}
-                      </ElIcon>
+                      <ElIcon className={clsx('el-input__icon')}>{suffixIcon}</ElIcon>
                     )}
 
                     {showClear && (
-                      <ElIcon
-                        className={clsx(
-                          'el-input__icon',
-                          styles['el-input__icon'],
-                          'el-input__clear',
-                          styles['el-input__clear']
-                        )}
-                        onClick={clear}
-                      >
+                      <ElIcon className={clsx('el-input__icon', 'el-input__clear')} onClick={clear}>
                         {clearIcon}
                       </ElIcon>
                     )}
 
                     {showPwdVisible && (
                       <ElIcon
-                        className={clsx(
-                          'el-input__icon',
-                          styles['el-input__icon'],
-                          'el-input__password',
-                          styles['el-input__password']
-                        )}
+                        className={clsx('el-input__icon', 'el-input__password')}
                         onClick={handlePasswordVisible}
                       >
                         {passwordVisible ? <IconView /> : <IconHide />}
@@ -289,13 +254,10 @@ const ElInput: React.FC<ElInputProps> = forwardRef<
                       <span
                         className={clsx(
                           'el-input__count',
-                          styles['el-input__count'],
-                          wordLimitPosition === 'outside' ? styles['is-outside'] : ''
+                          wordLimitPosition === 'outside' ? 'is-outside' : ''
                         )}
                       >
-                        <span
-                          className={clsx('el-input__count-inner', styles['el-input__count-inner'])}
-                        >
+                        <span className={clsx('el-input__count-inner')}>
                           {textLength} / {maxlength}
                         </span>
                       </span>
@@ -305,11 +267,7 @@ const ElInput: React.FC<ElInputProps> = forwardRef<
               )}
             </div>
             {/* append slot */}
-            {append && (
-              <div className={clsx('el-input-group__append', styles['el-input-group__append'])}>
-                {append}
-              </div>
-            )}
+            {append && <div className={clsx('el-input-group__append')}>{append}</div>}
           </>
         )}
         {/* textarea  */}
@@ -319,7 +277,7 @@ const ElInput: React.FC<ElInputProps> = forwardRef<
               ref={mergeRefs(ref, textareaRef)}
               id={inputId}
               {...props}
-              className={clsx('el-textarea__inner', styles['el-textarea__inner'])}
+              className={clsx('el-textarea__inner')}
               rows={autosize ? 1 : rows}
               input-value={inputValue}
               value={nativeInputValue}
@@ -337,8 +295,7 @@ const ElInput: React.FC<ElInputProps> = forwardRef<
                 // style={countStyle}
                 className={clsx(
                   'el-input__count',
-                  styles['el-input__count'],
-                  wordLimitPosition === 'outside' ? styles['is-outside'] : ''
+                  wordLimitPosition === 'outside' ? 'is-outside' : ''
                 )}
               >
                 {textLength} / {maxlength}

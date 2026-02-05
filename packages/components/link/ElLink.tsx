@@ -1,7 +1,7 @@
 import ElIcon from '@ayay459547/element-plus-react/components/icon/ElIcon.tsx'
 import clsx from 'clsx'
 import { forwardRef } from 'react'
-import styles from './ElLink.module.scss'
+import './ElLink.scss'
 import type { ElLinkProps } from './types'
 
 const COMPONENT_NAME = 'ElLink'
@@ -34,17 +34,16 @@ const ElLink: React.FC<ElLinkProps> = forwardRef<HTMLAnchorElement, ElLinkProps>
         target={target}
         className={clsx(
           'el-link',
-          styles['el-link'],
-          type ? styles[`el-link--${type}`] : '',
-          disabled ? styles['is-disabled'] : '',
-          isUnderline ? styles['is-underline'] : '',
-          isHoverUnderline ? styles['is-hover-underline'] : '',
+          type ? `el-link--${type}` : '',
+          disabled ? 'is-disabled' : '',
+          isUnderline ? 'is-underline' : '',
+          isHoverUnderline ? 'is-hover-underline' : '',
           className
         )}
         style={style}
       >
         {icon && <ElIcon>{icon}</ElIcon>}
-        <span className={clsx('el-link__inner', styles['el-link__inner'])}>{children}</span>
+        <span className={clsx('el-link__inner')}>{children}</span>
         {iconSlot}
       </a>
     )

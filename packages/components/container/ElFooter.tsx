@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import type { CSSProperties } from 'react'
 import { forwardRef } from 'react'
-import styles from './ElContainer.module.scss'
+import './ElContainer.scss'
 import type { ElFooterProps } from './types'
 
 const COMPONENT_NAME = 'ElFooter'
@@ -17,7 +17,7 @@ const ElFooter: React.FC<ElFooterProps> = forwardRef<HTMLDivElement, ElFooterPro
       <div
         {...props}
         ref={ref}
-        className={clsx('el-footer', styles['el-footer'], className)}
+        className={clsx('el-footer', className)}
         style={{ ...styleCSSVar, ...style }}
       >
         {children}

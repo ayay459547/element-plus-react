@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import type { CSSProperties } from 'react'
 import { forwardRef } from 'react'
-import styles from './ElText.module.scss'
+import './ElText.scss'
 import type { ElTextProps } from './types'
 
 const COMPONENT_NAME = 'ElText'
@@ -39,11 +39,10 @@ const ElText: React.FC<ElTextProps> = forwardRef<HTMLElement, ElTextProps<any>>(
         ref={ref}
         className={clsx(
           'el-text',
-          styles['el-text'],
-          styles[`el-text--${type}`],
-          styles[`el-text--${size}`],
-          truncated ? styles['is-truncated'] : '',
-          lineClamp ? styles['is-line-clamp'] : '',
+          `el-text--${type}`,
+          `el-text--${size}`,
+          truncated ? 'is-truncated' : '',
+          lineClamp ? 'is-line-clamp' : '',
           className
         )}
         style={mergedStyle}

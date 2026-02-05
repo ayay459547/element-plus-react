@@ -4,7 +4,7 @@ import ElIcon from '@ayay459547/element-plus-react/components/icon/ElIcon.tsx'
 import Transition from '@ayay459547/element-plus-react/components/transition/Transition.tsx'
 import { forwardRef } from 'react'
 import { IoClose } from 'react-icons/io5'
-import styles from './ElTag.module.scss'
+import './ElTag.scss'
 import type { ElTagProps } from './types'
 
 const COMPONENT_NAME = 'ElTag'
@@ -35,23 +35,22 @@ const ElTag: React.FC<ElTagProps> = forwardRef<HTMLSpanElement, ElTagProps>(
         ref={ref}
         className={clsx(
           'el-tag',
-          styles['el-tag'],
-          styles[`el-tag--${type}`],
-          effect && styles[`el-tag--${effect}`],
-          size && styles[`el-tag--${size}`],
-          hit ? styles['is-hit'] : '',
-          round ? styles['is-round'] : '',
-          closable ? styles['is-closable'] : '',
+          `el-tag--${type}`,
+          effect && `el-tag--${effect}`,
+          size && `el-tag--${size}`,
+          hit ? 'is-hit' : '',
+          round ? 'is-round' : '',
+          closable ? 'is-closable' : '',
           className
         )}
         style={{ backgroundColor: color, ...style }}
         onClick={(e) => onClick?.(e)}
       >
-        <span className={styles['el-tag__content']}>{children}</span>
+        <span className={'el-tag__content'}>{children}</span>
 
         {closable && (
           <span
-            className={styles['el-tag__close']}
+            className={'el-tag__close'}
             onClick={(e) => {
               e.stopPropagation()
               onClose?.(e)

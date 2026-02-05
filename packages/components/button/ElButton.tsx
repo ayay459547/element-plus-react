@@ -3,7 +3,7 @@ import Loading from '@ayay459547/element-plus-react/icons-svg/loading.svg?react'
 import clsx from 'clsx'
 import type { ElementType, ReactNode } from 'react'
 import { forwardRef } from 'react'
-import styles from './ElButton.module.scss'
+import './ElButton.scss'
 import type { ElButtonProps } from './types'
 
 const insertSpaceIfTwoChinese = (text: string): string => {
@@ -79,19 +79,18 @@ const ElButton: React.FC<ElButtonProps> = forwardRef<HTMLElement, ElButtonProps<
         onClick={onClick}
         className={clsx(
           'el-button',
-          styles['el-button'],
-          isLarge && styles['el-button--large'],
-          isSmall && styles['el-button--small'],
-          typeof type === 'string' && type.length > 0 && styles[`el-button--${type}`],
-          disabled && styles['is-disabled'],
-          plain && styles['is-plain'],
-          text && styles['is-text'],
-          bg && styles['is-has-bg'],
-          link && styles['is-link'],
-          round && styles['is-round'],
-          circle && styles['is-circle'],
-          loading && styles['is-loading'],
-          dark && styles['is-dark'], // 建議：用 class 來控制 dark 樣式
+          isLarge && 'el-button--large',
+          isSmall && 'el-button--small',
+          typeof type === 'string' && type.length > 0 && `el-button--${type}`,
+          disabled && 'is-disabled',
+          plain && 'is-plain',
+          text && 'is-text',
+          bg && 'is-has-bg',
+          link && 'is-link',
+          round && 'is-round',
+          circle && 'is-circle',
+          loading && 'is-loading',
+          dark && 'is-dark',
           className
         )}
         style={style}

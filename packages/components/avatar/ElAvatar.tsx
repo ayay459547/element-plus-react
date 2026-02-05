@@ -3,7 +3,7 @@ import { addUnit } from '@ayay459547/element-plus-react/utils/dom/style'
 import clsx from 'clsx'
 import type { CSSProperties, DOMAttributes } from 'react'
 import { forwardRef, useState } from 'react'
-import styles from './ElAvatar.module.scss'
+import './ElAvatar.scss'
 import type { ElAvatarProps } from './types'
 
 const COMPONENT_NAME = 'ElAvatar'
@@ -74,10 +74,9 @@ const ElAvatar: React.FC<ElAvatarProps> = forwardRef<HTMLDivElement, ElAvatarPro
         ref={ref}
         className={clsx(
           'el-avatar',
-          styles['el-avatar'],
-          isLarge ? styles['el-avatar--large'] : '',
-          isSmall ? styles['el-avatar--small'] : '',
-          styles[`el-avatar--${shape}`],
+          isLarge ? 'el-avatar--large' : '',
+          isSmall ? 'el-avatar--small' : '',
+          `el-avatar--${shape}`,
           className
         )}
         style={{ ...style, ...sizeStyle }}
