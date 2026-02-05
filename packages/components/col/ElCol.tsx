@@ -4,7 +4,7 @@ import { isNumber, isObject } from '@ayay459547/element-plus-react/utils/types'
 import clsx from 'clsx'
 import type { CSSProperties } from 'react'
 import { forwardRef } from 'react'
-import styles from './ElCol.module.scss'
+import './ElCol.scss'
 import type { ElColProps } from './types'
 
 const COMPONENT_NAME = 'ElCol'
@@ -47,13 +47,11 @@ const ElCol: React.FC<ElColProps<any>> = forwardRef<HTMLElement, ElColProps<any>
     const sizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const
     sizes.forEach((size) => {
       if (isNumber(props[size])) {
-        classes.push(styles[`el-col-${size}-${props[size]}`])
+        classes.push(`el-col-${size}-${props[size]}`)
       } else if (isObject(props[size])) {
         Object.entries(props[size]).forEach(([prop, sizeProp]) => {
           classes.push(
-            prop !== 'span'
-              ? styles[`el-col-${size}-${prop}-${sizeProp}`]
-              : styles[`el-col-${size}-${sizeProp}`]
+            prop !== 'span' ? `el-col-${size}-${prop}-${sizeProp}` : `el-col-${size}-${sizeProp}`
           )
         })
       }
@@ -65,12 +63,11 @@ const ElCol: React.FC<ElColProps<any>> = forwardRef<HTMLElement, ElColProps<any>
         ref={ref}
         className={clsx(
           'el-col',
-          styles['el-col'],
-          gutter ? styles['is-guttered'] : '',
-          typeof span === 'number' ? styles[`el-col-${span}`] : '',
-          typeof offset === 'number' ? styles[`el-col-offset-${offset}`] : '',
-          typeof push === 'number' ? styles[`el-col-push-${push}`] : '',
-          typeof pull === 'number' ? styles[`el-col-pull-${pull}`] : '',
+          gutter ? 'is-guttered' : '',
+          typeof span === 'number' ? `el-col-${span}` : '',
+          typeof offset === 'number' ? `el-col-offset-${offset}` : '',
+          typeof push === 'number' ? `el-col-push-${push}` : '',
+          typeof pull === 'number' ? `el-col-pull-${pull}` : '',
           ...classes,
           className
         )}

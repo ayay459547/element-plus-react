@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import { Children, cloneElement, forwardRef, isValidElement } from 'react'
-import styles from './ElButton.module.scss'
+import './ElButton.scss'
 import type { ElButtonGroupProps, ElButtonProps } from './types'
 
 function isElButton(element: any): element is React.ReactElement<ElButtonProps> {
@@ -19,8 +19,7 @@ const ElButtonGroup: React.FC<ElButtonGroupProps> = forwardRef<HTMLDivElement, E
         ref={ref}
         className={clsx(
           'el-button-group',
-          styles['el-button-group'],
-          hasDirection ? styles[`el-button-group--${direction}`] : '',
+          hasDirection ? `el-button-group--${direction}` : '',
           className
         )}
         style={style}

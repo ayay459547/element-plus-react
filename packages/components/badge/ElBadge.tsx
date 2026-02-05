@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import type { CSSProperties } from 'react'
 import { forwardRef } from 'react'
 import { isNumber } from '../../utils/types'
-import styles from './ElBadge.module.scss'
+import './ElBadge.scss'
 import type { ElBadgeProps } from './types'
 
 const COMPONENT_NAME = 'ElBadge'
@@ -52,7 +52,7 @@ const ElBadge: React.FC<ElBadgeProps> = forwardRef<HTMLSpanElement, ElBadgeProps
       <span
         {...props}
         ref={ref}
-        className={clsx('el-badge', styles['el-badge'], isDot ? styles['is-dot'] : '', className)}
+        className={clsx('el-badge', isDot ? 'is-dot' : '', className)}
         style={style}
       >
         {children}
@@ -60,11 +60,10 @@ const ElBadge: React.FC<ElBadgeProps> = forwardRef<HTMLSpanElement, ElBadgeProps
           <sup
             className={clsx(
               'el-badge__content',
-              styles['el-badge__content'],
-              styles['is-fixed'],
-              isDot ? styles['is-dot'] : '',
-              styles[`el-badge__content--${type}`],
-              !showZero && `${value}` === `${0}` ? styles['is-hide-zero'] : '',
+              'is-fixed',
+              isDot ? 'is-dot' : '',
+              `el-badge__content--${type}`,
+              !showZero && `${value}` === `${0}` ? 'is-hide-zero' : '',
               badgeClass
             )}
             style={{ ...bindStyle }}

@@ -5,7 +5,7 @@ import { useFloating, useHover } from '@floating-ui/react'
 import clsx from 'clsx'
 import { useRef, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
-import styles from './ElPopper.module.scss'
+import './ElPopper.scss'
 import type { ElPopperContentProps } from './types'
 import { usePopperContext } from './usePopper'
 
@@ -60,13 +60,7 @@ const ElPopperContent: React.FC<ElPopperContentProps> = ({ children }) => {
             contentRef.current = element
           }}
           style={{ ...floatingStyles, ...popperStyle }}
-          className={clsx(
-            popperClass,
-            'el-popper',
-            styles['el-popper'],
-            `is-${effect}`,
-            styles[`is-${effect}`]
-          )}
+          className={clsx(popperClass, 'el-popper', `is-${effect}`)}
           {...getFloatingProps()}
           data-popper-placement={middlewareData.offset?.placement ?? placement}
         >

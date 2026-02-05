@@ -3,7 +3,7 @@ import { addUnit } from '@ayay459547/element-plus-react/utils/dom/style'
 import clsx from 'clsx'
 import type { CSSProperties } from 'react'
 import { forwardRef } from 'react'
-import styles from './ElIcon.module.scss'
+import './ElIcon.scss'
 import type { ElIconProps } from './types'
 
 const COMPONENT_NAME = 'ElIcon'
@@ -22,12 +22,7 @@ const ElIcon: React.FC<ElIconProps> = forwardRef<HTMLElement, ElIconProps>(
       <i
         {...props}
         ref={ref}
-        className={clsx(
-          'el-icon',
-          styles['el-icon'],
-          loading ? styles['is-loading'] : '',
-          className
-        )}
+        className={clsx('el-icon', loading ? 'is-loading' : '', className)}
         style={mergedStyle}
       >
         {children}

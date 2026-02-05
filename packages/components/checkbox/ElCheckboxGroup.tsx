@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import type { ReactNode } from 'react'
 import { forwardRef } from 'react'
-import styles from './ElCheckbox.module.scss'
+import './ElCheckbox.scss'
 import ElCheckbox from './ElCheckbox.tsx'
 import ElCheckboxButton from './ElCheckboxButton.tsx'
 import type { CheckboxOptionProps, ElCheckboxGroupProps } from './types'
@@ -93,7 +93,7 @@ const ElCheckboxGroup: React.FC<ElCheckboxGroupProps<any>> = forwardRef<
           ref={ref}
           role="group"
           aria-label={ariaLabel || 'checkbox-group'}
-          className={clsx('el-checkbox-group', styles['el-checkbox-group'], className)}
+          className={clsx('el-checkbox-group', className)}
           style={style}
         >
           {showSlot}

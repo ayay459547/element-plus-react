@@ -2,7 +2,7 @@ import ElFooter from '@ayay459547/element-plus-react/components/container/ElFoot
 import ElHeader from '@ayay459547/element-plus-react/components/container/ElHeader.tsx'
 import clsx from 'clsx'
 import { Children, forwardRef, isValidElement } from 'react'
-import styles from './ElContainer.module.scss'
+import './ElContainer.scss'
 import type { ElContainerProps } from './types'
 
 const COMPONENT_NAME = 'ElContainer'
@@ -27,12 +27,7 @@ const ElContainer: React.FC<ElContainerProps> = forwardRef<HTMLDivElement, ElCon
       <div
         {...props}
         ref={ref}
-        className={clsx(
-          'el-container',
-          styles['el-container'],
-          isVertical ? styles['is-vertical'] : '',
-          className
-        )}
+        className={clsx('el-container', isVertical ? 'is-vertical' : '', className)}
         style={style}
       >
         {children}

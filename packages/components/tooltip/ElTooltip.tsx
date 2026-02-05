@@ -1,5 +1,6 @@
 import ElPopper from '@ayay459547/element-plus-react/components/popper/ElPopper.tsx'
 
+import './ElTooltip.scss'
 import ElTooltipContent from './ElTooltipContent.tsx'
 import ElTooltipTrigger from './ElTooltipTrigger.tsx'
 import type { ElTooltipProps } from './types'

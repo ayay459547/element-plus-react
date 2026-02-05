@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import type { CSSProperties } from 'react'
 import { forwardRef } from 'react'
-import styles from './ElContainer.module.scss'
+import './ElContainer.scss'
 import type { ElAsideProps } from './types'
 
 const COMPONENT_NAME = 'ElAside'
@@ -17,7 +17,7 @@ const ElAside: React.FC<ElAsideProps> = forwardRef<HTMLDivElement, ElAsideProps>
       <div
         {...props}
         ref={ref}
-        className={clsx('el-aside', styles['el-aside'], className)}
+        className={clsx('el-aside', className)}
         style={{ ...styleCSSVar, ...style }}
       >
         {children}

@@ -3,7 +3,7 @@ import { addUnit } from '@ayay459547/element-plus-react/utils/dom/style'
 import clsx from 'clsx'
 import type { CSSProperties } from 'react'
 import { Children, cloneElement, forwardRef, isValidElement } from 'react'
-import styles from './ElRow.module.scss'
+import './ElRow.scss'
 import type { ElRowProps } from './types'
 import { RowContext } from './useRow'
 
@@ -33,9 +33,8 @@ const ElRow: React.FC<ElRowProps> = forwardRef<HTMLElement, ElRowProps<any>>(
           ref={ref}
           className={clsx(
             'el-row',
-            styles['el-row'],
-            align ? styles[`is-align-${align}`] : '',
-            justify !== 'start' ? styles[`is-justify-${justify}`] : '',
+            align ? `is-align-${align}` : '',
+            justify !== 'start' ? `is-justify-${justify}` : '',
             className
           )}
           style={{

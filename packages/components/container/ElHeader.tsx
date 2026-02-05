@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import type { CSSProperties } from 'react'
 import { forwardRef } from 'react'
-import styles from './ElContainer.module.scss'
+import './ElContainer.scss'
 import type { ElHeaderProps } from './types'
 
 const COMPONENT_NAME = 'ElHeader'
@@ -17,7 +17,7 @@ const ElHeader: React.FC<ElHeaderProps> = forwardRef<HTMLDivElement, ElHeaderPro
       <div
         {...props}
         ref={ref}
-        className={clsx('el-header', styles['el-header'], className)}
+        className={clsx('el-header', className)}
         style={{ ...styleCSSVar, ...style }}
       >
         {children}
