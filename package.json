@@ -1,6 +1,6 @@
 {
   "name": "@ayay459547/element-plus-react",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "publishConfig": {
     "access": "public"
   },
@@ -23,7 +23,7 @@
     "gh-pages": "gh-pages -d dist-demo",
     "page-deploy": "npm run build && gh-pages -d dist-demo",
     "deploy": "node ./scripts/deploy.js",
-    "lib-build": "vite build --mode library",
+    "lib-build": "vite build --mode library && tsc -p tsconfig.build.json",
     "local-build": "vite build --mode localhost",
     "publish": "node ./scripts/publish.js"
   },
