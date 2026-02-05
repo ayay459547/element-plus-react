@@ -2,6 +2,9 @@
 
 Use Element Plus as a reference for creating a React UI framework.
 
+⚠️ Work In Progress (WIP)
+This package is currently under active development.
+
 ## Installation
 
 ```bash
