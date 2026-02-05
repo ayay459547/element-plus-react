@@ -55,7 +55,7 @@ const ElPopper: React.FC<PopperProps> = (props) => {
     open: isOpen,
     placement,
     onOpenChange: (isOpen, event, reason) => {
-      console.log('onOpenChange => ', { isOpen, disabled, event, reason })
+      // console.log('onOpenChange => ', { isOpen, disabled, event, reason })
 
       // 滑鼠右鍵 (待開發)
       const isRight = event && 'button' in event && event.button === 2
