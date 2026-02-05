@@ -34,7 +34,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
     },
     outDir: 'dist',
     rollupOptions: {
-      external: ['react'],
+      external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
         preserveModules: true, // 保留 packages 結構
         preserveModulesRoot: 'packages',
