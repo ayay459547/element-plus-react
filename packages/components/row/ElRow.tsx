@@ -13,7 +13,7 @@ function isElCol(element: any): element is React.ReactElement<ElColProps> {
 
 const COMPONENT_NAME = 'ElRow'
 
-const ElRow = forwardRef<HTMLElement, ElRowProps<any>>(
+const ElRow: React.FC<ElRowProps> = forwardRef<HTMLElement, ElRowProps<any>>(
   ({ gutter = 0, justify = 'start', align, tag, children, className, style, ...props }, ref) => {
     const Tag = tag || 'div'
 

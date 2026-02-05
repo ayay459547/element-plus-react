@@ -9,7 +9,7 @@ import type { ElTagProps } from './types'
 
 const COMPONENT_NAME = 'ElTag'
 
-const ElTag = forwardRef<HTMLSpanElement, ElTagProps>(
+const ElTag: React.FC<ElTagProps> = forwardRef<HTMLSpanElement, ElTagProps>(
   (
     {
       type = 'primary',

@@ -6,7 +6,7 @@ import type { ElFooterProps } from './types'
 
 const COMPONENT_NAME = 'ElFooter'
 
-const ElFooter = forwardRef<HTMLDivElement, ElFooterProps>(
+const ElFooter: React.FC<ElFooterProps> = forwardRef<HTMLDivElement, ElFooterProps>(
   ({ height, children, className, style, ...props }, ref) => {
     const styleCSSVar: CSSProperties & Record<string, string> = {}
     if (typeof height === 'string') {

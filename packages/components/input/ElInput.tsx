@@ -14,7 +14,10 @@ import { looseToNumber } from './utils'
 
 const COMPONENT_NAME = 'ElInput'
 
-const ElInput = forwardRef<HTMLInputElement | HTMLTextAreaElement, ElInputProps>(
+const ElInput: React.FC<ElInputProps> = forwardRef<
+  HTMLInputElement | HTMLTextAreaElement,
+  ElInputProps
+>(
   (
     {
       type = 'text',

@@ -3,8 +3,10 @@ import './Transition.scss'
 
 import type { TransitionProps } from './types'
 
+const COMPONENT_NAME = 'Transition'
+
 // React 版 <transition>
-export const Transition: React.FC<TransitionProps> = ({
+const Transition: React.FC<TransitionProps> = ({
   inProp,
   name = 'fade',
   appear = true,
@@ -88,5 +90,7 @@ export const Transition: React.FC<TransitionProps> = ({
     ref: attachRef
   })
 }
+
+Transition.displayName = COMPONENT_NAME
 
 export default Transition

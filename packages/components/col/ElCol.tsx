@@ -9,7 +9,7 @@ import type { ElColProps } from './types'
 
 const COMPONENT_NAME = 'ElCol'
 
-const ElCol = forwardRef<HTMLElement, ElColProps<any>>(
+const ElCol: React.FC<ElColProps<any>> = forwardRef<HTMLElement, ElColProps<any>>(
   (
     {
       span = 24,

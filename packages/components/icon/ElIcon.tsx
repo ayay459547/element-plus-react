@@ -8,7 +8,7 @@ import type { ElIconProps } from './types'
 
 const COMPONENT_NAME = 'ElIcon'
 
-const ElIcon = forwardRef<HTMLElement, ElIconProps>(
+const ElIcon: React.FC<ElIconProps> = forwardRef<HTMLElement, ElIconProps>(
   ({ size, color, loading = false, children, style, className, ...props }, ref) => {
     const fontSize = addUnit(size)
 

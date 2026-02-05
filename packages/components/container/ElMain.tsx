@@ -5,7 +5,7 @@ import type { ElMainProps } from './types'
 
 const COMPONENT_NAME = 'ElMain'
 
-const ElMain = forwardRef<HTMLDivElement, ElMainProps>(
+const ElMain: React.FC<ElMainProps> = forwardRef<HTMLDivElement, ElMainProps>(
   ({ children, className, style, ...props }, ref) => {
     return (
       <div

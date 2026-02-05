@@ -15,7 +15,10 @@ const checkboxDefaultProps: Required<CheckboxOptionProps> = {
   disabled: 'disabled'
 }
 
-const ElCheckboxGroup = forwardRef<HTMLElement, ElCheckboxGroupProps<any>>(
+const ElCheckboxGroup: React.FC<ElCheckboxGroupProps<any>> = forwardRef<
+  HTMLElement,
+  ElCheckboxGroupProps<any>
+>(
   (
     {
       value,

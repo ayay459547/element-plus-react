@@ -7,7 +7,7 @@ import type { ElContainerProps } from './types'
 
 const COMPONENT_NAME = 'ElContainer'
 
-const ElContainer = forwardRef<HTMLDivElement, ElContainerProps>(
+const ElContainer: React.FC<ElContainerProps> = forwardRef<HTMLDivElement, ElContainerProps>(
   ({ direction, children, className, style, ...props }, ref) => {
     const isVertical = (() => {
       if (direction === 'vertical') return true

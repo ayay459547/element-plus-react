@@ -8,7 +8,7 @@ import type { ElBadgeProps } from './types'
 
 const COMPONENT_NAME = 'ElBadge'
 
-const ElBadge = forwardRef<HTMLSpanElement, ElBadgeProps>(
+const ElBadge: React.FC<ElBadgeProps> = forwardRef<HTMLSpanElement, ElBadgeProps>(
   (
     {
       value = '',

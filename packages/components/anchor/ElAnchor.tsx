@@ -5,7 +5,7 @@ import type { ElAnchorProps } from './types'
 
 const COMPONENT_NAME = 'ElAnchor'
 
-const ElAnchor = forwardRef<HTMLDivElement, ElAnchorProps>(
+const ElAnchor: React.FC<ElAnchorProps> = forwardRef<HTMLDivElement, ElAnchorProps>(
   ({ children, className, style, ...props }, ref) => {
     return (
       <div

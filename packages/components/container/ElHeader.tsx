@@ -6,7 +6,7 @@ import type { ElHeaderProps } from './types'
 
 const COMPONENT_NAME = 'ElHeader'
 
-const ElHeader = forwardRef<HTMLDivElement, ElHeaderProps>(
+const ElHeader: React.FC<ElHeaderProps> = forwardRef<HTMLDivElement, ElHeaderProps>(
   ({ height, children, className, style, ...props }, ref) => {
     const styleCSSVar: CSSProperties & Record<string, string> = {}
     if (typeof height === 'string') {

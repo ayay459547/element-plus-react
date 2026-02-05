@@ -8,7 +8,7 @@ import type { ElEmptyProps } from './types'
 
 const COMPONENT_NAME = 'ElEmpty'
 
-const ElEmpty = forwardRef<HTMLDivElement, ElEmptyProps>(
+const ElEmpty: React.FC<ElEmptyProps> = forwardRef<HTMLDivElement, ElEmptyProps>(
   ({ image, imageSize, description, children, className, style, ...props }, ref) => {
     const imageStyle: CSSProperties = {}
     if (imageSize) {

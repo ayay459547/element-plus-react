@@ -6,7 +6,7 @@ import type { ElLinkProps } from './types'
 
 const COMPONENT_NAME = 'ElLink'
 
-const ElLink = forwardRef<HTMLAnchorElement, ElLinkProps>(
+const ElLink: React.FC<ElLinkProps> = forwardRef<HTMLAnchorElement, ElLinkProps>(
   (
     {
       type = 'default',

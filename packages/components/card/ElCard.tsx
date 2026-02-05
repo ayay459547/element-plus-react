@@ -5,7 +5,7 @@ import type { ElCardProps } from './types'
 
 const COMPONENT_NAME = 'ElCard'
 
-const ElCard = forwardRef<HTMLDivElement, ElCardProps>(
+const ElCard: React.FC<ElCardProps> = forwardRef<HTMLDivElement, ElCardProps>(
   (
     {
       bodyStyle,

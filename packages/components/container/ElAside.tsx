@@ -6,7 +6,7 @@ import type { ElAsideProps } from './types'
 
 const COMPONENT_NAME = 'ElAside'
 
-const ElAside = forwardRef<HTMLDivElement, ElAsideProps>(
+const ElAside: React.FC<ElAsideProps> = forwardRef<HTMLDivElement, ElAsideProps>(
   ({ width = '300px', children, className, style, ...props }, ref) => {
     const styleCSSVar: CSSProperties & Record<string, string> = {}
     if (typeof width === 'string') {

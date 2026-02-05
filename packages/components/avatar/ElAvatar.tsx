@@ -8,7 +8,7 @@ import type { ElAvatarProps } from './types'
 
 const COMPONENT_NAME = 'ElAvatar'
 
-const ElAvatar = forwardRef<HTMLDivElement, ElAvatarProps>(
+const ElAvatar: React.FC<ElAvatarProps> = forwardRef<HTMLDivElement, ElAvatarProps>(
   (
     {
       icon,

@@ -9,7 +9,7 @@ function isElButton(element: any): element is React.ReactElement<ElButtonProps> 
 
 const COMPONENT_NAME = 'ElButtonGroup'
 
-const ElButtonGroup = forwardRef<HTMLDivElement, ElButtonGroupProps>(
+const ElButtonGroup: React.FC<ElButtonGroupProps> = forwardRef<HTMLDivElement, ElButtonGroupProps>(
   ({ size, type, direction = 'horizontal', children, style, className, ...props }, ref) => {
     const hasDirection = ['horizontal', 'vertical'].includes(direction)
 

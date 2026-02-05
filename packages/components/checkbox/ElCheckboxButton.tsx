@@ -7,7 +7,7 @@ import { useCheckboxGroup } from './useCheckboxGroup'
 
 const COMPONENT_NAME = 'ElCheckboxButton'
 
-const ElCheckboxButton = forwardRef<HTMLInputElement, ElCheckboxProps>(
+const ElCheckboxButton: React.FC<ElCheckboxProps> = forwardRef<HTMLInputElement, ElCheckboxProps>(
   (
     {
       value,
