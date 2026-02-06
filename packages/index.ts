@@ -31,6 +31,10 @@ export { default as ElLink } from './components/link/ElLink'
 
 export { default as ElRow } from './components/row/ElRow'
 
+export { default as ElRadio } from './components/radio/ElRadio'
+export { default as ElRadioButton } from './components/radio/ElRadioButton'
+export { default as ElRadioGroup } from './components/radio/ElRadioGroup'
+
 export { default as ElTag } from './components/tag/ElTag'
 
 export { default as ElText } from './components/text/ElText'

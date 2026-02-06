@@ -1,39 +1,35 @@
 import clsx from 'clsx'
 import type { ReactNode } from 'react'
 import { forwardRef } from 'react'
-import './ElCheckbox.scss'
-import ElCheckbox from './ElCheckbox.tsx'
-import ElCheckboxButton from './ElCheckboxButton.tsx'
-import type { CheckboxOptionProps, ElCheckboxGroupProps } from './types'
-import { CheckboxGroupContext } from './useCheckboxContext.ts'
+import './ElRadio.scss'
+import ElRadio from './ElRadio.tsx'
+import ElRadioButton from './ElRadioButton.tsx'
+import type { ElRadioGroupProps, RadioOptionProps } from './types'
+import { RadioGroupContext } from './useRadioContext.ts'
 
-const COMPONENT_NAME = 'ElCheckboxGroup'
+const COMPONENT_NAME = 'ElRadioGroup'
 
-const checkboxDefaultProps: Required<CheckboxOptionProps> = {
+const checkboxDefaultProps: Required<RadioOptionProps> = {
   label: 'label',
   value: 'value',
   disabled: 'disabled'
 }
 
-const ElCheckboxGroup: React.FC<ElCheckboxGroupProps<any>> = forwardRef<
-  HTMLElement,
-  ElCheckboxGroupProps<any>
->(
+const ElRadioGroup: React.FC<ElRadioGroupProps> = forwardRef<HTMLDivElement, ElRadioGroupProps>(
   (
     {
       value,
-      size,
+      size = 'default',
+      validateEvent,
       disabled = false,
-      min,
-      max,
-      ariaLabel,
       textColor = '#ffffff',
       fill = '#409eff',
-      validateEvent,
+      ariaLabel,
+      name,
+      id,
       options,
       props,
-      type = 'checkbox',
-      tag,
+      type = 'radio',
       children,
       className,
       style,
@@ -42,8 +38,6 @@ const ElCheckboxGroup: React.FC<ElCheckboxGroupProps<any>> = forwardRef<
     },
     ref
   ) => {
-    const Tag = tag || 'div'
-
     const aliasProps = {
       ...checkboxDefaultProps,
       ...props
@@ -58,7 +52,7 @@ const ElCheckboxGroup: React.FC<ElCheckboxGroupProps<any>> = forwardRef<
       }
     }
 
-    const OptionComponent = type === 'button' ? ElCheckboxButton : ElCheckbox
+    const OptionComponent = type === 'button' ? ElRadioButton : ElRadio
 
     let showSlot: ReactNode | null = null
     if (children) {
@@ -70,39 +64,39 @@ const ElCheckboxGroup: React.FC<ElCheckboxGroupProps<any>> = forwardRef<
       })
     }
 
-    const changeEvent = async (newValue: ElCheckboxGroupProps['value']) => {
-      onChange?.(newValue)
+    const changeEvent: ElRadioGroupProps['onChange'] = (e) => {
+      onChange?.(e)
     }
 
     return (
-      <CheckboxGroupContext.Provider
+      <RadioGroupContext.Provider
         value={{
           groupValue: value,
           size,
-          min,
-          max,
           validateEvent,
           disabled,
           textColor,
           fill,
+          name,
           changeEvent
         }}
       >
-        <Tag
+        <div
           {...rest}
           ref={ref}
-          role="group"
-          aria-label={ariaLabel || 'checkbox-group'}
-          className={clsx('el-checkbox-group', className)}
+          role="radio-group"
+          aria-label={ariaLabel || 'radio-group'}
+          id={id}
+          className={clsx('el-radio-group', className)}
           style={style}
         >
           {showSlot}
-        </Tag>
-      </CheckboxGroupContext.Provider>
+        </div>
+      </RadioGroupContext.Provider>
     )
   }
 )
 
-ElCheckboxGroup.displayName = COMPONENT_NAME
+ElRadioGroup.displayName = COMPONENT_NAME
 
-export default ElCheckboxGroup
+export default ElRadioGroup

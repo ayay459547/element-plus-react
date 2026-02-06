@@ -5,7 +5,7 @@ import type { CSSProperties } from 'react'
 import { Children, cloneElement, forwardRef, isValidElement } from 'react'
 import './ElRow.scss'
 import type { ElRowProps } from './types'
-import { RowContext } from './useRow'
+import { RowContext } from './useRowContext'
 
 function isElCol(element: any): element is React.ReactElement<ElColProps> {
   return element?.type !== undefined

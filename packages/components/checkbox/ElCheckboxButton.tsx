@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 import { forwardRef, useState } from 'react'
 import './ElCheckbox.scss'
 import type { ElCheckboxGroupProps, ElCheckboxProps } from './types'
-import { useCheckboxGroup } from './useCheckboxGroup'
+import { useCheckboxContext } from './useCheckboxContext'
 
 const COMPONENT_NAME = 'ElCheckboxButton'
 
@@ -39,7 +39,7 @@ const ElCheckboxButton: React.FC<ElCheckboxProps> = forwardRef<HTMLInputElement,
       max,
       disabled: groupDisabled,
       changeEvent
-    } = useCheckboxGroup()
+    } = useCheckboxContext()
 
     const isChecked = (() => {
       if (value === null || value === undefined) return checked
