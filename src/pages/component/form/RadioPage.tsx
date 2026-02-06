@@ -6,6 +6,15 @@ import VPCode from '@/components/common/VPCode.tsx'
 import RadioBasicUsage from '@/examples/radio/BasicUsage.tsx'
 import RadioBasicUsage_code from '@/examples/radio/BasicUsage.tsx?raw'
 
+import RadioDisabled from '@/examples/radio/Disabled.tsx'
+import RadioDisabled_code from '@/examples/radio/Disabled.tsx?raw'
+
+import RadioGroup from '@/examples/radio/RadioGroup.tsx'
+import RadioGroup_code from '@/examples/radio/RadioGroup.tsx?raw'
+
+import RadioWithBorders from '@/examples/radio/WithBorders.tsx'
+import RadioWithBorders_code from '@/examples/radio/WithBorders.tsx?raw'
+
 const RadioPage: React.FC = () => {
   return (
     <VPDocContent>
@@ -22,12 +31,6 @@ const RadioPage: React.FC = () => {
 
       <h2 id="basic-usage">Basic usage</h2>
       <p>Radio should not have too many options. Otherwise, use the Select component instead.</p>
-      <p>
-        Creating a radio component is easy, you just need to bind a variable to Radio's{' '}
-        <code>v-model</code>. It equals to the value of <code>value</code> of the chosen radio. The
-        type of <code>value</code> is <code>String</code>, <code>Number</code> or{' '}
-        <code>Boolean</code>.
-      </p>
       <VPDemo
         link="/src/examples/radio/BasicUsage.tsx"
         code={
@@ -40,6 +43,61 @@ const RadioPage: React.FC = () => {
         }
       >
         <RadioBasicUsage />
+      </VPDemo>
+
+      <h2 id="disabled">Disabled</h2>
+      <p>
+        <code>disabled</code> attribute is used to disable the radio.
+      </p>
+      <p>
+        You just need to add the <code>disabled</code> attribute.
+      </p>
+      <VPDemo
+        link="/src/examples/radio/Disabled.tsx"
+        code={
+          <VPCode
+            language={['Disabled.tsx']}
+            code={{
+              'Disabled.tsx': RadioDisabled_code
+            }}
+          />
+        }
+      >
+        <RadioDisabled />
+      </VPDemo>
+
+      <h2 id="radio-group">Radio Group</h2>
+      <p>Suitable for choosing from some mutually exclusive options.</p>
+      <VPDemo
+        link="/src/examples/radio/RadioGroup.tsx"
+        code={
+          <VPCode
+            language={['RadioGroup.tsx']}
+            code={{
+              'RadioGroup.tsx': RadioGroup_code
+            }}
+          />
+        }
+      >
+        <RadioGroup />
+      </VPDemo>
+
+      <h2 id="with-borders">With borders</h2>
+      <p>
+        The <code>border</code> attribute adds a border to Radios.
+      </p>
+      <VPDemo
+        link="/src/examples/radio/WithBorders.tsx"
+        code={
+          <VPCode
+            language={['WithBorders.tsx']}
+            code={{
+              'WithBorders.tsx': RadioWithBorders_code
+            }}
+          />
+        }
+      >
+        <RadioWithBorders />
       </VPDemo>
     </VPDocContent>
   )
