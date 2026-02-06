@@ -6,4 +6,4 @@ export type RowContextType = {
 
 export const RowContext = createContext<RowContextType>({ gutter: 0 })
 
-export const useRow = () => useContext(RowContext)
+export const useRowContext = () => useContext(RowContext)

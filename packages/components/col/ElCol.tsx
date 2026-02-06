@@ -1,4 +1,4 @@
-import { useRow } from '@ayay459547/element-plus-react/components/row/useRow'
+import { useRowContext } from '@ayay459547/element-plus-react/components/row/useRowContext'
 import { addUnit } from '@ayay459547/element-plus-react/utils/dom/style'
 import { isNumber, isObject } from '@ayay459547/element-plus-react/utils/types'
 import clsx from 'clsx'
@@ -32,7 +32,7 @@ const ElCol: React.FC<ElColProps<any>> = forwardRef<HTMLElement, ElColProps<any>
   ) => {
     const Tag = tag || 'div'
 
-    const { gutter } = useRow()
+    const { gutter } = useRowContext()
 
     let gutterX: ReturnType<typeof addUnit> = ''
     const colStyles: CSSProperties = {}
