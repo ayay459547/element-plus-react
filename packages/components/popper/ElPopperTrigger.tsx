@@ -1,4 +1,4 @@
-import { usePopperContext } from '@ayay459547/element-plus-react/components/popper/usePopper.ts'
+import { usePopperContext } from '@ayay459547/element-plus-react/components/popper/usePopperContext'
 import ElOnlyChild from '@ayay459547/element-plus-react/components/slot/ElOnlyChild.tsx'
 import type { HTMLProps } from 'react'
 import { isValidElement } from 'react'

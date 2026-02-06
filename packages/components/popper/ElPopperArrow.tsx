@@ -2,7 +2,7 @@
 import clsx from 'clsx'
 import './ElPopper.scss'
 import type { ElPopperArrowProps } from './types'
-import { usePopperContext } from './usePopper'
+import { usePopperContext } from './usePopperContext'
 
 const ElPopperArrow: React.FC<ElPopperArrowProps> = () => {
   const { setArrowElement, context, middlewareData } = usePopperContext()

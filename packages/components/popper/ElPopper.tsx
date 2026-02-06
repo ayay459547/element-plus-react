@@ -15,8 +15,8 @@ import { useEffect, useState } from 'react'
 import { POPPER_CONTENT_INJECTION_KEY, POPPER_INJECTION_KEY } from './constants'
 
 import type { PopperProps } from './types'
-import type { PopperContextType } from './usePopper'
-import { PopperContext } from './usePopper'
+import type { PopperContextType } from './usePopperContext'
+import { PopperContext } from './usePopperContext'
 
 const ElPopper: React.FC<PopperProps> = (props) => {
   const {

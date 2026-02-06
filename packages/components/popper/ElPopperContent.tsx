@@ -7,7 +7,7 @@ import { useRef, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import './ElPopper.scss'
 import type { ElPopperContentProps } from './types'
-import { usePopperContext } from './usePopper'
+import { usePopperContext } from './usePopperContext'
 
 const ElPopperContent: React.FC<ElPopperContentProps> = ({ children }) => {
   const {
