@@ -15,4 +15,4 @@ export type CheckboxGroupContextType = {
 
 export const CheckboxGroupContext = createContext<CheckboxGroupContextType>({})
 
-export const useCheckboxGroup = () => useContext(CheckboxGroupContext)
+export const useCheckboxContext = () => useContext(CheckboxGroupContext)

@@ -5,7 +5,7 @@ import './ElCheckbox.scss'
 import ElCheckbox from './ElCheckbox.tsx'
 import ElCheckboxButton from './ElCheckboxButton.tsx'
 import type { CheckboxOptionProps, ElCheckboxGroupProps } from './types'
-import { CheckboxGroupContext } from './useCheckboxGroup'
+import { CheckboxGroupContext } from './useCheckboxContext.ts'
 
 const COMPONENT_NAME = 'ElCheckboxGroup'
 
