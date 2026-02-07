@@ -45,6 +45,7 @@ const ElRadio = forwardRef<HTMLInputElement, ElRadioProps>((props, ref) => {
   }
 
   const onChangeHandler: ElRadioProps['onChange'] = (e) => {
+    if (isDisabled) return
     changeEvent?.(e)
     onChange?.(e)
   }

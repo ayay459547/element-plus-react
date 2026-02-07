@@ -15,6 +15,12 @@ import RadioGroup_code from '@/examples/radio/RadioGroup.tsx?raw'
 import RadioWithBorders from '@/examples/radio/WithBorders.tsx'
 import RadioWithBorders_code from '@/examples/radio/WithBorders.tsx?raw'
 
+import RadioOptions from '@/examples/radio/Options.tsx'
+import RadioOptions_code from '@/examples/radio/Options.tsx?raw'
+
+import RadioButton from '@/examples/radio/RadioButton.tsx'
+import RadioButton_code from '@/examples/radio/RadioButton.tsx?raw'
+
 const RadioPage: React.FC = () => {
   return (
     <VPDocContent>
@@ -98,6 +104,49 @@ const RadioPage: React.FC = () => {
         }
       >
         <RadioWithBorders />
+      </VPDemo>
+
+      <h2 id="options-attribute">
+        Options attribute
+        <span className="vp-tag ml-1">2.11.2</span>
+      </h2>
+      <p>
+        Shortcut from basic <code>el-radio-group</code> usage. You can customize the alias of the{' '}
+        <code>options</code> through the <code>props</code> attribute.
+      </p>
+      <VPDemo
+        link="/src/examples/radio/Options.tsx"
+        code={
+          <VPCode
+            language={['Options.tsx']}
+            code={{
+              'Options.tsx': RadioOptions_code
+            }}
+          />
+        }
+      >
+        <RadioOptions />
+      </VPDemo>
+
+      <h2 id="radio-button">Radio Button</h2>
+      <p>Radio with button group visual effect.</p>
+      <p>
+        You just need to change <code>el-radio</code> element into <code>el-radio-button</code>{' '}
+        element. You can also set the style of the button when it is active by using{' '}
+        <code>fill</code> and <code>text-color</code>.
+      </p>
+      <VPDemo
+        link="/src/examples/radio/RadioButton.tsx"
+        code={
+          <VPCode
+            language={['RadioButton.tsx']}
+            code={{
+              'RadioButton.tsx': RadioButton_code
+            }}
+          />
+        }
+      >
+        <RadioButton />
       </VPDemo>
     </VPDocContent>
   )
