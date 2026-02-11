@@ -7,6 +7,12 @@ import AlertBasic_styles from '@/examples/alert/Basic.scss?raw'
 import AlertBasic from '@/examples/alert/Basic.tsx'
 import AlertBasic_code from '@/examples/alert/Basic.tsx?raw'
 
+import AlertTheme from '@/examples/alert/Theme.tsx'
+import AlertTheme_code from '@/examples/alert/Theme.tsx?raw'
+
+import AlertCloseButton from '@/examples/alert/CloseButton.tsx'
+import AlertCloseButton_code from '@/examples/alert/CloseButton.tsx?raw'
+
 const AlertPage: React.FC = () => {
   return (
     <VPDocContent>
@@ -35,6 +41,53 @@ const AlertPage: React.FC = () => {
         }
       >
         <AlertBasic />
+      </VPDemo>
+
+      <h2 id="theme">Theme</h2>
+      <p>
+        Alert provide two different themes, <code>light</code> and <code>dark</code>.
+      </p>
+      <p>
+        Set <code>effect</code> to change theme, default is <code>light</code>.
+      </p>
+      <VPDemo
+        link="/src/examples/alert/Theme.tsx"
+        code={
+          <VPCode
+            language={['Theme.tsx', 'Basic.scss']}
+            code={{
+              'Theme.tsx': AlertTheme_code,
+              'Basic.scss': AlertBasic_styles
+            }}
+          />
+        }
+      >
+        <AlertTheme />
+      </VPDemo>
+
+      <h2 id="customizable-close-button">Customizable Close Button</h2>
+      <p>Customize the close button as texts or other symbols.</p>
+      <p>
+        Alert allows you to configure if it's closable. The close button text and closing callbacks
+        are also customizable. <code>closable</code> attribute decides if the component can be
+        closed or not. It accepts <code>boolean</code>, and the default is <code>true</code>. You
+        can set <code>closeText</code> attribute to replace the default cross symbol as the close
+        button. Be careful that <code>closeText</code> must be a string. <code>close</code> event
+        fires when the component is closed.
+      </p>
+      <VPDemo
+        link="/src/examples/alert/CloseButton.tsx"
+        code={
+          <VPCode
+            language={['CloseButton.tsx', 'Basic.scss']}
+            code={{
+              'CloseButton.tsx': AlertCloseButton_code,
+              'Basic.scss': AlertBasic_styles
+            }}
+          />
+        }
+      >
+        <AlertCloseButton />
       </VPDemo>
     </VPDocContent>
   )
