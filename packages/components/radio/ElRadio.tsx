@@ -7,7 +7,7 @@ import { useRadioContext } from './useRadioContext'
 
 const COMPONENT_NAME = 'ElRadio'
 
-const ElRadio = forwardRef<HTMLInputElement, ElRadioProps>((props, ref) => {
+const ElRadio: React.FC<ElRadioProps> = forwardRef<HTMLInputElement, ElRadioProps>((props, ref) => {
   const {
     value,
     label,
