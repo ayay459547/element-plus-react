@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactElement } from 'react'
+import type { CSSProperties, ReactElement, ReactNode } from 'react'
 
 export type ColSizeObject = {
   span?: number
@@ -53,7 +53,7 @@ export interface ElColBaseProps {
    */
   xl?: number | ColSizeObject
 
-  children?: React.ReactNode
+  children?: ReactNode
 
   className?: string
   style?: CSSProperties

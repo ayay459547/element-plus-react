@@ -1,3 +1,5 @@
+export { default as ElAlert } from './components/alert/ElAlert'
+
 export { default as ElAnchor } from './components/anchor/ElAnchor'
 
 export { default as ElAvatar } from './components/avatar/ElAvatar'
