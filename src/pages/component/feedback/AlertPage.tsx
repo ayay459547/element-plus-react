@@ -13,6 +13,18 @@ import AlertTheme_code from '@/examples/alert/Theme.tsx?raw'
 import AlertCloseButton from '@/examples/alert/CloseButton.tsx'
 import AlertCloseButton_code from '@/examples/alert/CloseButton.tsx?raw'
 
+import AlertIcon from '@/examples/alert/Icon.tsx'
+import AlertIcon_code from '@/examples/alert/Icon.tsx?raw'
+
+import AlertCenter from '@/examples/alert/Center.tsx'
+import AlertCenter_code from '@/examples/alert/Center.tsx?raw'
+
+import AlertDescription from '@/examples/alert/Description.tsx'
+import AlertDescription_code from '@/examples/alert/Description.tsx?raw'
+
+import AlertIconDescription from '@/examples/alert/IconDescription.tsx'
+import AlertIconDescription_code from '@/examples/alert/IconDescription.tsx?raw'
+
 const AlertPage: React.FC = () => {
   return (
     <VPDocContent>
@@ -88,6 +100,84 @@ const AlertPage: React.FC = () => {
         }
       >
         <AlertCloseButton />
+      </VPDemo>
+
+      <h2 id="with-icon">With Icon</h2>
+      <p>Displaying an icon improves readability.</p>
+      <p>
+        Setting the <code>showIcon</code> attribute displays an icon that corresponds with the
+        current Alert type. Or use the <code>icon</code> slot to customize icon.
+      </p>
+      <VPDemo
+        link="/src/examples/alert/Icon.tsx"
+        code={
+          <VPCode
+            language={['Icon.tsx', 'Basic.scss']}
+            code={{
+              'Icon.tsx': AlertIcon_code,
+              'Basic.scss': AlertBasic_styles
+            }}
+          />
+        }
+      >
+        <AlertIcon />
+      </VPDemo>
+
+      <h2 id="centered-text">Centered Text</h2>
+      <p>
+        Use the <code>center</code> attribute to center the text.
+      </p>
+      <VPDemo
+        link="/src/examples/alert/Center.tsx"
+        code={
+          <VPCode
+            language={['Center.tsx', 'Basic.scss']}
+            code={{
+              'Center.tsx': AlertCenter_code,
+              'Basic.scss': AlertBasic_styles
+            }}
+          />
+        }
+      >
+        <AlertCenter />
+      </VPDemo>
+
+      <h2 id="with-description">With Description</h2>
+      <p>Description includes a message with more detailed information.</p>
+      <p>
+        Besides the required <code>title</code> attribute, you can add a <code>description</code>{' '}
+        attribute to help you describe the alert with more details. Description can only store text
+        string, and it will word wrap automatically.
+      </p>
+      <VPDemo
+        link="/src/examples/alert/Description.tsx"
+        code={
+          <VPCode
+            language={['Description.tsx']}
+            code={{
+              'Description.tsx': AlertDescription_code
+            }}
+          />
+        }
+      >
+        <AlertDescription />
+      </VPDemo>
+
+      <h2 id="with-icon-and-description">With Icon and Description</h2>
+      <p>At last, this is an example with both icon and description.</p>
+      <VPDemo
+        link="/src/examples/alert/IconDescription.tsx"
+        code={
+          <VPCode
+            language={['IconDescription.tsx', 'Basic.scss']}
+            code={{
+              'IconDescription.tsx': AlertIconDescription_code,
+              'Basic.scss': AlertBasic_styles
+            }}
+          />
+        }
+      >
+        <AlertIconDescription />
       </VPDemo>
     </VPDocContent>
   )

@@ -1,1 +1,21 @@
 @use '@ayay459547/element-plus-react/theme-chalk/src/alert.scss';
+
+.alert-fade-enter {
+  opacity: 0;
+}
+.alert-fade-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    opacity 300ms,
+    transform 300ms;
+}
+.alert-fade-exit {
+  opacity: 1;
+}
+.alert-fade-exit-active {
+  opacity: 0;
+  transition:
+    opacity 300ms,
+    transform 300ms;
+}

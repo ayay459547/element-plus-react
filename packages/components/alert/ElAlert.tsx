@@ -47,8 +47,8 @@ const ElAlert: React.FC<ElAlertProps> = forwardRef<HTMLDivElement, ElAlertProps>
   return (
     <CSSTransition
       in={visible} // 控制進場/出場
-      timeout={500} // 動畫時間 (毫秒)
-      classNames="el-fade-in-linear" // 對應 CSS class
+      timeout={300} // 動畫時間 (毫秒)
+      classNames="alert-fade" // 對應 CSS class
       unmountOnExit // 隱藏時從 DOM 移除 (符合 Tooltip 行為)
       nodeRef={contentRef} // 綁定 ref
       appear // 初次渲染如果為 true 也執行動畫
@@ -74,7 +74,9 @@ const ElAlert: React.FC<ElAlertProps> = forwardRef<HTMLDivElement, ElAlertProps>
 
         <div className="el-alert__content">
           {title && typeof title === 'string' ? (
-            <span className="el-alert__title">{title}</span>
+            <span className={clsx('el-alert__title', hasDesc ? 'with-description' : '')}>
+              {title}
+            </span>
           ) : (
             title
           )}
