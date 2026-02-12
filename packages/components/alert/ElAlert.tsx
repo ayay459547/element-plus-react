@@ -89,7 +89,7 @@ const ElAlert: React.FC<ElAlertProps> = forwardRef<HTMLDivElement, ElAlertProps>
                 {closeText}
               </div>
             ) : (
-              <ElIcon v-else className="el-alert__close-btn" onClick={(e) => close(e)}>
+              <ElIcon className="el-alert__close-btn" onClick={(e) => close(e)}>
                 <Close />
               </ElIcon>
             ))}
