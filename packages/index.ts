@@ -39,4 +39,11 @@ export { default as ElRadioGroup } from './components/radio/ElRadioGroup'
 
 export { default as ElTag } from './components/tag/ElTag'
 
+export { default as ElTeleport } from './components/teleport/ElTeleport'
+
 export { default as ElText } from './components/text/ElText'
+
+export { default as ElTooltip } from './components/tooltip/ElTooltip'
+
+export { default as ElTransfer } from './components/transfer/ElTransfer'
+export { default as ElTransferPanel } from './components/transfer/ElTransferPanel'

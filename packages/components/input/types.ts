@@ -135,6 +135,8 @@ export interface ElInputProps {
    */
   append?: ReactNode
 
+  validateEvent?: boolean
+
   className?: string
   style?: CSSProperties
 

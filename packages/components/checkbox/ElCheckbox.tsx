@@ -26,6 +26,7 @@ const ElCheckbox: React.FC<ElCheckboxProps> = forwardRef<HTMLInputElement, ElChe
       ariaLabel,
       children,
       className,
+      // validateEvent = true,
       style,
       onChange,
       ...rest
