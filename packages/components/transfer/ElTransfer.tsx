@@ -78,6 +78,8 @@ const ElTransfer: React.FC<ElTransferProps> = forwardRef<HTMLDivElement, ElTrans
           title={leftPanelTitle}
           filterable={filterable}
           placeholder={filterPlaceholder}
+          filterMethod={filterMethod}
+          format={format}
           propsAlias={propsAlias}
           optionRender={optionRender}
         />
@@ -110,6 +112,8 @@ const ElTransfer: React.FC<ElTransferProps> = forwardRef<HTMLDivElement, ElTrans
           title={rightPanelTitle}
           filterable={filterable}
           placeholder={filterPlaceholder}
+          filterMethod={filterMethod}
+          format={format}
           propsAlias={propsAlias}
           optionRender={optionRender}
         />

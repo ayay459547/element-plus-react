@@ -44,6 +44,8 @@ export interface ElTransferPanelProps extends Common {
 
   filterMethod?: (query: string, item: Record<string, any>) => boolean
 
+  format?: TransferFormat
+
   propsAlias: Required<TransferPropsAlias>
 
   optionRender?: (option: TransferDataItem) => ReactNode

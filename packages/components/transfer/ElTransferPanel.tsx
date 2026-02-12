@@ -4,7 +4,7 @@ import ElInput from '@ayay459547/element-plus-react/components/input/ElInput.tsx
 import Search from '@ayay459547/element-plus-react/icons-svg/search.svg?react'
 import { isEmpty } from '@ayay459547/element-plus-react/utils/types.ts'
 import clsx from 'clsx'
-import { forwardRef, useState } from 'react'
+import { forwardRef } from 'react'
 import './ElTransfer.scss'
 import { useCheck } from './hooks/useCheck.ts'
 import type { ElTransferPanelProps } from './types'
@@ -20,6 +20,8 @@ const ElTransferPanel: React.FC<ElTransferPanelProps> = forwardRef<
     title,
     filterable,
     placeholder,
+    filterMethod,
+    format,
     propsAlias,
     optionRender,
     empty,
@@ -28,21 +30,22 @@ const ElTransferPanel: React.FC<ElTransferPanelProps> = forwardRef<
     style
   } = props
 
-  const [allChecked, setAllChecked] = useState(false)
-
-  const { filteredData, checkedSummary, isIndeterminate, handleAllCheckedChange } = useCheck(
-    props,
-    {
-      checked: [],
-      allChecked: false,
-      query: '',
-      checkChangeByUser: true
-    }
-  )
-
-  const [query, setQuery] = useState('')
-
-  const checked: any[] = []
+  const {
+    filteredData,
+    checkedSummary,
+    isIndeterminate,
+    handleAllCheckedChange,
+    // panelState
+    checked,
+    setChecked,
+    query,
+    allChecked,
+    setAllChecked,
+    setQuery
+  } = useCheck({
+    filterMethod,
+    ...props
+  })
 
   const hasNoMatch = !isEmpty(query) && isEmpty(filteredData)
 
@@ -55,7 +58,7 @@ const ElTransferPanel: React.FC<ElTransferPanelProps> = forwardRef<
           checked={allChecked}
           onChange={(e) => {
             setAllChecked(e.target.checked)
-            handleAllCheckedChange()
+            handleAllCheckedChange(e.target.checked)
           }}
           indeterminate={isIndeterminate}
           // validateEvent={false}
@@ -82,6 +85,9 @@ const ElTransferPanel: React.FC<ElTransferPanelProps> = forwardRef<
         {!hasNoMatch && !isEmpty(data) && (
           <ElCheckboxGroup
             value={checked}
+            onChange={(newValue) => {
+              setChecked(newValue)
+            }}
             // validateEvent={false}
             className={clsx('el-transfer-panel__list', filterable ? 'is-filterable' : '')}
           >
