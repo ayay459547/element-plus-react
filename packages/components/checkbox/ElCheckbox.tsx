@@ -74,7 +74,11 @@ const ElCheckbox: React.FC<ElCheckboxProps> = forwardRef<HTMLInputElement, ElChe
           return _value === value
         })
 
-        if (_isChecked && valueIndex === -1 && value) {
+        if (
+          _isChecked &&
+          valueIndex === -1 &&
+          (typeof value === 'number' || typeof value === 'string')
+        ) {
           newGroupValue.push(value)
         } else if (!_isChecked && valueIndex !== -1) {
           newGroupValue.splice(valueIndex, 1)
