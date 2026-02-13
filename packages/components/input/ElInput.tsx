@@ -44,6 +44,7 @@ const ElInput: React.FC<ElInputProps> = forwardRef<
       autosize = false,
       prepend,
       append,
+      // validateEvent = true,
       className,
       style,
       onFocus,

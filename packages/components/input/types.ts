@@ -18,7 +18,7 @@ export interface ElInputProps {
   value?: string | number
 
   /**
-   *@description v-model modifiers, reference Vue modifiers
+   *@description value modifiers, reference Vue modifiers
    */
   modelModifiers?: {
     lazy?: boolean
@@ -134,6 +134,8 @@ export interface ElInputProps {
    * @description content to append after Input, only works when type is not 'textarea'
    */
   append?: ReactNode
+
+  validateEvent?: boolean
 
   className?: string
   style?: CSSProperties

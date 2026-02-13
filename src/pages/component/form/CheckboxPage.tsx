@@ -46,7 +46,7 @@ const CheckboxPage: React.FC = () => {
           New API <code>value</code> has been added in <span className="vp-tag ml-1">2.6.0</span>,
           the examples in the document all use the <code>value</code>. If you are using a version{' '}
           <strong>less than</strong> <span className="vp-tag ml-1">2.6.0</span> and using{' '}
-          <code>checkbox-group</code>, please refer to:
+          <code>ElCheckboxGroup</code>, please refer to:
         </p>
       </div>
       <VPCode
@@ -64,10 +64,10 @@ const CheckboxPage: React.FC = () => {
       <h2 id="basic-usage">Basic usage</h2>
       <p>Checkbox can be used alone to switch between two states.</p>
       <p>
-        Define <code>v-model</code>(bind variable) in <code>el-checkbox</code>. The default value is
-        a <code>Boolean</code> for single <code>checkbox</code>, and it becomes <code>true</code>{' '}
-        when selected. Content inside the <code>el-checkbox</code> tag will become the description
-        following the button of the checkbox.
+        Define <code>value</code>/<code>onChange</code>(bind variable) in <code>ElCheckbox</code>.
+        The default value is a <code>Boolean</code> for single <code>checkbox</code>, and it becomes{' '}
+        <code>true</code> when selected. Content inside the <code>ElCheckbox</code> tag will become
+        the description following the button of the checkbox.
       </p>
       <VPDemo
         link="/src/examples/checkbox/Basic.tsx"

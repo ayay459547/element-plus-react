@@ -11,14 +11,6 @@ const DrawerPage: React.FC = () => {
         <code>terms &amp; conditions</code>, <code>Drawer</code> has almost identical API with{' '}
         <code>Dialog</code>, but it introduces different user experience.
       </p>
-      <div className="tip custom-block">
-        <p className="custom-block-title">TIP</p>
-        <p>
-          Since v-model is natively supported for all components, <code>visible.sync</code> has been
-          deprecated, use <code>v-model="visibilityBinding"</code> to control the visibility of the
-          current drawer.
-        </p>
-      </div>
 
       <h2 id="basic-usage">Basic Usage</h2>
       <p>Callout a temporary drawer, from multiple direction</p>
