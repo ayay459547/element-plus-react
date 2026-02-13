@@ -15,8 +15,6 @@ export type EpPropFinalized<T = any> = {
   [epPropKey]: true
 }
 
-const __DEV__ = import.meta.env.NODE_ENV !== 'production'
-
 export const buildProp = <T>(prop: EpPropInput<T>, key?: string): EpPropFinalized<T> => {
   if (!prop || typeof prop !== 'object') return prop as any
 
@@ -37,14 +35,6 @@ export const buildProp = <T>(prop: EpPropInput<T>, key?: string): EpPropFinalize
           }
 
           if (validator) valid ||= validator(val)
-
-          if (__DEV__ && !valid && allowedValues.length) {
-            console.warn(
-              `[element-plus-react] invalid prop${
-                key ? ` "${key}"` : ''
-              }, expected one of ${allowedValues.join(', ')}`
-            )
-          }
 
           return valid
         }
