@@ -16,12 +16,14 @@ const ElTransferPanel: React.FC<ElTransferPanelProps> = forwardRef<
   ElTransferPanelProps
 >((props, ref) => {
   const {
+    checked,
+    setChecked,
     data = [],
     title,
     filterable,
-    placeholder,
+    placeholder = 'Enter keyword',
     filterMethod,
-    format,
+    format = {},
     propsAlias,
     optionRender,
     empty,
@@ -36,15 +38,15 @@ const ElTransferPanel: React.FC<ElTransferPanelProps> = forwardRef<
     isIndeterminate,
     handleAllCheckedChange,
     // panelState
-    checked,
-    setChecked,
+    isAllChecked,
     query,
     allChecked,
     setAllChecked,
     setQuery
   } = useCheck({
+    ...props,
     filterMethod,
-    ...props
+    format
   })
 
   const hasNoMatch = !isEmpty(query) && isEmpty(filteredData)
@@ -55,7 +57,7 @@ const ElTransferPanel: React.FC<ElTransferPanelProps> = forwardRef<
     <div ref={ref} className={clsx('el-transfer-panel', className)} style={{ ...style }}>
       <p className="el-transfer-panel__header">
         <ElCheckbox
-          checked={allChecked}
+          checked={isAllChecked && allChecked}
           onChange={(e) => {
             setAllChecked(e.target.checked)
             handleAllCheckedChange(e.target.checked)
@@ -86,7 +88,7 @@ const ElTransferPanel: React.FC<ElTransferPanelProps> = forwardRef<
           <ElCheckboxGroup
             value={checked}
             onChange={(newValue) => {
-              setChecked(newValue)
+              setChecked(newValue ?? [])
             }}
             // validateEvent={false}
             className={clsx('el-transfer-panel__list', filterable ? 'is-filterable' : '')}
@@ -106,7 +108,6 @@ const ElTransferPanel: React.FC<ElTransferPanelProps> = forwardRef<
             })}
           </ElCheckboxGroup>
         )}
-
         {(hasNoMatch || isEmpty(data)) && (
           <div className="el-transfer-panel__empty">
             {!isEmpty(empty)

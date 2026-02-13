@@ -4,12 +4,13 @@ import ArrowLeft from '@ayay459547/element-plus-react/icons-svg/arrow-left.svg?r
 import ArrowRight from '@ayay459547/element-plus-react/icons-svg/arrow-right.svg?react'
 import { isEmpty, isUndefined } from '@ayay459547/element-plus-react/utils/types.ts'
 import clsx from 'clsx'
-import { forwardRef, useMemo, useState } from 'react'
+import { forwardRef, useMemo } from 'react'
 import './ElTransfer.scss'
 import ElTransferPanel from './ElTransferPanel.tsx'
 import { useComputedData } from './hooks/useComputedData.ts'
+import { useMove } from './hooks/useMove.ts'
 import { usePropsAlias } from './hooks/usePropsAlias.ts'
-import type { ElTransferProps, TransferCheckedState, TransferDataItem } from './types.ts'
+import type { ElTransferProps, TransferDataItem } from './types.ts'
 
 const COMPONENT_NAME = 'ElTransfer'
 
@@ -26,24 +27,44 @@ const ElTransfer: React.FC<ElTransferProps> = forwardRef<HTMLDivElement, ElTrans
       titles = [],
       buttonTexts = [],
       renderContent,
-      format,
+      format = {},
       // props,
       leftDefaultChecked,
       rightDefaultChecked,
       // validateEvent = true,
       children,
+      leftFooter,
+      rightFooter,
+      leftEmpty,
+      rightEmpty,
       className,
       style
     } = props
 
-    const [checkedState, setCheckedState] = useState<TransferCheckedState>({
-      leftChecked: [],
-      rightChecked: []
-    })
-
     const propsAlias = usePropsAlias(props.props)
 
-    const { sourceData, targetData } = useComputedData(props)
+    const { sourceData, targetData } = useComputedData({
+      ...props,
+      data,
+      value,
+      targetOrder
+    })
+
+    const {
+      addToLeft,
+      addToRight,
+      // checkedState
+      leftChecked,
+      setLeftChecked,
+      rightChecked,
+      setRightChecked
+    } = useMove({
+      ...props,
+      value,
+      onChange,
+      leftDefaultChecked,
+      rightDefaultChecked
+    })
 
     const optionRender = useMemo(() => {
       return (option: TransferDataItem) => {
@@ -52,8 +73,8 @@ const ElTransfer: React.FC<ElTransferProps> = forwardRef<HTMLDivElement, ElTrans
           return renderContent(option)
         }
 
-        if (children) {
-          const nodes = children({ option })
+        if (typeof children === 'function') {
+          const nodes = children(option)
           if (nodes) return nodes
         }
 
@@ -68,12 +89,11 @@ const ElTransfer: React.FC<ElTransferProps> = forwardRef<HTMLDivElement, ElTrans
     const leftPanelTitle = titles[0] || 'List 1'
     const rightPanelTitle = titles[1] || 'List 2'
 
-    const addToLeft = () => {}
-    const addToRight = () => {}
-
     return (
       <div ref={ref} className={clsx('el-transfer', className)} style={{ ...style }}>
         <ElTransferPanel
+          checked={leftChecked}
+          setChecked={setLeftChecked}
           data={sourceData}
           title={leftPanelTitle}
           filterable={filterable}
@@ -82,12 +102,15 @@ const ElTransfer: React.FC<ElTransferProps> = forwardRef<HTMLDivElement, ElTrans
           format={format}
           propsAlias={propsAlias}
           optionRender={optionRender}
-        />
+          empty={leftEmpty}
+        >
+          {leftFooter}
+        </ElTransferPanel>
         <div className="el-transfer__buttons">
           <ElButton
             type="primary"
             className={clsx('el-transfer__button', hasButtonTexts ? 'is-with-texts' : '')}
-            disabled={isEmpty(checkedState.rightChecked)}
+            disabled={isEmpty(rightChecked)}
             onClick={() => addToLeft()}
           >
             <ElIcon>
@@ -98,7 +121,7 @@ const ElTransfer: React.FC<ElTransferProps> = forwardRef<HTMLDivElement, ElTrans
           <ElButton
             type="primary"
             className={clsx('el-transfer__button', hasButtonTexts ? 'is-with-texts' : '')}
-            disabled={isEmpty(checkedState.rightChecked)}
+            disabled={isEmpty(leftChecked)}
             onClick={() => addToRight()}
           >
             {!isUndefined(buttonTexts[1]) && <span>{buttonTexts[1]}</span>}
@@ -108,6 +131,8 @@ const ElTransfer: React.FC<ElTransferProps> = forwardRef<HTMLDivElement, ElTrans
           </ElButton>
         </div>
         <ElTransferPanel
+          checked={rightChecked}
+          setChecked={setRightChecked}
           data={targetData}
           title={rightPanelTitle}
           filterable={filterable}
@@ -116,7 +141,10 @@ const ElTransfer: React.FC<ElTransferProps> = forwardRef<HTMLDivElement, ElTrans
           format={format}
           propsAlias={propsAlias}
           optionRender={optionRender}
-        />
+          empty={rightEmpty}
+        >
+          {rightFooter}
+        </ElTransferPanel>
       </div>
     )
   }

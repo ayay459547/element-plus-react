@@ -18,7 +18,7 @@ export interface ElInputProps {
   value?: string | number
 
   /**
-   *@description v-model modifiers, reference Vue modifiers
+   *@description value modifiers, reference Vue modifiers
    */
   modelModifiers?: {
     lazy?: boolean

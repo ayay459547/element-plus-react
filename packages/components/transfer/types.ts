@@ -1,4 +1,5 @@
-import type { CSSProperties, ReactNode } from 'react'
+// import type { ElCheckboxGroupBaseProps } from '@ayay459547/element-plus-react/components/checkbox/types'
+import type { CSSProperties, Dispatch, ReactNode, SetStateAction } from 'react'
 
 export type TransferKey = string | number
 export type TransferDirection = 'left' | 'right'
@@ -34,6 +35,9 @@ interface Common {
 }
 
 export interface ElTransferPanelProps extends Common {
+  checked: TransferKey[]
+  setChecked: Dispatch<SetStateAction<ElTransferPanelProps['checked']>>
+
   data?: Record<string, any>[]
 
   title?: string
@@ -66,7 +70,7 @@ export interface ElTransferProps extends Common {
   /**
    * @description setting value
    */
-  onChange?: (newValue: ElTransferProps['value']) => void
+  onChange?: (newValue: Array<string | number>) => void
 
   /**
    * @description data source
@@ -76,17 +80,17 @@ export interface ElTransferProps extends Common {
   /**
    * @description whether Transfer is filterable
    */
-  filterable?: boolean
+  filterable?: ElTransferPanelProps['filterable']
 
   /**
    * @description placeholder for the filter input
    */
-  filterPlaceholder?: string
+  filterPlaceholder?: ElTransferPanelProps['placeholder']
 
   /**
    * @description custom filter method
    */
-  filterMethod?: (query: string, item: Record<string, any>) => boolean
+  filterMethod?: ElTransferPanelProps['filterMethod']
 
   /**
    * @description order strategy for elements in the target list.
@@ -109,7 +113,7 @@ export interface ElTransferProps extends Common {
   /**
    * @description custom render function for data items
    */
-  renderContent?: (option: TransferDataItem) => React.ReactNode
+  renderContent?: ElTransferPanelProps['optionRender']
 
   /**
    * @description 	texts for checking status in list header
@@ -136,7 +140,30 @@ export interface ElTransferProps extends Common {
    */
   validateEvent?: boolean
 
-  children?: (args: { option: TransferDataItem }) => ReactNode
+  /**
+   * @description Custom content for data items.
+   */
+  children?: ElTransferPanelProps['optionRender']
+
+  /**
+   * @description content of left list footer
+   */
+  leftFooter?: ReactNode
+
+  /**
+   * @description content of right list footer
+   */
+  rightFooter?: ReactNode
+
+  /**
+   * @description content when left panel is empty or when no data matches the filter
+   */
+  leftEmpty?: ReactNode
+
+  /**
+   * @description content when right panel is empty or when no data matches the filter
+   */
+  rightEmpty?: ReactNode
 }
 
 export type ElTransferInstance = React.ReactElement<ElTransferProps>

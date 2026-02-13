@@ -1,3 +1,4 @@
+import ElEmpty from '@ayay459547/element-plus-react/components/empty/ElEmpty.tsx'
 import ElTransfer from '@ayay459547/element-plus-react/components/transfer/ElTransfer.tsx'
 import { useState } from 'react'
 
@@ -7,7 +8,7 @@ interface Option {
   disabled: boolean
 }
 
-const TransferBasic: React.FC = () => {
+const TransferEmptyContent: React.FC = () => {
   const [value, setValue] = useState<Array<string | number>>([])
 
   const generateData = () => {
@@ -24,7 +25,15 @@ const TransferBasic: React.FC = () => {
 
   const data = generateData()
 
-  return <ElTransfer data={data} value={value} onChange={setValue} />
+  return (
+    <ElTransfer
+      data={data}
+      value={value}
+      onChange={setValue}
+      leftEmpty={<ElEmpty imageSize={60} description="No data" />}
+      rightEmpty={<ElEmpty imageSize={60} description="No data" />}
+    />
+  )
 }
 
-export default TransferBasic
+export default TransferEmptyContent
