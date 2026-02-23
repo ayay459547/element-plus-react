@@ -31,6 +31,8 @@ export { default as ElInput } from './components/input/ElInput.tsx'
 
 export { default as ElLink } from './components/link/ElLink.tsx'
 
+export { default as ElOverlay } from './components/overlay/ElOverlay.tsx'
+
 export { default as ElRow } from './components/row/ElRow.tsx'
 
 export { default as ElRadio } from './components/radio/ElRadio.tsx'

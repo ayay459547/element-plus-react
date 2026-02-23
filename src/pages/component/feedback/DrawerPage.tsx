@@ -1,5 +1,10 @@
 import VPDocContent from '@/components/VPDocContent.tsx'
 // import markdown from '@/en-US/component/drawer.md?raw'
+import VPDemo from '@/components/VPDemo.tsx'
+import VPCode from '@/components/common/VPCode.tsx'
+
+import DrawerBasicUsage from '@/examples/drawer/BasicUsage.tsx'
+import DrawerBasicUsage_code from '@/examples/drawer/BasicUsage.tsx?raw'
 
 const DrawerPage: React.FC = () => {
   return (
@@ -14,6 +19,19 @@ const DrawerPage: React.FC = () => {
 
       <h2 id="basic-usage">Basic Usage</h2>
       <p>Callout a temporary drawer, from multiple direction</p>
+      <VPDemo
+        link="/src/examples/drawer/BasicUsage.tsx"
+        code={
+          <VPCode
+            language={['BasicUsage.tsx']}
+            code={{
+              'BasicUsage.tsx': DrawerBasicUsage_code
+            }}
+          />
+        }
+      >
+        <DrawerBasicUsage />
+      </VPDemo>
     </VPDocContent>
   )
 }
