@@ -1,0 +1,87 @@
+@use '@ayay459547/element-plus-react/theme-chalk/src/drawer.scss';
+
+// fade-appear, fade-appear-active, fade-appear-done
+// fade-enter, fade-enter-active, fade-enter-done
+// fade-exit, fade-exit-active, fade-exit-done
+
+$directions: rtl, ltr, ttb, btt;
+
+// modal
+.el-modal-enter {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+.el-modal-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.el-modal-exit {
+  opacity: 1;
+}
+.el-modal-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+// drawer
+@each $direction in $directions {
+  .el-drawer-#{$direction}-enter {
+    transition: all getCssVar('transition-duration');
+    @if $direction == ltr {
+      transform: translateX(-100%);
+    }
+    @if $direction == rtl {
+      transform: translateX(100%);
+    }
+    @if $direction == ttb {
+      transform: translateY(-100%);
+    }
+    @if $direction == btt {
+      transform: translateY(100%);
+    }
+  }
+  .el-drawer-#{$direction}-enter-active {
+    transition: all getCssVar('transition-duration');
+    @if $direction == ltr {
+      transform: translateX(0);
+    }
+    @if $direction == rtl {
+      transform: translateX(0);
+    }
+    @if $direction == ttb {
+      transform: translateY(0);
+    }
+    @if $direction == btt {
+      transform: translateY(0);
+    }
+  }
+  .el-drawer-#{$direction}-exit {
+    @if $direction == ltr {
+      transform: translateX(0);
+    }
+    @if $direction == rtl {
+      transform: translateX(0);
+    }
+    @if $direction == ttb {
+      transform: translateY(0);
+    }
+    @if $direction == btt {
+      transform: translateY(0);
+    }
+  }
+  .el-drawer-#{$direction}-exit-active {
+    transition: all getCssVar('transition-duration');
+    @if $direction == ltr {
+      transform: translateX(-100%);
+    }
+    @if $direction == rtl {
+      transform: translateX(100%);
+    }
+    @if $direction == ttb {
+      transform: translateY(-100%);
+    }
+    @if $direction == btt {
+      transform: translateY(100%);
+    }
+  }
+}

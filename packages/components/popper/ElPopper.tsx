@@ -11,7 +11,6 @@ import {
   useInteractions
 } from '@floating-ui/react'
 import { useEffect, useState } from 'react'
-// import { usePopper } from 'react-popper'
 import { POPPER_CONTENT_INJECTION_KEY, POPPER_INJECTION_KEY } from './constants'
 
 import type { PopperProps } from './types'
