@@ -24,7 +24,7 @@ type UseLockScreenOptions = {
 //   return width
 // }
 
-export function useLockscreen(trigger: boolean, options: UseLockScreenOptions = {}) {
+export function useLockScreen(trigger: boolean, options: UseLockScreenOptions = {}) {
   const { namespace = 'popup', hiddenClass } = options
 
   const hiddenCls = hiddenClass ?? `${namespace}-parent--hidden`
