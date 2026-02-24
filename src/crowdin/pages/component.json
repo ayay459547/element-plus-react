@@ -41,8 +41,7 @@
       },
       {
         "link": "/text",
-        "text": "Text",
-        "promotion": "2.3.0"
+        "text": "Text"
       },
       {
         "link": "/scrollbar",
@@ -54,8 +53,7 @@
       },
       {
         "link": "/splitter",
-        "text": "Splitter",
-        "promotion": "2.10.0"
+        "text": "Splitter"
       },
       {
         "link": "/typography",
@@ -89,8 +87,7 @@
       },
       {
         "link": "/color-picker-panel",
-        "text": "Color Picker Panel",
-        "promotion": "2.11.0"
+        "text": "Color Picker Panel"
       },
       {
         "link": "/color-picker",
@@ -98,8 +95,7 @@
       },
       {
         "link": "/date-picker-panel",
-        "text": "Date Picker Panel",
-        "promotion": "2.11.0"
+        "text": "Date Picker Panel"
       },
       {
         "link": "/date-picker",

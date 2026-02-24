@@ -8,8 +8,8 @@ export interface ElDrawerProps {
   /**
    * @description Should Drawer be displayed
    */
-  value?: boolean
-  onValue?: (value: boolean) => void
+  visible?: boolean
+  onVisible?: (value: boolean) => void
 
   /**
    * @description Controls should Drawer be inserted to DocumentBody Element, nested Drawer must assign this param to true

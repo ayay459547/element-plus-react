@@ -1,6 +1,10 @@
-import type { CSSProperties, ReactNode } from 'react'
+import type { CSSProperties, ReactNode, RefObject } from 'react'
 
 export interface ElOverlayProps {
+  ref?: RefObject<HTMLDivElement | null>
+
+  zIndex?: number
+
   children?: ReactNode
 
   className?: string

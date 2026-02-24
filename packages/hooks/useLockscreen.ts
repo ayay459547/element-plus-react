@@ -48,7 +48,7 @@ export function useLockscreen(trigger: boolean, options: UseLockScreenOptions = 
           body.classList.remove(hiddenCls)
           body.style.overflow = 'auto'
         }
-      }, 100)
+      }, 0)
     }
 
     if (!trigger) {
@@ -78,7 +78,10 @@ export function useLockscreen(trigger: boolean, options: UseLockScreenOptions = 
     //   body.style.width = `calc(100% - ${scrollBarWidth}px)`
     // }
 
-    body.style.overflow = 'hidden'
+    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth
+    document.body.style.overflow = 'hidden'
+    // document.body.style.paddingRight = scrollBarWidth + 'px'
+    document.body.style.width = `calc(100% - ${scrollBarWidth}px)`
 
     return cleanup
   }, [trigger, hiddenCls])

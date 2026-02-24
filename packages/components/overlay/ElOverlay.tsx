@@ -7,12 +7,12 @@ const COMPONENT_NAME = 'ElOverlay'
 
 const ElOverlay: React.FC<ElOverlayProps> = forwardRef<HTMLDivElement, ElOverlayProps>(
   (props, ref) => {
-    const { children, className, style, onClick } = props
+    const { zIndex, children, className, style, onClick } = props
     return (
       <div
         ref={ref}
         className={clsx('el-overlay', className)}
-        style={{ ...style }}
+        style={{ ...style, zIndex: zIndex }}
         onClick={onClick}
       >
         {children}

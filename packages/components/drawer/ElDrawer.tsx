@@ -1,8 +1,12 @@
+import ElIcon from '@ayay459547/element-plus-react/components/icon/ElIcon.tsx'
 import ElOverlay from '@ayay459547/element-plus-react/components/overlay/ElOverlay.tsx'
 import ElTeleport from '@ayay459547/element-plus-react/components/teleport/ElTeleport.tsx'
 import { useLockscreen } from '@ayay459547/element-plus-react/hooks/useLockscreen.ts'
+import Close from '@ayay459547/element-plus-react/icons-svg/close.svg?react'
 import { mergeRefs } from '@ayay459547/element-plus-react/utils/refs'
+import { isNumber } from '@ayay459547/element-plus-react/utils/types'
 import clsx from 'clsx'
+import type { CSSProperties } from 'react'
 import { forwardRef, useEffect, useId, useRef, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import './ElDrawer.scss'
@@ -14,8 +18,8 @@ const COMPONENT_NAME = 'ElDrawer'
 const ElDrawer: React.FC<ElDrawerProps> = forwardRef<HTMLDivElement, ElDrawerProps>(
   (props, ref) => {
     const {
-      value = false,
-      onValue,
+      visible = false,
+      onVisible,
       appendToBody = false,
       appendTo = document.body,
       lockScroll = true,
@@ -40,19 +44,28 @@ const ElDrawer: React.FC<ElDrawerProps> = forwardRef<HTMLDivElement, ElDrawerPro
       headerClass,
       bodyClass,
       footerClass,
-      zIndex,
+      zIndex = 2000,
       headerAriaLevel = '2',
       header,
       footer
     } = props
 
-    const [visible, setVisible] = useState(value)
+    const modalRef = useRef<HTMLDivElement>(null)
+    const drawerRef = useRef<HTMLDivElement>(null)
+
+    const [overlayDisplay, setOverlayDisplay] = useState<CSSProperties['display']>('none')
 
     useEffect(() => {
-      setVisible(value)
-    }, [value])
+      const delayTime = visible ? 0 : 200
+      const newOverlayDisplay = visible ? 'block' : 'none'
+      setTimeout(() => {
+        setOverlayDisplay(newOverlayDisplay)
+      }, delayTime)
 
-    const drawerRef = useRef<HTMLDivElement>(null)
+      // if (!visible && typeof beforeClose === 'function') {
+      //   beforeClose()
+      // }
+    }, [visible])
 
     const {
       size: styleSize,
@@ -60,16 +73,20 @@ const ElDrawer: React.FC<ElDrawerProps> = forwardRef<HTMLDivElement, ElDrawerPro
       isHorizontal
     } = useResizable({
       ...props,
-      size
+      size,
+      direction
     })
 
-    useLockscreen(lockScroll && value)
+    useLockscreen(lockScroll && visible)
 
     const onModalClick = () => {
-      setVisible(false)
-      if (typeof onValue === 'function') {
-        onValue(false)
+      if (typeof onVisible === 'function') {
+        onVisible(false)
       }
+    }
+
+    const handleClose = () => {
+      onModalClick()
     }
 
     const titleId = useId()
@@ -80,46 +97,86 @@ const ElDrawer: React.FC<ElDrawerProps> = forwardRef<HTMLDivElement, ElDrawerPro
       <ElTeleport appendTo={appendTo} disabled={appendTo !== 'body' ? false : !appendToBody}>
         <CSSTransition
           in={visible} // 控制進場/出場
-          timeout={300} // 動畫時間 (毫秒)
-          classNames={'el-fade-in-linear'} // 對應 CSS class
-          nodeRef={drawerRef} // 綁定 ref
-          appear // 初次渲染如果為 true 也執行動畫
+          timeout={200} // 動畫時間 (毫秒)
+          classNames={'el-modal'} // 對應 CSS class
+          nodeRef={modalRef} // 綁定 ref
+          appear
           enter
           exit
         >
           <ElOverlay
+            ref={modalRef}
             className={clsx('is-drawer', 'el-modal-drawer')}
-            style={{ display: visible ? 'block' : 'none' }}
+            style={{ display: visible ? 'block' : overlayDisplay }}
+            zIndex={zIndex}
             onClick={() => onModalClick()}
           >
-            <div
-              ref={mergeRefs(ref, drawerRef)}
-              aria-modal={true}
-              aria-label={title || undefined}
-              aria-labelledby={!title ? titleId : undefined}
-              aria-describedby={bodyId}
-              className={clsx(
-                'el-drawer',
-                isResizing ? 'is-dragging' : '',
-                direction,
-                visible ? 'open' : '',
-                className
-              )}
-              style={{
-                [isHorizontal ? 'width' : 'height']: styleSize,
-                ...style
-              }}
-              role="dialog"
-              onClick={(e) => {
-                e.stopPropagation()
-              }}
+            <CSSTransition
+              in={visible} // 控制進場/出場
+              timeout={300} // 動畫時間 (毫秒)
+              classNames={`el-drawer-${direction}`} // 對應 CSS class
+              nodeRef={drawerRef} // 綁定 ref
+              appear
+              enter
+              exit
             >
-              <span className="el-drawer__sr-focus" tabIndex={-1}></span>
+              <div
+                ref={mergeRefs(ref, drawerRef)}
+                aria-modal={true}
+                aria-label={title || undefined}
+                aria-labelledby={!title ? titleId : undefined}
+                aria-describedby={bodyId}
+                className={clsx(
+                  'el-drawer',
+                  isResizing ? 'is-dragging' : '',
+                  direction,
+                  visible ? 'open' : '',
+                  className
+                )}
+                style={{
+                  [isHorizontal ? 'width' : 'height']: styleSize,
+                  ...style
+                }}
+                role="dialog"
+                onClick={(e) => {
+                  e.stopPropagation()
+                }}
+              >
+                <span className="el-drawer__sr-focus" tabIndex={-1}></span>
 
-              <header className={clsx('el-drawer__header', headerClass)}></header>
+                {withHeader && (
+                  <header className={clsx('el-drawer__header', headerClass)}>
+                    {header ?? (
+                      <span
+                        id={titleId}
+                        role="heading"
+                        aria-level={isNumber(headerAriaLevel) ? Number(headerAriaLevel) : 2}
+                        className={clsx('el-drawer__title')}
+                      >
+                        {title}
+                      </span>
+                    )}
 
-              <div className={clsx('el-drawer__body', bodyClass)}>children: {children}</div>
-            </div>
+                    {showClose && (
+                      <button
+                        aria-label="close-btn"
+                        className={clsx('el-drawer__close-btn')}
+                        type="button"
+                        onClick={handleClose}
+                      >
+                        <ElIcon className={clsx('el-drawer__close')}>
+                          <Close />
+                        </ElIcon>
+                      </button>
+                    )}
+                  </header>
+                )}
+
+                <div className={clsx('el-drawer__body', bodyClass)}>{children}</div>
+
+                {footer && <div className={clsx('el-drawer__footer', footerClass)}>{footer}</div>}
+              </div>
+            </CSSTransition>
           </ElOverlay>
         </CSSTransition>
       </ElTeleport>
