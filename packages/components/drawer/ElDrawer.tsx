@@ -1,7 +1,7 @@
 import ElIcon from '@ayay459547/element-plus-react/components/icon/ElIcon.tsx'
 import ElOverlay from '@ayay459547/element-plus-react/components/overlay/ElOverlay.tsx'
 import ElTeleport from '@ayay459547/element-plus-react/components/teleport/ElTeleport.tsx'
-import { useLockscreen } from '@ayay459547/element-plus-react/hooks/useLockscreen.ts'
+import { useLockScreen } from '@ayay459547/element-plus-react/hooks/useLockScreen.ts'
 import Close from '@ayay459547/element-plus-react/icons-svg/close.svg?react'
 import { mergeRefs } from '@ayay459547/element-plus-react/utils/refs'
 import { isNumber } from '@ayay459547/element-plus-react/utils/types'
@@ -77,7 +77,7 @@ const ElDrawer: React.FC<ElDrawerProps> = forwardRef<HTMLDivElement, ElDrawerPro
       direction
     })
 
-    useLockscreen(lockScroll && visible)
+    useLockScreen(lockScroll && visible)
 
     const onModalClick = () => {
       if (typeof onVisible === 'function') {

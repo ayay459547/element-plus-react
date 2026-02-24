@@ -1,1 +1,18 @@
 @use '@/styles/sidebar.scss';
+
+// modal
+.el-modal-enter {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+.el-modal-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.el-modal-exit {
+  opacity: 1;
+}
+.el-modal-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}

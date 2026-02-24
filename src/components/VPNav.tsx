@@ -22,7 +22,7 @@ const VPNav: React.FC = () => {
   return (
     <header className={`navbar ${hasSidebar ? 'has-sidebar' : ''}`}>
       <VPNavbar fullScreen={isFullScreen} onToggle={toggleFullScreen} />
-      <VPNavFull fullScreen={isFullScreen} onClose={close} />
+      <VPNavFull fullScreen={isFullScreen} onClose={() => close()} />
     </header>
   )
 }

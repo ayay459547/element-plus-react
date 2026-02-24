@@ -1,6 +1,7 @@
 import RouterProgress from '@/components/globals/RouterProgress.tsx'
 import VPContent from '@/components/VPContent.tsx'
 import VPNav from '@/components/VPNav.tsx'
+import VPOverlay from '@/components/VPOverlay.tsx'
 import VPSidebar from '@/components/VPSidebar.tsx'
 import VPSubNav from '@/components/VPSubNav.tsx'
 import { useSidebar } from '@/hooks/useSidebar'
@@ -26,11 +27,13 @@ export default function VPApp() {
     <div className="app">
       <RouterProgress />
 
+      <VPOverlay show={isSidebarOpen} onClick={() => toggleSidebar(false)} />
       <VPNav />
-      <VPSidebar />
       {hasSidebar && (
         <VPSubNav isSidebarOpen={isSidebarOpen} onOpenMenu={() => toggleSidebar(true)} />
       )}
+      <VPSidebar open={isSidebarOpen} onClose={() => toggleSidebar(false)} />
+
       <VPContent />
     </div>
   )

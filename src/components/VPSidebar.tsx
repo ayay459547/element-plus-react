@@ -1,11 +1,12 @@
 import VPSidebarLink from '@/components/sidebar/VPSidebarLink.tsx'
 import { useSidebar } from '@/hooks/useSidebar'
+import clsx from 'clsx'
 import { useEffect, useRef } from 'react'
 import './VPSidebar.scss'
 
 type VPSidebarProps = {
-  // open?: boolean
-  // onClose?: () => void
+  open: boolean
+  onClose: () => void
 
   top?: React.ReactNode
   children?: React.ReactNode
@@ -15,7 +16,7 @@ type VPSidebarProps = {
   // style?: CSSProperties
 } & React.HTMLAttributes<HTMLElement>
 
-const VPSidebar: React.FC<VPSidebarProps> = ({ top, bottom }) => {
+const VPSidebar: React.FC<VPSidebarProps> = ({ open, onClose, top, bottom }) => {
   const { sidebars, hasSidebar } = useSidebar()
   const asideRef = useRef<HTMLDivElement>(null)
 
@@ -28,7 +29,7 @@ const VPSidebar: React.FC<VPSidebarProps> = ({ top, bottom }) => {
   if (!hasSidebar) return null
 
   return (
-    <div className="sidebar">
+    <div className={clsx('sidebar', open ? 'open' : '')}>
       <aside ref={asideRef}>
         {top}
         <div className="sidebar-groups">
@@ -36,7 +37,7 @@ const VPSidebar: React.FC<VPSidebarProps> = ({ top, bottom }) => {
             <section key={key} className="sidebar-group">
               <p className="sidebar-group__title">{item.text}</p>
               {item.children.map((child, childKey) => (
-                <VPSidebarLink key={childKey} item={child} />
+                <VPSidebarLink key={childKey} item={child} onClick={() => onClose()} />
               ))}
             </section>
           ))}

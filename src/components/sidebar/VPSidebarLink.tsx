@@ -7,9 +7,11 @@ import styles from './VPSidebarLink.module.scss'
 
 type VPSidebarLinkProps = {
   item: ItemLink
+
+  onClick: () => void
 }
 
-const VPSidebarLink: React.FC<VPSidebarLinkProps> = ({ item }) => {
+const VPSidebarLink: React.FC<VPSidebarLinkProps> = ({ item, onClick }) => {
   const location = useLocation()
 
   const activeLink = isActive(location.pathname, item.link)
@@ -18,6 +20,7 @@ const VPSidebarLink: React.FC<VPSidebarLinkProps> = ({ item }) => {
     <Link
       to={item.link}
       className={clsx(styles['link'], 'flex items-center', activeLink ? styles['active'] : '')}
+      onClick={() => onClick()}
     >
       <p className={styles['link-text']}>{item.text}</p>
       {item?.promotion && (
