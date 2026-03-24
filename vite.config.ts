@@ -89,7 +89,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
     server: {
       port: 4000,
       host: '0.0.0.0',
-      open: true,
+      open: false,
       cors: false,
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
