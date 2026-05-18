@@ -62,6 +62,18 @@ export interface ElSwitchProps {
   inactiveActionIcon?: string | ReactNode
 
   /**
+   * @description component of the icon displayed in action when in on state
+   * @since 2.3.9
+   */
+  activeAction?: string | ReactNode
+
+  /**
+   * @description component of the icon displayed in action when in off state
+   * @since 2.3.9
+   */
+  inactiveAction?: string | ReactNode
+
+  /**
    * @description text displayed when in on state
    * @default ''
    */

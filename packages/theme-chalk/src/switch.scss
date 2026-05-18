@@ -10,7 +10,7 @@ $switch-height: map.merge(
   (
     'large': 40px,
     'default': 32px,
-    'small': 24px,
+    'small': 24px
   ),
   $switch-height
 );
@@ -20,7 +20,7 @@ $switch-font-size: map.merge(
   (
     'large': 14px,
     'default': 14px,
-    'small': 12px,
+    'small': 12px
   ),
   $switch-font-size
 );
@@ -30,7 +30,7 @@ $switch-core-border-radius: map.merge(
   (
     'large': 12px,
     'default': 10px,
-    'small': 8px,
+    'small': 8px
   ),
   $switch-core-border-radius
 );
@@ -40,7 +40,7 @@ $switch-core-width: map.merge(
   (
     'large': 50px,
     'default': 40px,
-    'small': 30px,
+    'small': 30px
   ),
   $switch-core-width
 );
@@ -50,7 +50,7 @@ $switch-core-height: map.merge(
   (
     'large': 24px,
     'default': 20px,
-    'small': 16px,
+    'small': 16px
   ),
   $switch-core-height
 );
@@ -60,7 +60,7 @@ $switch-button-size: map.merge(
   (
     'large': 20px,
     'default': 16px,
-    'small': 12px,
+    'small': 12px
   ),
   $switch-button-size
 );
@@ -70,7 +70,7 @@ $switch-content-padding: map.merge(
   (
     'large': 6px,
     'default': 4px,
-    'small': 2px,
+    'small': 2px
   ),
   $switch-content-padding
 );
@@ -150,11 +150,7 @@ $switch-content-padding: map.merge(
     align-items: center;
     min-width: map.get($switch-core-width, 'default');
     height: map.get($switch-core-height, 'default');
-    border: 1px solid
-      var(
-        #{getCssVarName('switch-border-color')},
-        #{getCssVar('switch-off-color')}
-      );
+    border: 1px solid var(#{getCssVarName('switch-border-color')}, #{getCssVar('switch-off-color')});
     outline: none;
     border-radius: map.get($switch-core-border-radius, 'default');
     box-sizing: border-box;
@@ -202,10 +198,7 @@ $switch-content-padding: map.merge(
 
   @include when(checked) {
     .#{$namespace}-switch__core {
-      border-color: var(
-        #{getCssVarName('switch-border-color')},
-        #{getCssVar('switch-on-color')}
-      );
+      border-color: var(#{getCssVarName('switch-border-color')}, #{getCssVar('switch-on-color')});
       background-color: getCssVar('switch-on-color');
 
       .#{$namespace}-switch__action {
