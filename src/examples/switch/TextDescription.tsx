@@ -55,6 +55,30 @@ const TextDescription: React.FC = () => {
         activeText="Y"
         inactiveText="N"
       />
+
+      <ElSwitch
+        value={value6}
+        onChange={setValue6}
+        className="ml-2"
+        width="60"
+        inlinePrompt
+        activeText="超出省略"
+        inactiveText="超出省略"
+      />
+      <ElSwitch
+        value={value5}
+        onChange={setValue5}
+        className="ml-2"
+        inlinePrompt
+        style={
+          {
+            '--el-switch-on-color': '#13ce66',
+            '--el-switch-off-color': '#ff4949'
+          } as React.CSSProperties
+        }
+        activeText="完整展示多个内容"
+        inactiveText="多个内容"
+      />
     </>
   )
 }

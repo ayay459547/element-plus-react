@@ -1,5 +1,6 @@
 import ElIcon from '@ayay459547/element-plus-react/components/icon/ElIcon.tsx'
-import { mergeRefs } from '@ayay459547/element-plus-react/utils/refs'
+// import { mergeRefs } from '@ayay459547/element-plus-react/utils/refs'
+import Loading from '@ayay459547/element-plus-react/icons-svg/loading.svg?react'
 import clsx from 'clsx'
 import type { KeyboardEvent } from 'react'
 import { forwardRef, useEffect, useRef } from 'react'
@@ -21,6 +22,8 @@ const ElSwitch: React.FC<ElSwitchProps> = forwardRef<HTMLInputElement, ElSwitchP
       inactiveIcon,
       activeActionIcon,
       inactiveActionIcon,
+      activeAction,
+      inactiveAction,
       activeText = '',
       inactiveText = '',
       activeValue = true,
@@ -42,13 +45,6 @@ const ElSwitch: React.FC<ElSwitchProps> = forwardRef<HTMLInputElement, ElSwitchP
     const switchDisabled = disabled || loading
 
     const checked = value === activeValue
-
-    // useImperativeHandle(ref, () => ({
-    //   focus: () => {
-    //     inputRef.current?.focus()
-    //   },
-    //   checked
-    // }))
 
     useEffect(() => {
       if (inputRef.current) {
@@ -110,6 +106,7 @@ const ElSwitch: React.FC<ElSwitchProps> = forwardRef<HTMLInputElement, ElSwitchP
 
     return (
       <div
+        ref={ref} // 將 ref 綁定到真實的 DOM 節點上
         className={clsx(
           'el-switch',
           checked && 'is-checked',
@@ -125,7 +122,7 @@ const ElSwitch: React.FC<ElSwitchProps> = forwardRef<HTMLInputElement, ElSwitchP
       >
         <input
           {...props}
-          ref={mergeRefs(ref, inputRef)}
+          ref={inputRef}
           type="checkbox"
           role="switch"
           aria-checked={checked}
@@ -176,11 +173,19 @@ const ElSwitch: React.FC<ElSwitchProps> = forwardRef<HTMLInputElement, ElSwitchP
 
           <div className="el-switch__action">
             {loading ? (
-              <span className="is-loading">Loading...</span>
+              <ElIcon className="is-loading">
+                <Loading />
+              </ElIcon>
             ) : checked ? (
-              activeIcon
+              activeAction ? (
+                activeAction
+              ) : (
+                activeActionIcon && <ElIcon>{activeActionIcon}</ElIcon>
+              )
+            ) : inactiveAction ? (
+              inactiveAction
             ) : (
-              inactiveIcon
+              inactiveActionIcon && <ElIcon>{inactiveActionIcon}</ElIcon>
             )}
           </div>
         </span>
