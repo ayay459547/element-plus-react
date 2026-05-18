@@ -10,7 +10,7 @@ $button-icon-span-gap: map.merge(
   (
     'large': 8px,
     'default': 6px,
-    'small': 4px
+    'small': 4px,
   ),
   $button-icon-span-gap
 );
@@ -96,9 +96,18 @@ $button-icon-span-gap: map.merge(
   }
 
   @include when(plain) {
-    @include css-var-from-global(('button', 'hover', 'text-color'), ('color', 'primary'));
-    @include css-var-from-global(('button', 'hover', 'bg-color'), ('fill-color', 'blank'));
-    @include css-var-from-global(('button', 'hover', 'border-color'), ('color', 'primary'));
+    @include css-var-from-global(
+      ('button', 'hover', 'text-color'),
+      ('color', 'primary')
+    );
+    @include css-var-from-global(
+      ('button', 'hover', 'bg-color'),
+      ('fill-color', 'blank')
+    );
+    @include css-var-from-global(
+      ('button', 'hover', 'border-color'),
+      ('color', 'primary')
+    );
   }
 
   @include when(active) {
@@ -140,6 +149,23 @@ $button-icon-span-gap: map.merge(
   @include when(round) {
     border-radius: getCssVar('border-radius', 'round');
   }
+
+  @include when(dashed) {
+    border-style: dashed;
+    @include css-var-from-global(
+      ('button', 'hover', 'text-color'),
+      ('color', 'primary')
+    );
+    @include css-var-from-global(
+      ('button', 'hover', 'bg-color'),
+      ('fill-color', 'blank')
+    );
+    @include css-var-from-global(
+      ('button', 'hover', 'border-color'),
+      ('color', 'primary')
+    );
+  }
+
   @include when(circle) {
     width: map.get($input-height, 'default');
     border-radius: 50%;
@@ -267,7 +293,10 @@ $button-icon-span-gap: map.merge(
 
   @each $size in (large, small) {
     @include m($size) {
-      @include set-css-var-value(('button', 'size'), map.get($input-height, $size));
+      @include set-css-var-value(
+        ('button', 'size'),
+        map.get($input-height, $size)
+      );
 
       height: getCssVar('button', 'size');
 
