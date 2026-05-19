@@ -1,5 +1,4 @@
 import react from '@vitejs/plugin-react'
-import { fileURLToPath, URL } from 'node:url'
 import { resolve } from 'path'
 
 import { presetAttributify, presetIcons, presetMini } from 'unocss'
@@ -62,7 +61,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
         insertTypesEntry: true,
         copyDtsFiles: true,
         cleanVueFileName: true,
-        outDir: resolve(__dirname, 'dist')
+        outDirs: resolve(__dirname, 'dist')
       })
     ],
     base: VITE_API_SYSTEM_URL,
