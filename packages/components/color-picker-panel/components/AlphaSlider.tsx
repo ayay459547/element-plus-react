@@ -67,12 +67,14 @@ const AlphaSlider: FC<AlphaSliderProps> = ({ color, vertical = false, onChange }
 
 
   return (
-    <div className={`el-color-alpha-slider ${vertical ? 'is-vertical' : ''}`}>
+    <div
+      className={`el-color-alpha-slider ${vertical ? 'is-vertical' : ''}`}
+      ref={barRef}
+      onMouseDown={handleMouseDown}
+    >
       <div
         className="el-color-alpha-slider__bar"
-        ref={barRef}
         style={{ background: getBackground() }}
-        onMouseDown={handleMouseDown}
       ></div>
       <div
         className="el-color-alpha-slider__thumb"

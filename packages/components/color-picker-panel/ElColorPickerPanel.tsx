@@ -3,12 +3,12 @@ import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useSt
 // import ElButton from '../button/ElButton.tsx'
 import ElInput from '../input/ElInput.tsx'
 import './ElColorPickerPanel.scss'
-import AlphaSlider from './src/components/AlphaSlider.tsx'
-import HueSlider from './src/components/HueSlider.tsx'
-import Predefine from './src/components/Predefine.tsx'
-import SvPanel from './src/components/SvPanel.tsx'
-import { Color } from './src/utils/color.ts'
+import AlphaSlider from './components/AlphaSlider.tsx'
+import HueSlider from './components/HueSlider.tsx'
+import Predefine from './components/Predefine.tsx'
+import SvPanel from './components/SvPanel.tsx'
 import type { ColorPickerPanelProps, ElColorPickerPanelInstance } from './types'
+import { Color } from './utils/color.ts'
 
 const ElColorPickerPanel = forwardRef<ElColorPickerPanelInstance, ColorPickerPanelProps>(
   (props, ref) => {

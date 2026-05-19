@@ -60,12 +60,12 @@ const HueSlider: FC<HueSliderProps> = ({ color, vertical = false, onChange }) =>
   }
 
   return (
-    <div className={`el-color-hue-slider ${vertical ? 'is-vertical' : ''}`}>
-      <div
-        className="el-color-hue-slider__bar"
-        ref={barRef}
-        onMouseDown={handleMouseDown}
-      ></div>
+    <div
+      className={`el-color-hue-slider ${vertical ? 'is-vertical' : ''}`}
+      ref={barRef}
+      onMouseDown={handleMouseDown}
+    >
+      <div className="el-color-hue-slider__bar"></div>
       <div
         className="el-color-hue-slider__thumb"
         ref={thumbRef}

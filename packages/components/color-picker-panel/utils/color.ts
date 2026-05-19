@@ -6,8 +6,10 @@ export class Color {
   private _value = 100
   private _alpha = 100
   private _format = 'hex'
+  private _onChange?: (color: Color) => void
 
   constructor(options: any = {}) {
+    this._onChange = options.onChange
     for (const option in options) {
       if (Object.prototype.hasOwnProperty.call(options, option)) {
         ;(this as any)[option] = options[option]
@@ -99,7 +101,7 @@ export class Color {
   }
 
   private doOnChange() {
-    // This can be used to notify observers if needed
+    this._onChange?.(this)
   }
 
   toString(format?: string) {
