@@ -39,6 +39,8 @@ export { default as ElRadio } from './components/radio/ElRadio.tsx'
 export { default as ElRadioButton } from './components/radio/ElRadioButton.tsx'
 export { default as ElRadioGroup } from './components/radio/ElRadioGroup.tsx'
 
+export { default as ElSwitch } from './components/switch/ElSwitch.tsx'
+
 export { default as ElTag } from './components/tag/ElTag.tsx'
 
 export { default as ElTeleport } from './components/teleport/ElTeleport.tsx'
