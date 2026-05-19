@@ -41,8 +41,7 @@
       },
       {
         "link": "/text",
-        "text": "Text",
-        "promotion": "2.3.0"
+        "text": "Text"
       },
       {
         "link": "/scrollbar",
@@ -54,8 +53,7 @@
       },
       {
         "link": "/splitter",
-        "text": "Splitter",
-        "promotion": "2.10.0"
+        "text": "Splitter"
       },
       {
         "link": "/typography",
@@ -89,8 +87,7 @@
       },
       {
         "link": "/color-picker-panel",
-        "text": "Color Picker Panel",
-        "promotion": "2.11.0"
+        "text": "Color Picker Panel"
       },
       {
         "link": "/color-picker",
@@ -98,8 +95,7 @@
       },
       {
         "link": "/date-picker-panel",
-        "text": "Date Picker Panel",
-        "promotion": "2.11.0"
+        "text": "Date Picker Panel"
       },
       {
         "link": "/date-picker",
@@ -123,18 +119,15 @@
       },
       {
         "link": "/input-tag",
-        "text": "Input Tag",
-        "promotion": "2.9.0"
+        "text": "Input Tag"
       },
       {
         "link": "/input-otp",
-        "text": "Input OTP",
-        "promotion": "2.14.0"
+        "text": "Input OTP"
       },
       {
         "link": "/mention",
-        "text": "Mention",
-        "promotion": "2.8.0"
+        "text": "Mention"
       },
       {
         "link": "/radio",
@@ -174,8 +167,7 @@
       },
       {
         "link": "/tree-select",
-        "text": "TreeSelect",
-        "promotion": "2.1.8"
+        "text": "TreeSelect"
       },
       {
         "link": "/upload",
@@ -248,8 +240,7 @@
       },
       {
         "link": "/table-v2",
-        "text": "Virtualized Table",
-        "promotion": "2.2.0"
+        "text": "Virtualized Table"
       },
       {
         "link": "/tag",
@@ -261,8 +252,7 @@
       },
       {
         "link": "/tour",
-        "text": "Tour",
-        "promotion": "2.5.0"
+        "text": "Tour"
       },
       {
         "link": "/tree",
@@ -274,13 +264,11 @@
       },
       {
         "link": "/statistic",
-        "text": "Statistic",
-        "promotion": "2.2.30"
+        "text": "Statistic"
       },
       {
         "link": "/segmented",
-        "text": "Segmented",
-        "promotion": "2.7.0"
+        "text": "Segmented"
       }
     ]
   },
@@ -293,8 +281,7 @@
       },
       {
         "link": "/anchor",
-        "text": "Anchor",
-        "promotion": "2.6.0"
+        "text": "Anchor"
       },
       {
         "link": "/backtop",
@@ -380,8 +367,7 @@
       },
       {
         "link": "/watermark",
-        "text": "Watermark",
-        "promotion": "2.4.0"
+        "text": "Watermark"
       }
     ]
   }

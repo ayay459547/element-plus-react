@@ -1,12 +1,11 @@
 import clsx from 'clsx'
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useState } from 'react'
-// import ElButton from '../button/ElButton.tsx'
 import ElInput from '../input/ElInput.tsx'
-import './ElColorPickerPanel.scss'
 import AlphaSlider from './components/AlphaSlider.tsx'
 import HueSlider from './components/HueSlider.tsx'
 import Predefine from './components/Predefine.tsx'
 import SvPanel from './components/SvPanel.tsx'
+import './ElColorPickerPanel.scss'
 import type { ColorPickerPanelProps, ElColorPickerPanelInstance } from './types'
 import { Color } from './utils/color.ts'
 
@@ -24,38 +23,34 @@ const ElColorPickerPanel = forwardRef<ElColorPickerPanelInstance, ColorPickerPan
       onActiveChange
     } = props
 
-    const color = useMemo(() => new Color(), [])
-    const [userInput, setUserInput] = useState('')
-    const [internalValue, setInternalValue] = useState<string | null>(value || null)
+    const [, forceUpdate] = useState({})
+    const color = useMemo(() => {
+      return new Color({
+        onChange: () => forceUpdate({})
+      })
+    }, [])
 
-    // Sync from value
+    const [userInput, setUserInput] = useState('')
+    const [internalValue, setInternalValue] = useState<string | null>(null)
+
+    // Sync from value prop
     useEffect(() => {
       if (value !== internalValue) {
         color.fromString(value || '')
         setInternalValue(value || null)
       }
-    }, [value])
-
-    const handleConfirm = useCallback(() => {
-      const val = color.toString(colorFormat)
-      setInternalValue(val)
-      onUpdateValue?.(val)
-    }, [color, colorFormat, onUpdateValue])
-
-    // const handleClear = useCallback(() => {
-    //   setInternalValue(null)
-    //   onUpdateValue?.(null)
-    // }, [onUpdateValue])
+    }, [value, internalValue, color])
 
     const onChange = useCallback(() => {
       const val = color.toString(colorFormat)
       setInternalValue(val)
+      onUpdateValue?.(val)
       onActiveChange?.(val)
-    }, [color, colorFormat, onActiveChange])
+    }, [color, colorFormat, onUpdateValue, onActiveChange])
 
     const onSelectPredefine = useCallback(
-      (value: string) => {
-        color.fromString(value)
+      (preValue: string) => {
+        color.fromString(preValue)
         onChange()
       },
       [color, onChange]
@@ -67,12 +62,10 @@ const ElColorPickerPanel = forwardRef<ElColorPickerPanelInstance, ColorPickerPan
 
     return (
       <div
-        className={clsx(
-          'el-color-picker-panel',
-          border && 'is-border',
-          showAlpha && 'is-alpha',
-          className
-        )}
+        className={clsx('el-color-picker-panel', className, {
+          'is-alpha': showAlpha,
+          'is-border': border
+        })}
         style={style}
       >
         <div className="el-color-picker-panel__wrapper">
@@ -81,32 +74,26 @@ const ElColorPickerPanel = forwardRef<ElColorPickerPanelInstance, ColorPickerPan
         </div>
         {showAlpha && <AlphaSlider color={color} onChange={onChange} />}
         {predefine && <Predefine colors={predefine} onSelect={onSelectPredefine} />}
-        <div className="el-color-dropdown__btns">
-          <span className="el-color-dropdown__value">
-            <ElInput
-              size="small"
-              value={userInput || internalValue || ''}
-              onInput={(v) => setUserInput(v.currentTarget.value)}
-              onBlur={() => {
-                if (userInput) {
-                  color.fromString(userInput)
-                  onChange()
-                  setUserInput('')
-                }
-              }}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  handleConfirm()
-                }
-              }}
-            />
-          </span>
-          {/* <ElButton size="small" text className="el-color-dropdown__link-btn" onClick={handleClear}>
-            清空
-          </ElButton>
-          <ElButton plain size="small" className="el-color-dropdown__btn" onClick={handleConfirm}>
-            確定
-          </ElButton> */}
+        <div className="el-color-picker-panel__footer">
+          <ElInput
+            size="small"
+            value={userInput || internalValue || ''}
+            onInput={(v) => setUserInput(v.currentTarget.value)}
+            onBlur={() => {
+              if (userInput) {
+                color.fromString(userInput)
+                onChange()
+                setUserInput('')
+              }
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && userInput) {
+                color.fromString(userInput)
+                onChange()
+                setUserInput('')
+              }
+            }}
+          />
         </div>
       </div>
     )

@@ -1,4 +1,4 @@
-import { useRef, useEffect, type FC, type MouseEvent as ReactMouseEvent } from 'react'
+import { useEffect, useRef, type FC, type MouseEvent as ReactMouseEvent } from 'react'
 import type { Color } from '../utils/color.ts'
 
 interface AlphaSliderProps {
@@ -65,21 +65,14 @@ const AlphaSlider: FC<AlphaSliderProps> = ({ color, vertical = false, onChange }
     document.addEventListener('mouseup', onMouseUp)
   }
 
-
   return (
     <div
       className={`el-color-alpha-slider ${vertical ? 'is-vertical' : ''}`}
       ref={barRef}
       onMouseDown={handleMouseDown}
     >
-      <div
-        className="el-color-alpha-slider__bar"
-        style={{ background: getBackground() }}
-      ></div>
-      <div
-        className="el-color-alpha-slider__thumb"
-        ref={thumbRef}
-      ></div>
+      <div className="el-color-alpha-slider__bar" style={{ background: getBackground() }}></div>
+      <div className="el-color-alpha-slider__thumb" ref={thumbRef}></div>
     </div>
   )
 }

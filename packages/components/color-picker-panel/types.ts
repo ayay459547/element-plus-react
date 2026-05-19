@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react'
-import type { Color } from './utils/color'
+import type { Color } from './utils/color.ts'
 
 export type ColorFormat = 'hex' | 'rgb' | 'hsl' | 'hsv'
 
