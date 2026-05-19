@@ -4,8 +4,10 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "declarationMap": false,
+    "rootDir": "packages",
     "outDir": "dist",
-    "noEmit": false
+    "noEmit": false,
+    "moduleResolution": "Bundler"
   },
-  "include": ["packages"]
+  "include": ["packages/**/*"]
 }
