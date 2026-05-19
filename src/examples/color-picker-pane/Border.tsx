@@ -7,32 +7,10 @@ const ColorPickerPaneBorder: React.FC = () => {
   const [color, setColor] = useState<ColorPickerPanelProps['value']>('#ff6900')
 
   return (
-    <div>
-      <div className="text-center">No border:</div>
-      {/* <ElDivider /> */}
-      <div
-        className="el-divider el-divider--horizontal"
-        style={{
-          border: '1px solid #dcdfe6'
-        }}
-      ></div>
-      <div className="flex flex-col flex-wrap items-center justify-center gap-4 border">
-        <div className="p-5">
-          <ElColorPickerPanel value={color} onUpdateValue={setColor} border={false} />
-        </div>
-        {/* <ElDivider
-          class="h-auto"
-          direction="horizontal"
-        /> */}
-        <div
-          className="el-divider el-divider--horizontal"
-          style={{
-            border: '1px solid #dcdfe6'
-          }}
-        ></div>
+    <div className="flex flex-col flex-wrap justify-center gap-8 border py-4">
+      <ElColorPickerPanel value={color} onUpdateValue={setColor} border={false} />
 
-        <ElColorPickerPanel value={color} onUpdateValue={setColor} border={false} />
-      </div>
+      <ElColorPickerPanel value={color} onUpdateValue={setColor} border />
     </div>
   )
 }
