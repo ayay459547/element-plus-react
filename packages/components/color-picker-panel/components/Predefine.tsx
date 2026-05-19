@@ -1,26 +1,24 @@
-import clsx from 'clsx'
 import type { FC } from 'react'
+import { usePredefine, usePredefineDOM, type PredefineProps } from '../hooks/use-predefine'
 
-interface PredefineProps {
-  colors: string[]
-  onSelect?: (color: string) => void
-  activeColor?: string | null
-}
+const Predefine: FC<PredefineProps> = (props) => {
+  const { rgbaColors, handleSelect } = usePredefine(props)
+  const { rootKls, colorsKls, colorSelectorKls, ariaLabel } = usePredefineDOM()
 
-const Predefine: FC<PredefineProps> = ({ colors, onSelect, activeColor }) => {
   return (
-    <div className="el-color-predefine">
-      <div className="el-color-predefine__colors">
-        {colors.map((item, index) => (
-          <div
+    <div className={rootKls}>
+      <div className={colorsKls}>
+        {rgbaColors.map((item, index) => (
+          <button
             key={index}
-            className={clsx('el-color-predefine__color-selector', 'is-alpha', {
-              selected: item === activeColor
-            })}
-            onClick={() => onSelect?.(item)}
+            type="button"
+            disabled={props.disabled}
+            aria-label={ariaLabel(item.value)}
+            className={colorSelectorKls(item)}
+            onClick={() => handleSelect(index)}
           >
-            <div style={{ backgroundColor: item }}></div>
-          </div>
+            <div style={{ backgroundColor: item.value }}></div>
+          </button>
         ))}
       </div>
     </div>

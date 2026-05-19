@@ -14,6 +14,7 @@ const ElColorPickerPanel = forwardRef<ElColorPickerPanelInstance, ColorPickerPan
     const {
       value,
       border = true,
+      disabled = false,
       showAlpha = false,
       colorFormat,
       predefine,
@@ -64,7 +65,8 @@ const ElColorPickerPanel = forwardRef<ElColorPickerPanelInstance, ColorPickerPan
       <div
         className={clsx('el-color-picker-panel', className, {
           'is-alpha': showAlpha,
-          'is-border': border
+          'is-border': border,
+          'is-disabled': disabled
         })}
         style={style}
       >
@@ -74,7 +76,13 @@ const ElColorPickerPanel = forwardRef<ElColorPickerPanelInstance, ColorPickerPan
         </div>
         {showAlpha && <AlphaSlider color={color} onChange={onChange} />}
         {predefine && (
-          <Predefine colors={predefine} onSelect={onSelectPredefine} activeColor={internalValue} />
+          <Predefine
+            colors={predefine}
+            color={color}
+            onSelect={onSelectPredefine}
+            activeColor={internalValue}
+            disabled={disabled}
+          />
         )}
         <div className="el-color-picker-panel__footer">
           <ElInput

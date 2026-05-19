@@ -6,6 +6,7 @@ export type ColorFormat = 'hex' | 'rgb' | 'hsl' | 'hsv'
 export interface ColorPickerPanelProps {
   value?: string | null
   border?: boolean
+  disabled?: boolean
   showAlpha?: boolean
   colorFormat?: ColorFormat
   predefine?: string[]
