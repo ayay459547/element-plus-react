@@ -6,7 +6,7 @@ import type { ElTextProps } from './types'
 
 const COMPONENT_NAME = 'ElText'
 
-const ElText: React.FC<ElTextProps> = forwardRef<HTMLElement, ElTextProps<any>>(
+const ElText: React.FC<ElTextProps<any>> = forwardRef<HTMLElement, ElTextProps<any>>(
   (
     {
       type,

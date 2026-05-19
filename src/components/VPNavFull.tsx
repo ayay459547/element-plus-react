@@ -1,4 +1,4 @@
-import { useLockScreen } from '@ayay459547/element-plus-react/hooks/useLockScreen.ts'
+import { useLockScreen } from '@ayay459547/element-plus-react/hooks/useLockscreen.ts'
 import React, { useRef } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import './VpNavFull.scss'
