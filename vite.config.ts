@@ -27,17 +27,18 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
 
   const libBuildSettings: BuildOptions = {
     lib: {
-      entry: resolve(__dirname, 'packages/index.ts'),
+      entry: {
+        index: resolve(__dirname, 'packages/index.ts')
+      },
       name: 'ElementPlusReact',
-      fileName: 'index',
       formats: ['es']
     },
-    outDir: 'dist',
+    outDir: resolve(__dirname, 'dist'),
     rollupOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
         preserveModules: true, // 保留 packages 結構
-        preserveModulesRoot: 'packages',
+        preserveModulesRoot: resolve(__dirname, 'packages'),
         entryFileNames: '[name].js'
       }
     },
@@ -45,6 +46,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
   }
 
   return {
+    root: '.',
     plugins: [
       react(),
       svgr(),
@@ -58,7 +60,9 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
       }),
       dts({
         insertTypesEntry: true,
-        copyDtsFiles: true
+        copyDtsFiles: true,
+        cleanVueFileName: true,
+        outDir: resolve(__dirname, 'dist')
       })
     ],
     base: VITE_API_SYSTEM_URL,
@@ -71,9 +75,9 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
         },
     resolve: {
       alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url)),
-        '@ayay459547/element-plus-react': fileURLToPath(new URL('./packages', import.meta.url)),
-        $: fileURLToPath(new URL('./public', import.meta.url))
+        '@': resolve(__dirname, 'src'),
+        '@ayay459547/element-plus-react': resolve(__dirname, 'packages'),
+        $: resolve(__dirname, 'public')
       }
     },
     css: {
