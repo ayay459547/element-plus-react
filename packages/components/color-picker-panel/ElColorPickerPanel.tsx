@@ -73,7 +73,9 @@ const ElColorPickerPanel = forwardRef<ElColorPickerPanelInstance, ColorPickerPan
           <SvPanel color={color} onChange={onChange} />
         </div>
         {showAlpha && <AlphaSlider color={color} onChange={onChange} />}
-        {predefine && <Predefine colors={predefine} onSelect={onSelectPredefine} />}
+        {predefine && (
+          <Predefine colors={predefine} onSelect={onSelectPredefine} activeColor={internalValue} />
+        )}
         <div className="el-color-picker-panel__footer">
           <ElInput
             size="small"

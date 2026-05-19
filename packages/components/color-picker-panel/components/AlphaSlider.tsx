@@ -1,4 +1,5 @@
-import { useEffect, useRef, type FC, type MouseEvent as ReactMouseEvent } from 'react'
+import type { FC, MouseEvent as ReactMouseEvent } from 'react'
+import { useEffect, useRef } from 'react'
 import type { Color } from '../utils/color.ts'
 
 interface AlphaSliderProps {
@@ -29,9 +30,8 @@ const AlphaSlider: FC<AlphaSliderProps> = ({ color, vertical = false, onChange }
   }, [color.alpha])
 
   const getBackground = () => {
-    const { _hue, _saturation, _value } = color as any
-    const c = `hsl(${_hue}, ${_saturation}%, ${_value}%)`
-    return `linear-gradient(to right, rgba(255, 255, 255, 0) 0%, ${c} 100%)`
+    const { r, g, b } = color.toRgb()
+    return `linear-gradient(to right, rgba(${r}, ${g}, ${b}, 0) 0%, rgba(${r}, ${g}, ${b}, 1) 100%)`
   }
 
   const handleDrag = (event: MouseEvent | ReactMouseEvent) => {

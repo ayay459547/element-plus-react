@@ -1,4 +1,5 @@
-import { useRef, useEffect, type FC, type MouseEvent as ReactMouseEvent } from 'react'
+import type { FC, MouseEvent as ReactMouseEvent } from 'react'
+import { useEffect, useRef } from 'react'
 import type { Color } from '../utils/color.ts'
 
 interface HueSliderProps {
@@ -66,10 +67,7 @@ const HueSlider: FC<HueSliderProps> = ({ color, vertical = false, onChange }) =>
       onMouseDown={handleMouseDown}
     >
       <div className="el-color-hue-slider__bar"></div>
-      <div
-        className="el-color-hue-slider__thumb"
-        ref={thumbRef}
-      ></div>
+      <div className="el-color-hue-slider__thumb" ref={thumbRef}></div>
     </div>
   )
 }

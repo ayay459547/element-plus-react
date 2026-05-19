@@ -9,6 +9,9 @@ import ColorPickerPaneBasic_code from '@/examples/color-picker-pane/Basic.tsx?ra
 import ColorPickerPaneAlpha from '@/examples/color-picker-pane/Alpha.tsx'
 import ColorPickerPaneAlpha_code from '@/examples/color-picker-pane/Alpha.tsx?raw'
 
+import PredefinedColors from '@/examples/color-picker-pane/PredefinedColors.tsx'
+import PredefinedColors_code from '@/examples/color-picker-pane/PredefinedColors.tsx?raw'
+
 const ColorPickerPanelPage: React.FC = () => {
   return (
     <VPDocContent>
@@ -50,6 +53,22 @@ const ColorPickerPanelPage: React.FC = () => {
         }
       >
         <ColorPickerPaneAlpha />
+      </VPDemo>
+
+      <h2 id="predefined-colors">Predefined colors</h2>
+      <p>ColorPickerPanel supports predefined color options</p>
+      <VPDemo
+        link="/src/examples/color-picker-pane/PredefinedColors.tsx"
+        code={
+          <VPCode
+            language={['PredefinedColors.tsx']}
+            code={{
+              'PredefinedColors.tsx': PredefinedColors_code
+            }}
+          />
+        }
+      >
+        <PredefinedColors />
       </VPDemo>
     </VPDocContent>
   )

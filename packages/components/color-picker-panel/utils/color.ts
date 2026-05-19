@@ -118,4 +118,13 @@ export class Color {
     if (f === 'hex') return color.toHexString()
     return color.toRgbString()
   }
+
+  toRgb() {
+    const color = tinycolor({
+      h: this._hue,
+      s: this._saturation / 100,
+      v: this._value / 100
+    })
+    return color.toRgb()
+  }
 }
