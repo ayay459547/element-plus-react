@@ -9,6 +9,8 @@ import dts from 'vite-plugin-dts'
 import svgr from 'vite-plugin-svgr'
 // import { VitePWA } from 'vite-plugin-pwa'
 
+import pkg from './package.json'
+
 export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, process.cwd(), '')
   const { VITE_API_BUILD_VERSION, VITE_API_VERSION, VITE_API_SYSTEM_URL, VITE_API_BUILD_TYPE } = env
@@ -34,7 +36,13 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
     },
     outDir: resolve(__dirname, 'dist'),
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      external: (id) => {
+        const deps = [
+          ...Object.keys(pkg.dependencies || {}),
+          ...Object.keys(pkg.peerDependencies || {})
+        ]
+        return deps.some((dep) => id === dep || id.startsWith(`${dep}/`))
+      },
       output: {
         preserveModules: true, // 保留 packages 結構
         preserveModulesRoot: resolve(__dirname, 'packages'),
