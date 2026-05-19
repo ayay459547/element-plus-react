@@ -45,6 +45,10 @@ export type { ElColInstance, ElColProps } from './components/col/types.ts'
 
 // ColorPickerPanel
 export { default as ElColorPickerPanel } from './components/color-picker-panel/ElColorPickerPanel.tsx'
+export type {
+  ElColorPickerPanelInstance,
+  ColorPickerPanelProps as ElColorPickerPanelProps
+} from './components/color-picker-panel/types.ts'
 
 // Container
 export { default as ElAside } from './components/container/ElAside.tsx'

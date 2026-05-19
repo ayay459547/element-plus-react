@@ -15,7 +15,7 @@ const insertSpaceIfTwoChinese = (text: string): string => {
 
 const COMPONENT_NAME = 'ElButton'
 
-const ElButton: React.FC<ElButtonProps> = forwardRef<HTMLElement, ElButtonProps<any>>(
+const ElButton: React.FC<ElButtonProps<any>> = forwardRef<HTMLElement, ElButtonProps<any>>(
   (
     {
       size,

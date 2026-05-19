@@ -1,6 +1,8 @@
-import homeLang from '@/crowdin/pages/home.json'
+import homeLangData from '@/crowdin/pages/home.json'
 import clsx from 'clsx'
 import styles from './VPFooter.module.scss'
+
+const homeLang = homeLangData as Record<string, string>
 
 interface VPFooterProps {
   isHome?: boolean

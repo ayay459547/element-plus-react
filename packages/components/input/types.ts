@@ -3,6 +3,8 @@ import type {
   CSSProperties,
   FocusEventHandler,
   InputEventHandler,
+  KeyboardEventHandler,
+  ReactElement,
   ReactNode
 } from 'react'
 
@@ -144,6 +146,7 @@ export interface ElInputProps {
   onBlur?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>
   onInput?: InputEventHandler<HTMLInputElement | HTMLTextAreaElement>
   onChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement | HTMLTextAreaElement>
 }
 
-export type ElInputInstance = React.ReactElement<ElInputProps>
+export type ElInputInstance = ReactElement<ElInputProps>
