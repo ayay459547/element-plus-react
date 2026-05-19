@@ -12,13 +12,18 @@ export interface PredefineProps {
 
 export const usePredefine = (props: PredefineProps) => {
   const rgbaColors = useMemo(() => {
+    const activeColorModel = new Color()
+    activeColorModel.fromString(props.activeColor)
+    const normalizedActive = activeColorModel.toString('rgb')
+
     return props.colors.map((value) => {
       const c = new Color()
       c.fromString(value)
+      const displayValue = c.toString('rgb')
       return {
         value,
-        displayValue: c.toString(),
-        selected: c.toString() === props.activeColor
+        displayValue,
+        selected: props.activeColor ? displayValue === normalizedActive : false
       }
     })
   }, [props.colors, props.activeColor])

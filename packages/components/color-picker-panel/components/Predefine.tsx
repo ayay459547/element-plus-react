@@ -17,7 +17,7 @@ const Predefine: FC<PredefineProps> = (props) => {
             className={colorSelectorKls(item)}
             onClick={() => handleSelect(index)}
           >
-            <div style={{ backgroundColor: item.value }}></div>
+            <div style={{ backgroundColor: item.displayValue }}></div>
           </button>
         ))}
       </div>

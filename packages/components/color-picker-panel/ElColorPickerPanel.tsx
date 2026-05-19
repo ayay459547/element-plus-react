@@ -87,6 +87,7 @@ const ElColorPickerPanel = forwardRef<ElColorPickerPanelInstance, ColorPickerPan
         <div className="el-color-picker-panel__footer">
           <ElInput
             size="small"
+            disabled={disabled}
             value={userInput || internalValue || ''}
             onInput={(v) => setUserInput(v.currentTarget.value)}
             onBlur={() => {
