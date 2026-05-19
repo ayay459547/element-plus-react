@@ -98,3 +98,5 @@ export type ElTooltipProps = {
    */
   children?: ReactNode
 }
+
+export type ElTooltipInstance = React.ReactElement<ElTooltipProps>

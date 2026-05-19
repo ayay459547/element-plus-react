@@ -119,3 +119,6 @@ export interface ElRadioGroupProps extends CommonProps {
    */
   onChange?: ElRadioProps['onChange']
 }
+
+export type ElRadioInstance = React.ReactElement<ElRadioProps>
+export type ElRadioGroupInstance = React.ReactElement<ElRadioGroupProps>

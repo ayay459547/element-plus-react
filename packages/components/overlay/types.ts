@@ -12,3 +12,5 @@ export interface ElOverlayProps {
 
   onClick?: (evt: React.MouseEvent<HTMLDivElement>) => void
 }
+
+export type ElOverlayInstance = React.ReactElement<ElOverlayProps>

@@ -42,6 +42,8 @@ export type PopperProps = {
   children?: ReactNode
 }
 
+export type ElPopperInstance = React.ReactElement<PopperProps>
+
 export type ElPopperArrowProps = {
   arrowOffset?: number
 }

@@ -8,4 +8,4 @@ export type TransitionProps = {
   children: React.ReactElement
 } & React.HTMLAttributes<HTMLElement>
 
-export type IconInstance = React.ReactElement<TransitionProps>
+export type ElTransitionInstance = React.ReactElement<TransitionProps>

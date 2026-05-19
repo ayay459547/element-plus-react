@@ -1,9 +1,5 @@
 import type { CSSProperties, ReactNode } from 'react'
 
-export type TransferKey = string | number
-
-export type TransferDirection = 'left' | 'right'
-
 export interface ElDrawerProps {
   /**
    * @description Should Drawer be displayed
@@ -142,4 +138,4 @@ export interface ElDrawerProps {
   style?: CSSProperties
 }
 
-export type ElAlertInstance = React.ReactElement<ElDrawerProps>
+export type ElDrawerInstance = React.ReactElement<ElDrawerProps>

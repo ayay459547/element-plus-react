@@ -45,4 +45,4 @@ export type ElLinkProps = {
   style?: CSSProperties
 }
 
-export type ElTagInstance = ReactElement<ElLinkProps>
+export type ElLinkInstance = ReactElement<ElLinkProps>
