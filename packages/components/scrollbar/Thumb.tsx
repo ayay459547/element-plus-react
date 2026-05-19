@@ -1,4 +1,4 @@
-import React, { CSSProperties, useEffect, useRef, useState } from 'react'
+import React, { type CSSProperties, useEffect, useRef, useState } from 'react'
 import type { ThumbProps, ThumbRef } from './types'
 import { BAR_MAP, renderThumbStyle } from './util'
 
@@ -95,7 +95,7 @@ export const Thumb = React.forwardRef<ThumbRef, ThumbProps>((props, ref) => {
   // click Track
   // ---------------------------------------
   const clickTrackHandler = (e: React.MouseEvent) => {
-    if (!thumbRef.current || !instanceRef.current || !scrollbar.wrapElement) return
+    if (!thumbRef.current || !instanceRef.current || !scrollbar || !scrollbar.wrapElement) return
 
     const offset = Math.abs(
       (e.currentTarget as HTMLElement).getBoundingClientRect()[bar.direction] - e[bar.client]
@@ -126,7 +126,7 @@ export const Thumb = React.forwardRef<ThumbRef, ThumbProps>((props, ref) => {
   // Drag Move
   // ---------------------------------------
   const mouseMoveDocumentHandler = (e: MouseEvent) => {
-    if (!instanceRef.current || !thumbRef.current) return
+    if (!instanceRef.current || !thumbRef.current || !scrollbar || !scrollbar.wrapElement) return
     if (!cursorDown) return
 
     const prevPage = thumbState.current[bar.axis]

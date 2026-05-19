@@ -23,7 +23,7 @@ export interface ScrollbarProps {
   id?: string
   role?: string
   ariaLabel?: string
-  ariaOrientation?: string
+  ariaOrientation?: 'horizontal' | 'vertical'
   children?: ReactNode
   onScroll?: (pos: { scrollTop: number; scrollLeft: number }) => void
   onEndReached?: (direction: ScrollbarDirection) => void
@@ -191,15 +191,17 @@ export const Scrollbar = forwardRef<ScrollbarInstance, ScrollbarProps>((props, r
           onScroll={handleScroll}
         >
           <Tag
-            id={id}
-            ref={resizeRef as Ref<any>}
-            className={
-              viewClass ? ['el-scrollbar__view', viewClass].join(' ') : 'el-scrollbar__view'
-            }
-            style={viewStyle}
-            role={role}
-            aria-label={ariaLabel}
-            aria-orientation={ariaOrientation}
+            {...({
+              id,
+              ref: resizeRef as Ref<any>,
+              className: viewClass
+                ? ['el-scrollbar__view', viewClass].join(' ')
+                : 'el-scrollbar__view',
+              style: viewStyle,
+              role,
+              'aria-label': ariaLabel,
+              'aria-orientation': ariaOrientation
+            } as any)}
           >
             {children}
           </Tag>

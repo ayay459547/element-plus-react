@@ -1,7 +1,7 @@
 import ElIcon from '@ayay459547/element-plus-react/components/icon/ElIcon.tsx'
 import ElOverlay from '@ayay459547/element-plus-react/components/overlay/ElOverlay.tsx'
 import ElTeleport from '@ayay459547/element-plus-react/components/teleport/ElTeleport.tsx'
-import { useLockScreen } from '@ayay459547/element-plus-react/hooks/useLockScreen.ts'
+import { useLockScreen } from '@ayay459547/element-plus-react/hooks/useLockscreen.ts'
 import Close from '@ayay459547/element-plus-react/icons-svg/close.svg?react'
 import { mergeRefs } from '@ayay459547/element-plus-react/utils/refs'
 import { isNumber } from '@ayay459547/element-plus-react/utils/types'
@@ -23,16 +23,7 @@ const ElDrawer: React.FC<ElDrawerProps> = forwardRef<HTMLDivElement, ElDrawerPro
       appendToBody = false,
       appendTo = document.body,
       lockScroll = true,
-      beforeClose,
-      closeOnClickModal = true,
-      closeOnPressEscape = true,
-      openDelay = 0,
-      closeDelay = 0,
-      destroyOnClose = false,
-      modal = true,
-      modalPenetrable = false,
       direction = 'rtl',
-      resizable = false,
       showClose = true,
       size = '30%',
       children,
@@ -40,7 +31,6 @@ const ElDrawer: React.FC<ElDrawerProps> = forwardRef<HTMLDivElement, ElDrawerPro
       style,
       title,
       withHeader = true,
-      modalClass,
       headerClass,
       bodyClass,
       footerClass,

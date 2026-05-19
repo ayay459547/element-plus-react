@@ -12,7 +12,7 @@ export type EpPropMergeType<Type, Value, Validator> =
 /**
  * Final output (React version)
  */
-export type EpProp<Type, Default, Required extends boolean> = {
+export type EpProp<_Type, Default, Required extends boolean> = {
   readonly required: Required extends true ? true : false
   readonly validator?: (val: unknown) => boolean
   readonly default?: Default

@@ -1,4 +1,4 @@
-import type { Component, JSX } from 'react'
+import type { JSX } from 'react'
 
 export interface BarProps {
   /** 是否總是顯示 */
@@ -6,6 +6,8 @@ export interface BarProps {
   /** 最小尺寸 */
   minSize: number
 }
+
+import type { ScrollbarContextType } from './constants'
 
 export interface ThumbProps {
   /** Whether the scrollbar thumb is vertical */
@@ -23,7 +25,7 @@ export interface ThumbProps {
   /** Whether thumb should always show */
   always?: boolean
 
-  scrollbar?: typeof Component<any, any> | null
+  scrollbar?: ScrollbarContextType
 }
 
 /**
@@ -34,7 +36,7 @@ export interface ThumbRef {
   el: HTMLDivElement | null
 }
 
-import { CSSProperties, ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 
 // Scrollbar direction
 export type ScrollbarDirection = 'top' | 'bottom' | 'left' | 'right'

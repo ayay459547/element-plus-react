@@ -1,6 +1,6 @@
 import { forwardRef, useContext, useImperativeHandle, useState } from 'react'
 import Thumb from './Thumb.tsx'
-import { ScrollbarContext, ScrollbarContextType } from './constants' // useScrollbarContext
+import { ScrollbarContext, type ScrollbarContextType } from './constants' // useScrollbarContext
 import { GAP } from './util'
 
 export interface BarProps {
@@ -61,8 +61,15 @@ export const Bar = forwardRef<BarInstance, BarProps>((props, ref) => {
 
   return (
     <>
-      <Thumb move={moveX} ratio={ratioX} size={sizeWidth} always={always} />
-      <Thumb move={moveY} ratio={ratioY} size={sizeHeight} always={always} vertical />
+      <Thumb move={moveX} ratio={ratioX} size={sizeWidth} always={always} scrollbar={scrollbar} />
+      <Thumb
+        move={moveY}
+        ratio={ratioY}
+        size={sizeHeight}
+        always={always}
+        vertical
+        scrollbar={scrollbar}
+      />
     </>
   )
 })

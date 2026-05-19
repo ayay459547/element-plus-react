@@ -15,7 +15,7 @@ export type EpPropFinalized<T = any> = {
   [epPropKey]: true
 }
 
-export const buildProp = <T>(prop: EpPropInput<T>, key?: string): EpPropFinalized<T> => {
+export const buildProp = <T>(prop: EpPropInput<T>, _key?: string): EpPropFinalized<T> => {
   if (!prop || typeof prop !== 'object') return prop as any
 
   const { values, validator, default: defaultValue, required } = prop

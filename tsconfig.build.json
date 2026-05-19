@@ -1,5 +1,5 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.app.json",
   "compilerOptions": {
     "declaration": true,
     "emitDeclarationOnly": true,
@@ -7,7 +7,8 @@
     "rootDir": "packages",
     "outDir": "dist",
     "noEmit": false,
-    "moduleResolution": "Bundler"
+    "moduleResolution": "Bundler",
+    "types": ["node", "vite/client", "vite-plugin-svgr/client"]
   },
   "include": ["packages/**/*"]
 }
