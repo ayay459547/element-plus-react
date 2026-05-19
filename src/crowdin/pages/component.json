@@ -41,7 +41,8 @@
       },
       {
         "link": "/text",
-        "text": "Text"
+        "text": "Text",
+        "promotion": "2.3.0"
       },
       {
         "link": "/scrollbar",
@@ -53,7 +54,8 @@
       },
       {
         "link": "/splitter",
-        "text": "Splitter"
+        "text": "Splitter",
+        "promotion": "2.10.0"
       },
       {
         "link": "/typography",
@@ -87,7 +89,8 @@
       },
       {
         "link": "/color-picker-panel",
-        "text": "Color Picker Panel"
+        "text": "Color Picker Panel",
+        "promotion": "2.11.0"
       },
       {
         "link": "/color-picker",
@@ -95,7 +98,8 @@
       },
       {
         "link": "/date-picker-panel",
-        "text": "Date Picker Panel"
+        "text": "Date Picker Panel",
+        "promotion": "2.11.0"
       },
       {
         "link": "/date-picker",
@@ -121,6 +125,11 @@
         "link": "/input-tag",
         "text": "Input Tag",
         "promotion": "2.9.0"
+      },
+      {
+        "link": "/input-otp",
+        "text": "Input OTP",
+        "promotion": "2.14.0"
       },
       {
         "link": "/mention",

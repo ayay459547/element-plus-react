@@ -1,18 +1,18 @@
 [
   {
     "text": "Guide",
-    "link": "/guide",
-    "activeMatch": "/guide"
+    "link": "/guide/design",
+    "activeMatch": "/guide/"
   },
   {
     "text": "Component",
-    "link": "/component",
-    "activeMatch": "/component"
+    "link": "/component/overview",
+    "activeMatch": "/component/"
   },
   {
     "text": "Resource",
-    "link": "/resource",
-    "activeMatch": "/resource"
+    "link": "/resource/index",
+    "activeMatch": "/resource/"
   },
   {
     "text": "Playground",

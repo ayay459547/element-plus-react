@@ -25,15 +25,5 @@
   "title_sub": "A Vue 3 based component library for designers and developers",
   "china_mirror": "China Mirror 🇨🇳",
   "discord": "Discord",
-  "site_map": "Site Map",
-  "element-plus": "Element Plus",
-  "element-plus-github": "element-plus",
-  "element-ui": "Element UI for Vue 2",
-  "element-ui-github": "elemefe",
-  "vite": "Vite",
-  "vite-github": "vitejs",
-  "vue": "Vue",
-  "vue-github": "vuejs",
-  "react": "React",
-  "react-github": "facebook/react"
+  "site_map": "Site Map"
 }
