@@ -4,6 +4,7 @@ import VPNav from '@/components/VPNav.tsx'
 import VPOverlay from '@/components/VPOverlay.tsx'
 import VPSidebar from '@/components/VPSidebar.tsx'
 import VPSubNav from '@/components/VPSubNav.tsx'
+import { usePageTitle } from '@/hooks/usePageTitle'
 import { useSidebar } from '@/hooks/useSidebar'
 
 import { useEffect, useState } from 'react'
@@ -11,6 +12,7 @@ import { useLocation } from 'react-router-dom'
 
 export default function VPApp() {
   const { pathname } = useLocation()
+  usePageTitle()
 
   const [isSidebarOpen, toggleSidebar] = useState(false)
   const { hasSidebar } = useSidebar()

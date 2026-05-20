@@ -1,6 +1,6 @@
 {
   "name": "@ayay459547/element-plus-react",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "publishConfig": {
     "access": "public"
   },
@@ -19,12 +19,13 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,css,scss,md}\"",
     "preview": "vite preview",
     "type-check": "tsc --noEmit",
-    "build": "vite build",
+    "build": "npm run sitemap && vite build",
     "gh-pages": "gh-pages -d dist-demo",
     "page-deploy": "npm run build && gh-pages -d dist-demo",
     "deploy": "node ./scripts/deploy.js",
     "lib-build": "vite build --mode library && tsc -p tsconfig.build.json",
     "local-build": "vite build --mode localhost",
+    "sitemap": "node ./scripts/generate-sitemap.js",
     "publish": "node ./scripts/publish.js"
   },
   "peerDependencies": {
