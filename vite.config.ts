@@ -9,8 +9,6 @@ import dts from 'vite-plugin-dts'
 import svgr from 'vite-plugin-svgr'
 // import { VitePWA } from 'vite-plugin-pwa'
 
-import pkg from './package.json'
-
 export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
   const env = loadEnv(mode, process.cwd(), '')
   const { VITE_API_BUILD_VERSION, VITE_API_VERSION, VITE_API_SYSTEM_URL, VITE_API_BUILD_TYPE } = env
@@ -28,28 +26,25 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
 
   const libBuildSettings: BuildOptions = {
     lib: {
-      entry: {
-        index: resolve(__dirname, 'packages/index.ts')
-      },
+      entry: resolve(__dirname, 'packages/index.ts'),
       name: 'ElementPlusReact',
+      fileName: 'index',
       formats: ['es']
     },
     outDir: resolve(__dirname, 'dist'),
+    emptyOutDir: true,
+    minify: false,
+    // rolldownOptions: {
+    //   external: ['react', 'react/jsx-runtime']
+    // },
     rollupOptions: {
-      external: (id) => {
-        const deps = [
-          ...Object.keys(pkg.dependencies || {}),
-          ...Object.keys(pkg.peerDependencies || {})
-        ]
-        return deps.some((dep) => id === dep || id.startsWith(`${dep}/`))
-      },
+      external: ['react'],
       output: {
         preserveModules: true, // 保留 packages 結構
         preserveModulesRoot: resolve(__dirname, 'packages'),
         entryFileNames: '[name].js'
       }
-    },
-    emptyOutDir: true
+    }
   }
 
   return {
@@ -69,7 +64,7 @@ export default defineConfig(({ command, mode }: ConfigEnv): UserConfig => {
         insertTypesEntry: true,
         copyDtsFiles: true,
         cleanVueFileName: true,
-        outDirs: resolve(__dirname, 'dist')
+        outDir: resolve(__dirname, 'dist')
       })
     ],
     base: VITE_API_SYSTEM_URL,
