@@ -69,6 +69,14 @@ export type {
   ElMainProps
 } from './components/container/types.ts'
 
+// DatePickerPanel
+export { default as ElDatePickerPanel } from './components/date-picker-panel/ElDatePickerPanel.tsx'
+export { default as ElDateRangePanel } from './components/date-picker-panel/ElDateRangePanel.tsx'
+export type {
+  ElDatePickerPanelInstance,
+  DatePickerPanelProps as ElDatePickerPanelProps
+} from './components/date-picker-panel/types.ts'
+
 // Drawer
 export { default as ElDrawer } from './components/drawer/ElDrawer.tsx'
 export type { ElDrawerInstance, ElDrawerProps } from './components/drawer/types.ts'
@@ -133,9 +141,23 @@ export type { ElScrollbarInstance, ElScrollbarProps } from './components/scrollb
 export { default as ElSwitch } from './components/switch/ElSwitch.tsx'
 export type { ElSwitchInstance, ElSwitchProps } from './components/switch/types.ts'
 
+// Splitter
+export { default as ElSplitter } from './components/splitter/ElSplitter.tsx'
+export { default as ElSplitterPanel } from './components/splitter/ElSplitterPanel.tsx'
+export type {
+  ElSplitterInstance,
+  SplitterProps as ElSplitterProps,
+  ElSplitterPanelInstance,
+  SplitterPanelProps as ElSplitterPanelProps
+} from './components/splitter/types.ts'
+
 // Tag
 export { default as ElTag } from './components/tag/ElTag.tsx'
 export type { ElTagInstance, ElTagProps } from './components/tag/types.ts'
+
+// Watermark
+export { default as ElWatermark } from './components/watermark/ElWatermark.tsx'
+export type { ElWatermarkInstance, WatermarkProps as ElWatermarkProps } from './components/watermark/types.ts'
 
 // Teleport
 export { default as ElTeleport } from './components/teleport/ElTeleport.tsx'
