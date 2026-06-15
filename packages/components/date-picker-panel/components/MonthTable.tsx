@@ -13,8 +13,9 @@ export interface MonthTableProps {
 const MonthTable: React.FC<MonthTableProps> = (props) => {
   const { date, value, onPick, disabledDate } = props
   const ns = useNamespace('month-table')
+  const nsCell = useNamespace('month-table-cell')
 
-  // 定義月份縮寫（實際開發中應從 locale 獲取）
+  // 定義月份縮寫
   const MONTHS = [
     'jan', 'feb', 'mar', 'apr', 'may', 'jun',
     'jul', 'aug', 'sep', 'oct', 'nov', 'dec'
@@ -35,7 +36,7 @@ const MonthTable: React.FC<MonthTableProps> = (props) => {
               const monthIndex = rowIndex * 4 + colIndex
               const cellDate = date.month(monthIndex)
               
-              // 判斷該月份是否被選中（單選或範圍選擇中的某一個月份）
+              // 判斷該月份是否被選中
               const isSelected = Array.isArray(value)
                 ? value.some(v => v.year() === date.year() && v.month() === monthIndex)
                 : value?.year() === date.year() && value?.month() === monthIndex
@@ -45,14 +46,16 @@ const MonthTable: React.FC<MonthTableProps> = (props) => {
               return (
                 <td
                   key={colIndex}
-                  className={clsx(ns.e('cell'), {
+                  className={clsx({
                     'current': isSelected,
                     'disabled': disabled
                   })}
                   onClick={() => !disabled && onPick?.(monthIndex)}
                 >
-                  <div className={ns.e('cell-inner')}>
-                    {month}
+                  <div className={nsCell.b()}>
+                    <span className={nsCell.e('text')}>
+                      {month}
+                    </span>
                   </div>
                 </td>
               )

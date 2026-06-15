@@ -36,7 +36,8 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
       onPrevMonth,
       onNextMonth,
       onPrevYear,
-      onNextYear
+      onNextYear,
+      firstDayOfWeek
     } = props
 
     const ns = useNamespace('picker-panel')
@@ -58,9 +59,11 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
     }, [propsViewDate])
 
     // 當前選擇模式：日期、月份、年份
-    const [selectionMode, setSelectionMode] = useState<'date' | 'month' | 'year'>(() => {
+    const [selectionMode, setSelectionMode] = useState<'date' | 'month' | 'year' | 'week' | 'dates'>(() => {
       if (type === 'year') return 'year'
       if (type === 'month') return 'month'
+      if (type === 'week') return 'week'
+      if (type === 'dates') return 'dates'
       return 'date'
     })
 
@@ -85,6 +88,7 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
 
     // 計算頭部月份標籤
     const monthLabel = useMemo(() => {
+      // TODO: Use useLocale
       const MONTHS = [
         'January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December'
@@ -152,6 +156,17 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
       if (type === 'daterange' || type === 'datetimerange') {
          // 範圍選擇通常由父組件協調，這裡僅透出單點選中事件
          onPick?.(date)
+      } else if (type === 'dates') {
+        const valueArray = Array.isArray(value) ? [...value] : []
+        const index = valueArray.findIndex(v => v.isSame(date, 'day'))
+        if (index > -1) {
+          valueArray.splice(index, 1)
+        } else {
+          valueArray.push(date)
+        }
+        onPick?.(valueArray)
+      } else if (type === 'week') {
+        onPick?.(date.startOf('week'))
       } else {
         setInnerDate(date)
         onPick?.(date)
@@ -176,6 +191,8 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
     const handleClearClick = () => {
       onPick?.(null as any)
     }
+
+    const showMonthHeader = selectionMode === 'date' || selectionMode === 'dates' || selectionMode === 'week'
 
     return (
       <div
@@ -204,16 +221,14 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
           )}
           <div className={ns.e('body')}>
             <div className={ns.e('header')}>
-              {(onPrevYear || !propsViewDate) && (
-                <button
-                  type="button"
-                  className={clsx(ns.e('icon-btn'), 'd-arrow-left')}
-                  onClick={handlePrevYear}
-                >
-                  <DArrowLeft />
-                </button>
-              )}
-              {selectionMode === 'date' && (onPrevMonth || !propsViewDate) && (
+              <button
+                type="button"
+                className={clsx(ns.e('icon-btn'), 'd-arrow-left')}
+                onClick={handlePrevYear}
+              >
+                <DArrowLeft />
+              </button>
+              {showMonthHeader && (
                 <button
                   type="button"
                   className={clsx(ns.e('icon-btn'), 'arrow-left')}
@@ -229,7 +244,7 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
               >
                 {yearLabel}
               </span>
-              {selectionMode === 'date' && (
+              {showMonthHeader && (
                 <span
                   role="button"
                   className={ns.e('header-label')}
@@ -238,16 +253,14 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
                   {monthLabel}
                 </span>
               )}
-              {(onNextYear || !propsViewDate) && (
-                <button
-                  type="button"
-                  className={clsx(ns.e('icon-btn'), 'd-arrow-right')}
-                  onClick={handleNextYear}
-                >
-                  <DArrowRight />
-                </button>
-              )}
-              {selectionMode === 'date' && (onNextMonth || !propsViewDate) && (
+              <button
+                type="button"
+                className={clsx(ns.e('icon-btn'), 'd-arrow-right')}
+                onClick={handleNextYear}
+              >
+                <DArrowRight />
+              </button>
+              {showMonthHeader && (
                 <button
                   type="button"
                   className={clsx(ns.e('icon-btn'), 'arrow-right')}
@@ -258,7 +271,7 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
               )}
             </div>
             <div className={ns.e('content')}>
-              {selectionMode === 'date' && (
+              {(selectionMode === 'date' || selectionMode === 'dates' || selectionMode === 'week') && (
                 <DateTable
                   date={innerDate}
                   value={value}
@@ -268,6 +281,8 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
                   minDate={minDate}
                   maxDate={maxDate}
                   rangeState={rangeState}
+                  selectionMode={selectionMode}
+                  firstDayOfWeek={firstDayOfWeek}
                 />
               )}
               {selectionMode === 'month' && (
@@ -291,6 +306,13 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
         </div>
         {(showFooter || type === 'datetime' || type === 'datetimerange') && (
            <div className={ns.e('footer')}>
+             <button
+               type="button"
+               className={clsx(ns.e('footer-btn'), 'is-text')}
+               onClick={handleClearClick}
+             >
+               Clear
+             </button>
              <button
                type="button"
                className={clsx(ns.e('footer-btn'), 'is-text')}
