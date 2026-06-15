@@ -221,14 +221,16 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
           )}
           <div className={ns.e('body')}>
             <div className={ns.e('header')}>
-              <button
-                type="button"
-                className={clsx(ns.e('icon-btn'), 'd-arrow-left')}
-                onClick={handlePrevYear}
-              >
-                <DArrowLeft />
-              </button>
-              {showMonthHeader && (
+              {(onPrevYear || !propsViewDate) && (
+                <button
+                  type="button"
+                  className={clsx(ns.e('icon-btn'), 'd-arrow-left')}
+                  onClick={handlePrevYear}
+                >
+                  <DArrowLeft />
+                </button>
+              )}
+              {showMonthHeader && (onPrevMonth || !propsViewDate) && (
                 <button
                   type="button"
                   className={clsx(ns.e('icon-btn'), 'arrow-left')}
@@ -253,14 +255,16 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
                   {monthLabel}
                 </span>
               )}
-              <button
-                type="button"
-                className={clsx(ns.e('icon-btn'), 'd-arrow-right')}
-                onClick={handleNextYear}
-              >
-                <DArrowRight />
-              </button>
-              {showMonthHeader && (
+              {(onNextYear || !propsViewDate) && (
+                <button
+                  type="button"
+                  className={clsx(ns.e('icon-btn'), 'd-arrow-right')}
+                  onClick={handleNextYear}
+                >
+                  <DArrowRight />
+                </button>
+              )}
+              {showMonthHeader && (onNextMonth || !propsViewDate) && (
                 <button
                   type="button"
                   className={clsx(ns.e('icon-btn'), 'arrow-right')}

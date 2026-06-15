@@ -24,6 +24,10 @@ export type {
   ElButtonGroupProps
 } from './components/button/types.ts'
 
+// Calendar
+export { default as ElCalendar } from './components/calendar/ElCalendar.tsx'
+export type { ElCalendarInstance, CalendarProps as ElCalendarProps } from './components/calendar/types.ts'
+
 // Card
 export { default as ElCard } from './components/card/ElCard.tsx'
 export type { ElCardInstance, ElCardProps } from './components/card/types.ts'
