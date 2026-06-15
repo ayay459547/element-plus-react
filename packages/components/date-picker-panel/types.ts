@@ -22,6 +22,8 @@ export interface DatePickerPanelProps {
   type?: DatePickerType
   /** 禁用的日期判斷函數 */
   disabledDate?: (date: Date) => boolean
+  /** 每週的第一天 */
+  firstDayOfWeek?: number
   /** 格式化 */
   format?: string
   /** 自定義類名 */
@@ -33,13 +35,15 @@ export interface DatePickerPanelProps {
   /** 鼠標懸停日期時的回調（範圍選擇） */
   onSelect?: (date: Dayjs | Dayjs[]) => void
   /** 快捷選項 */
-  shortcuts?: Array<{ text: string; value: Date | (() => Date) }>
+  shortcuts?: Array<{ text: string; value: Date | Date[] | (() => Date | Date[]) }>
   /** 是否顯示邊框 */
   border?: boolean
   /** 是否顯示底部操作欄 */
   showFooter?: boolean
   /** 是否解除面板聯動（範圍選擇） */
   unlinkPanels?: boolean
+  /** 自定義單元格類名 */
+  cellClassName?: (date: Date) => string
   
   // 範圍選擇相關狀態（通常由父組件傳入）
   /** 範圍開始日期 */

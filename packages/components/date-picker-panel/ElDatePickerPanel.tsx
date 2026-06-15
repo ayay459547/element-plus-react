@@ -36,10 +36,13 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
       onPrevMonth,
       onNextMonth,
       onPrevYear,
-      onNextYear
+      onNextYear,
+      firstDayOfWeek,
+      cellClassName
     } = props
 
     const ns = useNamespace('picker-panel')
+    const nsDatePicker = useNamespace('date-picker')
 
     // 內部維護當前面板顯示的基準日期
     const [innerDate, setInnerDate] = useState<Dayjs>(() => {
@@ -58,9 +61,11 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
     }, [propsViewDate])
 
     // 當前選擇模式：日期、月份、年份
-    const [selectionMode, setSelectionMode] = useState<'date' | 'month' | 'year'>(() => {
+    const [selectionMode, setSelectionMode] = useState<'date' | 'month' | 'year' | 'week' | 'dates'>(() => {
       if (type === 'year') return 'year'
       if (type === 'month') return 'month'
+      if (type === 'week') return 'week'
+      if (type === 'dates') return 'dates'
       return 'date'
     })
 
@@ -85,6 +90,7 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
 
     // 計算頭部月份標籤
     const monthLabel = useMemo(() => {
+      // TODO: Use useLocale
       const MONTHS = [
         'January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December'
@@ -152,6 +158,17 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
       if (type === 'daterange' || type === 'datetimerange') {
          // 範圍選擇通常由父組件協調，這裡僅透出單點選中事件
          onPick?.(date)
+      } else if (type === 'dates') {
+        const valueArray = Array.isArray(value) ? [...value] : []
+        const index = valueArray.findIndex(v => v && v.isSame(date, 'day'))
+        if (index > -1) {
+          valueArray.splice(index, 1)
+        } else {
+          valueArray.push(date)
+        }
+        onPick?.(valueArray)
+      } else if (type === 'week') {
+        onPick?.(date.startOf('week'))
       } else {
         setInnerDate(date)
         onPick?.(date)
@@ -177,10 +194,13 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
       onPick?.(null as any)
     }
 
+    const showMonthHeader = selectionMode === 'date' || selectionMode === 'dates' || selectionMode === 'week'
+
     return (
       <div
-        className={clsx(ns.b(), className, {
-          [ns.is('border')]: border
+        className={clsx(ns.b(), nsDatePicker.b(), className, {
+          [ns.is('border')]: border,
+          [nsDatePicker.is('has-sidebar')]: shortcuts && shortcuts.length > 0
         })}
         style={style}
       >
@@ -194,7 +214,11 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
                   className={ns.e('shortcut')}
                   onClick={() => {
                     const date = typeof shortcut.value === 'function' ? shortcut.value() : shortcut.value
-                    onPick?.(dayjs(date))
+                    if (Array.isArray(date)) {
+                      onPick?.(date.map(d => dayjs(d)))
+                    } else {
+                      onPick?.(dayjs(date))
+                    }
                   }}
                 >
                   {shortcut.text}
@@ -203,20 +227,20 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
             </div>
           )}
           <div className={ns.e('body')}>
-            <div className={ns.e('header')}>
+            <div className={nsDatePicker.e('header')}>
               {(onPrevYear || !propsViewDate) && (
                 <button
                   type="button"
-                  className={clsx(ns.e('icon-btn'), 'd-arrow-left')}
+                  className={clsx(ns.e('icon-btn'), nsDatePicker.e('prev-btn'), 'd-arrow-left')}
                   onClick={handlePrevYear}
                 >
                   <DArrowLeft />
                 </button>
               )}
-              {selectionMode === 'date' && (onPrevMonth || !propsViewDate) && (
+              {showMonthHeader && (onPrevMonth || !propsViewDate) && (
                 <button
                   type="button"
-                  className={clsx(ns.e('icon-btn'), 'arrow-left')}
+                  className={clsx(ns.e('icon-btn'), nsDatePicker.e('prev-btn'), 'arrow-left')}
                   onClick={handlePrevMonth}
                 >
                   <ArrowLeft />
@@ -224,15 +248,15 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
               )}
               <span
                 role="button"
-                className={ns.e('header-label')}
+                className={nsDatePicker.e('header-label')}
                 onClick={() => setSelectionMode('year')}
               >
                 {yearLabel}
               </span>
-              {selectionMode === 'date' && (
+              {showMonthHeader && (
                 <span
                   role="button"
-                  className={ns.e('header-label')}
+                  className={nsDatePicker.e('header-label')}
                   onClick={() => setSelectionMode('month')}
                 >
                   {monthLabel}
@@ -241,16 +265,16 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
               {(onNextYear || !propsViewDate) && (
                 <button
                   type="button"
-                  className={clsx(ns.e('icon-btn'), 'd-arrow-right')}
+                  className={clsx(ns.e('icon-btn'), nsDatePicker.e('next-btn'), 'd-arrow-right')}
                   onClick={handleNextYear}
                 >
                   <DArrowRight />
                 </button>
               )}
-              {selectionMode === 'date' && (onNextMonth || !propsViewDate) && (
+              {showMonthHeader && (onNextMonth || !propsViewDate) && (
                 <button
                   type="button"
-                  className={clsx(ns.e('icon-btn'), 'arrow-right')}
+                  className={clsx(ns.e('icon-btn'), nsDatePicker.e('next-btn'), 'arrow-right')}
                   onClick={handleNextMonth}
                 >
                   <ArrowRight />
@@ -258,7 +282,7 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
               )}
             </div>
             <div className={ns.e('content')}>
-              {selectionMode === 'date' && (
+              {(selectionMode === 'date' || selectionMode === 'dates' || selectionMode === 'week') && (
                 <DateTable
                   date={innerDate}
                   value={value}
@@ -268,6 +292,9 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
                   minDate={minDate}
                   maxDate={maxDate}
                   rangeState={rangeState}
+                  selectionMode={selectionMode}
+                  firstDayOfWeek={firstDayOfWeek}
+                  cellClassName={cellClassName}
                 />
               )}
               {selectionMode === 'month' && (
@@ -276,6 +303,11 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
                   value={value}
                   onPick={handleMonthPick}
                   disabledDate={disabledDate}
+                  cellClassName={cellClassName}
+                  minDate={minDate}
+                  maxDate={maxDate}
+                  rangeState={rangeState}
+                  onSelect={handleDateSelect}
                 />
               )}
               {selectionMode === 'year' && (
@@ -284,6 +316,11 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
                   value={value}
                   onPick={handleYearPick}
                   disabledDate={disabledDate}
+                  cellClassName={cellClassName}
+                  minDate={minDate}
+                  maxDate={maxDate}
+                  rangeState={rangeState}
+                  onSelect={handleDateSelect}
                 />
               )}
             </div>
@@ -291,6 +328,13 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
         </div>
         {(showFooter || type === 'datetime' || type === 'datetimerange') && (
            <div className={ns.e('footer')}>
+             <button
+               type="button"
+               className={clsx(ns.e('footer-btn'), 'is-text')}
+               onClick={handleClearClick}
+             >
+               Clear
+             </button>
              <button
                type="button"
                className={clsx(ns.e('footer-btn'), 'is-text')}

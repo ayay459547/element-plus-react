@@ -52,6 +52,10 @@
         "text": "Space"
       },
       {
+        "link": "/splitter",
+        "text": "Splitter"
+      },
+      {
         "link": "/typography",
         "text": "Typography"
       }
@@ -360,10 +364,6 @@
       {
         "link": "/divider",
         "text": "Divider"
-      },
-      {
-        "link": "/splitter",
-        "text": "Splitter"
       },
       {
         "link": "/watermark",
