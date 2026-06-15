@@ -69,6 +69,14 @@ export type {
   ElMainProps
 } from './components/container/types.ts'
 
+// DatePickerPanel
+export { default as ElDatePickerPanel } from './components/date-picker-panel/ElDatePickerPanel.tsx'
+export { default as ElDateRangePanel } from './components/date-picker-panel/ElDateRangePanel.tsx'
+export type {
+  ElDatePickerPanelInstance,
+  DatePickerPanelProps as ElDatePickerPanelProps
+} from './components/date-picker-panel/types.ts'
+
 // Drawer
 export { default as ElDrawer } from './components/drawer/ElDrawer.tsx'
 export type { ElDrawerInstance, ElDrawerProps } from './components/drawer/types.ts'
