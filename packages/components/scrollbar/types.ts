@@ -1,92 +1,103 @@
-import type { JSX } from 'react'
+import type { CSSProperties, JSX, ReactNode } from 'react'
+import type { ScrollbarContextType } from './constants'
 
+/** 捲動方向類型 */
+export type ScrollbarDirection = 'top' | 'bottom' | 'left' | 'right'
+
+/** Bar 組件屬性 */
 export interface BarProps {
-  /** 是否總是顯示 */
-  always?: boolean // Vue 有 default true，可在 React 元件內給預設值
-  /** 最小尺寸 */
+  /** 滾動條是否一直顯示 */
+  always?: boolean
+  /** 滾動條最小尺寸 */
   minSize: number
 }
 
-import type { ScrollbarContextType } from './constants'
-
-export interface ThumbProps {
-  /** Whether the scrollbar thumb is vertical */
-  vertical?: boolean
-
-  /** Thumb size (string, e.g. "40px") */
-  size?: string
-
-  /** Thumb moving distance */
-  move?: number
-
-  /** Required ratio between content and container */
-  ratio: number
-
-  /** Whether thumb should always show */
-  always?: boolean
-
-  scrollbar?: ScrollbarContextType
+/** Bar 組件實例 */
+export interface BarInstance {
+  /** 處理捲動事件 */
+  handleScroll: (wrap: HTMLDivElement) => void
+  /** 更新滾動條狀態 */
+  update: () => void
 }
 
-/**
- * Expose instance type of the component (for ref)
- */
+/** Thumb 組件屬性 */
+export interface ThumbProps {
+  /** 是否為垂直滾動條 */
+  vertical?: boolean
+  /** 滾動條尺寸 */
+  size?: string
+  /** 滾動條移動距離百分比 */
+  move?: number
+  /** 滾動比率 */
+  ratio: number
+  /** 是否一直顯示 */
+  always?: boolean
+  /** Scrollbar 上下文信息 */
+  scrollbar?: ScrollbarContextType | null
+}
+
+/** Thumb 組件實例 */
 export interface ThumbRef {
-  /** Example: expose a DOM element */
+  /** 滾動條 DOM 元素 */
   el: HTMLDivElement | null
 }
 
-import type { CSSProperties, ReactNode } from 'react'
-
-// Scrollbar direction
-export type ScrollbarDirection = 'top' | 'bottom' | 'left' | 'right'
-
-// Scrollbar props
-export interface ElScrollbarProps {
-  /** trigger distance(px) */
+/** Scrollbar 組件屬性 */
+export interface ScrollbarProps {
+  /** 距離底部的觸發距離，單位 px */
   distance?: number
-  /** height of scrollbar */
+  /** 捲動區域高度 */
   height?: string | number
-  /** max height of scrollbar */
+  /** 捲動區域最大高度 */
   maxHeight?: string | number
-  /** whether to use the native scrollbar */
+  /** 是否使用原生滾動條 */
   native?: boolean
-  /** style of wrap */
-  wrapStyle?: CSSProperties | CSSProperties[] | string
-  /** class of wrap */
+  /** 包裹層樣式 */
+  wrapStyle?: CSSProperties
+  /** 包裹層類名 */
   wrapClass?: string | string[]
-  /** class of view */
+  /** 內容層類名 */
   viewClass?: string | string[]
-  /** style of view */
-  viewStyle?: CSSProperties | CSSProperties[] | string
-  /** do not respond to container size changes, optimize performance */
+  /** 內容層樣式 */
+  viewStyle?: CSSProperties
+  /** 是否不監聽容器大小變化 */
   noresize?: boolean
-  /** element tag of the view */
+  /** 內容層標籤 */
   tag?: keyof JSX.IntrinsicElements
-  /** always show */
+  /** 滾動條是否一直顯示 */
   always?: boolean
-  /** minimum size of scrollbar */
+  /** 滾動條最小尺寸 */
   minSize?: number
-  /** wrap tabindex */
+  /** tabindex 屬性 */
   tabindex?: string | number
-  /** id of view */
+  /** id 屬性 */
   id?: string
-  /** role of view */
+  /** role 屬性 */
   role?: string
-  /** aria props */
+  /** aria-label 屬性 */
   ariaLabel?: string
-  ariaOrientation?: string
-  /** children content */
+  /** aria-orientation 屬性 */
+  ariaOrientation?: 'horizontal' | 'vertical'
+  /** 子元素內容 */
   children?: ReactNode
-  /** Scroll event callback */
-  onScroll?: (scroll: { scrollTop: number; scrollLeft: number }) => void
-  /** End reached callback */
+  /** 捲動時的回調 */
+  onScroll?: (pos: { scrollTop: number; scrollLeft: number }) => void
+  /** 捲動到底部/頂部/左側/右側時的回調 */
   onEndReached?: (direction: ScrollbarDirection) => void
 }
 
-// Scrollbar instance exposed methods (like Vue's defineExpose)
-export interface ElScrollbarInstance {
-  handleScroll: (wrap: HTMLDivElement) => void
+/** Scrollbar 組件實例 */
+export interface ScrollbarInstance {
+  /** 包裹層 DOM 引用 */
+  wrapRef: HTMLDivElement | null
+  /** 手動更新滾動條狀態 */
   update: () => void
-  // 其他可選的方法
+  /** 捲動到指定位置 */
+  scrollTo: (x: number | ScrollToOptions, y?: number) => void
+  /** 設置垂直捲動距離 */
+  setScrollTop: (value: number) => void
+  /** 設置水平捲動距離 */
+  setScrollLeft: (value: number) => void
+  /** 處理捲動事件（內部使用） */
+  handleScroll: () => void
 }
