@@ -194,3 +194,7 @@ export type {
 
 // Slot
 export { default as ElOnlyChild } from './components/slot/ElOnlyChild.tsx'
+
+// Space
+export { default as ElSpace } from './components/space/ElSpace.tsx'
+export type { SpaceProps as ElSpaceProps } from './components/space/types.ts'
