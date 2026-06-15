@@ -155,6 +155,10 @@ export type {
 export { default as ElTag } from './components/tag/ElTag.tsx'
 export type { ElTagInstance, ElTagProps } from './components/tag/types.ts'
 
+// Watermark
+export { default as ElWatermark } from './components/watermark/ElWatermark.tsx'
+export type { ElWatermarkInstance, WatermarkProps as ElWatermarkProps } from './components/watermark/types.ts'
+
 // Teleport
 export { default as ElTeleport } from './components/teleport/ElTeleport.tsx'
 export type { ElTeleportInstance, ElTeleportProps } from './components/teleport/types.ts'

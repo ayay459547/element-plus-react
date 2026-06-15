@@ -19,9 +19,12 @@ const ElSplitterPanel = forwardRef<ElSplitterPanelInstance, SplitterPanelProps>(
 
   const ns = useNamespace('splitter-panel')
 
+  // 計算面板樣式，支持動態傳入的 size (像素或百分比)
   const panelStyle = {
     ...style,
+    // flexBasis 控制面板在 flex 佈局中的基準尺寸
     flexBasis: size !== undefined ? (typeof size === 'number' ? `${size}px` : size) : undefined,
+    // 設置最小寬高/最大寬高以實現縮放限制
     minWidth: typeof min === 'number' ? `${min}px` : min,
     maxWidth: typeof max === 'number' ? `${max}px` : max,
     minHeight: typeof min === 'number' ? `${min}px` : min,
