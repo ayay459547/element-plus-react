@@ -25,26 +25,31 @@ const ElDateRangePanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelPr
 
     const ns = useNamespace('picker-panel')
 
+    // 左側面板顯示的月份
     const [leftDate, setLeftDate] = useState<Dayjs>(() => {
       if (Array.isArray(value) && value[0]) return value[0]
       return (Array.isArray(defaultValue) ? defaultValue[0] : defaultValue) || dayjs()
     })
 
+    // 右側面板顯示的月份
     const [rightDate, setRightDate] = useState<Dayjs>(() => {
       if (Array.isArray(value) && value[1]) return value[1]
       const d = (Array.isArray(defaultValue) ? defaultValue[1] : defaultValue) || dayjs()
       return d.add(1, 'month')
     })
 
+    // 範圍選擇的中間狀態：是否正在選擇、鼠標懸停日期
     const [rangeState, setRangeState] = useState({
       selecting: false,
       endDate: null as Dayjs | null
     })
 
+    // 當外部 value 變化時，同步左右面板顯示
     useEffect(() => {
       if (Array.isArray(value)) {
         if (value[0]) {
            setLeftDate(value[0])
+           // 確保右側面板至少比左側多一個月
            if (!value[1] || value[1].isSame(value[0], 'month')) {
               setRightDate(value[0].add(1, 'month'))
            } else {
@@ -54,6 +59,7 @@ const ElDateRangePanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelPr
       }
     }, [value])
 
+    // 處理左側面板導航（連動右側面板）
     const handleLeftPrevMonth = () => {
       setLeftDate(leftDate.subtract(1, 'month'))
       if (!unlinkPanels) {
@@ -68,6 +74,7 @@ const ElDateRangePanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelPr
       }
     }
 
+    // 處理右側面板導航（連動左側面板）
     const handleRightNextMonth = () => {
       setRightDate(rightDate.add(1, 'month'))
       if (!unlinkPanels) {
@@ -85,14 +92,17 @@ const ElDateRangePanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelPr
     const minDate = Array.isArray(value) ? value[0] : null
     const maxDate = Array.isArray(value) ? value[1] : null
 
+    // 處理日期選中邏輯（範圍選擇的兩次點擊）
     const handleRangePick = (date: Dayjs) => {
       if (!rangeState.selecting) {
+        // 第一次點擊：開始選擇
         setRangeState({
           selecting: true,
           endDate: null
         })
         onPick?.([date, null as any], true)
       } else {
+        // 第二次點擊：完成選擇
         setRangeState({
           selecting: false,
           endDate: null
@@ -105,6 +115,7 @@ const ElDateRangePanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelPr
       }
     }
 
+    // 處理鼠標懸停日期（更新 rangeState）
     const handleSelect = (date: Dayjs) => {
       if (rangeState.selecting) {
         setRangeState(prev => ({ ...prev, endDate: date }))

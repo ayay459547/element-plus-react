@@ -41,6 +41,7 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
 
     const ns = useNamespace('picker-panel')
 
+    // 內部維護當前面板顯示的基準日期
     const [innerDate, setInnerDate] = useState<Dayjs>(() => {
       if (propsViewDate) return propsViewDate
       if (Array.isArray(value)) {
@@ -49,19 +50,21 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
       return value || (Array.isArray(defaultValue) ? defaultValue[0] : defaultValue) || dayjs()
     })
 
+    // 當外部 viewDate 變化時，同步內部狀態
     useEffect(() => {
       if (propsViewDate) {
         setInnerDate(propsViewDate)
       }
     }, [propsViewDate])
 
+    // 當前選擇模式：日期、月份、年份
     const [selectionMode, setSelectionMode] = useState<'date' | 'month' | 'year'>(() => {
       if (type === 'year') return 'year'
       if (type === 'month') return 'month'
       return 'date'
     })
 
-    // Local range state if not provided via props (for single panel range selection experiments)
+    // 本地範圍選擇狀態（主要用於單面板測試或組件自理）
     const [localRangeState, setLocalRangeState] = useState({
       selecting: false,
       endDate: null as Dayjs | null
@@ -71,6 +74,7 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
     const maxDate = propsMaxDate
     const rangeState = propsRangeState || localRangeState
 
+    // 計算頭部年份標籤（如果是年份選擇模式，顯示十年區間）
     const yearLabel = useMemo(() => {
       if (selectionMode === 'year') {
         const startYear = Math.floor(innerDate.year() / 10) * 10
@@ -79,6 +83,7 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
       return `${innerDate.year()}`
     }, [innerDate, selectionMode])
 
+    // 計算頭部月份標籤
     const monthLabel = useMemo(() => {
       const MONTHS = [
         'January', 'February', 'March', 'April', 'May', 'June',
@@ -87,6 +92,7 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
       return MONTHS[innerDate.month()]
     }, [innerDate])
 
+    // 導航事件處理（如果傳入了 external handler 則使用之，否則修改內部的 innerDate）
     const handlePrevYear = () => {
       if (onPrevYear) {
         onPrevYear()
@@ -119,6 +125,7 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
       }
     }
 
+    // 當在 YearTable 選中某年份時
     const handleYearPick = (year: number) => {
       const newDate = innerDate.year(year)
       setInnerDate(newDate)
@@ -129,6 +136,7 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
       }
     }
 
+    // 當在 MonthTable 選中某月份時
     const handleMonthPick = (month: number) => {
       const newDate = innerDate.month(month)
       setInnerDate(newDate)
@@ -139,10 +147,10 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
       }
     }
 
+    // 當在 DateTable 選中某日期時
     const handleDatePick = (date: Dayjs) => {
       if (type === 'daterange' || type === 'datetimerange') {
-         // Range selection logic usually handled by parent DateRangePanel, 
-         // but we emit onPick for the individual panel's pick event.
+         // 範圍選擇通常由父組件協調，這裡僅透出單點選中事件
          onPick?.(date)
       } else {
         setInnerDate(date)
@@ -150,6 +158,7 @@ const ElDatePickerPanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelP
       }
     }
 
+    // 鼠標懸停日期回調（用於範圍選擇的高亮渲染）
     const handleDateSelect = (date: Dayjs) => {
        if (props.onSelect) {
          props.onSelect(date)

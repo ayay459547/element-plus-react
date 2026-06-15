@@ -141,6 +141,16 @@ export type { ElScrollbarInstance, ElScrollbarProps } from './components/scrollb
 export { default as ElSwitch } from './components/switch/ElSwitch.tsx'
 export type { ElSwitchInstance, ElSwitchProps } from './components/switch/types.ts'
 
+// Splitter
+export { default as ElSplitter } from './components/splitter/ElSplitter.tsx'
+export { default as ElSplitterPanel } from './components/splitter/ElSplitterPanel.tsx'
+export type {
+  ElSplitterInstance,
+  SplitterProps as ElSplitterProps,
+  ElSplitterPanelInstance,
+  SplitterPanelProps as ElSplitterPanelProps
+} from './components/splitter/types.ts'
+
 // Tag
 export { default as ElTag } from './components/tag/ElTag.tsx'
 export type { ElTagInstance, ElTagProps } from './components/tag/types.ts'

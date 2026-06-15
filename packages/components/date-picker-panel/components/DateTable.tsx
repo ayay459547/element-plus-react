@@ -22,10 +22,12 @@ const DateTable: React.FC<DateTableProps> = (props) => {
   const { date, value, onPick, disabledDate, minDate, maxDate, rangeState, onSelect } = props
   const ns = useNamespace('date-table')
 
+  // 計算當前月曆視圖的第一天（通常是上個月的最後幾天）
   const startDate = date.startOf('month').startOf('week')
   
   const rows = []
   let count = 0
+  // 生成 6 行 7 列的日期矩陣
   for (let i = 0; i < 6; i++) {
     const row = []
     for (let j = 0; j < 7; j++) {
@@ -38,23 +40,28 @@ const DateTable: React.FC<DateTableProps> = (props) => {
       let start = false
       let end = false
 
+      // 判斷單選或多選的選中狀態
       if (Array.isArray(value)) {
         isSelected = value.some(v => v.isSame(cellDate, 'day'))
       } else if (value) {
         isSelected = value.isSame(cellDate, 'day')
       }
 
+      // 處理範圍選擇的高亮邏輯
       if (minDate && maxDate) {
+        // 已選定範圍
         start = cellDate.isSame(minDate, 'day')
         end = cellDate.isSame(maxDate, 'day')
         inRange = cellDate.isAfter(minDate, 'day') && cellDate.isBefore(maxDate, 'day')
       } else if (minDate && rangeState?.selecting && rangeState.endDate) {
+        // 正在選擇中，且鼠標有懸停日期
         const rangeStart = minDate.isBefore(rangeState.endDate) ? minDate : rangeState.endDate
         const rangeEnd = minDate.isBefore(rangeState.endDate) ? rangeState.endDate : minDate
         start = cellDate.isSame(rangeStart, 'day')
         end = cellDate.isSame(rangeEnd, 'day')
         inRange = cellDate.isAfter(rangeStart, 'day') && cellDate.isBefore(rangeEnd, 'day')
       } else if (minDate) {
+        // 僅選中了開始日期
         start = cellDate.isSame(minDate, 'day')
       }
 
