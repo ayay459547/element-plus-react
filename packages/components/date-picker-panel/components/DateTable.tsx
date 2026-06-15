@@ -24,6 +24,7 @@ export interface DateTableProps {
   onSelect?: (date: Dayjs) => void
   selectionMode?: 'date' | 'week' | 'month' | 'year' | 'dates'
   firstDayOfWeek?: number
+  cellClassName?: (date: Date) => string
 }
 
 const DateTable: React.FC<DateTableProps> = (props) => {
@@ -37,7 +38,8 @@ const DateTable: React.FC<DateTableProps> = (props) => {
     rangeState,
     onSelect,
     selectionMode = 'date',
-    firstDayOfWeek = 7
+    firstDayOfWeek = 7,
+    cellClassName
   } = props
   const ns = useNamespace('date-table')
   const nsCell = useNamespace('date-table-cell')
@@ -69,7 +71,7 @@ const DateTable: React.FC<DateTableProps> = (props) => {
       let end = false
 
       if (Array.isArray(value)) {
-        isSelected = value.some(v => v.isSame(cellDate, 'day'))
+        isSelected = value.some(v => v && v.isSame(cellDate, 'day'))
       } else if (value) {
         isSelected = value.isSame(cellDate, 'day')
       }
@@ -89,6 +91,7 @@ const DateTable: React.FC<DateTableProps> = (props) => {
       }
 
       const disabled = disabledDate?.(cellDate.toDate())
+      const customClass = cellClassName?.(cellDate.toDate())
 
       row.push({
         date: cellDate,
@@ -99,6 +102,7 @@ const DateTable: React.FC<DateTableProps> = (props) => {
         start,
         end,
         disabled,
+        customClass,
         type: 'normal'
       })
       count++
@@ -139,7 +143,7 @@ const DateTable: React.FC<DateTableProps> = (props) => {
               return (
                 <td
                   key={cellIndex}
-                  className={clsx({
+                  className={clsx(cell.customClass, {
                     'available': cell.isCurrentMonth,
                     'today': cell.isToday,
                     'current': cell.isSelected || cell.start || cell.end,

@@ -1,6 +1,10 @@
 import VPDocContent from '@/components/VPDocContent.tsx'
 import VPDemo from '@/components/VPDemo.tsx'
 import VPCode from '@/components/common/VPCode.tsx'
+import markdown from '@/en-US/component/date-picker-panel.md?raw'
+
+import DatePickerPanelEnterDate from '@/examples/date-picker-panel/EnterDate.tsx'
+import DatePickerPanelEnterDate_code from '@/examples/date-picker-panel/EnterDate.tsx?raw'
 
 import DatePickerPanelBasic from '@/examples/date-picker-panel/Basic.tsx'
 import DatePickerPanelBasic_code from '@/examples/date-picker-panel/Basic.tsx?raw'
@@ -16,11 +20,27 @@ import DatePickerPanelRange_code from '@/examples/date-picker-panel/Range.tsx?ra
 
 const DatePickerPanelPage: React.FC = () => {
   return (
-    <VPDocContent>
+    <VPDocContent markdown={markdown}>
       <h1 id="date-picker-panel">DatePickerPanel</h1>
       <p>
         <code>DatePickerPanel</code> is the core component of <code>DatePicker</code>.
       </p>
+
+      <h2 id="enter-date">Enter Date</h2>
+      <p>Basic date picker panel measured by 'day'.</p>
+      <VPDemo
+        link="/src/examples/date-picker-panel/EnterDate.tsx"
+        code={
+          <VPCode
+            language={['EnterDate.tsx']}
+            code={{
+              'EnterDate.tsx': DatePickerPanelEnterDate_code
+            }}
+          />
+        }
+      >
+        <DatePickerPanelEnterDate />
+      </VPDemo>
 
       <h2 id="basic-usage">Basic usage</h2>
       <VPDemo

@@ -25,20 +25,25 @@ const ElDateRangePanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelPr
 
     const ns = useNamespace('picker-panel')
 
-    // 左側面板顯示的月份
+    const isMonthRange = type === 'monthrange'
+    const isYearRange = type === 'yearrange'
+
+    // 左側面板顯示的基準日期
     const [leftDate, setLeftDate] = useState<Dayjs>(() => {
       if (Array.isArray(value) && value[0]) return value[0]
       return (Array.isArray(defaultValue) ? defaultValue[0] : defaultValue) || dayjs()
     })
 
-    // 右側面板顯示的月份
+    // 右側面板顯示的基準日期
     const [rightDate, setRightDate] = useState<Dayjs>(() => {
       if (Array.isArray(value) && value[1]) return value[1]
       const d = (Array.isArray(defaultValue) ? defaultValue[1] : defaultValue) || dayjs()
+      if (isMonthRange) return d.add(1, 'year')
+      if (isYearRange) return d.add(10, 'year')
       return d.add(1, 'month')
     })
 
-    // 範圍選擇的中間狀態：是否正在選擇、鼠標懸停日期
+    // 範圍選擇的中間狀態
     const [rangeState, setRangeState] = useState({
       selecting: false,
       endDate: null as Dayjs | null
@@ -49,65 +54,50 @@ const ElDateRangePanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelPr
       if (Array.isArray(value)) {
         if (value[0]) {
            setLeftDate(value[0])
-           // 確保右側面板至少比左側多一個月
-           if (!value[1] || value[1].isSame(value[0], 'month')) {
-              setRightDate(value[0].add(1, 'month'))
+           if (!value[1]) {
+              if (isMonthRange) setRightDate(value[0].add(1, 'year'))
+              else if (isYearRange) setRightDate(value[0].add(10, 'year'))
+              else setRightDate(value[0].add(1, 'month'))
            } else {
               setRightDate(value[1])
            }
         }
       }
-    }, [value])
+    }, [value, isMonthRange, isYearRange])
 
-    // 處理左側面板導航（連動右側面板）
     const handleLeftPrevMonth = () => {
       setLeftDate(leftDate.subtract(1, 'month'))
-      if (!unlinkPanels) {
-        setRightDate(rightDate.subtract(1, 'month'))
-      }
+      if (!unlinkPanels) setRightDate(rightDate.subtract(1, 'month'))
     }
 
     const handleLeftPrevYear = () => {
-      setLeftDate(leftDate.subtract(1, 'year'))
-      if (!unlinkPanels) {
-        setRightDate(rightDate.subtract(1, 'year'))
-      }
+      const step = isYearRange ? 10 : 1
+      setLeftDate(leftDate.subtract(step, 'year'))
+      if (!unlinkPanels) setRightDate(rightDate.subtract(step, 'year'))
     }
 
-    // 處理右側面板導航（連動左側面板）
     const handleRightNextMonth = () => {
       setRightDate(rightDate.add(1, 'month'))
-      if (!unlinkPanels) {
-        setLeftDate(leftDate.add(1, 'month'))
-      }
+      if (!unlinkPanels) setLeftDate(leftDate.add(1, 'month'))
     }
 
     const handleRightNextYear = () => {
-      setRightDate(rightDate.add(1, 'year'))
-      if (!unlinkPanels) {
-        setLeftDate(leftDate.add(1, 'year'))
-      }
+      const step = isYearRange ? 10 : 1
+      setRightDate(rightDate.add(step, 'year'))
+      if (!unlinkPanels) setLeftDate(leftDate.add(step, 'year'))
     }
 
     const minDate = Array.isArray(value) ? value[0] : null
     const maxDate = Array.isArray(value) ? value[1] : null
 
-    // 處理日期選中邏輯（範圍選擇的兩次點擊）
     const handleRangePick = (date: Dayjs) => {
+      const unit = isMonthRange ? 'month' : isYearRange ? 'year' : 'day'
       if (!rangeState.selecting) {
-        // 第一次點擊：開始選擇
-        setRangeState({
-          selecting: true,
-          endDate: null
-        })
+        setRangeState({ selecting: true, endDate: null })
         onPick?.([date, null as any], true)
       } else {
-        // 第二次點擊：完成選擇
-        setRangeState({
-          selecting: false,
-          endDate: null
-        })
-        if (minDate && date.isBefore(minDate)) {
+        setRangeState({ selecting: false, endDate: null })
+        if (minDate && date.isBefore(minDate, unit)) {
           onPick?.([date, minDate])
         } else {
           onPick?.([minDate!, date])
@@ -122,6 +112,8 @@ const ElDateRangePanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelPr
       }
     }
 
+    const panelType = isMonthRange ? 'month' : isYearRange ? 'year' : 'date'
+
     return (
       <div
         className={clsx(ns.b(), ns.m('range'), className)}
@@ -129,9 +121,23 @@ const ElDateRangePanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelPr
       >
         <div className={ns.e('body-wrapper')}>
           {shortcuts && shortcuts.length > 0 && (
-             <div className={ns.e('sidebar')}>
-               {/* Shortcuts logic here */}
-             </div>
+            <div className={ns.e('sidebar')}>
+              {shortcuts.map((shortcut, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  className={ns.e('shortcut')}
+                  onClick={() => {
+                    const date = typeof shortcut.value === 'function' ? shortcut.value() : shortcut.value
+                    if (Array.isArray(date)) {
+                      onPick?.([dayjs(date[0]), dayjs(date[1])])
+                    }
+                  }}
+                >
+                  {shortcut.text}
+                </button>
+              ))}
+            </div>
           )}
           <div className={ns.e('body')}>
             <div className={ns.e('content')} style={{ display: 'flex' }}>
@@ -140,7 +146,7 @@ const ElDateRangePanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelPr
                 border={false}
                 value={value}
                 viewDate={leftDate}
-                type="date"
+                type={panelType}
                 onPick={handleRangePick}
                 onSelect={handleSelect}
                 onPrevMonth={handleLeftPrevMonth}
@@ -149,13 +155,14 @@ const ElDateRangePanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelPr
                 maxDate={maxDate}
                 rangeState={rangeState}
                 className={ns.e('left-panel')}
+                cellClassName={props.cellClassName}
               />
               <ElDatePickerPanel
                 {...props}
                 border={false}
                 value={value}
                 viewDate={rightDate}
-                type="date"
+                type={panelType}
                 onPick={handleRangePick}
                 onSelect={handleSelect}
                 onNextMonth={handleRightNextMonth}
@@ -164,6 +171,7 @@ const ElDateRangePanel = forwardRef<ElDatePickerPanelInstance, DatePickerPanelPr
                 maxDate={maxDate}
                 rangeState={rangeState}
                 className={ns.e('right-panel')}
+                cellClassName={props.cellClassName}
               />
             </div>
           </div>

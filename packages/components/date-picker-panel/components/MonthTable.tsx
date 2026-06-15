@@ -8,10 +8,18 @@ export interface MonthTableProps {
   value?: Dayjs | Dayjs[] | null
   onPick?: (month: number) => void
   disabledDate?: (date: Date) => boolean
+  cellClassName?: (date: Date) => string
+  minDate?: Dayjs | null
+  maxDate?: Dayjs | null
+  rangeState?: {
+    selecting: boolean
+    endDate: Dayjs | null
+  }
+  onSelect?: (date: Dayjs) => void
 }
 
 const MonthTable: React.FC<MonthTableProps> = (props) => {
-  const { date, value, onPick, disabledDate } = props
+  const { date, value, onPick, disabledDate, cellClassName, minDate, maxDate, rangeState, onSelect } = props
   const ns = useNamespace('month-table')
   const nsCell = useNamespace('month-table-cell')
 
@@ -34,23 +42,49 @@ const MonthTable: React.FC<MonthTableProps> = (props) => {
           <tr key={rowIndex}>
             {row.map((month, colIndex) => {
               const monthIndex = rowIndex * 4 + colIndex
-              const cellDate = date.month(monthIndex)
+              const cellDate = date.month(monthIndex).startOf('month')
               
               // 判斷該月份是否被選中
-              const isSelected = Array.isArray(value)
-                ? value.some(v => v.year() === date.year() && v.month() === monthIndex)
-                : value?.year() === date.year() && value?.month() === monthIndex
-              
+              let isSelected = false
+              if (Array.isArray(value)) {
+                isSelected = value.some(v => v && v.isSame(cellDate, 'month'))
+              } else {
+                isSelected = value?.isSame(cellDate, 'month') || false
+              }
+
+              let inRange = false
+              let start = false
+              let end = false
+
+              if (minDate && maxDate) {
+                start = cellDate.isSame(minDate, 'month')
+                end = cellDate.isSame(maxDate, 'month')
+                inRange = cellDate.isAfter(minDate, 'month') && cellDate.isBefore(maxDate, 'month')
+              } else if (minDate && rangeState?.selecting && rangeState.endDate) {
+                const rangeStart = minDate.isBefore(rangeState.endDate, 'month') ? minDate : rangeState.endDate
+                const rangeEnd = minDate.isBefore(rangeState.endDate, 'month') ? rangeState.endDate : minDate
+                start = cellDate.isSame(rangeStart, 'month')
+                end = cellDate.isSame(rangeEnd, 'month')
+                inRange = cellDate.isAfter(rangeStart, 'month') && cellDate.isBefore(rangeEnd, 'month')
+              } else if (minDate) {
+                start = cellDate.isSame(minDate, 'month')
+              }
+
               const disabled = disabledDate?.(cellDate.toDate())
+              const customClass = cellClassName?.(cellDate.toDate())
 
               return (
                 <td
                   key={colIndex}
-                  className={clsx({
-                    'current': isSelected,
-                    'disabled': disabled
+                  className={clsx(customClass, {
+                    'current': isSelected || start || end,
+                    'disabled': disabled,
+                    'in-range': inRange,
+                    'start-date': start,
+                    'end-date': end
                   })}
                   onClick={() => !disabled && onPick?.(monthIndex)}
+                  onMouseEnter={() => !disabled && onSelect?.(cellDate)}
                 >
                   <div className={nsCell.b()}>
                     <span className={nsCell.e('text')}>
