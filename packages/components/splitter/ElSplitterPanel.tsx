@@ -1,6 +1,7 @@
 import React, { forwardRef } from 'react'
 import clsx from 'clsx'
 import { useNamespace } from '../../hooks/useNamespace'
+import { useSplitterContext } from './useSplitterContext'
 import type { SplitterPanelProps, ElSplitterPanelInstance } from './types'
 
 const COMPONENT_NAME = 'ElSplitterPanel'
@@ -18,17 +19,23 @@ const ElSplitterPanel = forwardRef<ElSplitterPanelInstance, SplitterPanelProps>(
   } = props
 
   const ns = useNamespace('splitter-panel')
+  const { direction } = useSplitterContext()
+  const isHorizontal = direction === 'horizontal'
 
   // 計算面板樣式，支持動態傳入的 size (像素或百分比)
-  const panelStyle = {
+  const panelStyle: React.CSSProperties = {
     ...style,
-    // flexBasis 控制面板在 flex 佈局中的基準尺寸
     flexBasis: size !== undefined ? (typeof size === 'number' ? `${size}px` : size) : undefined,
-    // 設置最小寬高/最大寬高以實現縮放限制
-    minWidth: typeof min === 'number' ? `${min}px` : min,
-    maxWidth: typeof max === 'number' ? `${max}px` : max,
-    minHeight: typeof min === 'number' ? `${min}px` : min,
-    maxHeight: typeof max === 'number' ? `${max}px` : max,
+    flexGrow: size === undefined ? 1 : 0,
+    flexShrink: size === undefined ? 1 : 0
+  }
+
+  if (isHorizontal) {
+    panelStyle.minWidth = typeof min === 'number' ? `${min}px` : min
+    panelStyle.maxWidth = typeof max === 'number' ? `${max}px` : max
+  } else {
+    panelStyle.minHeight = typeof min === 'number' ? `${min}px` : min
+    panelStyle.maxHeight = typeof max === 'number' ? `${max}px` : max
   }
 
   return (
