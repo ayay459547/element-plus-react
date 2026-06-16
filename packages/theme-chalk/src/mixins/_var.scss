@@ -29,10 +29,7 @@
     );
   }
 
-  @include set-css-var-value(
-    ('color', $type, 'dark-2'),
-    map.get($colors, $type, 'dark-2')
-  );
+  @include set-css-var-value(('color', $type, 'dark-2'), map.get($colors, $type, 'dark-2'));
 }
 
 // set all css var for component by map

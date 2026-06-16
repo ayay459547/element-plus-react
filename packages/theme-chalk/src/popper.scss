@@ -21,10 +21,7 @@
   $arrow-selector: #{& + '__arrow'};
 
   @include when(dark) {
-    @include set-css-var-value(
-      ('fill-color', 'blank'),
-      getCssVar('popper', 'bg-color-dark')
-    );
+    @include set-css-var-value(('fill-color', 'blank'), getCssVar('popper', 'bg-color-dark'));
 
     color: getCssVar('bg-color');
     background: getCssVar('popper', 'bg-color-dark');
@@ -38,10 +35,7 @@
   }
 
   @include when(light) {
-    @include set-css-var-value(
-      ('fill-color', 'blank'),
-      getCssVar('popper', 'bg-color-light')
-    );
+    @include set-css-var-value(('fill-color', 'blank'), getCssVar('popper', 'bg-color-light'));
 
     background: getCssVar('popper', 'bg-color-light');
     border: 1px solid getCssVar('border-color', 'light');
@@ -79,7 +73,7 @@
     'top': 'bottom',
     'bottom': 'top',
     'left': 'right',
-    'right': 'left',
+    'right': 'left'
   );
 
   @each $placement, $opposite in $placements {
@@ -104,8 +98,7 @@
   }
 
   @each $placement,
-    $adjacency
-      in ('top': 'left', 'bottom': 'right', 'left': 'bottom', 'right': 'top')
+    $adjacency in ('top': 'left', 'bottom': 'right', 'left': 'bottom', 'right': 'top')
   {
     &[data-popper-placement^='#{$placement}'] > {
       #{$arrow-selector}::before {

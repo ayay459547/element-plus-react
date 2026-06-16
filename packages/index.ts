@@ -122,6 +122,10 @@ export type {
   ElPopperTriggerProps
 } from './components/popper/types.ts'
 
+// Popover
+export { default as ElPopover } from './components/popover/ElPopover.tsx'
+export type { ElPopoverInstance, ElPopoverProps } from './components/popover/types.ts'
+
 // Row
 export { default as ElRow } from './components/row/ElRow.tsx'
 export type { ElRowInstance, ElRowProps } from './components/row/types.ts'
