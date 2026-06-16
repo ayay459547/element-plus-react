@@ -1,0 +1,27 @@
+.example-popover-placement {
+  width: 440px;
+
+  .top {
+    text-align: center;
+  }
+
+  .left {
+    float: left;
+    width: 110px;
+  }
+
+  .right {
+    float: right;
+    width: 110px;
+  }
+
+  .bottom {
+    clear: both;
+    text-align: center;
+  }
+
+  .el-button {
+    margin: 4px;
+    width: 100px;
+  }
+}
