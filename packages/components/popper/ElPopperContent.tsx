@@ -46,7 +46,17 @@ const ElPopperContent: React.FC<ElPopperContentProps> = ({ children }) => {
       <CSSTransition
         in={isVisible} // 控制進場/出場
         timeout={500} // 動畫時間 (毫秒)
-        classNames={clsx(transition ?? 'el-fade-in-linear')} // 對應 CSS class
+        classNames={{
+          appear: `${transition ?? 'el-fade-in-linear'}-enter-from`,
+          appearActive: `${transition ?? 'el-fade-in-linear'}-enter-active`,
+          enter: `${transition ?? 'el-fade-in-linear'}-enter-from`,
+          enterActive: `${transition ?? 'el-fade-in-linear'}-enter-active`,
+          exit: `${transition ?? 'el-fade-in-linear'}-leave-active`,
+          exitActive: `${transition ?? 'el-fade-in-linear'}-leave-to`
+        }}
+        onEntering={() => {
+          contentRef.current?.classList.remove(`${transition ?? 'el-fade-in-linear'}-enter-from`)
+        }}
         unmountOnExit // 隱藏時從 DOM 移除
         nodeRef={contentRef} // 綁定 ref
         appear // 初次渲染如果為 true 也執行動畫

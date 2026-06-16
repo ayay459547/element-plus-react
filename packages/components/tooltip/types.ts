@@ -35,7 +35,7 @@ export type ElTooltipProps = {
   /**
    * @description visibility of Tooltip
    */
-  visible?: PopperProps['disabled']
+  visible?: PopperProps['visible']
   onVisible?: PopperProps['onVisible']
 
   /**
