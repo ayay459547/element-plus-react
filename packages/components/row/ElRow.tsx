@@ -17,13 +17,13 @@ const ElRow: React.FC<ElRowProps> = forwardRef<HTMLElement, ElRowProps<any>>(
   ({ gutter = 0, justify = 'start', align, tag, children, className, style, ...props }, ref) => {
     const Tag = tag || 'div'
 
-    let gutterX: ReturnType<typeof addUnit> = ''
+    let gutterX: ReturnType<typeof addUnit>
     const rowStyles: CSSProperties = {}
 
     if (gutter) {
       gutterX = addUnit(gutter / 2)
-      rowStyles.marginRight = `-${gutterX}`
-      rowStyles.marginLeft = `-${gutterX}`
+      rowStyles.marginRight = `-${gutterX ?? ''}`
+      rowStyles.marginLeft = `-${gutterX ?? ''}`
     }
 
     return (
@@ -57,8 +57,6 @@ const ElRow: React.FC<ElRowProps> = forwardRef<HTMLElement, ElRowProps<any>>(
     )
   }
 )
-
-ElRow.displayName = COMPONENT_NAME
 
 ElRow.displayName = COMPONENT_NAME
 
